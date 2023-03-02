@@ -1,0 +1,279 @@
+/*======= 
+OVERVIEW
+========*/
+
+.overview-greeting-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	max-width: 1024px;
+}
+
+.overview-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 580px;
+	height: 540px;
+}
+
+.top-cards-overview {
+	display: flex;
+	justify-content: space-between;
+	height: 170px;
+	width: 100%;
+}
+
+.card-overview,
+.urgent-container {
+	background: #ffffff;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+	border-radius: 30px;
+}
+
+.card-overview {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 170px;
+}
+
+.cardOverviewValue {
+	font-size: 4rem;
+	height: min-content;
+	justify-content: center;
+}
+
+.overview-card-name {
+	text-align: center;
+}
+
+.urgent-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 150px;
+	width: 100%;
+	padding: 28px 48px;
+}
+
+.urgent-tasks {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.urgent-tasks-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	width: fit-content;
+	gap: 20px;
+}
+
+.urgent-tasks-container::after {
+	content: '';
+	height: 100%;
+	border-right: 3px solid var(--horizontal-line-grey);
+	margin-left: 30px;
+	margin-right: 30px;
+	border-radius: 10px;
+}
+
+.urgent-value-name-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.deadline-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	gap: 12px;
+}
+
+.deadline-value {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+.deadline-title {
+	font-size: 1rem;
+	font-weight: bold;
+	color: red;
+}
+
+.do-done-container {
+	display: flex;
+	justify-content: space-between;
+	height: 150px;
+	width: 100%;
+	gap: 35px;
+}
+
+.do-done-box {
+	gap: 20px;
+}
+
+.svg-summary-do-done {
+	padding: 10px;
+	background-color: var(--dark-blue);
+	height: 67px;
+	width: 67px;
+	border-radius: 50%;
+	color: white;
+}
+
+.do-container:hover .svg-summary-do-done {
+	background-color: white;
+	color: black;
+}
+
+.done-container:hover .svg-summary-do-done {
+	background-color: white;
+}
+
+.done-container:hover path {
+	stroke: black;
+}
+
+:is(.card-overview, .urgent-container):hover {
+	background: var(--dark-blue);
+	color: #ffffff;
+}
+
+.to-do-done-values-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Greeting Container */
+
+.greeting-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: fit-content;
+}
+
+.greeting {
+	padding: 0 24px;
+}
+
+.greeting-title {
+	font-size: 2rem;
+	font-weight: 500;
+}
+
+.greeting-name {
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--light-blue);
+}
+
+/*! ASPECT RATIO? */
+
+/* ===========
+MEDIA QUERIES
+=============*/
+
+@media screen and (max-width: 1024px) {
+	.greeting-container {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.overview-container {
+		max-width: 360px;
+		height: fit-content;
+		gap: 24px;
+	}
+
+	.top-cards-overview,
+	.urgent-container,
+	.do-done-container {
+		height: 110px;
+	}
+
+	.card-overview {
+		width: 110px;
+	}
+
+	.cardOverviewValue {
+		font-size: 2rem;
+	}
+
+	.urgent-container {
+		padding: 17px 0;
+	}
+
+	.urgent-tasks-container {
+		gap: unset;
+	}
+
+	.urgent-tasks-container::after {
+		margin: 0 25px;
+	}
+
+	.urgent-icon {
+		width: 50px;
+		height: 50px;
+	}
+
+	.do-done-container {
+		gap: 24px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.overview-container {
+		max-width: 338px;
+		height: fit-content;
+		gap: 24px;
+	}
+
+	.top-cards-overview,
+	.urgent-container,
+	.do-done-container {
+		height: 100px;
+	}
+
+	.card-overview {
+		width: 100px;
+	}
+
+	.cardOverviewValue {
+		font-size: 2rem;
+	}
+
+	.urgent-container {
+		padding: 17px 0;
+	}
+
+	.urgent-tasks-container {
+		gap: unset;
+	}
+
+	.urgent-tasks-container::after {
+		margin: 0 20px;
+	}
+
+	.urgent-icon {
+		width: 40px;
+		height: 40px;
+	}
+
+	.do-done-container {
+		gap: 24px;
+	}
+}

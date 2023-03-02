@@ -1,0 +1,36 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.arrowParens": "always",
+	"liveServer.settings.port": 5501,
+	"editor.formatOnSave": true,
+	"editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum', 'calt",
+	"editor.mouseWheelZoom": true,
+	"git.confirmSync": false,
+	"editor.codeActionsOnSave": {
+		"source.fixAll": true,
+		"source.organizeImports": true,
+		"source.sortImports": true
+	},
+	"eslint.probe": [
+		"javascript",
+		"javascriptreact",
+		"typescript",
+		"typescriptreact",
+		"html",
+		"vue",
+		"markdown",
+		"jsx"
+	],
+	"eslint.options": {
+		"parser": "@babel/eslint-parser"
+	},
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"[css]": {
+		"editor.suggest.preview": true,
+		"editor.suggest.insertMode": "replace"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"editor.fontFamily": "\"Dank mono\", Consolas, 'Courier New', monospace"
+}
