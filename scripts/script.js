@@ -1,7 +1,7 @@
 /* Onload */
 
-const body = document.body;
-body.addEventListener('load', initSummary());
+/* const body = document.body;
+body.addEventListener('load', initSummary()); */
 
 /*======== 
 Side Menu 

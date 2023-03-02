@@ -155,8 +155,12 @@ MAIN CONTAINER
 .main-content-outer-container {
 	height: 100%;
 	width: 100%;
-	padding: 80px 0px 0px 120px;
+
 	background-color: var(--background-grey);
+}
+
+.main-content-inner-container {
+	padding: 80px 0px 0px 120px;
 }
 
 .title {
@@ -190,7 +194,6 @@ MAIN CONTAINER
 	width: 90px;
 	height: 3px;
 	background-color: var(--light-blue);
-	margin-top: 32px;
 }
 
 .description-heading {
@@ -297,6 +300,9 @@ MEDIA QUERIES
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.main-content-inner-container {
 		padding: 80px 24px;
 	}
 }
@@ -306,9 +312,9 @@ MEDIA QUERIES
 		display: none;
 	}
 
-	.main-content-outer-container {
+	.main-content-inner-container {
 		padding: 12px 12px 0px 12px;
-		height: calc(100% - 168px);
+		height: calc(100% - 79px);
 	}
 
 	.bottom-menu-btn-container {
