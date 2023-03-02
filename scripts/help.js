@@ -6,8 +6,8 @@ const initHelp = async () => {
 };
 
 const renderHelp = () => {
-	setInnerHtmlById('content', '');
-	setInnerHtmlById('content', generateHelpHtml());
+	document.getElementById('content').innerHTML = '';
+	document.getElementById('content').innerHTML = generateHelpHtml();
 };
 
 /* ============

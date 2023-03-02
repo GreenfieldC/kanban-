@@ -8,6 +8,6 @@ const initSummary = async () => {
  * renders the summary page
  */
 const renderSummary = () => {
-	setInnerHtmlById('content', '');
-	setInnerHtmlById('content', generateSummaryHtml());
+	document.getElementById('content').innerHTML = '';
+	document.getElementById('content').innerHTML = generateSummaryHtml();
 };
