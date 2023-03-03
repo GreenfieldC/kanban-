@@ -3,17 +3,14 @@ let elements = [document.getElementById('close-new-contact-btn'), overlay];
 /**
  * Generates the HTML for the contacts page
  */
-const initContacts = () => {
-	renderContacts();
+const initContacts = async () => {
+	await includeHTML();
+	addSideMenuButtonListener();
 };
 
 /**
  *
  */
-const renderContacts = () => {
-	document.getElementById('content').innerHTML = '';
-	document.getElementById('content').innerHTML = generateContactsHtml();
-};
 
 /*========================= 
 Window Management Contacts 

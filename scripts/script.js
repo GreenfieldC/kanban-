@@ -15,8 +15,10 @@ const toggleSideMenu = () => {
  * Adds event listeners
  * @type {HTMLElement} side menu btn
  */
-const sideMenuBtn = document.getElementById('open-close-btn-side-menu');
-sideMenuBtn.addEventListener('click', toggleSideMenu);
+const addSideMenuButtonListener = () => {
+	const sideMenuBtn = document.getElementById('open-close-btn-side-menu');
+	sideMenuBtn.addEventListener('click', toggleSideMenu);
+};
 
 /**
  * Closes the side menu
@@ -31,16 +33,3 @@ const closeSideMenu = () => {
  */
 const sideMenuClose = document.getElementById('main-container');
 sideMenuClose.addEventListener('click', closeSideMenu);
-
-/*========== 
-Open Section
-===========*/
-
-const summaryBtn = document.getElementById('summary-btn');
-summaryBtn.addEventListener('click', initSummary);
-
-const bottomSummaryBtn = document.getElementById('bottom-summary-btn');
-bottomSummaryBtn.addEventListener('click', initSummary);
-
-const helpBtn = document.getElementById('help-btn');
-helpBtn.addEventListener('click', initHelp);
