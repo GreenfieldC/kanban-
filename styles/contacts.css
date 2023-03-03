@@ -1,4 +1,4 @@
-.contacts-overlay {
+.overlay {
 	display: none;
 	position: absolute;
 	top: 0;
@@ -7,6 +7,11 @@
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 100;
+}
+
+.card {
+	position: relative;
+	width: 100vw !important;
 }
 
 .contacts-overlay-card {
@@ -24,20 +29,60 @@
 	border-radius: 30px;
 }
 
-.card {
-	position: relative;
-	width: 100vw !important;
-}
-
 .btn-close {
 	position: absolute;
 	top: 24px;
 	right: 24px;
 }
 
-.card-body-top {
+.card-body {
+	display: flex;
+	justify-content: center;
+}
+
+.outer-heading-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-size: 47px;
+	font-weight: 700;
+	color: white;
+}
+
+.subtitle-newContactCard {
+	color: white;
+	font-size: 21px;
+}
+
+.dark-blue {
 	background-color: var(--dark-blue);
 }
+
+/* Contact Card Lower Part */
+
+.card-body-bottom {
+	padding: 60px 27px;
+}
+
+.form-group-btn-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.input-field-container-new-contact-card {
+	height: 150px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+/* Contacts Page */
 
 .new-contact-button-container {
 	height: 79px;

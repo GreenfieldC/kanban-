@@ -23,7 +23,7 @@
 		<link rel="stylesheet" href="styles/help.css" />
 
 		<!-- Script -->
-		<script src="./scripts/generic_functions.js" defer></script>
+		<script src="./scripts/global-variables.js" defer></script>
 		<script src="./scripts/window_management.js" defer></script>
 		<script src="./scripts/contacts.js" defer></script>
 		<script src="./scripts/summary_templates.js" defer></script>
@@ -34,6 +34,37 @@
 		<title>Join</title>
 	</head>
 	<body>
+		<div id="overlay" class="overlay">
+			<div id="new-contacts-card" class="card contacts-overlay-card p-0 overflow-hidden border-0" style="width: 18rem">
+				<button id="close-new-contact-btn" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+				<div class="card-body dark-blue">
+					<div class="outer-heading-container">
+						<div class="heading-container-cards">
+							<h1>Add Contact</h1>
+							<span class="subtitle-newContactCard">Task are better with a team!</span>
+						</div>
+					</div>
+				</div>
+				<div class="card-body card-body-bottom">
+					<form>
+						<div class="form-group-btn-container">
+							<div class="input-field-container-new-contact-card">
+								<div class="form-group">
+									<input placeholder="Name" type="name" class="form-control" id="name-new-contact" />
+								</div>
+								<div class="form-group">
+									<input placeholder="Email" type="email" class="form-control" id="email-new-contact" />
+								</div>
+								<div class="form-group">
+									<input placeholder="Phone" type="tel" class="form-control" id="phone-new-contact" />
+								</div>
+							</div>
+							<button type="submit" class="btn btn-ordinary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
 		<div id="side-menu" class="side-menu">
 			<div id="open-close-btn-side-menu" class="open-close-btn-side-menu"></div>
 			<div class="side-menu-img-container">
@@ -98,22 +129,10 @@
 				</div>
 			</nav>
 			<div id="content" class="main-content-outer-container">
-				<div id="contacts-overlay" class="contacts-overlay">
-					<div id="new-contacts-card" class="card contacts-overlay-card p-0 overflow-hidden border-0" style="width: 18rem;">
-						<button id="close-new-contact-btn" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
-						<div class="card-body card-body-top row-cols-2 d-flex justify-content-center align-items-center flex-column">
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						  </div>
-						<div class="card-body card-body-bottom row-cols-3 d-flex justify-content-center align-items-center flex-column">
-						  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						</div>
-					  </div>
-
-				</div>
 				<div class="new-contact-button-container">
 					<button id="open-new-contact-btn" type="button" class="btn btn-primary btn-ordinary">
 						<span class="btn-name">New contact</span>
-					<img src="./assets/icons/new-contact_icon.png" alt="">
+						<img src="./assets/icons/new-contact_icon.png" alt="" />
 					</button>
 				</div>
 				<div class="contact-list-container">
@@ -164,7 +183,7 @@
 							<a href="#" class="card-link">Another link</a>
 						</div>
 					</div>
-					
+
 					<div class="card" style="width: 18rem">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
@@ -174,7 +193,7 @@
 							<a href="#" class="card-link">Another link</a>
 						</div>
 					</div>
-					
+
 					<div class="card" style="width: 18rem">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
@@ -183,8 +202,6 @@
 							<a href="#" class="card-link">Card link</a>
 							<a href="#" class="card-link">Another link</a>
 						</div>
-					</div>
-					
 					</div>
 				</div>
 				<!-- summary, board, addTask, contacts, help, legal notice -->
