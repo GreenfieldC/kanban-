@@ -1,3 +1,33 @@
+body {
+	margin: 0;
+	box-sizing: border-box;
+	text-decoration: none;
+	height: 100vh;
+	max-height: 100vh;
+	width: 100%;
+	color: black;
+	font-family: 'inter';
+	line-height: normal !important;
+	scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+a {
+	text-decoration: unset !important;
+	color: unset;
+}
+
+a:hover {
+	color: unset;
+}
+
+.selector-for-some-widget {
+	box-sizing: content-box;
+}
+
 .back-to-summary {
 	width: 24px;
 	height: 24px;
