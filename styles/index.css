@@ -1,0 +1,28 @@
+.start-animation-overlay {
+	display: block;
+	background-color: var(--dark-blue) !important;
+}
+
+.join-logo-mobile-animation {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	translate: all 0.5s ease-in-out;
+	animation: mobileStartAnimation 2s 1s ease-in-out;
+	color: var(--dark-blue);
+}
+
+@keyframes mobileStartAnimation {
+	0% {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+	}
+	100% {
+		top: 12px;
+		left: 12px;
+		color: var(--dark-blue);
+	}
+}
