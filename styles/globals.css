@@ -51,6 +51,26 @@ a:hover {
 	cursor: pointer;
 }
 
+/* Buttons */
+.btn-ordinary {
+	display: inline-flex;
+	align-items: center;
+	height: 53px;
+	gap: 12px;
+	border-radius: 10px;
+	background-color: #2a3647 !important;
+	border: unset !important;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.btn:focus {
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) !important;
+}
+
+.btn:active {
+	background-color: var(--light-blue) !important;
+}
+
 @media screen and (min-width: 480px) {
 	.back-to-summary {
 		right: 32px;
@@ -61,4 +81,15 @@ a:hover {
 	.back-to-summary {
 		display: none;
 	}
+}
+
+/* SignUp ForgotPassword ResetPassword */
+.join-logo-mobile-fixed {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+	height: 78px;
+	width: 64px;
+	transform: unset;
+	color: var(--dark-blue);
 }
