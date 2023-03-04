@@ -6,6 +6,10 @@ const initSummary = async () => {
 	document.getElementById('summary-btn').classList.add('active');
 };
 
+/*================ 
+GREETING FUNCTIONS
+=================*/
+
 /**
  * Gets time in hours
  * @returns {number} hours
@@ -19,19 +23,34 @@ const timeOfDay = () => {
 /**
  * Depending on time returns greeting
  * @param {number} hours
- * @returns string fitting greeting
+ * @returns {string} fitting greeting
  */
-const getGreeting = () => {
+const setGreeting = () => {
 	const hours = timeOfDay();
-	if (hours >= 0 && hours < 12) return 'Good Morning,';
-	if (hours >= 12 && hours < 18) return 'Good Day,';
+	if (morning(hours)) return 'Good Morning,';
+	if (afternoon(hours)) return 'Good Day,';
 	return 'Good Evening,';
+};
+
+/**
+ * @param {number} hours
+ * @returns {boolean} true if hours are between 0 and 12
+ */
+const morning = (hours) => {
+	return hours >= 0 && hours < 12;
+};
+
+/**
+ * @param {number} hours
+ * @returns {boolean} true if hours are between 12 and 18
+ */
+const afternoon = (hours) => {
+	return hours >= 12 && hours < 18;
 };
 
 /**
  * Renders greeting
  */
 const renderGreeting = () => {
-	getGreeting();
-	document.getElementById('greeting-title').innerHTML = getGreeting();
+	document.getElementById('greeting-title').innerHTML = setGreeting();
 };
