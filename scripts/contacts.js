@@ -6,6 +6,7 @@ let elements = [document.getElementById('close-new-contact-btn'), overlay];
 const initContacts = async () => {
 	await loadSideMenuHeader();
 	document.getElementById('contacts-btn').classList.add('active');
+	document.getElementById('bottom-contacts-btn').classList.add('active');
 };
 
 /**

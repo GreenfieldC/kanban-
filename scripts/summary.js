@@ -4,6 +4,7 @@ const initSummary = async () => {
 	await loadSideMenuHeader();
 	renderGreeting();
 	document.getElementById('summary-btn').classList.add('active');
+	document.getElementById('bottom-summary-btn').classList.add('active');
 };
 
 /*================ 
