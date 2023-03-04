@@ -4,8 +4,7 @@ let elements = [document.getElementById('close-new-contact-btn'), overlay];
  * Generates the HTML for the contacts page
  */
 const initContacts = async () => {
-	await includeHTML();
-	addSideMenuButtonListener();
+	await loadSideMenuHeader();
 };
 
 /**

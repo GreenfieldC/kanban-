@@ -1,0 +1,23 @@
+.back-to-summary {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+
+	margin: auto;
+	cursor: pointer;
+}
+
+@media screen and (min-width: 480px) {
+	.back-to-summary {
+		right: 32px;
+	}
+}
+
+@media screen and (min-width: 1350px) {
+	.back-to-summary {
+		display: none;
+	}
+}

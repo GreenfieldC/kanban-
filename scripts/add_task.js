@@ -1,5 +1,5 @@
 'use strict';
 
-const initSummary = async () => {
+const initAddTask = async () => {
 	await loadSideMenuHeader();
 };

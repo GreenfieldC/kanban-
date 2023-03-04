@@ -8,6 +8,20 @@ body {
 	color: black;
 	font-family: 'inter';
 	line-height: normal !important;
+	scroll-behavior: smooth;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+a {
+	text-decoration: unset !important;
+	color: unset;
+}
+
+a:hover {
+	color: unset;
 }
 
 .selector-for-some-widget {

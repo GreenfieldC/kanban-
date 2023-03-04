@@ -1,23 +1,12 @@
-body {
-	font-family: Inter;
-}
-
-*::-webkit-scrollbar {
-	display: none;
-}
-
-.content {
+/* .content {
 	overflow: hidden;
-}
+} */
 
 .helpContainer {
-	/* 	display: flex;
-	justify-content: center; */
 	height: 100vh;
 }
 
 .helpContentContainer {
-	padding-right: 0 50px;
 	max-width: 700px;
 }
 
@@ -30,14 +19,6 @@ body {
 
 .headingHelpContainer h1 {
 	font-size: 61px;
-}
-
-.back {
-	width: 24px;
-	height: 24px;
-	position: absolute;
-	right: 16px;
-	cursor: pointer;
 }
 
 .helpMainContent {

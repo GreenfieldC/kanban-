@@ -1,0 +1,11 @@
+.title-back-container {
+	display: flex;
+	position: relative;
+	max-width: 700px;
+}
+
+.inner-container-legal-notice {
+	height: calc(100vh - 227px);
+	padding-bottom: 24px;
+	overflow-y: scroll;
+}
