@@ -1,21 +1,19 @@
 'use-strict';
 
-const allUsers = [
-	{
-		name: 'Christian Greenfield',
-		email: 'christian@test.de',
-		password: '123123',
-		phone: 'N/A',
-	},
-];
+let allUsers = [];
+
+const initSignUp = () => {
+	loadAllUsers();
+};
 
 const checkForm = () => {
 	signUpInputValues();
 	const { name, email, password } = signUpInputValues();
-	userObject(name, email, password);
+	const initials = createInitials(name);
+	userObject(name, email, password, initials);
 	noDuplicateEmail(email);
 	checkMessageEmailNotAvailable(email);
-	checkAddNewUser(name, email, password);
+	checkAddNewUser(name, email, password, initials);
 };
 
 /**
@@ -37,12 +35,13 @@ const signUpInputValues = () => {
  * @param {string} password
  * @returns {object} - returns an object with the user's name, email, password and phone number
  */
-const userObject = (name, email, password) => {
+const userObject = (name, email, password, initials) => {
 	return {
 		name: name,
 		email: email,
 		password: password,
 		phone: 'N/A',
+		initials: initials,
 	};
 };
 
@@ -74,13 +73,45 @@ const checkMessageEmailNotAvailable = (email) => {
  * @param {string} password
  * @returns {object} - adds a new user to the database
  */
-const checkAddNewUser = (name, email, password) => {
+const checkAddNewUser = (name, email, password, initials) => {
 	if (!noDuplicateEmail(email)) return;
-	allUsers.push(userObject(name, email, password));
-	forwardToLoginIn();
+	allUsers.push(userObject(name, email, password, initials));
+	saveAllUsers();
+	/* forwardToLoginIn(); */
 };
 
+/**
+ * Redirects to the login page
+ */
 const forwardToLoginIn = () => {
 	window.location.href = 'index.html';
-	playedAnimationOnce = true;
+};
+
+/**
+ *
+ * @param {string} name
+ * @returns
+ */
+const createInitials = (name) => {
+	const initials = name
+		.split(' ')
+		.map((n) => n[0])
+		.join('');
+	return initials;
+};
+
+/**
+ * Saves all users to local storage
+ */
+const saveAllUsers = () => {
+	let allUsersAsString = JSON.stringify(allUsers);
+	localStorage.setItem('allUsers', allUsersAsString);
+};
+
+/**
+ * Loads all users from local storage
+ */
+const loadAllUsers = () => {
+	let allUsersAsString = localStorage.getItem('allUsers');
+	allUsers = JSON.parse(allUsersAsString);
 };

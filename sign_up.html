@@ -5,11 +5,21 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<!-- Bootstrap CSS -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
 		<!-- Responsive, mobile first -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- Bootstrap JS -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous" defer></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+			defer
+		></script>
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="./styles/globals.css" />
@@ -25,30 +35,67 @@
 
 		<title>Sign in</title>
 	</head>
-	<body>
+	<body onload="initSignUp()">
 		<a href="./index.html">
-			<svg class="join-logo-mobile-fixed" width="101" height="122" viewBox="0 0 101 122" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<path d="M71.6725 0H49.5146V25.4923H71.6725V0Z" fill="currentColor" />
-				<path d="M49.5142 46.2251H71.6721V82.1779C71.7733 90.8292 69.3112 99.3153 64.5986 106.557C59.9455 113.594 50.963 121.966 34.3446 121.966C16.2434 121.966 5.69286 113.406 0 108.715L13.9765 91.4743C19.533 96.0112 24.885 99.7435 34.4299 99.7435C41.6567 99.7435 44.5372 96.7988 46.2247 94.2307C48.5186 90.6637 49.7052 86.4923 49.6335 82.2464L49.5142 46.2251Z" fill="currentColor" />
-				<path d="M38.2135 30.1318H16.0557V52.3884H38.2135V30.1318Z" fill="#29ABE2" />
-				<path d="M83.2795 111.522C83.2795 116.265 80.8762 118.815 77.5184 118.815C74.1607 118.815 71.9619 115.785 71.9619 111.762C71.9619 107.739 74.2288 104.554 77.7059 104.554C81.183 104.554 83.2795 107.687 83.2795 111.522ZM74.5356 111.711C74.5356 114.57 75.6776 116.675 77.6377 116.675C79.5978 116.675 80.7057 114.45 80.7057 111.539C80.7057 108.988 79.6831 106.592 77.6377 106.592C75.5924 106.592 74.5356 108.903 74.5356 111.711Z" fill="currentColor" />
-				<path d="M87.6771 104.76V118.593H85.2227V104.76H87.6771Z" fill="currentColor" />
-				<path d="M90.3359 118.593V104.76H93.0631L95.9947 110.461C96.7494 111.952 97.4209 113.483 98.006 115.049C97.8526 113.337 97.7844 111.368 97.7844 109.177V104.76H100.034V118.593H97.4946L94.5289 112.772C93.7437 111.243 93.0438 109.671 92.4324 108.064C92.4324 109.776 92.5517 111.711 92.5517 114.09V118.576L90.3359 118.593Z" fill="currentColor" />
+			<svg
+				class="join-logo-mobile-fixed"
+				width="101"
+				height="122"
+				viewBox="0 0 101 122"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					d="M71.6725 0H49.5146V25.4923H71.6725V0Z"
+					fill="currentColor"
+				/>
+				<path
+					d="M49.5142 46.2251H71.6721V82.1779C71.7733 90.8292 69.3112 99.3153 64.5986 106.557C59.9455 113.594 50.963 121.966 34.3446 121.966C16.2434 121.966 5.69286 113.406 0 108.715L13.9765 91.4743C19.533 96.0112 24.885 99.7435 34.4299 99.7435C41.6567 99.7435 44.5372 96.7988 46.2247 94.2307C48.5186 90.6637 49.7052 86.4923 49.6335 82.2464L49.5142 46.2251Z"
+					fill="currentColor"
+				/>
+				<path
+					d="M38.2135 30.1318H16.0557V52.3884H38.2135V30.1318Z"
+					fill="#29ABE2"
+				/>
+				<path
+					d="M83.2795 111.522C83.2795 116.265 80.8762 118.815 77.5184 118.815C74.1607 118.815 71.9619 115.785 71.9619 111.762C71.9619 107.739 74.2288 104.554 77.7059 104.554C81.183 104.554 83.2795 107.687 83.2795 111.522ZM74.5356 111.711C74.5356 114.57 75.6776 116.675 77.6377 116.675C79.5978 116.675 80.7057 114.45 80.7057 111.539C80.7057 108.988 79.6831 106.592 77.6377 106.592C75.5924 106.592 74.5356 108.903 74.5356 111.711Z"
+					fill="currentColor"
+				/>
+				<path
+					d="M87.6771 104.76V118.593H85.2227V104.76H87.6771Z"
+					fill="currentColor"
+				/>
+				<path
+					d="M90.3359 118.593V104.76H93.0631L95.9947 110.461C96.7494 111.952 97.4209 113.483 98.006 115.049C97.8526 113.337 97.7844 111.368 97.7844 109.177V104.76H100.034V118.593H97.4946L94.5289 112.772C93.7437 111.243 93.0438 109.671 92.4324 108.064C92.4324 109.776 92.5517 111.711 92.5517 114.09V118.576L90.3359 118.593Z"
+					fill="currentColor"
+				/>
 			</svg>
 		</a>
 
 		<div id="login-window" class="dropdown-menu">
-			<form class="px-4 py-3" action onsubmit="checkForm(); return false">
+			<form class="px-4 py-3" onsubmit="checkForm(); return false">
 				<div class="login-title-container">
 					<h2 class="container login-title">Sign Up</h2>
 				</div>
 				<div class="mb-3 login-email-container">
 					<div class="form-group">
-						<input placeholder="Name" type="name" class="form-control" id="name" />
+						<input
+							placeholder="Name"
+							type="name"
+							class="form-control"
+							id="name"
+							required
+						/>
 					</div>
 				</div>
 				<div class="mb-3">
-					<input type="email" class="form-control" placeholder="Email" id="email" />
+					<input
+						type="email"
+						class="form-control"
+						placeholder="Email"
+						id="email"
+						required
+					/>
 				</div>
 				<div class="mb-3">
 					<input
@@ -58,13 +105,20 @@
 						placeholder="Password"
 						id="password"
 						autocomplete="on"
-						passwordrules="required: upper; required: lower; required: digit; 
-					minlength: 8; allowed: [-().&@?'#,/&quot;+]; max-consecutive: 2"
+						pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+						title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+						required
 					/>
 				</div>
 
 				<div class="login-btns-container container">
-					<button id="signup-btn" type="submit" class="btn btn-primary btn-ordinary btns-index">Sign up</button>
+					<button
+						id="signup-btn"
+						type="submit"
+						class="btn btn-primary btn-ordinary btns-index"
+					>
+						Sign up
+					</button>
 				</div>
 			</form>
 		</div>
