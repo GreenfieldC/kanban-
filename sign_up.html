@@ -36,5 +36,37 @@
 				<path d="M90.3359 118.593V104.76H93.0631L95.9947 110.461C96.7494 111.952 97.4209 113.483 98.006 115.049C97.8526 113.337 97.7844 111.368 97.7844 109.177V104.76H100.034V118.593H97.4946L94.5289 112.772C93.7437 111.243 93.0438 109.671 92.4324 108.064C92.4324 109.776 92.5517 111.711 92.5517 114.09V118.576L90.3359 118.593Z" fill="currentColor" />
 			</svg>
 		</a>
+
+		<div id="login-window" class="dropdown-menu">
+			<form class="px-4 py-3" action onsubmit="checkForm(); return false">
+				<div class="login-title-container">
+					<h2 class="container login-title">Sign Up</h2>
+				</div>
+				<div class="mb-3 login-email-container">
+					<div class="form-group">
+						<input placeholder="Name" type="name" class="form-control" id="name" />
+					</div>
+				</div>
+				<div class="mb-3">
+					<input type="email" class="form-control" placeholder="Email" id="email" />
+				</div>
+				<div class="mb-3">
+					<input
+						type="password"
+						name="password"
+						class="form-control"
+						placeholder="Password"
+						id="password"
+						autocomplete="on"
+						passwordrules="required: upper; required: lower; required: digit; 
+					minlength: 8; allowed: [-().&@?'#,/&quot;+]; max-consecutive: 2"
+					/>
+				</div>
+
+				<div class="login-btns-container container">
+					<button id="signup-btn" type="submit" class="btn btn-primary btn-ordinary btns-index">Sign up</button>
+				</div>
+			</form>
+		</div>
 	</body>
 </html>
