@@ -96,8 +96,7 @@ h1 {
 .contact-list-inner-container {
 	height: calc(100vh - 247px);
 	overflow-y: scroll;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-left: 16px;
 	background-color: white;
 }
 
@@ -110,7 +109,7 @@ h1 {
 
 /* Chrome, Edge, and Safari */
 .contact-list-inner-container::-webkit-scrollbar {
-	width: 11px !important;
+	width: 16px !important;
 }
 
 .contact-list-inner-container::-webkit-scrollbar-track {
@@ -125,11 +124,20 @@ h1 {
 
 .card-contact-list {
 	justify-content: center;
+	cursor: pointer;
+	height: 90px !important;
 }
 
-/* .outer-card-body {
-	gap: 25px;
-} */
+.card-contact-list:hover,
+.card-contact-list:hover .user-name {
+	color: white;
+	background-color: var(--dark-blue);
+}
+
+.letters {
+	padding: 16px;
+	border-bottom: 1px solid var(--horizontal-line-grey);
+}
 
 .initials-container {
 	display: flex;
@@ -138,6 +146,7 @@ h1 {
 	width: 42px !important;
 	height: 42px !important;
 	border-radius: 50%;
+	border: 1px solid white;
 }
 
 .right-body-contact-card {
@@ -162,5 +171,14 @@ h1 {
 @media screen and (min-width: 480px) {
 	.card {
 		width: 360px !important;
+	}
+
+	.card-contact-list {
+		height: unset;
+	}
+
+	.card-contact-list:hover,
+	.card-contact-list:hover .user-name {
+		border-radius: 0.75rem;
 	}
 }

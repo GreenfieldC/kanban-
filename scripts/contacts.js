@@ -1,12 +1,23 @@
 let elements = [document.getElementById('close-new-contact-btn'), overlay];
 
+const alphabetObj = {};
+
+/**
+ * ´Adds alphabet arrays to alphabetObj
+ */
+for (let i = 65; i <= 90; i++) {
+	const letter = String.fromCharCode(i);
+	alphabetObj[letter] = [];
+}
+
 /**
  * Generates the HTML for the contacts page
  */
 const initContacts = async () => {
 	await loadSideMenuHeader();
 	await loadAllUsers();
-	renderContactList();
+	sortUsers();
+	renderContactListExistingContacts();
 	document.getElementById('contacts-btn').classList.add('active');
 	document.getElementById('bottom-contacts-btn').classList.add('active');
 };
@@ -14,6 +25,54 @@ const initContacts = async () => {
 /**
  * Renders the contact list
  */
+/* Order List according first letter */
+
+/**
+ * @param {string} letter
+ */
+const renderContactListExistingContacts = () => {
+	for (let letter in alphabetObj) {
+		if (alphabetObj[letter].length > 0) {
+			document.getElementById('contact-list').innerHTML += generateLettersStructureHTML(letter);
+			for (let i = 0; i < alphabetObj[letter].length; i++) {
+				let name = alphabetObj[letter][i].name;
+				let color = alphabetObj[letter][i].color;
+				let email = alphabetObj[letter][i].email;
+				let id = alphabetObj[letter][i].id;
+				let initials = alphabetObj[letter][i].initials;
+				document.getElementById(letter).innerHTML += generateContactInListHtml(i, id, color, initials, name, email);
+			}
+		}
+	}
+};
+
+/**
+ * @param {string} letter
+ * @returns
+ */
+const generateLettersStructureHTML = (letter) => {
+	return /*html*/ `
+        <div class="letters">
+            <span><b>${letter}</b></span>
+        </div>
+        <div id='${letter}'></div> 
+    `;
+};
+
+/**
+ * Sorts the users according to the first letter of their surname
+ */
+const sortUsers = () => {
+	allUsers.forEach((user, i) => {
+		let id = i;
+		const firstLetter = user.initials[1].toUpperCase();
+		user.id = id;
+		alphabetObj[firstLetter].push(user);
+		console.log(user);
+	});
+};
+
+/* Cards */
 const renderContactList = () => {
 	const contactList = document.getElementById('contact-list');
 	contactList.innerHTML = '';
@@ -22,32 +81,9 @@ const renderContactList = () => {
 		const initials = user.initials;
 		const userName = user.name;
 		const email = user.email;
-		const contactHtml = generateContactsHtml(color, initials, userName, email);
+		const contactHtml = generateContactInListHtml(color, initials, userName, email);
 		contactList.innerHTML += contactHtml;
 	});
-};
-
-/**
- * @param {string} color
- * @param {string} initials
- * @param {string} userName
- * @param {string} email
- * @returns
- */
-const generateContactsHtml = (color, initials, userName, email) => {
-	return /*html*/ `
-	<div class="card card-contact-list" style="width: 18rem">
-		<div class="card-body align-items-center outer-card-body">
-			<div class="initials-container" style="background-color: ${color}">
-				<span class="user-initials">${initials}</span>
-			</div>
-			<div class="card-body flex-column right-body-contact-card">
-				<span class="user-name" id="user-name">${userName}</span>
-				<span id="email" class="email">${email}</span>
-			</div>
-		</div>
-	</div>
-	`;
 };
 
 /*========================= 
