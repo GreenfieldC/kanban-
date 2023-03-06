@@ -14,26 +14,14 @@ let colorForBadges = [
 	'#000000',
 ];
 
-let allUsers = [
-	{
-		name: 'Guest',
-		email: 'guest@web.de',
-		password: 'Guest123.-',
-		phone: 'N/A',
-		initials: 'GG',
-		color: '#FF7A00',
-	},
-];
-
 let initials;
 let color;
 
 const initSignUp = () => {
-	saveAllUsers();
 	loadAllUsers();
 };
 
-const checkForm = () => {
+const checkSignUpForm = () => {
 	signUpInputValues();
 	const { name, email, password } = signUpInputValues();
 	createInitials(name);
@@ -157,28 +145,14 @@ const checkAddNewUser = (name, email, password, initials, color) => {
 	if (!noDuplicateEmail(email)) return;
 	allUsers.push(userObject(name, email, password, initials, color));
 	saveAllUsers();
-	/* forwardToLoginIn(); */
+	forwardToLoginIn();
 };
 
 /**
  * Redirects to the login page
  */
 const forwardToLoginIn = () => {
-	window.location.href = 'index.html';
-};
-
-/**
- * Saves all users to local storage
- */
-const saveAllUsers = () => {
-	let allUsersAsString = JSON.stringify(allUsers);
-	localStorage.setItem('allUsers', allUsersAsString);
-};
-
-/**
- * Loads all users from local storage
- */
-const loadAllUsers = () => {
-	let allUsersAsString = localStorage.getItem('allUsers');
-	allUsers = JSON.parse(allUsersAsString);
+	setTimeout(() => {
+		window.location.href = 'index.html';
+	}, 2000);
 };

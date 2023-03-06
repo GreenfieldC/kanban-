@@ -1,10 +1,13 @@
 'use strict';
 
 const initSummary = async () => {
+	await loadAllUsers();
+	await loadLoginUserIndex();
 	await loadSideMenuHeader();
 	renderGreeting();
 	document.getElementById('summary-btn').classList.add('active');
 	document.getElementById('bottom-summary-btn').classList.add('active');
+	console.log(logInUserIndex);
 };
 
 /*================ 
