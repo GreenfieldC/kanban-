@@ -28,27 +28,32 @@ const initContacts = async () => {
 /* Order List according first letter */
 
 /**
- * @param {string} letter
+ * Renders the contact list
  */
 const renderContactListExistingContacts = () => {
-	for (const letter in alphabetObj) {
+	for (let letter in alphabetObj) {
 		if (alphabetObj[letter].length > 0) {
-			const letterHtml = generateLettersStructureHTML(letter);
-			const contactList = document.getElementById('contact-list');
-			contactList.innerHTML += letterHtml;
-
-			const contacts = alphabetObj[letter];
-			for (let i = 0; i < contacts.length; i++) {
-				const name = contacts[i].name;
-				const color = contacts[i].color;
-				const email = contacts[i].email;
-				const id = contacts[i].id;
-				const initials = contacts[i].initials;
-				const contactHtml = generateContactInListHtml(i, id, color, initials, name, email);
-				const letterElement = document.getElementById(letter);
-				letterElement.innerHTML += contactHtml;
-			}
+			document.getElementById('contact-list').innerHTML += generateLettersStructureHTML(letter);
+			appendContactsToLetter(letter);
 		}
+	}
+};
+
+/**
+ * Appends/Sorts contacts to the letter
+ * @param {string} letter
+ */
+const appendContactsToLetter = (letter) => {
+	const contacts = alphabetObj[letter];
+	for (let i = 0; i < contacts.length; i++) {
+		const name = contacts[i].name;
+		const color = contacts[i].color;
+		const email = contacts[i].email;
+		const id = contacts[i].id;
+		const initials = contacts[i].initials;
+		const contactHtml = generateContactInListHtml(i, id, color, initials, name, email);
+		const letterElement = document.getElementById(letter);
+		letterElement.innerHTML += contactHtml;
 	}
 };
 
@@ -78,45 +83,38 @@ const sortUsers = () => {
 	});
 };
 
-/* Cards */
-const renderContactList = () => {
-	const contactList = document.getElementById('contact-list');
-	contactList.innerHTML = '';
-	allUsers.forEach((user) => {
-		const color = user.color;
-		const initials = user.initials;
-		const userName = user.name;
-		const email = user.email;
-		const contactHtml = generateContactInListHtml(color, initials, userName, email);
-		contactList.innerHTML += contactHtml;
-	});
-};
-
 /*========================= 
 Window Management Contacts 
 ==========================*/
 
-const openNewContactWindow = () => {
+/**
+ * Shows the new contact window
+ */
+const showsNewContactWindow = () => {
 	overlay.style.display = 'block';
 };
 
+/**
+ * Shows the new contact window
+ */
 const openNewContactBtn = document.getElementById('open-new-contact-btn');
-openNewContactBtn.addEventListener('click', openNewContactWindow);
+openNewContactBtn.addEventListener('click', showsNewContactWindow);
 
-const closeNewContactWindow = () => {
+/**
+ * Hides the new contact window
+ */
+const hidesNewContactWindow = () => {
 	overlay.style.display = 'none';
 };
 
+/**
+ *!Sollte ich mit oben den Elementen zusammenfassen?
+ */
 const closeNewContactBtn = document.getElementById('close-new-contact-btn');
-elements.forEach((e) => e.addEventListener('click', closeNewContactWindow));
+elements.forEach((e) => e.addEventListener('click', hidesNewContactWindow));
 
 /**
  * Prevents the card from closing when clicking inside the card
  */
 const newContactsCard = document.getElementById('new-contacts-card');
 newContactsCard.addEventListener('click', (e) => e.stopPropagation());
-
-const renderNewContactCard = () => {
-	document.getElementById('content').innerHTML = '';
-	document.getElementById('content').innerHTML = generateNewContactCardHtml();
-};
