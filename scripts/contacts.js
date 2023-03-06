@@ -31,16 +31,22 @@ const initContacts = async () => {
  * @param {string} letter
  */
 const renderContactListExistingContacts = () => {
-	for (let letter in alphabetObj) {
+	for (const letter in alphabetObj) {
 		if (alphabetObj[letter].length > 0) {
-			document.getElementById('contact-list').innerHTML += generateLettersStructureHTML(letter);
-			for (let i = 0; i < alphabetObj[letter].length; i++) {
-				let name = alphabetObj[letter][i].name;
-				let color = alphabetObj[letter][i].color;
-				let email = alphabetObj[letter][i].email;
-				let id = alphabetObj[letter][i].id;
-				let initials = alphabetObj[letter][i].initials;
-				document.getElementById(letter).innerHTML += generateContactInListHtml(i, id, color, initials, name, email);
+			const letterHtml = generateLettersStructureHTML(letter);
+			const contactList = document.getElementById('contact-list');
+			contactList.innerHTML += letterHtml;
+
+			const contacts = alphabetObj[letter];
+			for (let i = 0; i < contacts.length; i++) {
+				const name = contacts[i].name;
+				const color = contacts[i].color;
+				const email = contacts[i].email;
+				const id = contacts[i].id;
+				const initials = contacts[i].initials;
+				const contactHtml = generateContactInListHtml(i, id, color, initials, name, email);
+				const letterElement = document.getElementById(letter);
+				letterElement.innerHTML += contactHtml;
 			}
 		}
 	}
