@@ -1,6 +1,8 @@
 .card {
 	position: relative;
 	width: 100vw !important;
+	border-radius: unset;
+	border: unset;
 }
 
 .contacts-overlay-card {
@@ -89,7 +91,76 @@ h1 {
 	font-size: 21px;
 }
 
-.contact-list-container {
+/* Contacts in contact list */
+
+.contact-list-inner-container {
 	height: calc(100vh - 247px);
 	overflow-y: scroll;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	background-color: white;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.contact-list-inner-container {
+	scrollbar-width: auto;
+	scrollbar-color: #a8a8a8 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+.contact-list-inner-container::-webkit-scrollbar {
+	width: 11px !important;
+}
+
+.contact-list-inner-container::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+.contact-list-inner-container::-webkit-scrollbar-thumb {
+	background-color: #a8a8a8;
+	border-radius: 10px;
+	border: 3px solid #ffffff;
+}
+
+.card-contact-list {
+	justify-content: center;
+}
+
+/* .outer-card-body {
+	gap: 25px;
+} */
+
+.initials-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px !important;
+	height: 42px !important;
+	border-radius: 50%;
+}
+
+.right-body-contact-card {
+	padding: 15px 0 15px 24px;
+}
+
+.user-name {
+	font-size: 1.25rem;
+	height: fit-content;
+	width: fit-content;
+}
+
+.user-initials {
+	color: white;
+}
+
+.email {
+	color: var(--font-blue);
+	width: 100%;
+}
+
+@media screen and (min-width: 480px) {
+	.card {
+		width: 360px !important;
+	}
 }

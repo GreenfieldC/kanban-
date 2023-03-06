@@ -1,18 +1,8 @@
 'use-strict';
+/*
+! surname key, too?  */
 
-let colorForBadges = [
-	'#02CF2F',
-	'#EE00D6',
-	'#0190E0',
-	'#FF7200',
-	'#FF2500',
-	'#AF1616',
-	'#FFC700',
-	'#3E0099',
-	'#462F8A',
-	'#FF7A00',
-	'#000000',
-];
+let colorForBadges = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#AF1616', '#FFC700', '#3E0099', '#462F8A', '#FF7A00', '#000000'];
 
 let initials;
 let color;
@@ -82,8 +72,7 @@ const setColorBadge = () => {
  * @returns {number} - returns a number between 0 and 11
  */
 const calculateColorIndex = () => {
-	let colorIndex =
-		transformInitialsIntoAscii(initials) % colorForBadges.length;
+	let colorIndex = transformInitialsIntoAscii(initials) % colorForBadges.length;
 	return colorIndex;
 };
 

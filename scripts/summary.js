@@ -31,9 +31,9 @@ const timeOfDay = () => {
  */
 const setGreeting = () => {
 	const hours = timeOfDay();
-	if (morning(hours)) return 'Good Morning,';
-	if (afternoon(hours)) return 'Good Day,';
-	return 'Good Evening,';
+	if (morning(hours)) return 'Good morning,';
+	if (afternoon(hours)) return 'Good afternoon,';
+	return 'Good evening,';
 };
 
 /**

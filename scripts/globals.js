@@ -1,5 +1,8 @@
 'use strict';
 let logInUserIndex;
+
+/*
+! empty when server installed */
 let allUsers = [
 	{
 		name: 'Guest',
@@ -8,6 +11,102 @@ let allUsers = [
 		phone: 'N/A',
 		initials: 'GG',
 		color: '#FF7A00',
+	},
+	{
+		name: 'Aiden Brown',
+		email: 'aidenbrown@gmail.com',
+		password: 'BrownAiden123',
+		phone: '+1-555-555-5555',
+		initials: 'AB',
+		color: '#E53935',
+	},
+	{
+		name: 'Brandon Carter',
+		email: 'brandoncarter@gmail.com',
+		password: 'Carter123',
+		phone: '+1-555-555-5555',
+		initials: 'BC',
+		color: '#1E88E5',
+	},
+	{
+		name: 'Connor Davis',
+		email: 'connordavis@gmail.com',
+		password: 'DavisConnor123',
+		phone: '+1-555-555-5555',
+		initials: 'CD',
+		color: '#43A047',
+	},
+	{
+		name: 'Dylan Evans',
+		email: 'dylanevans@gmail.com',
+		password: 'EvansDylan123',
+		phone: '+1-555-555-5555',
+		initials: 'DE',
+		color: '#7B1FA2',
+	},
+	{
+		name: 'Ethan Flores',
+		email: 'ethanflores@gmail.com',
+		password: 'FloresEthan123',
+		phone: '+1-555-555-5555',
+		initials: 'EF',
+		color: '#F57C00',
+	},
+	{
+		name: 'Gabriel Gonzalez',
+		email: 'gabrielgonzalez@gmail.com',
+		password: 'GonzalezGabriel123',
+		phone: '+1-555-555-5555',
+		initials: 'GG',
+		color: '#546E7A',
+	},
+	{
+		name: 'Hannah Hill',
+		email: 'hannahhill@gmail.com',
+		password: 'HillHannah123',
+		phone: '+1-555-555-5555',
+		initials: 'HH',
+		color: '#00ACC1',
+	},
+	{
+		name: 'Isaac Johnson',
+		email: 'isaacjohnson@gmail.com',
+		password: 'JohnsonIsaac123',
+		phone: '+1-555-555-5555',
+		initials: 'IJ',
+		color: '#8E24AA',
+	},
+	{
+		name: 'Jacob King',
+		email: 'jacobking@gmail.com',
+		password: 'KingJacob123',
+		phone: '+1-555-555-5555',
+		initials: 'JK',
+		color: '#C2185B',
+	},
+	{
+		name: 'Liam Lee',
+		email: 'liamlee@gmail.com',
+		password: 'LeeLiam123',
+		phone: '+1-555-555-5555',
+		initials: 'LL',
+		color: '#FF5722',
+	},
+	{
+		name: 'Madison Mitchell',
+		email: 'madisonmitchell@gmail.com',
+		password: 'MitchellMadison123',
+		phone: '+1-555-555-5555',
+		initials: 'MM',
+		color: '#0097A7',
+	},
+	{
+		name: 'Natalie Nguyen',
+		email: 'natalienguyen@gmail.com',
+		password: 'NguyenNatalie123',
+		phone: '+1-555-555-5555',
+		initials: 'NN',
+		color: '#FFD600',
 	},
 ];
 
