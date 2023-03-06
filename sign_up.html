@@ -81,9 +81,10 @@
 					<div class="form-group">
 						<input
 							placeholder="Name"
-							type="name"
+							type="text"
 							class="form-control"
 							id="name"
+							pattern="[a-zA-Z][a-zA-Z ]+"
 							required
 						/>
 					</div>
@@ -94,6 +95,8 @@
 						class="form-control"
 						placeholder="Email"
 						id="email"
+						minlength="5"
+						maxlength="64"
 						required
 					/>
 				</div>

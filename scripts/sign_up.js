@@ -1,19 +1,47 @@
 'use-strict';
 
-let allUsers = [];
+let colorForBadges = [
+	'#02CF2F',
+	'#EE00D6',
+	'#0190E0',
+	'#FF7200',
+	'#FF2500',
+	'#AF1616',
+	'#FFC700',
+	'#3E0099',
+	'#462F8A',
+	'#FF7A00',
+	'#000000',
+];
+
+let allUsers = [
+	{
+		name: 'Guest',
+		email: 'guest@web.de',
+		password: 'Guest123.-',
+		phone: 'N/A',
+		initials: 'GG',
+		color: '#FF7A00',
+	},
+];
+
+let initials;
+let color;
 
 const initSignUp = () => {
+	saveAllUsers();
 	loadAllUsers();
 };
 
 const checkForm = () => {
 	signUpInputValues();
 	const { name, email, password } = signUpInputValues();
-	const initials = createInitials(name);
-	userObject(name, email, password, initials);
+	createInitials(name);
+	setColorBadge();
+	userObject(name, email, password, initials, color);
 	noDuplicateEmail(email);
 	checkMessageEmailNotAvailable(email);
-	checkAddNewUser(name, email, password, initials);
+	checkAddNewUser(name, email, password, initials, color);
 };
 
 /**
@@ -31,17 +59,69 @@ const signUpInputValues = () => {
 /**
  *
  * @param {string} name
+ * @returns
+ */
+const createInitials = (name) => {
+	initials = name
+		.split(' ')
+		.map((n) => n[0])
+		.join('');
+	return initials;
+};
+
+/**
+ *
+ * @param {string} initials
+ * @returns number - returns the sum of the ascii values of the initials
+ */
+const transformInitialsIntoAscii = (initials) => {
+	let asciifirstLetter = initials.charCodeAt(0);
+	let asciisecondLetter = initials.charCodeAt(1);
+	let asciiSum = asciifirstLetter + asciisecondLetter;
+	return asciiSum;
+};
+
+/**
+ * Sets the color of the badge of user initials
+ */
+const setColorBadge = () => {
+	let colorIndex = calculateColorIndex();
+	getColor(colorIndex);
+};
+
+/**
+ * Calculates the color index of the user badge
+ * @returns {number} - returns a number between 0 and 11
+ */
+const calculateColorIndex = () => {
+	let colorIndex =
+		transformInitialsIntoAscii(initials) % colorForBadges.length;
+	return colorIndex;
+};
+
+/**
+ * Sets the color of the badge of user initials
+ * @param {string} colorIndex
+ */
+const getColor = (colorIndex) => {
+	color = colorForBadges[colorIndex];
+};
+
+/**
+ *
+ * @param {string} name
  * @param {string} email
  * @param {string} password
  * @returns {object} - returns an object with the user's name, email, password and phone number
  */
-const userObject = (name, email, password, initials) => {
+const userObject = (name, email, password, initials, color) => {
 	return {
 		name: name,
 		email: email,
 		password: password,
 		phone: 'N/A',
 		initials: initials,
+		color: color,
 	};
 };
 
@@ -73,9 +153,9 @@ const checkMessageEmailNotAvailable = (email) => {
  * @param {string} password
  * @returns {object} - adds a new user to the database
  */
-const checkAddNewUser = (name, email, password, initials) => {
+const checkAddNewUser = (name, email, password, initials, color) => {
 	if (!noDuplicateEmail(email)) return;
-	allUsers.push(userObject(name, email, password, initials));
+	allUsers.push(userObject(name, email, password, initials, color));
 	saveAllUsers();
 	/* forwardToLoginIn(); */
 };
@@ -85,19 +165,6 @@ const checkAddNewUser = (name, email, password, initials) => {
  */
 const forwardToLoginIn = () => {
 	window.location.href = 'index.html';
-};
-
-/**
- *
- * @param {string} name
- * @returns
- */
-const createInitials = (name) => {
-	const initials = name
-		.split(' ')
-		.map((n) => n[0])
-		.join('');
-	return initials;
 };
 
 /**
