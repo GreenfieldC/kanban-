@@ -78,7 +78,7 @@ h1 {
 .new-contact-button-container {
 	height: 79px;
 	width: 100vw;
-	background-color: brown;
+	background-color: white;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
@@ -169,6 +169,10 @@ h1 {
 }
 
 @media screen and (min-width: 480px) {
+	.new-contact-button-container {
+		background-color: var(--background-grey);
+	}
+
 	.card {
 		width: 360px !important;
 	}
@@ -180,5 +184,11 @@ h1 {
 	.card-contact-list:hover,
 	.card-contact-list:hover .user-name {
 		border-radius: 0.75rem;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.contact-list-inner-container {
+		height: calc(100vh - 170px);
 	}
 }
