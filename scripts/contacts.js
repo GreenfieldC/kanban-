@@ -1,4 +1,5 @@
 let elements = [document.getElementById('close-new-contact-btn'), overlay];
+const overlayDetails = document.getElementById('overlay-details');
 
 const alphabetObj = {};
 
@@ -79,6 +80,7 @@ const showContact = (id) => {
 	const email = allUsers[id].email;
 	const phone = allUsers[id].phone;
 	renderContactOnDisplay(color, initials, name, email, phone);
+	overlayDetails.style.display = 'block';
 };
 
 /**
@@ -93,6 +95,17 @@ const renderContactOnDisplay = (color, initials, name, email, phone) => {
 	const contactOnDisplayHtml = generateContactOnDisplayHtml(color, initials, name, email, phone);
 	document.getElementById('contact-on-display').innerHTML = contactOnDisplayHtml;
 };
+
+/* Add New Contact */
+/* 
+!Keine doppelten Funktionen 07.03.2023 ist schon in signup.js */
+
+/* const getInputValues = () => {
+	const name = document.getElementById('name-new-contact').value;
+	const email = document.getElementById('email-new-contact').value;
+	const phone = document.getElementById('phone-new-contact').value;
+	return { name: name, email: email, phone: phone };
+}; */
 
 /*========================= 
 Window Management Contacts 
@@ -129,3 +142,15 @@ elements.forEach((e) => e.addEventListener('click', hidesNewContactWindow));
  */
 const newContactsCard = document.getElementById('new-contacts-card');
 newContactsCard.addEventListener('click', (e) => e.stopPropagation());
+
+const closeContactDetailsBtn = document.getElementById('back-to-contact-list');
+closeContactDetailsBtn.addEventListener('click', () => {
+	overlayDetails.style.display = 'none';
+});
+
+overlayDetails.addEventListener('click', () => {
+	overlayDetails.style.display = 'none';
+});
+
+const contactDetailsCard = document.getElementById('contact-details-card');
+contactDetailsCard.addEventListener('click', (e) => e.stopPropagation());

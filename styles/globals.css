@@ -15,9 +15,9 @@ body {
 	font-family: 'inter';
 } */
 
-/* *::-webkit-scrollbar {
+*::-webkit-scrollbar {
 	display: none;
-} */
+}
 
 a {
 	text-decoration: unset !important;
@@ -40,7 +40,7 @@ a:hover {
 	right: 0;
 	bottom: 0;
 	background-color: rgba(0, 0, 0, 0.5);
-	z-index: 100;
+	z-index: 10000;
 }
 
 .back-to-summary {

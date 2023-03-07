@@ -13,8 +13,8 @@ const initSignUp = () => {
 };
 
 const checkSignUpForm = () => {
-	signUpInputValues();
-	const { name, email, password } = signUpInputValues();
+	getInputValues();
+	const { name, email, password } = getInputValues();
 	createInitials(name);
 	setColorBadge();
 	userObject(name, email, password, initials, color);
@@ -27,7 +27,7 @@ const checkSignUpForm = () => {
  * Gets the values of the input fields
  * @returns {object} - returns an object with the values of the input fields
  */
-const signUpInputValues = () => {
+const getInputValues = () => {
 	const name = document.getElementById('name').value;
 	const email = document.getElementById('email').value;
 	const password = document.getElementById('password').value;
