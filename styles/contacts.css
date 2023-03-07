@@ -5,6 +5,10 @@
 	border: unset;
 }
 
+.main-content-outer-container {
+	display: flex;
+}
+
 .contacts-overlay-card {
 	position: absolute;
 	top: 50%;
@@ -95,9 +99,10 @@ h1 {
 
 .contact-list-inner-container {
 	height: calc(100vh - 247px);
-	overflow-y: scroll;
 	padding-left: 16px;
 	background-color: white;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -143,8 +148,8 @@ h1 {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 42px !important;
-	height: 42px !important;
+	width: 42px;
+	height: 42px;
 	border-radius: 50%;
 	border: 1px solid white;
 }
@@ -166,6 +171,85 @@ h1 {
 .email {
 	color: var(--font-blue);
 	width: 100%;
+}
+
+/* Display Contact Section  */
+.display-contact-details-section {
+	display: none;
+	/* background-color: red; */
+	height: 100%;
+	width: 100%;
+}
+
+.wrapper-details {
+	display: flex;
+	flex-direction: column;
+	flex-direction: flex-start;
+	gap: 20px;
+}
+
+.container-bagdge-name-add-task {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 20px;
+}
+
+.initals-in-details-section {
+	width: 80px;
+	height: 80px;
+}
+
+.details-name {
+	font-size: 2.25rem;
+	font-weight: 500px;
+}
+
+.add-Task-in-contacts {
+	color: var(--font-blue);
+	cursor: pointer;
+}
+
+.contact-information-section {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.wrapper-upper-part-contact-information {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.contact-information-text {
+	margin: unset;
+}
+
+.wrapper-lower-part-contact-information {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	height: 128px;
+}
+
+.email-phone-details {
+	display: flex;
+	flex-direction: column;
+}
+
+.email-phone-details-text {
+	font-size: 1rem;
+	font-weight: bold;
+}
+
+.email-details {
+	color: var(--font-blue);
+}
+
+.phone-details,
+.email-details {
+	cursor: pointer;
 }
 
 @media screen and (min-width: 480px) {
@@ -191,4 +275,43 @@ h1 {
 	.contact-list-inner-container {
 		height: calc(100vh - 170px);
 	}
+}
+
+@media (min-width: 1025px) {
+	.new-contact-button-container {
+		display: none;
+	}
+
+	.contact-list-inner-container {
+		/* 	position: absolute; */
+
+		min-width: 353px !important;
+		width: 353px;
+	}
+
+	.contact-list-inner-container {
+		height: calc(100vh - 90px);
+	}
+
+	/* Details Contact Section */
+	.display-contact-details-section {
+		display: block;
+		padding: 80px 0 0 60px;
+	}
+
+	.wrapper-details {
+		gap: 54px;
+	}
+
+	.container-bagdge-name-add-task {
+		gap: 54px;
+	}
+
+	.details-name {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 1281px) {
+	/* hi-res laptops and desktops */
 }
