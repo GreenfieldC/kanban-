@@ -45,16 +45,16 @@ const renderContactListExistingContacts = () => {
  */
 const appendContactsToLetter = (letter) => {
 	const contacts = alphabetObj[letter];
-	for (let i = 0; i < contacts.length; i++) {
-		const name = contacts[i].name;
-		const color = contacts[i].color;
-		const email = contacts[i].email;
-		const id = contacts[i].id;
-		const initials = contacts[i].initials;
+	contacts.forEach((contact, i) => {
+		const name = contact.name;
+		const color = contact.color;
+		const email = contact.email;
+		const id = contact.id;
+		const initials = contact.initials;
 		const contactHtml = generateContactInListHtml(i, id, color, initials, name, email);
 		const letterElement = document.getElementById(letter);
 		letterElement.innerHTML += contactHtml;
-	}
+	});
 };
 
 /**
