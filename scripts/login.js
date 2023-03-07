@@ -2,6 +2,7 @@
 
 const initLogin = () => {
 	startAnimation();
+	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	loadAllUsers();
 };
 
@@ -21,9 +22,7 @@ const logInInputValues = () => {
 };
 
 const checkLogInUser = async (email, password) => {
-	const user = allUsers.findIndex(
-		(user) => user.email === email && user.password === password
-	);
+	const user = allUsers.findIndex((user) => user.email === email && user.password === password);
 	if (user === -1) return;
 	if (user) {
 		logInUserIndex = user;
@@ -39,12 +38,8 @@ const checkLogInUser = async (email, password) => {
  */
 const startAnimation = () => {
 	setTimeout(() => {
-		document
-			.getElementById('login-animation')
-			.classList.add('transform-animation-overlay');
-		document
-			.getElementById('join-logo-animation')
-			.classList.add('transfer-join-logo');
+		document.getElementById('login-animation').classList.add('transform-animation-overlay');
+		document.getElementById('join-logo-animation').classList.add('transfer-join-logo');
 	}, 500);
 	setTimeout(() => {
 		document.getElementById('login-animation').style.zIndex = -1;

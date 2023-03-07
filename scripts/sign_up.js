@@ -8,6 +8,7 @@ let initials;
 let color;
 
 const initSignUp = () => {
+	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	loadAllUsers();
 };
 

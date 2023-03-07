@@ -110,6 +110,25 @@ let allUsers = [
 	},
 ];
 
+/*
+! SERVER */
+/**
+ * Adds a new user to the users array and saves it to server
+ */
+async function addUser() {
+	users.push('John');
+	await backend.setItem('users', JSON.stringify(users));
+}
+
+/**
+ * Downloads all users from server
+ */
+async function init() {
+	await downloadFromServer();
+	users = JSON.parse(backend.getItem('users')) || [];
+}
+
+/* Local Storage */
 /**
  * Saves the index of the logged in user to local storage
  */
