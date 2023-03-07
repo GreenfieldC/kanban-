@@ -11,7 +11,7 @@ for (let i = 65; i <= 90; i++) {
 }
 
 /**
- * Generates the HTML for the contacts page
+ * Generates the HTML and for the contacts page
  */
 const initContacts = async () => {
 	await loadSideMenuHeader();
@@ -21,11 +21,6 @@ const initContacts = async () => {
 	document.getElementById('contacts-btn').classList.add('active');
 	document.getElementById('bottom-contacts-btn').classList.add('active');
 };
-
-/**
- * Renders the contact list
- */
-/* Order List according first letter */
 
 /**
  * Renders the contact list
@@ -45,29 +40,16 @@ const renderContactListExistingContacts = () => {
  */
 const appendContactsToLetter = (letter) => {
 	const contacts = alphabetObj[letter];
-	contacts.forEach((contact, i) => {
-		const name = contact.name;
-		const color = contact.color;
-		const email = contact.email;
-		const id = contact.id;
-		const initials = contact.initials;
+	for (let i = 0; i < contacts.length; i++) {
+		const name = contacts[i].name;
+		const color = contacts[i].color;
+		const email = contacts[i].email;
+		const id = contacts[i].id;
+		const initials = contacts[i].initials;
 		const contactHtml = generateContactInListHtml(i, id, color, initials, name, email);
 		const letterElement = document.getElementById(letter);
 		letterElement.innerHTML += contactHtml;
-	});
-};
-
-/**
- * @param {string} letter
- * @returns
- */
-const generateLettersStructureHTML = (letter) => {
-	return /*html*/ `
-        <div class="letters">
-            <span><b>${letter}</b></span>
-        </div>
-        <div id='${letter}'></div> 
-    `;
+	}
 };
 
 /**
@@ -81,6 +63,34 @@ const sortUsers = () => {
 		alphabetObj[firstLetter].push(user);
 		console.log(user);
 	});
+};
+
+/* Show Contact on Display (left of contact list/popup) */
+
+/**
+ * Shows the contact on the display (right of contact list/ on popup)
+ * @param {number} id
+ */
+const showContact = (id) => {
+	const color = allUsers[id].color;
+	const initials = allUsers[id].initials;
+	const name = allUsers[id].name;
+	const email = allUsers[id].email;
+	const phone = allUsers[id].phone;
+	renderContactOnDisplay(color, initials, name, email, phone);
+};
+
+/**
+ * Renders the contact on the display (right of contact list/ on popup)
+ * @param {string} color
+ * @param {string} initials
+ * @param {string} name
+ * @param {string} email
+ * @param {number} phone
+ */
+const renderContactOnDisplay = (color, initials, name, email, phone) => {
+	const contactOnDisplayHtml = generateContactOnDisplayHtml(color, initials, name, email, phone);
+	document.getElementById('contact-on-display').innerHTML = contactOnDisplayHtml;
 };
 
 /*========================= 

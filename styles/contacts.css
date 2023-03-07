@@ -310,6 +310,10 @@ h1 {
 	.details-name {
 		font-size: 2rem;
 	}
+
+	.user-initials-details {
+		font-size: 2rem;
+	}
 }
 
 @media (min-width: 1281px) {
