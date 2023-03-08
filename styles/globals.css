@@ -55,8 +55,16 @@ a:hover {
 	cursor: pointer;
 }
 
-input {
+input,
+textarea,
+.form-control,
+button {
 	border-radius: 10px !important;
+}
+
+button {
+	border: unset !important;
+	box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
 }
 
 /* Buttons */
