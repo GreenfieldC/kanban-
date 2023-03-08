@@ -21,7 +21,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-		<link rel="manifest" href="./favicon/manifest.json" />
+		<!-- <link rel="manifest" href="./favicon/manifest.json" /> -->
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
@@ -47,6 +47,8 @@
 
 		<script src="./scripts/globals.js" defer></script>
 		<script src="./scripts/script.js" defer></script>
+
+		<script src="./scripts/add_task_templates.js" defer></script>
 		<script src="./scripts/add_task.js" defer></script>
 	</head>
 	<body onload="initAddTask()">
@@ -88,23 +90,30 @@
 								<!-- Assigned to -->
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Assign To</label>
-									<div class="input-container">
-										<input class="form-control" type="text" />
+									<div class="input-container dropdown">
+										<input id="assign-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select contacts to assign" disabled />
 										<div class="input-btn-container">
-											<button type="button" class="btn btn-outline-secondary">
-												<img src="./assets/icons/plus-icon.png" />
-											</button>
+											<div id="assigned-drop-down" class="add-subtaks-plus">
+												<img src="./assets/icons/drop-down-btn.png" alt="add a subtask" />
+											</div>
+											<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
+												<div class="cancel-confirm-subtask-btn">
+													<img src="./assets/icons/cancel.png" alt="cancel" />
+												</div>
+												<div class="vertical-divider"></div>
+												<div class="cancel-confirm-subtask-btn">
+													<img src="./assets/icons/confirm.png" alt="confirm" />
+												</div>
+											</div>
+										</div>
+
+										<div id="drop-down-list-assigned-to" class="dropdown-menu container drop-down-list-assigned-to">
+											<div id="1.-coworker-box" class="coworker-checkbox-container">
+												<label id="coworker-name" class="form-check-label" for="1.-coworker-check">Christian Greenfield</label>
+												<input class="form-check-input" type="checkbox" value="" id="1.-coworker-check" />
+											</div>
 										</div>
 									</div>
-								</div>
-
-								<div class="dropdown">
-									<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example <span class="caret"></span></button>
-									<ul class="dropdown-menu">
-										<li><a href="#">HTML</a></li>
-										<li><a href="#">CSS</a></li>
-										<li><a href="#">JavaScript</a></li>
-									</ul>
 								</div>
 							</div>
 
@@ -161,7 +170,7 @@
 									</div>
 									<div id="subtask-container" class="subtask-container">
 										<div class="checkbox-task-container">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked />
+											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
 											<label class="form-check-label" for="flexCheckChecked">Main task</label>
 										</div>
 									</div>

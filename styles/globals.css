@@ -11,9 +11,9 @@ body {
 	scroll-behavior: smooth;
 }
 
-/* * {
-	font-family: 'inter';
-} */
+* {
+	outline: transparent !important;
+}
 
 *::-webkit-scrollbar {
 	display: none;

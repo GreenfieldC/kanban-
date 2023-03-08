@@ -16,6 +16,35 @@
 	width: 100vw !important;
 }
 
+.assign-input::placeholder {
+	color: black !important;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: white;
+	opacity: 1;
+}
+
+.drop-down-list-assigned-to {
+	position: absolute;
+	top: 30px;
+	padding: unset !important;
+	background-color: white;
+	border-radius: 0 0 10px 10px !important;
+	border-top: unset;
+	max-height: 150px;
+	overflow-y: scroll;
+}
+
+.coworker-checkbox-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	justify-content: space-between;
+	padding: 10px 16px;
+}
+
 .prio-btns-container {
 	display: flex;
 	flex-direction: column;
@@ -87,10 +116,14 @@
 	gap: 10px;
 }
 
+.coworker-checkbox-container:hover {
+	background-color: var(--background-grey);
+}
+
 .form-check-input {
 	border-radius: 3px !important;
 	color: black !important;
-	outline: unset;
+	outline: transparent;
 }
 
 @media screen and (min-width: 480px) {
