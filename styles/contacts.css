@@ -194,8 +194,8 @@ h1 {
 }
 
 .initals-in-details-section {
-	width: 80px;
-	height: 80px;
+	width: 60px;
+	height: 60px;
 }
 
 .details-name {
@@ -252,6 +252,15 @@ h1 {
 }
 
 @media screen and (min-width: 480px) {
+	.initals-in-details-section {
+		width: 80px;
+		height: 80px;
+	}
+
+	.user-initials-details {
+		font-size: 2rem;
+	}
+
 	.details-name {
 		font-size: 1.5rem;
 	}
