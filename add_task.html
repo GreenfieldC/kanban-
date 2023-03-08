@@ -58,6 +58,92 @@
 					<div class="heading-container">
 						<div class="title">Add Task</div>
 					</div>
+					<div class="add-task-container">
+						<form action="">
+							<div class="add-task-top">
+								
+									<div class="form-group">
+										<label for="formGroupExampleInput">Title</label>
+										<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input" />
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlTextarea1">Description</label>
+										<textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlSelect1">Select Category</label>
+										<select class="form-control" id="exampleFormControlSelect1">
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+											<option>5</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="exampleFormControlSelect1">Assign To</label>
+										<div class="">keine AHnung wie das gehen soll</div>
+									</div>
+								
+							</div>
+
+							<div class="add-task-bottom">
+								<div class="form-group">
+									<label for="exampleFormControlSelect1">Due date</label>
+									<input id="due-date-add-task-input" min="2023-01-01" class="form-control" type="date" name="date" />
+								</div>
+								<div class="form-group">
+									<label for="exampleFormControlSelect1">Prio</label>
+									<div class="container prio-btns-container p-0">
+										<button id="select-urgent" type="button" class="btn btn-outline-secondary even-width prio-btn">
+											<div class="inner-btn-container">
+												<span class="prio-text">Urgent</span>
+												<img src="./assets/icons/urgent-icon.png" alt="" />
+											</div>
+										</button>
+										<button id="select-medium" type="button" class="btn btn-outline-secondary even-width prio-btn">
+											<div class="inner-btn-container">
+												<span class="prio-text">Medium</span>
+												<img src="./assets/icons/medium-icon.png" alt="" />
+											</div>
+										</button>
+										<button id="select-low" type="button" class="btn btn-outline-secondary even-width prio-btn">
+											<div class="inner-btn-container">
+												<span class="prio-text">Low</span>
+												<img src="./assets/icons/low-icon.png" alt="" /></button>
+											</div>
+									</div>
+								
+									<div class="form-group">
+										<label for="exampleFormControlSelect1">Subtasks</label>
+										<div class="input-container">
+											<input id="subtasks-input" min="2023-01-01" class="form-control" type="text" />
+											<div class="input-btn-container">
+												<div id="add-subtask" class="add-subtaks-plus">
+													<img src="./assets/icons/add-plus.png" alt="add a subtask" />
+												</div>
+												<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/cancel.png" alt="cancel" />
+													</div>
+													<div class="vertical-divider"></div>
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/confirm.png" alt="confirm" />
+													</div>
+												</div>
+											</div>
+										</div>
+										<div id="subtask-container" class="subtask-container">
+											<div class="checkbox-task-container">
+												<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked />
+												<label class="form-check-label" for="flexCheckChecked">Main task</label>
+											</div>
+										</div>
+									</div>
+								</div>								
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

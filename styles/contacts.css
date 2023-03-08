@@ -98,7 +98,7 @@ h1 {
 /* Contacts in contact list */
 
 .overlay-details {
-	display: block;
+	display: none;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -135,7 +135,7 @@ h1 {
 
 .letters {
 	padding: 16px;
-	border-bottom: 1px solid var(--horizontal-line-grey);
+	border-bottom: 1px solid var(--grey-line-grey);
 }
 
 .initials-container {
@@ -199,7 +199,7 @@ h1 {
 }
 
 .details-name {
-	font-size: 2.25rem;
+	font-size: 1.2rem;
 	font-weight: 500px;
 }
 
@@ -252,6 +252,9 @@ h1 {
 }
 
 @media screen and (min-width: 480px) {
+	.details-name {
+		font-size: 1.5rem;
+	}
 	.new-contact-button-container {
 		background-color: var(--background-grey);
 	}

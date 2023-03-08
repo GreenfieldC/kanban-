@@ -79,7 +79,7 @@ OVERVIEW
 .urgent-tasks-container::after {
 	content: '';
 	height: 100%;
-	border-right: 3px solid var(--horizontal-line-grey);
+	border-right: 3px solid var(--grey-line-grey);
 	margin-left: 30px;
 	margin-right: 30px;
 	border-radius: 10px;

@@ -1,0 +1,103 @@
+.add-task-container {
+	height: calc(100vh - 260px);
+	overflow-y: scroll;
+	padding-bottom: 24px;
+}
+
+.add-task-top,
+.add-task-bottom {
+	display: flex;
+	gap: 10px;
+
+	flex-direction: column;
+}
+
+.main-content-inner-container {
+	width: 100vw !important;
+}
+
+.prio-btns-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+.prio-btn {
+	min-width: 120px;
+}
+
+.btn-outline-secondary {
+	color: black;
+}
+
+.even-width {
+	flex-basis: 100%;
+}
+
+.margin-unset {
+	margin: unset;
+}
+
+.input-container {
+	position: relative;
+}
+
+.input-btn-container {
+	position: absolute;
+	top: 0;
+	right: 12px;
+	margin: auto;
+	bottom: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.inner-btn-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.add-subtaks-plus {
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.cancel-confirm-subtask {
+	display: none;
+}
+
+.vertical-divider {
+	border-left: 1px solid var(--grey-line-grey);
+	margin: 0 10px;
+}
+
+.subtask-container {
+	padding-top: 10px;
+}
+
+.checkbox-task-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.form-check-input {
+	border-radius: 3px !important;
+	color: black !important;
+	outline: unset;
+}
+
+@media screen and (min-width: 480px) {
+	.prio-btns-container {
+		flex-direction: unset;
+	}
+
+	.prio-btn {
+		min-width: unset;
+	}
+}

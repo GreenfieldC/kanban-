@@ -17,7 +17,7 @@ for (let i = 65; i <= 90; i++) {
 const initContacts = async () => {
 	await loadSideMenuHeader();
 	await loadAllUsers();
-	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+	/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 	sortUsers();
 	renderContactListExistingContacts();
 	document.getElementById('contacts-btn').classList.add('active');
