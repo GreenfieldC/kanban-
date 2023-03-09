@@ -6,7 +6,6 @@ const rendersAssignedToList = () => {
 	allUsers.forEach((user, id) => {
 		if (id != logInUserIndex) {
 			generatesAssignedToListWithUsers(id, user.name);
-			console.log(id, user.name);
 		} else {
 			generatesAssignedToListElementForLoggedInUser(id, user.name);
 		}

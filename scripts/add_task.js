@@ -55,6 +55,16 @@ const currentDate = () => {
 
 /* Window Management */
 
+/* Select Category */
+
+const dropDownCategoryList = document.getElementById('drop-down-list-category');
+
+const categoryBtn = document.getElementById('category-drop-down');
+categoryBtn.addEventListener('click', () => {
+	dropDownCategoryList.classList.toggle('d-block');
+});
+
+/* Assign To */
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
 
 const assignedToInput = document.getElementById('assigned-drop-down');

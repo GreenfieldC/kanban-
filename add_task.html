@@ -78,32 +78,31 @@
 
 								<!-- Select Category -->
 								<div class="form-group">
-									<label for="exampleFormControlSelect1">Select Category</label>
-									<select class="form-control" id="exampleFormControlSelect1">
-										<div class="container-option">
-											<option>
-												<span class="add-task__select_option--title">New Category</span>
-												<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
-											</option>
+									<label for="exampleFormControlSelect1">Category</label>
+									<div class="input-container dropdown">
+										<input id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
+										<div class="input-btn-container">
+											<div id="category-drop-down" class="add-subtaks-plus">
+												<img src="./assets/icons/drop-down-btn.png" alt="" />
+											</div>
+											<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
+												<div class="cancel-confirm-subtask-btn">
+													<img src="./assets/icons/cancel.png" alt="cancel" />
+												</div>
+												<div class="vertical-divider"></div>
+												<div class="cancel-confirm-subtask-btn">
+													<img src="./assets/icons/confirm.png" alt="confirm" />
+												</div>
+											</div>
 										</div>
 
-										<option>
-											<span class="add-task__select_option--title">Coding</span>
-											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
-										</option>
-										<option>
-											<span class="add-task__select_option--title">Testing</span>
-											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
-										</option>
-										<option>
-											<span class="add-task__select_option--title">Refactoring</span>
-											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
-										</option>
-										<option>
-											<span class="add-task__select_option--title">Planing</span>
-											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
-										</option>
-									</select>
+										<div id="drop-down-list-category" class="dropdown-menu container drop-down-assign-to">
+											<div id="1.-coworker-box" class="coworker-checkbox-container">
+												<label id="coworker-name" class="form-check-label" for="1.-coworker-check">Christian Greenfield</label>
+												<input class="form-check-input" type="checkbox" value="" id="1.-coworker-check" />
+											</div>
+										</div>
+									</div>
 								</div>
 
 								<!-- Assigned To -->
@@ -190,7 +189,7 @@
 									<div id="subtask-container" class="subtask-container">
 										<div class="checkbox-task-container">
 											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<label class="form-check-label" for="flexCheckChecked">Main task</label>
+											<label class="form-check-label" for="flexCheckChecked">Subtask</label>
 										</div>
 									</div>
 								</div>
