@@ -21,7 +21,7 @@
 		<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
 		<link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
 		<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
-		<!-- <link rel="manifest" href="./favicon/manifest.json" /> -->
+
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
@@ -46,6 +46,7 @@
 		<script src="./mini_backend.js"></script>
 
 		<script src="./scripts/globals.js" defer></script>
+		<script src="./scripts/frame.js" defer></script>
 		<script src="./scripts/script.js" defer></script>
 
 		<script src="./scripts/add_task_templates.js" defer></script>
@@ -79,15 +80,33 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Select Category</label>
 									<select class="form-control" id="exampleFormControlSelect1">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
+										<div class="container-option">
+											<option>
+												<span class="add-task__select_option--title">New Category</span>
+												<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
+											</option>
+										</div>
+
+										<option>
+											<span class="add-task__select_option--title">Coding</span>
+											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
+										</option>
+										<option>
+											<span class="add-task__select_option--title">Testing</span>
+											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
+										</option>
+										<option>
+											<span class="add-task__select_option--title">Refactoring</span>
+											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
+										</option>
+										<option>
+											<span class="add-task__select_option--title">Planing</span>
+											<div id="add-task__select_option--color" class="add-task__select_option--color"></div>
+										</option>
 									</select>
 								</div>
 
-								<!-- Assigned to -->
+								<!-- Assigned To -->
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Assign To</label>
 									<div class="input-container dropdown">

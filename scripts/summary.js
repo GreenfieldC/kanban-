@@ -30,7 +30,7 @@ const timeOfDay = () => {
  * @param {number} hours
  * @returns {string} fitting greeting
  */
-const setGreeting = () => {
+const setSalutation = () => {
 	const hours = timeOfDay();
 	if (morning(hours)) return 'Good morning,';
 	if (afternoon(hours)) return 'Good afternoon,';
@@ -56,6 +56,22 @@ const afternoon = (hours) => {
 /**
  * Renders greeting
  */
+
 const renderGreeting = () => {
-	document.getElementById('greeting-title').innerHTML = setGreeting();
+	renderSalutation();
+	renderGreetingName();
+};
+
+/**
+ * Renders salutation
+ */
+const renderSalutation = () => {
+	document.getElementById('greeting-title').innerHTML = setSalutation();
+};
+
+/**
+ * Renders name to be greeted
+ */
+const renderGreetingName = () => {
+	document.getElementById('greeting-name').innerHTML = allUsers[logInUserIndex].name;
 };
