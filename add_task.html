@@ -61,15 +61,16 @@
 					<div class="heading-container">
 						<div class="title">Add Task</div>
 					</div>
-					<form action="">
+					<form novalidate>
 						<div class="add-task-container">
 							<div class="add-task-top">
 								<!-- Enter title -->
 								<div class="form-group">
 									<label for="formGroupExampleInput">Title</label>
 									<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a title" />
+									<div class="invalid-feedback">This is a required field</div>
 								</div>
-
+								<button>Submit</button>
 								<!-- Enter a Description -->
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">Description</label>

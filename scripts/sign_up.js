@@ -108,6 +108,7 @@ const userObject = (name, email, password, initials, color) => {
  * @returns {boolean} - returns true if the email is already in the database, else returns false
  */
 const noDuplicateEmail = (email) => {
+	if (allUsers.length == 0) return true;
 	const noDuplicateEmail = allUsers.findIndex((user) => user.email === email);
 	if (noDuplicateEmail === -1) return true;
 	return false;

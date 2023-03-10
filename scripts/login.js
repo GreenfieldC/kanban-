@@ -3,6 +3,7 @@
 const initLogin = () => {
 	startAnimation();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+	saveAllUsers();
 	loadAllUsers();
 };
 

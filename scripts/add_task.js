@@ -10,6 +10,17 @@ const initAddTask = async () => {
 	document.getElementById('bottom-add-task-btn').classList.add('active');
 	setsDatePicker();
 };
+/* 
+! TEST Validation Form Function */
+
+const form = document.querySelector('form');
+form.addEventListener('submit', (event) => {
+	if (!form.checkValidity()) {
+		event.preventDefault();
+	}
+
+	form.classList.add('was-validated');
+});
 
 /**
  * Sets date picker

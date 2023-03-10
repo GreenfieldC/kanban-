@@ -15,8 +15,30 @@ body {
 	outline: transparent !important;
 }
 
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
 	display: none;
+} */
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	scrollbar-width: auto;
+	scrollbar-color: #bbb2bd #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+	background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: #bbb2bd;
+	border-radius: 10px;
+	border: 0px solid #ffffff;
 }
 
 a {

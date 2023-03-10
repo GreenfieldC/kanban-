@@ -10,7 +10,7 @@ const rendersAssignedToList = () => {
 			generatesAssignedToListElementForLoggedInUser(id, user.name);
 		}
 		console.log(id);
-		addsEventlisters(id);
+		addsEventlistersToAssignedTo(id);
 	});
 };
 
@@ -44,7 +44,7 @@ const generatesAssignedToListElementForLoggedInUser = (id, name) => {
 	dropDownAssignedToList.insertAdjacentHTML('afterbegin', html);
 };
 
-const addsEventlisters = (id) => {
+const addsEventlistersToAssignedTo = (id) => {
 	const coworkerBox = document.getElementById(`${id}.-coworker-box`);
 	const checkMark = document.getElementById(`${id}.-coworker-checkbox`);
 	togglesCheckMark(coworkerBox, id);
