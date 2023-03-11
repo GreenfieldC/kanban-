@@ -13,14 +13,14 @@ const initAddTask = async () => {
 /* 
 ! TEST Validation Form Function */
 
-const form = document.querySelector('form');
+/* const form = document.querySelector('form');
 form.addEventListener('submit', (event) => {
 	if (!form.checkValidity()) {
 		event.preventDefault();
 	}
 
 	form.classList.add('was-validated');
-});
+}); */
 
 /**
  * Sets date picker
@@ -65,6 +65,8 @@ const currentDate = () => {
 };
 
 /* Window Management */
+const main = document.getElementById('main-container');
+const assignedInput = document.getElementById('assign-input');
 
 /* Select Category */
 
@@ -81,7 +83,23 @@ const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-
 const assignedToInput = document.getElementById('assigned-drop-down');
 assignedToInput.addEventListener('click', () => {
 	dropDownAssignedToList.classList.toggle('d-block');
+	assignedInput.classList.toggle('input-toggle');
 });
 
 /*
 ! Close DropdownMenu */
+
+main.addEventListener('click', () => {
+	dropDownCategoryList.classList.remove('d-block');
+	dropDownAssignedToList.classList.remove('d-block');
+	assignedInput.classList.remove('input-toggle');
+});
+
+//Add stop propagation to the dropdown menu
+assignedToInput.addEventListener('click', (event) => {
+	event.stopPropagation();
+});
+
+assignedInput.addEventListener('click', (event) => {
+	event.stopPropagation();
+});

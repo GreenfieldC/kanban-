@@ -1,5 +1,9 @@
+*::-webkit-scrollbar {
+	display: none;
+}
+
 .add-task-container {
-	height: calc(100vh - 260px);
+	height: calc(100vh - 298px);
 	overflow-y: scroll;
 	padding-bottom: 24px;
 }
@@ -16,17 +20,16 @@
 	width: 100vw !important;
 }
 
-/* Select Category */
-
-.option::after {
-	content: '';
-	height: 100px;
-	width: 100px;
-	background-color: red;
-	position: absolute;
-	top: 50%;
-	right: 50%;
+.invalid-feedback {
+	display: block;
+	opacity: 0;
 }
+
+label {
+	margin-bottom: 8px;
+}
+
+/* Select Category */
 
 /* Assigned To  */
 
@@ -42,12 +45,11 @@
 
 .drop-down-list-assigned-to {
 	position: absolute;
-	top: 30px;
 	padding: unset !important;
 	background-color: white;
 	border-radius: 0 0 10px 10px !important;
 	border-top: unset;
-	max-height: 150px;
+	max-height: 105px;
 	max-width: 100vw;
 	overflow-y: scroll;
 }
@@ -146,6 +148,11 @@
 	outline: transparent;
 }
 
+.input-toggle {
+	border-bottom: unset !important;
+	border-radius: 10px 10px 0 0 !important;
+}
+
 @media screen and (min-width: 480px) {
 	.prio-btns-container {
 		flex-direction: unset;
@@ -153,5 +160,48 @@
 
 	.prio-btn {
 		min-width: unset;
+	}
+}
+
+@media screen and (min-width: 801px) {
+	.prio-btn,
+	input {
+		height: 51px;
+	}
+}
+
+@media screen and (min-width: 1025px) {
+	.main-content-inner-container {
+		padding: 80px 100px;
+	}
+
+	.add-task-container {
+		display: flex;
+		justify-content: space-between;
+		width: 844px;
+	}
+
+	.add-task-top,
+	.add-task-bottom {
+		height: 100%;
+		gap: 14px;
+		width: 422px !important;
+	}
+
+	.add-task-bottom {
+		margin-left: 60px;
+	}
+
+	.add-task-top {
+		margin-right: 60px;
+	}
+
+	.add-task-bottom::before {
+		content: '';
+		height: 444px;
+		width: 1px;
+		background-color: var(--grey-line-grey);
+		position: absolute;
+		margin-left: -60px;
 	}
 }

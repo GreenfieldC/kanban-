@@ -21,6 +21,22 @@ let allUsers = [
 		color: '#E53935',
 	},
 	{
+		name: 'Aiden Bardtke',
+		email: 'aidrown@gmail.com',
+		password: 'BrownAiden123',
+		phone: '+1-555-555-5555',
+		initials: 'AB',
+		color: '#A53935',
+	},
+	{
+		name: 'Aiden Babbo',
+		email: 'aiown@gmail.com',
+		password: 'BrownAiden123',
+		phone: '+1-555-555-5555',
+		initials: 'AB',
+		color: '#E53935',
+	},
+	{
 		name: 'Brandon Carter',
 		email: 'brandoncarter@gmail.com',
 		password: 'Carter123',

@@ -119,6 +119,7 @@ h1 {
 .back-to-contact-list {
 	position: absolute;
 	right: 34px;
+	cursor: pointer;
 }
 
 .card-contact-list {
@@ -218,6 +219,10 @@ h1 {
 	display: flex;
 	align-items: center;
 	gap: 20px;
+}
+
+.edit-text-img {
+	cursor: pointer;
 }
 
 .contact-information-text {
