@@ -82,26 +82,30 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Category</label>
 									<div class="input-container dropdown">
-										<input id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
-										<div class="input-btn-container">
-											<div id="category-drop-down" class="add-subtaks-plus">
-												<img src="./assets/icons/drop-down-btn.png" alt="" />
-											</div>
-											<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
-												<div class="cancel-confirm-subtask-btn">
-													<img src="./assets/icons/cancel.png" alt="cancel" />
+										<div class="outer-input-btn-container">
+											<input id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
+											<div class="input-btn-container">
+												<div id="category-drop-down" class="add-subtaks-plus">
+													<img src="./assets/icons/drop-down-btn.png" alt="" />
 												</div>
-												<div class="vertical-divider"></div>
-												<div class="cancel-confirm-subtask-btn">
-													<img src="./assets/icons/confirm.png" alt="confirm" />
+												<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/cancel.png" alt="cancel" />
+													</div>
+													<div class="vertical-divider"></div>
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/confirm.png" alt="confirm" />
+													</div>
 												</div>
 											</div>
 										</div>
 
-										<div id="drop-down-list-category" class="dropdown-menu container drop-down-assign-to">
-											<div id="1.-coworker-box" class="coworker-checkbox-container">
-												<label id="coworker-name" class="form-check-label" for="1.-coworker-check">Christian Greenfield</label>
-												<input class="form-check-input" type="checkbox" value="" id="1.-coworker-check" />
+										<div id="drop-down-list-category" class="dropdown-menu container drop-down-list">
+											<div id="1.-coworker-box" class="category-box justify-content-start">
+												<label id="coworker-name" class="form-check-label m-0" for="1.-coworker-check">Christian Greenfield</label>
+												<div class="category-badge-container">
+													<div class="category-badge"></div>
+												</div>
 											</div>
 										</div>
 									</div>
@@ -112,23 +116,25 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Assign To</label>
 									<div class="input-container dropdown">
-										<input id="assign-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select contacts to assign" disabled />
-										<div class="input-btn-container">
-											<div id="assigned-drop-down" class="add-subtaks-plus">
-												<img src="./assets/icons/drop-down-btn.png" alt="add a subtask" />
-											</div>
-											<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
-												<div class="cancel-confirm-subtask-btn">
-													<img src="./assets/icons/cancel.png" alt="cancel" />
+										<div class="outer-input-btn-container">
+											<input id="assign-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select contacts to assign" disabled />
+											<div class="input-btn-container">
+												<div id="assigned-drop-down" class="add-subtaks-plus">
+													<img src="./assets/icons/drop-down-btn.png" alt="add a subtask" />
 												</div>
-												<div class="vertical-divider"></div>
-												<div class="cancel-confirm-subtask-btn">
-													<img src="./assets/icons/confirm.png" alt="confirm" />
+												<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/cancel.png" alt="cancel" />
+													</div>
+													<div class="vertical-divider"></div>
+													<div class="cancel-confirm-subtask-btn">
+														<img src="./assets/icons/confirm.png" alt="confirm" />
+													</div>
 												</div>
 											</div>
 										</div>
 
-										<div id="drop-down-list-assigned-to" class="dropdown-menu container drop-down-list-assigned-to">
+										<div id="drop-down-list-assigned-to" class="dropdown-menu container drop-down-list">
 											<div id="1.-coworker-box" class="coworker-checkbox-container">
 												<label id="coworker-name" class="form-check-label" for="1.-coworker-check">Christian Greenfield</label>
 												<input class="form-check-input" type="checkbox" value="" id="1.-coworker-check" />

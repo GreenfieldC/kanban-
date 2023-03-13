@@ -64,9 +64,13 @@ const currentDate = () => {
 	return today;
 };
 
-/* Window Management */
+/*==================
+Window Management 
+===================*/
+
 const main = document.getElementById('main-container');
 const assignedInput = document.getElementById('assign-input');
+const categoryInput = document.getElementById('category-input');
 
 /* Select Category */
 
@@ -75,6 +79,7 @@ const dropDownCategoryList = document.getElementById('drop-down-list-category');
 const categoryBtn = document.getElementById('category-drop-down');
 categoryBtn.addEventListener('click', () => {
 	dropDownCategoryList.classList.toggle('d-block');
+	categoryInput.classList.toggle('input-toggle');
 });
 
 /* Assign To */
@@ -93,13 +98,27 @@ main.addEventListener('click', () => {
 	dropDownCategoryList.classList.remove('d-block');
 	dropDownAssignedToList.classList.remove('d-block');
 	assignedInput.classList.remove('input-toggle');
+	categoryInput.classList.remove('input-toggle');
 });
 
 //Add stop propagation to the dropdown menu
+
+dropDownCategoryList.addEventListener('click', (event) => {
+	event.stopPropagation();
+});
+
+categoryBtn.addEventListener('click', (event) => {
+	event.stopPropagation();
+});
+
 assignedToInput.addEventListener('click', (event) => {
 	event.stopPropagation();
 });
 
 assignedInput.addEventListener('click', (event) => {
+	event.stopPropagation();
+});
+
+dropDownAssignedToList.addEventListener('click', (event) => {
 	event.stopPropagation();
 });

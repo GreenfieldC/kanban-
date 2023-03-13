@@ -29,7 +29,27 @@ label {
 	margin-bottom: 8px;
 }
 
+.outer-input-btn-container {
+	position: relative;
+}
+
 /* Select Category */
+.category-badge-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.category-badge {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 15px;
+	height: 15px;
+	background-color: red;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+}
 
 /* Assigned To  */
 
@@ -43,17 +63,18 @@ label {
 	opacity: 1;
 }
 
-.drop-down-list-assigned-to {
-	position: absolute;
+.drop-down-list {
+	position: unset;
 	padding: unset !important;
 	background-color: white;
 	border-radius: 0 0 10px 10px !important;
 	border-top: unset;
-	max-height: 105px;
+	max-height: 116px;
 	max-width: 100vw;
 	overflow-y: scroll;
 }
 
+.category-box,
 .coworker-checkbox-container {
 	display: flex;
 	align-items: center;
@@ -61,6 +82,10 @@ label {
 	justify-content: space-between;
 	padding: 10px 16px;
 	cursor: pointer;
+}
+
+.category-box:hover {
+	background-color: var(--background-grey);
 }
 
 .checkbox {
