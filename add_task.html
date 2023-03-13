@@ -83,17 +83,17 @@
 									<label for="exampleFormControlSelect1">Category</label>
 									<div class="input-container dropdown">
 										<div class="outer-input-btn-container">
-											<input id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
+											<input readonly="true" id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
 											<div class="input-btn-container">
 												<div id="category-drop-down" class="add-subtaks-plus">
 													<img src="./assets/icons/drop-down-btn.png" alt="" />
 												</div>
-												<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">
-													<div class="cancel-confirm-subtask-btn">
+												<div id="cancel-confirm-category" class="cancel-confirm-category d-none">
+													<div id="cancle-category" role="button" class="cancel-confirm-subtask-btn">
 														<img src="./assets/icons/cancel.png" alt="cancel" />
 													</div>
 													<div class="vertical-divider"></div>
-													<div class="cancel-confirm-subtask-btn">
+													<div role="button" class="cancel-confirm-subtask-btn">
 														<img src="./assets/icons/confirm.png" alt="confirm" />
 													</div>
 												</div>
@@ -101,15 +101,40 @@
 										</div>
 
 										<div id="drop-down-list-category" class="dropdown-menu container drop-down-list">
-											<div id="1.-coworker-box" class="category-box justify-content-start">
-												<label id="coworker-name" class="form-check-label m-0" for="1.-coworker-check">Christian Greenfield</label>
+											<div id="new-category" class="category-box justify-content-start">
+												<label role="button" class="form-check-label m-0">New Category</label>
+											</div>
+											<div id="1.category-box" class="category-box justify-content-start">
+												<label role="button" id="1.category" class="form-check-label m-0">Functions</label>
 												<div class="category-badge-container">
-													<div class="category-badge"></div>
+													<div class="category-badge" style="background-color: red"></div>
+												</div>
+											</div>
+											<div id="1.category-box" class="category-box justify-content-start">
+												<label role="button" id="1.category" class="form-check-label m-0">Design</label>
+												<div class="category-badge-container">
+													<div class="category-badge" style="background-color: blue"></div>
+												</div>
+											</div>
+											<div id="1.category-box" class="category-box justify-content-start">
+												<label role="button" id="1.category" class="form-check-label m-0">Management</label>
+												<div class="category-badge-container">
+													<div class="category-badge" style="background-color: green"></div>
 												</div>
 											</div>
 										</div>
 									</div>
 									<div id="required-description" class="invalid-feedback">This is a required field</div>
+									<div id="color-options" class="btn-toolbar d-none" role="toolbar" aria-label="Toolbar with button groups">
+										<div class="btn-group mr-2 color-options-container" role="group" aria-label="First group">
+											<button onclick="chooseColor(0)" type="button" class="btn btn-secondary color-options" style="background-color: blue"></button>
+											<button onclick="chooseColor(1)" type="button" class="btn btn-secondary color-options" style="background-color: red"></button>
+											<button onclick="chooseColor(2)" type="button" class="btn btn-secondary color-options" style="background-color: green"></button>
+											<button onclick="chooseColor(3)" type="button" class="btn btn-secondary color-options" style="background-color: pink"></button>
+											<button onclick="chooseColor(4)" type="button" class="btn btn-secondary color-options" style="background-color: purple"></button>
+											<button onclick="chooseColor(5)" type="button" class="btn btn-secondary color-options" style="background-color: orangered"></button>
+										</div>
+									</div>
 								</div>
 
 								<!-- Assigned To -->
@@ -201,7 +226,7 @@
 									<div id="subtask-container" class="subtask-container">
 										<div class="checkbox-task-container">
 											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<label class="form-check-label" for="flexCheckChecked">Subtask</label>
+											<label class="form-check-label m-0" for="flexCheckChecked">Subtask</label>
 										</div>
 									</div>
 								</div>

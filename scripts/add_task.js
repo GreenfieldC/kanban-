@@ -13,15 +13,6 @@ const initAddTask = async () => {
 /* 
 ! TEST Validation Form Function */
 
-/* const form = document.querySelector('form');
-form.addEventListener('submit', (event) => {
-	if (!form.checkValidity()) {
-		event.preventDefault();
-	}
-
-	form.classList.add('was-validated');
-}); */
-
 /**
  * Sets date picker
  */
@@ -71,8 +62,13 @@ Window Management
 const main = document.getElementById('main-container');
 const assignedInput = document.getElementById('assign-input');
 const categoryInput = document.getElementById('category-input');
+const categoryDropDownBtn = document.getElementById('category-drop-down');
+const categoryConfirmCancelBtn = document.getElementById('cancel-confirm-category');
+const colorOptions = document.getElementById('color-options');
 
-/* Select Category */
+/*================ 
+Select Category 
+=================*/
 
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
 
@@ -81,6 +77,41 @@ categoryBtn.addEventListener('click', () => {
 	dropDownCategoryList.classList.toggle('d-block');
 	categoryInput.classList.toggle('input-toggle');
 });
+
+const newCategory = document.getElementById('new-category');
+newCategory.addEventListener('click', () => {
+	newCategoryInput();
+});
+
+/**
+ * Prepares the input field for a new category
+ */
+const newCategoryInput = () => {
+	categoryInput.placeholder = 'New category name ';
+	categoryInput.readOnly = false;
+	categoryDropDownBtn.classList.add('d-none');
+	categoryConfirmCancelBtn.classList.remove('d-none');
+	colorOptions.classList.remove('d-none');
+};
+
+/**
+ * Eventlistener for the cancel button
+ */
+const cancelCategoryBtn = document.getElementById('cancel-confirm-category');
+cancelCategoryBtn.addEventListener('click', () => {
+	cancelNewCategory();
+});
+
+/**
+ * Cancels the creation of a new category
+ */
+const cancelNewCategory = () => {
+	categoryInput.placeholder = 'Select category';
+	categoryInput.readOnly = true;
+	categoryDropDownBtn.classList.remove('d-none');
+	categoryConfirmCancelBtn.classList.add('d-none');
+	colorOptions.classList.add('d-none');
+};
 
 /* Assign To */
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
@@ -91,9 +122,9 @@ assignedToInput.addEventListener('click', () => {
 	assignedInput.classList.toggle('input-toggle');
 });
 
-/*
-! Close DropdownMenu */
-
+/**
+ * ´Close Dropdowns when clicking outside
+ */
 main.addEventListener('click', () => {
 	dropDownCategoryList.classList.remove('d-block');
 	dropDownAssignedToList.classList.remove('d-block');

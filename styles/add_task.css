@@ -34,6 +34,15 @@ label {
 }
 
 /* Select Category */
+
+.cancel-confirm-category {
+	display: flex;
+}
+
+.category-box {
+	cursor: pointer !important;
+}
+
 .category-badge-container {
 	display: flex;
 	align-items: center;
@@ -49,6 +58,25 @@ label {
 	background-color: red;
 	border-radius: 50%;
 	border: 2px solid #ffffff;
+}
+
+.color-options-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 143px;
+	margin-left: 14px;
+	margin-top: -10px;
+}
+
+.color-options {
+	display: flex;
+	height: 12px;
+	width: 12px !important;
+	padding: unset;
+	border-radius: 50%;
+	border: 2px solid #ffffff !important;
+	flex: unset !important;
 }
 
 /* Assigned To  */
@@ -85,7 +113,7 @@ label {
 }
 
 .category-box:hover {
-	background-color: var(--background-grey);
+	background-color: var(--grey-line-grey);
 }
 
 .checkbox {
@@ -164,7 +192,7 @@ label {
 }
 
 .coworker-checkbox-container:hover {
-	background-color: var(--background-grey);
+	background-color: var(--grey-line-grey);
 }
 
 .form-check-input {
