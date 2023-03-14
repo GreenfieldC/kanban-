@@ -1,7 +1,5 @@
 'use strict';
 
-let newCategoryTitle = '';
-
 const initAddTask = async () => {
 	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
@@ -71,10 +69,9 @@ const categoryConfirmBtn = document.getElementById('confirm-category');
 const colorOptions = document.getElementById('color-options');
 const newCategoryInputField = document.getElementById('new-category-input');
 const innerCategoryInput = document.getElementById('category-color-container');
+let newCategoryTitle = '';
 
-/*================ 
-Select Category 
-=================*/
+/*===Select Category ===*/
 
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
 
@@ -98,6 +95,7 @@ const newCategoryInput = () => {
 	categoryConfirmCancelBtn.classList.remove('d-none');
 	colorOptions.classList.remove('d-none');
 	newCategoryInputField.classList.remove('d-none');
+	newCategoryInputField.focus();
 };
 
 /**
@@ -120,13 +118,41 @@ const cancelNewCategory = () => {
 	categoryConfirmCancelBtn.classList.add('d-none');
 	colorOptions.classList.add('d-none');
 	newCategoryInputField.classList.add('d-none');
+	document.getElementById('selected-category').innerHTML = 'Select a Category';
+	document.getElementById('selected-color').style.backgroundColor = '';
 };
 
-/*========= 
-Assign To 
-==========*/
+/**
+ * Choose Category from Dropdown List
+ */
+const chooseCategory = () => {
+	const categoryTitle = document.getElementById('1.category').innerHTML;
+	const categoryColor = document.getElementById('1.category-color').style.backgroundColor;
+	transferToInput(categoryTitle, categoryColor);
+};
+
+/**
+ * Transfers the chosen category to the input field
+ * @param {string} categoryTitle
+ * @param {string} categoryColor
+ */
+const transferToInput = (categoryTitle, categoryColor) => {
+	document.getElementById('selected-category').innerHTML = categoryTitle;
+	document.getElementById('selected-color').style.backgroundColor = categoryColor;
+};
+
+/*
+! NEXT: Render category list:
+Array with default function
+New Catergory function with push
+  */
+
+/*===Assigned To ===*/
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
 
+/**
+ * Eventlistener for the assigned to dropdown
+ */
 const assignedToInput = document.getElementById('assigned-drop-down');
 assignedToInput.addEventListener('click', () => {
 	dropDownAssignedToList.classList.toggle('d-block');
