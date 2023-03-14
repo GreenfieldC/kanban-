@@ -1,5 +1,7 @@
 'use strict';
 
+let newCategoryTitle = '';
+
 const initAddTask = async () => {
 	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
@@ -64,7 +66,11 @@ const assignedInput = document.getElementById('assign-input');
 const categoryInput = document.getElementById('category-input');
 const categoryDropDownBtn = document.getElementById('category-drop-down');
 const categoryConfirmCancelBtn = document.getElementById('cancel-confirm-category');
+const categoryCancelBtn = document.getElementById('cancel-category');
+const categoryConfirmBtn = document.getElementById('confirm-category');
 const colorOptions = document.getElementById('color-options');
+const newCategoryInputField = document.getElementById('new-category-input');
+const innerCategoryInput = document.getElementById('category-color-container');
 
 /*================ 
 Select Category 
@@ -87,33 +93,38 @@ newCategory.addEventListener('click', () => {
  * Prepares the input field for a new category
  */
 const newCategoryInput = () => {
-	categoryInput.placeholder = 'New category name ';
-	categoryInput.readOnly = false;
+	innerCategoryInput.classList.add('d-none');
 	categoryDropDownBtn.classList.add('d-none');
 	categoryConfirmCancelBtn.classList.remove('d-none');
 	colorOptions.classList.remove('d-none');
+	newCategoryInputField.classList.remove('d-none');
 };
 
 /**
  * Eventlistener for the cancel button
  */
-const cancelCategoryBtn = document.getElementById('cancel-confirm-category');
-cancelCategoryBtn.addEventListener('click', () => {
+categoryCancelBtn.addEventListener('click', () => {
 	cancelNewCategory();
 });
+
+const confirmNewCatergory = () => {
+	newCategoryTitle = document.getElementById('new-category-input').value;
+};
 
 /**
  * Cancels the creation of a new category
  */
 const cancelNewCategory = () => {
-	categoryInput.placeholder = 'Select category';
-	categoryInput.readOnly = true;
+	innerCategoryInput.classList.remove('d-none');
 	categoryDropDownBtn.classList.remove('d-none');
 	categoryConfirmCancelBtn.classList.add('d-none');
 	colorOptions.classList.add('d-none');
+	newCategoryInputField.classList.add('d-none');
 };
 
-/* Assign To */
+/*========= 
+Assign To 
+==========*/
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
 
 const assignedToInput = document.getElementById('assigned-drop-down');

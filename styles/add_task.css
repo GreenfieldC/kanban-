@@ -35,6 +35,33 @@ label {
 
 /* Select Category */
 
+#new-category-input {
+	outline: unset !important;
+	height: fit-content;
+	border: none !important;
+	padding: none !important;
+}
+
+#new-category-input:focus {
+	outline: transparent !important;
+}
+
+.input-category {
+	display: flex;
+	align-items: center;
+	height: 38px;
+}
+
+.category-color-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.dropdown-toggle::after {
+	opacity: 0;
+}
+
 .cancel-confirm-category {
 	display: flex;
 }
@@ -55,7 +82,6 @@ label {
 	justify-content: center;
 	width: 15px;
 	height: 15px;
-	background-color: red;
 	border-radius: 50%;
 	border: 2px solid #ffffff;
 }
@@ -218,6 +244,7 @@ label {
 
 @media screen and (min-width: 801px) {
 	.prio-btn,
+	.input-category,
 	input {
 		height: 51px;
 	}

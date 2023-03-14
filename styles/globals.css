@@ -15,6 +15,19 @@ body {
 	outline: transparent !important;
 }
 
+input,
+textarea {
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+input:focus,
+textarea:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	border-color: var(--grey-line-grey) !important;
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {

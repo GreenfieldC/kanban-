@@ -83,17 +83,24 @@
 									<label for="exampleFormControlSelect1">Category</label>
 									<div class="input-container dropdown">
 										<div class="outer-input-btn-container">
-											<input readonly="true" id="category-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select task category" />
+											<div id="category-input" class="form-control assign-input dropdown-toggle input-category" type="text">
+												<div id="category-color-container" class="category-color-container d-flex">
+													<span class="category-title">Select a Category</span>
+													<span id="category-color" class="category-badge"></span>
+												</div>
+
+												<input id="new-category-input" class="form-control assign-input dropdown-toggle d-none p-0" type="text" placeholder="New catergory name" />
+											</div>
 											<div class="input-btn-container">
 												<div id="category-drop-down" class="add-subtaks-plus">
 													<img src="./assets/icons/drop-down-btn.png" alt="" />
 												</div>
 												<div id="cancel-confirm-category" class="cancel-confirm-category d-none">
-													<div id="cancle-category" role="button" class="cancel-confirm-subtask-btn">
+													<div id="cancel-category" role="button" class="cancel-confirm-subtask-btn">
 														<img src="./assets/icons/cancel.png" alt="cancel" />
 													</div>
 													<div class="vertical-divider"></div>
-													<div role="button" class="cancel-confirm-subtask-btn">
+													<div id="confirm-catergory" role="button" class="cancel-confirm-subtask-btn">
 														<img src="./assets/icons/confirm.png" alt="confirm" />
 													</div>
 												</div>
