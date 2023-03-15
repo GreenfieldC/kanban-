@@ -13,8 +13,9 @@ const initAddTask = async () => {
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
 	await loadLoginUserIndex();
-	renderCategoryList();
+	renderWholeCatergoryList();
 	rendersAssignedToList();
+	addCheckKeyToAllUsers();
 	document.getElementById('add-task-btn').classList.add('active');
 	document.getElementById('bottom-add-task-btn').classList.add('active');
 	setsDatePicker();
@@ -64,10 +65,6 @@ const currentDate = () => {
 	return today;
 };
 
-/*==================
-Window Management 
-===================*/
-
 const main = document.getElementById('main-container');
 const assignedInput = document.getElementById('assign-input');
 const categoryInput = document.getElementById('category-input');
@@ -79,13 +76,25 @@ const colorOptions = document.getElementById('color-options');
 const newCategoryInputField = document.getElementById('new-category-input');
 const innerCategoryInput = document.getElementById('category-color-container');
 const selectedCategory = document.getElementById('selected-category');
-let newCategoryTitle = '';
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
-let title = '';
+
+let taskTitle = '';
+let taskDescription = '';
+let categoryTitle = '';
 let selectedColor = '';
+let assignedTo = [];
 
 /*
 !===Select Category ===*/
+
+/**
+ * Renders the whole category list
+ */
+const renderWholeCatergoryList = () => {
+	dropDownCategoryList.innerHTML = '';
+	renderCategoryList();
+	renderNewCategoryElementInList();
+};
 
 const categoryBtn = document.getElementById('category-drop-down');
 categoryBtn.addEventListener('click', () => {
@@ -93,15 +102,17 @@ categoryBtn.addEventListener('click', () => {
 	categoryInput.classList.toggle('input-toggle');
 });
 
-const newCategory = document.getElementById('new-category');
+/* const newCategory = document.getElementById('new-category');
 newCategory.addEventListener('click', () => {
 	newCategoryInput();
 });
-
+ */
 /**
  * Prepares the input field for a new category
  */
 const newCategoryInput = () => {
+	categoryTitle = '';
+	selectedColor = '';
 	innerCategoryInput.classList.add('d-none');
 	categoryDropDownBtn.classList.add('d-none');
 	categoryConfirmCancelBtn.classList.remove('d-none');
@@ -117,10 +128,6 @@ const newCategoryInput = () => {
 categoryCancelBtn.addEventListener('click', () => {
 	cancelNewCategory();
 });
-
-/* const confirmNewCatergory = () => {
-	newCategoryTitle = document.getElementById('new-category-input').value;
-}; */
 
 /**
  * Cancels the creation of a new category
@@ -161,6 +168,7 @@ const transferToInput = (categoryTitle, categoryColor) => {
  * @param {string} categoryColor
  */
 const renderCategoryList = () => {
+	categoryList.sort((a, b) => a.title.localeCompare(b.title)); // sort by title
 	categoryList.forEach((category, id) => {
 		console.log(id);
 		generatesCategoryListHtml(id, category.title, category.color);
@@ -171,14 +179,14 @@ const renderCategoryList = () => {
  * Choose color for new category
  */
 const chooseColor = (color) => {
-	title = newCategoryInputField.value;
-	if (title == '') {
+	categoryTitle = newCategoryInputField.value;
+	if (categoryTitle == '') {
 		alert('Please first choose a title for your new category');
 		return;
 	}
 	selectedColor = document.getElementById(color).style.backgroundColor;
 	transferColorToInput(selectedColor);
-	transferNewCatergoryToInput(title);
+	transferNewCatergoryToInput(categoryTitle);
 	showNewCategory();
 };
 
@@ -206,19 +214,31 @@ const showNewCategory = () => {
 };
 
 const confirmNewCatergory = () => {
-	checkIfCategoryExists();
-	if (checkIfCategoryExists()) return;
+	if (checkIfCategoryExists() === true) {
+		alert('Dobble entry. Choose another title for your category');
+		return;
+	}
+	addsNewCategoryToCategoryList();
+	renderWholeCatergoryList();
+	categoryDropDownBtn.classList.remove('d-none');
+	categoryConfirmCancelBtn.classList.add('d-none');
+	console.log(categoryTitle, selectedColor);
 };
 
+/**
+ * Checks if the category already exists
+ * @returns {boolean} true if category already exists
+ */
 const checkIfCategoryExists = () => {
 	let title = selectedCategory.innerHTML;
-	categoryList.filter((category) => {
-		if (category.title == title) {
-			alert('Category already exists');
-			return true;
-		}
-		console.log('hallo');
+	return categoryList.some((category) => {
+		if (category.title === title) return true;
+		return false;
 	});
+};
+
+const addsNewCategoryToCategoryList = () => {
+	categoryList.push({ title: categoryTitle, color: selectedColor });
 };
 
 /*
@@ -247,6 +267,17 @@ assignedToInput.addEventListener('click', () => {
 	dropDownAssignedToList.classList.toggle('d-block');
 	assignedInput.classList.toggle('input-toggle');
 });
+
+/**
+ * Adds check key to all users
+ * for assigning a task to a user
+ */
+const addCheckKeyToAllUsers = () => {
+	allUsers.forEach((user) => {
+		user.check = false;
+		console.log(allUsers[1]);
+	});
+};
 
 /**
  * ´Close Dropdowns when clicking outside

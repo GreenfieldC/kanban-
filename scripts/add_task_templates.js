@@ -1,6 +1,15 @@
 /*
 !===Select Category ===*/
 
+const renderNewCategoryElementInList = () => {
+	const html = /*html*/ `
+	<div onclick="newCategoryInput()" id="new-category" class="category-box justify-content-start">
+		<label role="button" class="form-check-label m-0">New Category</label>
+	</div>`;
+
+	dropDownCategoryList.insertAdjacentHTML('afterbegin', html);
+};
+
 /**
  * Generates the html for the elements of category list
  */
