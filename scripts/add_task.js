@@ -1,10 +1,19 @@
 'use strict';
+let categoryList = [
+	{ title: 'Function', color: 'red' },
+	{ title: 'Design', color: 'blue' },
+	{ title: 'Bug', color: 'green' },
+	{ title: 'Feature', color: 'pink' },
+	{ title: 'Test', color: 'orangered' },
+	{ title: 'Other', color: 'purple' },
+];
 
 const initAddTask = async () => {
 	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
 	await loadLoginUserIndex();
+	renderCategoryList();
 	rendersAssignedToList();
 	document.getElementById('add-task-btn').classList.add('active');
 	document.getElementById('bottom-add-task-btn').classList.add('active');
@@ -69,11 +78,12 @@ const categoryConfirmBtn = document.getElementById('confirm-category');
 const colorOptions = document.getElementById('color-options');
 const newCategoryInputField = document.getElementById('new-category-input');
 const innerCategoryInput = document.getElementById('category-color-container');
+const selectedCategory = document.getElementById('selected-category');
 let newCategoryTitle = '';
-
-/*===Select Category ===*/
-
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
+
+/*
+!===Select Category ===*/
 
 const categoryBtn = document.getElementById('category-drop-down');
 categoryBtn.addEventListener('click', () => {
@@ -95,11 +105,12 @@ const newCategoryInput = () => {
 	categoryConfirmCancelBtn.classList.remove('d-none');
 	colorOptions.classList.remove('d-none');
 	newCategoryInputField.classList.remove('d-none');
+	newCategoryInputField.value = '';
 	newCategoryInputField.focus();
 };
 
 /**
- * Eventlistener for the cancel button
+ * Eventlistener for the cancel button in category input
  */
 categoryCancelBtn.addEventListener('click', () => {
 	cancelNewCategory();
@@ -125,9 +136,9 @@ const cancelNewCategory = () => {
 /**
  * Choose Category from Dropdown List
  */
-const chooseCategory = () => {
-	const categoryTitle = document.getElementById('1.category').innerHTML;
-	const categoryColor = document.getElementById('1.category-color').style.backgroundColor;
+const chooseCategory = (id) => {
+	const categoryTitle = document.getElementById(`${id}.category`).innerHTML;
+	const categoryColor = document.getElementById(`${id}.category-color`).style.backgroundColor;
 	transferToInput(categoryTitle, categoryColor);
 };
 
@@ -141,14 +152,77 @@ const transferToInput = (categoryTitle, categoryColor) => {
 	document.getElementById('selected-color').style.backgroundColor = categoryColor;
 };
 
-/*
-! NEXT: Render category list:
-Array with default function
-New Catergory function with push
-  */
+/**
+ * Generates the html for the category list
+ * @param {number} id
+ * @param {string} categoryTitle
+ * @param {string} categoryColor
+ */
+const renderCategoryList = () => {
+	categoryList.forEach((category, id) => {
+		console.log(id);
+		generatesCategoryListHtml(id, category.title, category.color);
+	});
+};
 
-/*===Assigned To ===*/
+/**
+ * Choose color for new category
+ */
+const chooseColor = (color) => {
+	let title = newCategoryInputField.value;
+	if (title == '') {
+		alert('Please first choose a title for your new category');
+		return;
+	}
+	let selectedColor = document.getElementById(color).style.backgroundColor;
+	transferColorToInput(selectedColor);
+	transferNewCatergoryToInput(title);
+	showNewCategory();
+};
+
+/**
+ *
+ * @param {string} color
+ */
+const transferColorToInput = (color) => {
+	document.getElementById('selected-color').style.backgroundColor = color;
+};
+
+/**
+ * Transfers new catergory with color to input field
+ */
+const transferNewCatergoryToInput = (title) => {
+	selectedCategory.innerHTML = title;
+};
+
+/**
+ * Show new category in Input field
+ */
+const showNewCategory = () => {
+	innerCategoryInput.classList.remove('d-none');
+	newCategoryInputField.classList.add('d-none');
+};
+
+/*
+! NEUE FUNKTION IN OBJ PUSHEN UND RENDERN */
+
+/*
+!===Assigned To ===*/
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
+
+/**
+ * ´Renders the assigned to list
+ */
+const rendersAssignedToList = () => {
+	dropDownAssignedToList.innerHTML = '';
+	allUsers.forEach((user, id) => {
+		if (id != logInUserIndex) {
+			generatesAssignedToListWithUsers(id, user.name);
+		} else {
+			generatesAssignedToListElementForLoggedInUser(id, user.name);
+		}
+	});
+};
 
 /**
  * Eventlistener for the assigned to dropdown

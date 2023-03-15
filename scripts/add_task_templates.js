@@ -1,16 +1,23 @@
+/*
+!===Select Category ===*/
+
 /**
- * ´Renders the assigned to list
+ * Generates the html for the elements of category list
  */
-const rendersAssignedToList = () => {
-	dropDownAssignedToList.innerHTML = '';
-	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex) {
-			generatesAssignedToListWithUsers(id, user.name);
-		} else {
-			generatesAssignedToListElementForLoggedInUser(id, user.name);
-		}
-	});
+const generatesCategoryListHtml = (id, title, color) => {
+	const html =
+		/*html*/
+		`<div onclick="chooseCategory(${id})" id="${id}.category-box" class="category-box justify-content-start">
+			<label role="button" id="${id}.category" class="form-check-label m-0">${title}</label>
+			<div class="category-badge-container">
+				<div id="${id}.category-color" class="category-badge" style="background-color: ${color}"></div>
+			</div>
+		</div>`;
+	dropDownCategoryList.insertAdjacentHTML('beforeend', html);
 };
+
+/*
+!===Assigned To ===*/
 
 /**
  * Generates the html for the elements of assigned to list
