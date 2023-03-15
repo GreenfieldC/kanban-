@@ -57,35 +57,3 @@ const generatesAssignedToListElementForLoggedInUser = (id, name) => {
     `;
 	dropDownAssignedToList.insertAdjacentHTML('afterbegin', html);
 };
-
-/**
- * Toggles the checkmark on and off of checkmark in assigned to list
- * @param {number} id
- */
-const selectToggle = (id) => {
-	let checkMark = document.getElementById(`${id}.-coworker-checkbox`);
-	checkMark.checked = !checkMark.checked;
-	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
-
-	if (allUsers[id].check == true) {
-		taskForce.push(userObjectForTaskForce(id));
-	}
-
-	if (allUsers[id].check == false) {
-		let index = taskForce.findIndex((user) => user.id == id);
-		if (index > -1) taskForce.splice(index, 1);
-	}
-	console.table(taskForce);
-};
-
-const userObjectForTaskForce = (id) => {
-	let userObject = {
-		id: id,
-		name: allUsers[id].name,
-		email: allUsers[id].email,
-		initials: allUsers[id].initials,
-		color: allUsers[id].color,
-		check: allUsers[id].check,
-	};
-	return userObject;
-};

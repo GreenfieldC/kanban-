@@ -8,6 +8,25 @@ let categoryList = [
 	{ title: 'Other', color: 'purple' },
 ];
 
+const main = document.getElementById('main-container');
+const assignedInput = document.getElementById('assign-input');
+const categoryInput = document.getElementById('category-input');
+const categoryDropDownBtn = document.getElementById('category-drop-down');
+const categoryConfirmCancelBtn = document.getElementById('cancel-confirm-category');
+const categoryCancelBtn = document.getElementById('cancel-category');
+const categoryConfirmBtn = document.getElementById('confirm-category');
+const colorOptions = document.getElementById('color-options');
+const newCategoryInputField = document.getElementById('new-category-input');
+const innerCategoryInput = document.getElementById('category-color-container');
+const selectedCategory = document.getElementById('selected-category');
+const dropDownCategoryList = document.getElementById('drop-down-list-category');
+
+let taskTitle = '';
+let taskDescription = '';
+let categoryTitle = '';
+let selectedColor = '';
+let taskForce = [];
+
 const initAddTask = async () => {
 	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
@@ -65,25 +84,6 @@ const currentDate = () => {
 	return today;
 };
 
-const main = document.getElementById('main-container');
-const assignedInput = document.getElementById('assign-input');
-const categoryInput = document.getElementById('category-input');
-const categoryDropDownBtn = document.getElementById('category-drop-down');
-const categoryConfirmCancelBtn = document.getElementById('cancel-confirm-category');
-const categoryCancelBtn = document.getElementById('cancel-category');
-const categoryConfirmBtn = document.getElementById('confirm-category');
-const colorOptions = document.getElementById('color-options');
-const newCategoryInputField = document.getElementById('new-category-input');
-const innerCategoryInput = document.getElementById('category-color-container');
-const selectedCategory = document.getElementById('selected-category');
-const dropDownCategoryList = document.getElementById('drop-down-list-category');
-
-let taskTitle = '';
-let taskDescription = '';
-let categoryTitle = '';
-let selectedColor = '';
-let taskForce = [];
-
 /*
 !===Select Category ===*/
 
@@ -102,11 +102,6 @@ categoryBtn.addEventListener('click', () => {
 	categoryInput.classList.toggle('input-toggle');
 });
 
-/* const newCategory = document.getElementById('new-category');
-newCategory.addEventListener('click', () => {
-	newCategoryInput();
-});
- */
 /**
  * Prepares the input field for a new category
  */
@@ -256,6 +251,43 @@ const rendersAssignedToList = () => {
 			generatesAssignedToListElementForLoggedInUser(id, user.name);
 		}
 	});
+};
+
+/**
+ * Toggles the checkmark on and off of checkmark in assigned to list
+ * @param {number} id
+ */
+const selectToggle = (id) => {
+	let checkMark = document.getElementById(`${id}.-coworker-checkbox`);
+	checkMark.checked = !checkMark.checked;
+	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
+
+	if (allUsers[id].check == true) {
+		taskForce.push(userObjectForTaskForce(id));
+	}
+
+	if (allUsers[id].check == false) {
+		let index = taskForce.findIndex((user) => user.id == id);
+		if (index > -1) taskForce.splice(index, 1);
+	}
+	console.table(taskForce);
+};
+
+/**
+ *
+ * @param {number} id
+ * @returns object with user info
+ */
+const userObjectForTaskForce = (id) => {
+	let userObject = {
+		id: id,
+		name: allUsers[id].name,
+		email: allUsers[id].email,
+		initials: allUsers[id].initials,
+		color: allUsers[id].color,
+		check: allUsers[id].check,
+	};
+	return userObject;
 };
 
 /**
