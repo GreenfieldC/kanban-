@@ -81,6 +81,8 @@ const innerCategoryInput = document.getElementById('category-color-container');
 const selectedCategory = document.getElementById('selected-category');
 let newCategoryTitle = '';
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
+let title = '';
+let selectedColor = '';
 
 /*
 !===Select Category ===*/
@@ -116,9 +118,9 @@ categoryCancelBtn.addEventListener('click', () => {
 	cancelNewCategory();
 });
 
-const confirmNewCatergory = () => {
+/* const confirmNewCatergory = () => {
 	newCategoryTitle = document.getElementById('new-category-input').value;
-};
+}; */
 
 /**
  * Cancels the creation of a new category
@@ -169,12 +171,12 @@ const renderCategoryList = () => {
  * Choose color for new category
  */
 const chooseColor = (color) => {
-	let title = newCategoryInputField.value;
+	title = newCategoryInputField.value;
 	if (title == '') {
 		alert('Please first choose a title for your new category');
 		return;
 	}
-	let selectedColor = document.getElementById(color).style.backgroundColor;
+	selectedColor = document.getElementById(color).style.backgroundColor;
 	transferColorToInput(selectedColor);
 	transferNewCatergoryToInput(title);
 	showNewCategory();
@@ -203,8 +205,21 @@ const showNewCategory = () => {
 	newCategoryInputField.classList.add('d-none');
 };
 
-/*
-! NEUE FUNKTION IN OBJ PUSHEN UND RENDERN */
+const confirmNewCatergory = () => {
+	checkIfCategoryExists();
+	if (checkIfCategoryExists()) return;
+};
+
+const checkIfCategoryExists = () => {
+	let title = selectedCategory.innerHTML;
+	categoryList.filter((category) => {
+		if (category.title == title) {
+			alert('Category already exists');
+			return true;
+		}
+		console.log('hallo');
+	});
+};
 
 /*
 !===Assigned To ===*/
