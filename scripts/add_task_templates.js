@@ -35,7 +35,7 @@ const generatesCategoryListHtml = (id, title, color) => {
  */
 const generatesAssignedToListWithUsers = (id, name) => {
 	const html = `
-    <div onclick="togglesCheckMark(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container ">
+    <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container ">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check">${name}</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
     </div>
@@ -50,7 +50,7 @@ const generatesAssignedToListWithUsers = (id, name) => {
  */
 const generatesAssignedToListElementForLoggedInUser = (id, name) => {
 	const html = `
-    <div onclick="togglesCheckMark(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container">
+    <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check" title="${name}">You</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
     </div>
@@ -62,8 +62,30 @@ const generatesAssignedToListElementForLoggedInUser = (id, name) => {
  * Toggles the checkmark on and off of checkmark in assigned to list
  * @param {number} id
  */
-const togglesCheckMark = (id) => {
+const selectToggle = (id) => {
 	let checkMark = document.getElementById(`${id}.-coworker-checkbox`);
 	checkMark.checked = !checkMark.checked;
-	console.log(id);
+	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
+
+	if (allUsers[id].check == true) {
+		taskForce.push(userObjectForTaskForce(id));
+	}
+
+	if (allUsers[id].check == false) {
+		let index = taskForce.findIndex((user) => user.id == id);
+		if (index > -1) taskForce.splice(index, 1);
+	}
+	console.table(taskForce);
+};
+
+const userObjectForTaskForce = (id) => {
+	let userObject = {
+		id: id,
+		name: allUsers[id].name,
+		email: allUsers[id].email,
+		initials: allUsers[id].initials,
+		color: allUsers[id].color,
+		check: allUsers[id].check,
+	};
+	return userObject;
 };

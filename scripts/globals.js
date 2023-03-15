@@ -21,7 +21,7 @@ let allUsers = [
 		color: '#E53935',
 	},
 	{
-		name: 'Aiden Bardtke',
+		name: 'Bart Bardtke',
 		email: 'aidrown@gmail.com',
 		password: 'BrownAiden123',
 		phone: '+1-555-555-5555',
@@ -29,7 +29,7 @@ let allUsers = [
 		color: '#A53935',
 	},
 	{
-		name: 'Aiden Babbo',
+		name: 'Chrisitan Babbo',
 		email: 'aiown@gmail.com',
 		password: 'BrownAiden123',
 		phone: '+1-555-555-5555',

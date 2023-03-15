@@ -82,7 +82,7 @@ let taskTitle = '';
 let taskDescription = '';
 let categoryTitle = '';
 let selectedColor = '';
-let assignedTo = [];
+let taskForce = [];
 
 /*
 !===Select Category ===*/
@@ -170,7 +170,6 @@ const transferToInput = (categoryTitle, categoryColor) => {
 const renderCategoryList = () => {
 	categoryList.sort((a, b) => a.title.localeCompare(b.title)); // sort by title
 	categoryList.forEach((category, id) => {
-		console.log(id);
 		generatesCategoryListHtml(id, category.title, category.color);
 	});
 };
@@ -275,7 +274,6 @@ assignedToInput.addEventListener('click', () => {
 const addCheckKeyToAllUsers = () => {
 	allUsers.forEach((user) => {
 		user.check = false;
-		console.log(allUsers[1]);
 	});
 };
 
