@@ -2,12 +2,10 @@
 
 const initSummary = async () => {
 	await loadAllUsers();
+	await loadAllTasks();
 	await loadLoginUserIndex();
-	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	renderGreeting();
-	document.getElementById('summary-btn').classList.add('active');
-	document.getElementById('bottom-summary-btn').classList.add('active');
 	console.log(logInUserIndex);
 };
 

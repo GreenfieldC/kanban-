@@ -37,15 +37,13 @@ let subtasks = [];
 let dueDate = '';
 
 const initAddTask = async () => {
-	await loadSideMenuHeader();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
+	await loadAllTasks();
 	await loadLoginUserIndex();
 	renderWholeCatergoryList();
 	rendersAssignedToList();
 	addCheckKeyToAllUsers();
-	document.getElementById('add-task-btn').classList.add('active');
-	document.getElementById('bottom-add-task-btn').classList.add('active');
 	setsDatePicker();
 	dueDate = currentDate();
 	/* loadAllTasks(); */ //!testing

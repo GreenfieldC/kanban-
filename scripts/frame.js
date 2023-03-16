@@ -13,10 +13,10 @@ const toggleSideMenu = () => {
  * Adds event listeners
  * @type {HTMLElement} side menu btn
  */
-const addSideMenuButtonListener = () => {
+/* const addSideMenuButtonListener = () => {
 	const sideMenuBtn = document.getElementById('open-close-btn-side-menu');
 	sideMenuBtn.addEventListener('click', toggleSideMenu);
-};
+}; */
 
 /**
  * Closes the side menu
