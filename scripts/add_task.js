@@ -479,8 +479,8 @@ const clearAddTaskFormular = () => {
 	dueDate = currentDate();
 };
 
-let createTask = () => {
-	/* let task = {
+const createTask = (workflow) => {
+	let task = {
 		title: taskTitle,
 		description: taskDescription,
 		category: categoryTitle,
@@ -490,9 +490,9 @@ let createTask = () => {
 		subtasks: subtasks,
 		dueDate: dueDate,
 		workflow: workflow,
-	}; */
+	};
 	/* return task; */
-	allTasks.push('hsllo');
+	allTasks.push(task);
 	console.log(allTasks);
 };
 
