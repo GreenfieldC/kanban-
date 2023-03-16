@@ -71,3 +71,16 @@ const generateBadgesForAssignedTo = (name, color, initials) => {
 	`;
 	assignedToBadges.insertAdjacentHTML('afterbegin', html);
 };
+
+/*
+!===Subtasks ===*/
+const generateSubTask = (title, id) => {
+	const html = /*html*/ `
+	<div id="${id}.subtask" class="checkbox-task-container">
+		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" autocomplete="off" />
+		<label class="form-check-label m-0" for="flexCheckChecked">${title}</label>
+		<img id="subtask" onclick="deleteSubtask(${id})" src="./assets/icons/delete.png" alt="delete" class="delete-icon subtask-delete-img" />
+	</div>
+	`;
+	subTaskList.insertAdjacentHTML('beforeend', html);
+};

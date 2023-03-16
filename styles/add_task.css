@@ -3,7 +3,7 @@
 }
 
 .add-task-container {
-	height: calc(100vh - 298px);
+	height: calc(100vh - 290px);
 	overflow-y: scroll;
 	padding-bottom: 24px;
 }
@@ -14,6 +14,10 @@
 	gap: 10px;
 
 	flex-direction: column;
+}
+
+.add-task-bottom {
+	position: relative;
 }
 
 .main-content-inner-container {
@@ -245,6 +249,14 @@ label {
 	gap: 10px;
 }
 
+/* SubTasks */
+
+.subtask-delete-img {
+	cursor: pointer;
+	height: 20px;
+	width: 20px;
+}
+
 .add-subtaks-plus {
 	width: 24px;
 	height: 24px;
@@ -285,6 +297,53 @@ label {
 	border-radius: 10px 10px 0 0 !important;
 }
 
+.addtask-add-task-bottom__button-container {
+	position: absolute;
+	bottom: 170px;
+	right: 0;
+	display: flex;
+	justify-content: space-between;
+	width: fit-content;
+	gap: 25px;
+}
+
+.clear-button {
+	border: 2px solid #2a3647 !important;
+	border-radius: 10px;
+	background-color: unset !important;
+}
+
+.bc-none {
+	background-color: unset !important;
+}
+
+.clear-button:hover {
+	border: 2px solid #29abe2 !important;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)) !important;
+	background-color: unset !important;
+}
+
+.clear-button:hover span {
+	color: #29abe2 !important;
+}
+
+.clear-button span {
+	color: black;
+	font-weight: normal !important;
+}
+
+.clear-button:active span {
+	color: white !important;
+}
+
+.clear-button:hover .cancel-task-svg path {
+	stroke: #29abe2;
+}
+
+.clear-button:active .cancel-task-svg path {
+	stroke: white;
+}
+
 @media screen and (min-width: 480px) {
 	.prio-btns-container {
 		flex-direction: unset;
@@ -320,7 +379,7 @@ label {
 
 	.add-task-top,
 	.add-task-bottom {
-		height: 100%;
+		height: 696px;
 		gap: 14px;
 		width: 422px !important;
 	}

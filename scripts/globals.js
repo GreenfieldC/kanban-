@@ -1,6 +1,7 @@
 'use strict';
 let logInUserIndex;
 
+let allTasks = [];
 /*
 ! empty when server installed */
 let allUsers = [

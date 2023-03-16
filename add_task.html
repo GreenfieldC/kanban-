@@ -67,14 +67,14 @@
 								<!-- Enter title -->
 								<div class="form-group">
 									<label for="formGroupExampleInput">Title</label>
-									<input type="text" class="form-control" id="formGroupExampleInput" placeholder="Enter a title" />
+									<input type="text" class="form-control" id="add-task-title" placeholder="Enter a title" autocomplete="off" />
 									<div id="required-title" class="invalid-feedback">This is a required field</div>
 								</div>
 
 								<!-- Enter a Description -->
 								<div class="form-group">
 									<label for="exampleFormControlTextarea1">Description</label>
-									<textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Enter a description"></textarea>
+									<textarea class="form-control" id="add-task-description" rows="3" placeholder="Enter a description"></textarea>
 									<div id="required-description" class="invalid-feedback">This is a required field</div>
 								</div>
 
@@ -202,7 +202,7 @@
 								<div class="form-group">
 									<label for="exampleFormControlSelect1">Subtasks</label>
 									<div class="input-container">
-										<input id="subtasks-input" placeholder="Add new subtask" class="form-control" type="text" />
+										<input id="subtasks-input" placeholder="Add new subtask" class="form-control" type="text" autocomplete="off" />
 										<div class="input-btn-container">
 											<div onclick="addSubTask()" id="add-subtask" class="add-subtaks-plus">
 												<img src="./assets/icons/add-plus.png" alt="add a subtask" />
@@ -218,12 +218,20 @@
 											</div>
 										</div>
 									</div>
-									<div id="subtask-container" class="subtask-container">
-										<div id="0.subtask" class="checkbox-task-container">
-											<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-											<label class="form-check-label m-0" for="flexCheckChecked">Subtask</label>
-										</div>
-									</div>
+									<div id="subtask-container" class="subtask-container"></div>
+								</div>
+								<div id="addtask-btn-container" class="addtask-add-task-bottom__button-container">
+									<button onclick="clearAddTaskFormular()" type="button" class="btn btn-primary btn-ordinary clear-button bc-none">
+										<span class="btn-name">Clear</span>
+										<svg class="cancel-task-svg" width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+											<path d="M6.50106 6.50008L11.7441 11.7431M1.25806 11.7431L6.50106 6.50008L1.25806 11.7431ZM11.7441 1.25708L6.50006 6.50008L11.7441 1.25708ZM6.50006 6.50008L1.25806 1.25708L6.50006 6.50008Z" stroke="#091931" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+										</svg>
+									</button>
+
+									<button onclick="createTask()" id="createTask" type="button" class="btn btn-primary btn-ordinary">
+										<span class="btn-name">Create Task</span>
+										<img src="./assets/icons/checkmark_addTask.png" />
+									</button>
 								</div>
 							</div>
 						</div>

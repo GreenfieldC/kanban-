@@ -23,6 +23,9 @@ const dropDownCategoryList = document.getElementById('drop-down-list-category');
 let assignedToBadges = document.getElementById('taskforce-badge-container');
 let subTaskList = document.getElementById('subtask-container');
 
+let addTaskTitle = document.getElementById('add-task-title');
+let addTaskDescription = document.getElementById('add-task-description');
+
 let taskTitle = '';
 let taskDescription = '';
 let categoryTitle = '';
@@ -30,6 +33,7 @@ let selectedColor = '';
 let taskForce = [];
 let taskPriority = '';
 let subtasks = [];
+let dueDate = '';
 
 const initAddTask = async () => {
 	await loadSideMenuHeader();
@@ -42,6 +46,7 @@ const initAddTask = async () => {
 	document.getElementById('add-task-btn').classList.add('active');
 	document.getElementById('bottom-add-task-btn').classList.add('active');
 	setsDatePicker();
+	dueDate = currentDate();
 };
 /* 
 ! TEST Validation Form Function */
@@ -274,11 +279,8 @@ const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-
 const rendersAssignedToList = () => {
 	dropDownAssignedToList.innerHTML = '';
 	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex) {
-			generatesAssignedToListWithUsers(id, user.name);
-		} else {
-			generatesAssignedToListElementForLoggedInUser(id, user.name);
-		}
+		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name);
+		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name);
 	});
 };
 
@@ -340,6 +342,14 @@ main.addEventListener('click', () => {
 });
 
 /*
+!Due Date  */
+
+const resetDueDateToToday = () => {
+	let dueDateInput = document.getElementById('due-date-add-task-input');
+	dueDateInput.value = currentDate();
+};
+
+/*
 !Priority Buttons  */
 
 /**
@@ -387,36 +397,113 @@ const visuallySelectPriority = (priority, color) => {
 /*
 !Subtasks */
 
+/**
+ * Adds new subtask to subtask list
+ * @returns {boolean} true if subtask input is empty
+ */
 const addSubTask = () => {
 	let subTask = document.getElementById('subtasks-input');
-	console.log(subTask.value.length);
 
+	if (checkInputSubTaskEmpty(subTask)) return;
+	subtasks.push(subTaskObject(subTask.value));
+	renderNewSubTasks(subTask.value);
+	document.getElementById('subtasks-input').value = '';
+};
+
+/**
+ *
+ * @param {string} subTask
+ * @returns {boolean} true if subtask input is empty
+ */
+const checkInputSubTaskEmpty = (subTask) => {
 	if (subTask.value == '') {
 		subTask.value = 'No empty subtasks allowed';
 		setTimeout(() => {
 			subTask.value = '';
 		}, 3000);
-		return;
+		return true;
 	}
-	subTasks.push(subTask);
-	renderNewSubTasks();
-	document.getElementById('subtasks-input').value = '';
 };
 
+/**
+ * @param {string} subtask
+ * @returns {object} subtask object
+ */
+const subTaskObject = (subtask) => {
+	let subTaskObject = {
+		title: subtask,
+		check: false,
+	};
+	return subTaskObject;
+};
+
+/**
+ * Generates subtask element
+ */
 const renderNewSubTasks = () => {
-	subTasks.forEach((subTask, id) => {
-		generateSubTask(subTask, id);
+	subTaskList.innerHTML = '';
+	subtasks.forEach((subTask, id) => {
+		generateSubTask(subTask.title, id);
 	});
 };
 
-const generateSubTask = (subTask, id) => {
-	const html = /*html*/ `
-	<div id="0.subtask" class="checkbox-task-container">
-		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
-		<label class="form-check-label m-0" for="flexCheckChecked">Subtask</label>
-	</div>
-	`;
-	subTaskList.insertAdjacentHTML('beforeend', html);
+/**
+ * Takes subtask of subtask list and generates subtask element
+ * @param {number} id
+ */
+const deleteSubtask = (id) => {
+	subtasks.splice(id, 1);
+	renderNewSubTasks();
+};
+
+/**
+ * Resets the add task formular to default
+ */
+const clearAddTaskFormular = () => {
+	taskTitle = '';
+	taskDescription = '';
+	categoryTitle = '';
+	selectedColor = '';
+	taskForce = [];
+	taskPriority = '';
+	subtasks = [];
+	renderNewSubTasks();
+	renderBadgesAddTask();
+	cancelNewCategory();
+	addTaskTitle.value = '';
+	addTaskDescription.value = '';
+	removeCheckMarksFromAssignedTo();
+	addCheckKeyToAllUsers();
+	resetColorAllPriorityBtns();
+	resetDueDateToToday();
+	dueDate = currentDate();
+};
+
+let createTask = () => {
+	/* let task = {
+		title: taskTitle,
+		description: taskDescription,
+		category: categoryTitle,
+		color: selectedColor,
+		taskForce: taskForce,
+		priority: taskPriority,
+		subtasks: subtasks,
+		dueDate: dueDate,
+		workflow: workflow,
+	}; */
+	/* return task; */
+	allTasks.push('hsllo');
+	console.log(allTasks);
+};
+
+/**
+ * Removes checkmarks from assigned to dropdown
+ */
+const removeCheckMarksFromAssignedTo = () => {
+	let checkMarks = document.querySelectorAll('[id*=".\\-coworker-checkbox"]');
+	checkMarks.forEach((checkMark) => {
+		checkMark.checked = false;
+	});
 };
 
 //!Add stop propagation to the dropdown menu
