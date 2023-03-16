@@ -50,9 +50,89 @@
 		<script src="./scripts/board.js" defer></script>
 	</head>
 	<body onload="initBoard()">
-		<div id="side-menu" class="side-menu" w3-include-html="./assets/templates/side-menu.html"></div>
+		<div id="side-menu" class="side-menu">
+			<div onclick="toggleSideMenu()" id="open-close-btn-side-menu" class="open-close-btn-side-menu"></div>
+			<div class="side-menu-img-container">
+				<img src="./assets/img/logo_join.png" alt="join logo" />
+			</div>
+			<div class="side-menu-btn-container d-flex">
+				<div class="nav flex-column nav-pills me-3 container-fluid me-0 p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
+						<a href="./summary.html">
+							<div class="inner-btn-img-container-side-menu">
+								<div class="img-container-sidemenu">
+									<img src="./assets/icons/summary_icon.png" alt="" />
+								</div>
+
+								<span class="name-btn-side-menu">Summary</span>
+							</div>
+						</a>
+					</div>
+					<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
+						<a href="./board.html">
+							<div class="inner-btn-img-container-side-menu">
+								<div class="img-container-sidemenu">
+									<img src="./assets/icons/board_icon.png" alt="" />
+								</div>
+								<span class="name-btn-side-menu">Board</span>
+							</div>
+						</a>
+					</div>
+					<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
+						<a href="./add_task.html"
+							><div class="inner-btn-img-container-side-menu">
+								<div class="img-container-sidemenu">
+									<img src="./assets/icons/add-task_icon.png" alt="" />
+								</div>
+
+								<span class="name-btn-side-menu">Add Task</span>
+							</div>
+						</a>
+					</div>
+					<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
+						<a href="./contacts.html">
+							<div class="inner-btn-img-container-side-menu">
+								<div class="img-container-sidemenu">
+									<img src="./assets/icons/contacts_icon.png" alt="" />
+								</div>
+
+								<span class="name-btn-side-menu">Contacts</span>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="legal-notice" id="legal-notice" title="Legal Notice">
+					<a href="./legal-notice.html">
+						<img src="assets/icons/legal-notice_icon.png" alt="legal notice icon" />
+						<span class="legal-notice-text">Legal Notice</span></a
+					>
+				</div>
+			</div>
+		</div>
 		<div class="main-container" id="main-container">
-			<nav class="navbar navbar-expand-lg bg-body-tertiary" w3-include-html="./assets/templates/header.html"></nav>
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
+				<img class="logo-header" src="./assets/img/logo_join_black.png" alt="" />
+				<span class="description-header">Kanban Project Management Tool</span>
+				<div class="btn-group">
+					<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
+					<ul class="dropdown-menu dropdown-menu-end">
+						<a href="./help.html"
+							><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
+						>
+						<a href="./legal-notice.html"
+							><li>
+								<button class="dropdown-item" type="button">Legal notice</button>
+							</li>
+						</a>
+
+						<a href="./index.html"
+							><li>
+								<button class="dropdown-item" type="button">Log out</button>
+							</li>
+						</a>
+					</ul>
+				</div>
+			</nav>
 			<div id="content" class="main-content-outer-container">
 				<div class="main-content-inner-container">
 					<div class="heading-container">
@@ -64,6 +144,53 @@
 		</div>
 
 		<!-- Bottom Menu (for mobile devices) -->
-		<div id="bottom-menu" class="bottom-menu-btn-container" w3-include-html="./assets/templates/bottom-menu.html"></div>
+		<div id="bottom-menu" class="bottom-menu-btn-container">
+			<div class="nav nav-pills container-fluid me-0 p-0 justify-content-evenly" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				<div id="bottom-summary-btn" class="outer-btn-img-container-bottom-menu btn-bottom-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
+					<a href="./summary.html">
+						<div class="inner-btn-img-container-bottom-menu">
+							<div class="img-container-bottommenu">
+								<img src="./assets/icons/summary_icon.png" alt="" />
+							</div>
+
+							<span class="name-btn-bottom-menu">Summary</span>
+						</div>
+					</a>
+				</div>
+				<div id="bottom-board-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
+					<a href="./board.html">
+						<div class="inner-btn-img-container-bottom-menu">
+							<div class="img-container-bottommenu">
+								<img src="./assets/icons/board_icon.png" alt="" />
+							</div>
+
+							<span class="name-btn-bottom-menu">Board</span>
+						</div>
+					</a>
+				</div>
+				<div id="bottom-add-task-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
+					<a href="./add_task.html">
+						<div class="inner-btn-img-container-bottom-menu">
+							<div class="img-container-bottommenu">
+								<img class="bottom-addTask-img" src="./assets/icons/add-task_icon.png" alt="" />
+							</div>
+
+							<span class="name-btn-bottom-menu">Add Task</span>
+						</div>
+					</a>
+				</div>
+				<div id="bottom-contacts-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
+					<a href="./contacts.html">
+						<div class="inner-btn-img-container-bottom-menu">
+							<div class="img-container-bottommenu">
+								<img src="./assets/icons/contacts_icon.png" alt="" />
+							</div>
+
+							<span class="name-btn-bottom-menu">Contacts</span>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

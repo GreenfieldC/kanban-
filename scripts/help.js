@@ -1,5 +1,3 @@
 'use strict';
 
-const initHelp = async () => {
-	await loadSideMenuHeader();
-};
+const initHelp = async () => {};

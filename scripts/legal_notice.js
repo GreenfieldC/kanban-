@@ -1,3 +1,1 @@
-async function initLegalNotice() {
-	await loadSideMenuHeader();
-}
+async function initLegalNotice() {}
