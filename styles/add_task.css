@@ -395,13 +395,13 @@ label {
 
 	.add-task-top,
 	.add-task-bottom {
-		height: 696px;
 		gap: 14px;
 		width: 422px !important;
 	}
 
 	.add-task-bottom {
 		margin-left: 60px;
+		height: 550px;
 	}
 
 	.add-task-top {
@@ -415,5 +415,11 @@ label {
 		background-color: var(--grey-line-grey);
 		position: absolute;
 		margin-left: -60px;
+	}
+
+	.addtask-add-task-bottom__button-container {
+		bottom: 0;
+		right: 0;
+		top: unset;
 	}
 }

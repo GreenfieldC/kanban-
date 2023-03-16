@@ -145,7 +145,8 @@ async function init() {
 	users = JSON.parse(backend.getItem('users')) || [];
 }
 
-/* Local Storage */
+/*
+! Local Storage */
 /**
  * Saves the index of the logged in user to local storage
  */
@@ -176,6 +177,23 @@ const saveAllUsers = () => {
 const loadAllUsers = async () => {
 	let allUsersAsString = localStorage.getItem('allUsers');
 	allUsers = JSON.parse(allUsersAsString);
+};
+
+/**
+ * Saves all tasks to local storage
+ */
+const saveAllTasks = () => {
+	let allTasksAsString = JSON.stringify(allTasks);
+	localStorage.setItem('allTasks', allTasksAsString);
+};
+
+/**
+ * Loads all tasks from local storage
+ */
+const loadAllTasks = async () => {
+	let allTasksAsString = localStorage.getItem('allTasks');
+	allTasks = JSON.parse(allTasksAsString);
+	console.log(allTasks);
 };
 
 const overlay = document.getElementById('overlay');

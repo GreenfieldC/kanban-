@@ -48,6 +48,7 @@ const initAddTask = async () => {
 	document.getElementById('bottom-add-task-btn').classList.add('active');
 	setsDatePicker();
 	dueDate = currentDate();
+	/* loadAllTasks(); */ //!testing
 };
 /* 
 ! TEST Validation Form Function */
@@ -520,6 +521,7 @@ const createTask = (workflow) => {
 		workflow: workflow,
 	};
 	allTasks.push(task);
+	saveAllTasks();
 	console.log(allTasks);
 	setTimeout(() => {
 		clearAddTaskFormular();
