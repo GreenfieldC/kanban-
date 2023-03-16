@@ -139,16 +139,6 @@ h1 {
 	border-bottom: 1px solid var(--grey-line-grey);
 }
 
-.initials-container {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 42px;
-	height: 42px;
-	border-radius: 50%;
-	border: 1px solid white;
-}
-
 .right-body-contact-card {
 	padding: 15px 0 15px 24px;
 }
@@ -157,10 +147,6 @@ h1 {
 	font-size: 1.25rem;
 	height: fit-content;
 	width: fit-content;
-}
-
-.user-initials {
-	color: white;
 }
 
 .email {

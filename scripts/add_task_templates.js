@@ -34,7 +34,7 @@ const generatesCategoryListHtml = (id, title, color) => {
  * @param {string} name of user
  */
 const generatesAssignedToListWithUsers = (id, name) => {
-	const html = `
+	const html = /*html*/ `
     <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container ">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check">${name}</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
@@ -49,11 +49,25 @@ const generatesAssignedToListWithUsers = (id, name) => {
  * @param {string} name
  */
 const generatesAssignedToListElementForLoggedInUser = (id, name) => {
-	const html = `
+	const html = /*html*/ `
     <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check" title="${name}">You</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
     </div>
     `;
 	dropDownAssignedToList.insertAdjacentHTML('afterbegin', html);
+};
+
+/**
+ * Generates html for the badges of assigned to/task force
+ * @param {string} name
+ * @param {string} color
+ */
+const generateBadgesForAssignedTo = (name, color, initials) => {
+	const html = /*html*/ `
+	<div title="${name}" class="initials-container" style="background-color: ${color}">
+		<span class="user-initials">${initials}</span>
+	</div>
+	`;
+	assignedToBadges.insertAdjacentHTML('afterbegin', html);
 };

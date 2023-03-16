@@ -116,6 +116,25 @@ label {
 	color: black !important;
 }
 
+.initials-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border-radius: 50%;
+	border: 1px solid white;
+}
+
+.taskforce-badge-container {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	max-width: 422px;
+	padding: 0px !important;
+}
+
 .form-control:disabled,
 .form-control[readonly] {
 	background-color: white;
@@ -273,6 +292,10 @@ label {
 
 	.prio-btn {
 		min-width: unset;
+	}
+
+	.taskforce-badge-container {
+		max-width: 100%;
 	}
 }
 

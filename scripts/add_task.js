@@ -20,12 +20,16 @@ const newCategoryInputField = document.getElementById('new-category-input');
 const innerCategoryInput = document.getElementById('category-color-container');
 const selectedCategory = document.getElementById('selected-category');
 const dropDownCategoryList = document.getElementById('drop-down-list-category');
+let assignedToBadges = document.getElementById('taskforce-badge-container');
+let subTaskList = document.getElementById('subtask-container');
 
 let taskTitle = '';
 let taskDescription = '';
 let categoryTitle = '';
 let selectedColor = '';
 let taskForce = [];
+let taskPriority = '';
+let subtasks = [];
 
 const initAddTask = async () => {
 	await loadSideMenuHeader();
@@ -207,6 +211,10 @@ const showNewCategory = () => {
 	newCategoryInputField.classList.add('d-none');
 };
 
+/**
+ * Add new category to category list and render it
+ * @returns {boolean} true if category already exists
+ */
 const confirmNewCatergory = () => {
 	if (checkIfCategoryExists() === true) {
 		alert('Dobble entry. Choose another title for your category');
@@ -216,7 +224,7 @@ const confirmNewCatergory = () => {
 	renderWholeCatergoryList();
 	categoryDropDownBtn.classList.remove('d-none');
 	categoryConfirmCancelBtn.classList.add('d-none');
-	console.log(categoryTitle, selectedColor);
+	colorOptions.classList.add('d-none');
 };
 
 /**
@@ -231,12 +239,33 @@ const checkIfCategoryExists = () => {
 	});
 };
 
+/**
+ * Adds new category to category list
+ */
 const addsNewCategoryToCategoryList = () => {
 	categoryList.push({ title: categoryTitle, color: selectedColor });
 };
 
+//render badges of taskForce
+const renderBadgesAddTask = () => {
+	assignedToBadges.innerHTML = '';
+	taskForce.forEach((user) => {
+		generateBadgesForAssignedTo(user.name, user.color, user.initials);
+	});
+};
+
 /*
 !===Assigned To ===*/
+/**
+ * Adds check key to all users
+ * for assigning a task to a user
+ */
+const addCheckKeyToAllUsers = () => {
+	allUsers.forEach((user) => {
+		user.check = false;
+	});
+};
+
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
 
 /**
@@ -271,6 +300,7 @@ const selectToggle = (id) => {
 		if (index > -1) taskForce.splice(index, 1);
 	}
 	console.table(taskForce);
+	renderBadgesAddTask();
 };
 
 /**
@@ -300,16 +330,6 @@ assignedToInput.addEventListener('click', () => {
 });
 
 /**
- * Adds check key to all users
- * for assigning a task to a user
- */
-const addCheckKeyToAllUsers = () => {
-	allUsers.forEach((user) => {
-		user.check = false;
-	});
-};
-
-/**
  * ´Close Dropdowns when clicking outside
  */
 main.addEventListener('click', () => {
@@ -319,7 +339,87 @@ main.addEventListener('click', () => {
 	categoryInput.classList.remove('input-toggle');
 });
 
-//Add stop propagation to the dropdown menu
+/*
+!Priority Buttons  */
+
+/**
+ * Shows selected priority with color on button and sets priority
+ * @param {string} priority
+ * @param {string} color
+ */
+const selectPriority = (priority, color) => {
+	resetColorAllPriorityBtns();
+	visuallySelectPriority(priority, color);
+	taskPriority = priority;
+};
+
+/**
+ * Resets the color of all priority buttons
+ */
+const resetColorAllPriorityBtns = () => {
+	let btns = ['urgent', 'medium', 'low'];
+	btns.forEach((btn) => {
+		const prioBtn = document.getElementById(`select-${btn}`);
+		prioBtn.style.backgroundColor = '';
+		prioBtn.style.boxShadow = '';
+		const text = document.getElementById(`${btn}-text`);
+		text.style.color = '';
+		const svg = document.getElementById(`${btn}-svg`);
+		svg.style.color = '';
+	});
+};
+
+/**
+ * Adds color to selected priority button
+ * @param {string} priority
+ * @param {string} color
+ */
+const visuallySelectPriority = (priority, color) => {
+	const btn = document.getElementById(`select-${priority}`);
+	btn.style.backgroundColor = color;
+	btn.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
+	const text = document.getElementById(`${priority}-text`);
+	text.style.color = '#ffffff';
+	const svg = document.getElementById(`${priority}-svg`);
+	svg.style.color = '#ffffff';
+};
+
+/*
+!Subtasks */
+
+const addSubTask = () => {
+	let subTask = document.getElementById('subtasks-input');
+	console.log(subTask.value.length);
+
+	if (subTask.value == '') {
+		subTask.value = 'No empty subtasks allowed';
+		setTimeout(() => {
+			subTask.value = '';
+		}, 3000);
+		return;
+	}
+	subTasks.push(subTask);
+	renderNewSubTasks();
+	document.getElementById('subtasks-input').value = '';
+};
+
+const renderNewSubTasks = () => {
+	subTasks.forEach((subTask, id) => {
+		generateSubTask(subTask, id);
+	});
+};
+
+const generateSubTask = (subTask, id) => {
+	const html = /*html*/ `
+	<div id="0.subtask" class="checkbox-task-container">
+		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" />
+		<label class="form-check-label m-0" for="flexCheckChecked">Subtask</label>
+	</div>
+	`;
+	subTaskList.insertAdjacentHTML('beforeend', html);
+};
+
+//!Add stop propagation to the dropdown menu
 
 dropDownCategoryList.addEventListener('click', (event) => {
 	event.stopPropagation();
