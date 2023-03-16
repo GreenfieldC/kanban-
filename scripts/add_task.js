@@ -25,6 +25,7 @@ let subTaskList = document.getElementById('subtask-container');
 
 let addTaskTitle = document.getElementById('add-task-title');
 let addTaskDescription = document.getElementById('add-task-description');
+let addTaskSelectedColor = document.getElementById('selected-color');
 
 let taskTitle = '';
 let taskDescription = '';
@@ -150,9 +151,12 @@ const cancelNewCategory = () => {
  * Choose Category from Dropdown List
  */
 const chooseCategory = (id) => {
-	const categoryTitle = document.getElementById(`${id}.category`).innerHTML;
-	const categoryColor = document.getElementById(`${id}.category-color`).style.backgroundColor;
-	transferToInput(categoryTitle, categoryColor);
+	const categoryTitleList = document.getElementById(`${id}.category`).innerHTML;
+	const categoryColorList = document.getElementById(`${id}.category-color`).style.backgroundColor;
+	categoryTitle = categoryTitleList;
+	selectedColor = categoryColorList;
+	console.log(categoryTitle, selectedColor);
+	transferToInput(categoryTitleList, categoryColorList);
 };
 
 /**
@@ -225,11 +229,30 @@ const confirmNewCatergory = () => {
 		alert('Dobble entry. Choose another title for your category');
 		return;
 	}
+
+	if (newCategoryInputField.value == '') {
+		alert('Please choose a title for your new category');
+		return;
+	}
+
+	if (addTaskSelectedColor.style.backgroundColor == '') {
+		alert('Please choose a color for your new category');
+		return;
+	}
+
 	addsNewCategoryToCategoryList();
+	setCategoryColor();
 	renderWholeCatergoryList();
 	categoryDropDownBtn.classList.remove('d-none');
 	categoryConfirmCancelBtn.classList.add('d-none');
 	colorOptions.classList.add('d-none');
+};
+
+/**
+ * Sets the color of the new category
+ */
+const setCategoryColor = () => {
+	selectedColor = document.getElementById('selected-color').style.backgroundColor;
 };
 
 /**
@@ -479,10 +502,15 @@ const clearAddTaskFormular = () => {
 	dueDate = currentDate();
 };
 
+/**
+ * Pushes new task to allTasks json
+ * @param {string} workflow is set to 'todo', 'awaiting feedback 'in progress' or 'done'
+ * depending on with what btn the task was created
+ */
 const createTask = (workflow) => {
 	let task = {
-		title: taskTitle,
-		description: taskDescription,
+		title: addTaskTitle.value,
+		description: addTaskDescription.value,
 		category: categoryTitle,
 		color: selectedColor,
 		taskForce: taskForce,
@@ -491,9 +519,11 @@ const createTask = (workflow) => {
 		dueDate: dueDate,
 		workflow: workflow,
 	};
-	/* return task; */
 	allTasks.push(task);
 	console.log(allTasks);
+	setTimeout(() => {
+		clearAddTaskFormular();
+	}, 3000);
 };
 
 /**
