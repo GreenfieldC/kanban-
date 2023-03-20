@@ -38,6 +38,13 @@ let taskPriority = '';
 let subtasks = [];
 let dueDate = '';
 
+/* Invalid tags */
+let requiredTitle = document.getElementById('required-title');
+let requiredDescription = document.getElementById('required-description');
+let requiredCategory = document.getElementById('required-category');
+let requiredAssignedTo = document.getElementById('required-assigned-to');
+let requiredPriority = document.getElementById('required-priority');
+
 const initAddTask = async () => {
 	setURL(
 		'https://christian-greenfield.developerakademie.net/smallest_backend_ever'
@@ -515,6 +522,17 @@ const clearAddTaskFormular = () => {
 	resetColorAllPriorityBtns();
 	resetDueDateToToday();
 	dueDate = currentDate();
+	hideInvalidFeedback();
+};
+
+/**
+ * Removes checkmarks from assigned to dropdown
+ */
+const removeCheckMarksFromAssignedTo = () => {
+	let checkMarks = document.querySelectorAll('[id*=".\\-coworker-checkbox"]');
+	checkMarks.forEach((checkMark) => {
+		checkMark.checked = false;
+	});
 };
 
 /**
@@ -537,11 +555,16 @@ const createTask = (workflow) => {
 		workflow: workflow,
 	};
 
-	if (noValidInput()) return;
+	if (noValidInput()) {
+		showInvalidFeedback();
+		return;
+	}
 	allTasks.push(task);
+
 	saveAllTasks();
 	setTimeout(() => {
 		clearAddTaskFormular();
+		hideInvalidFeedback();
 	}, 3000);
 };
 
@@ -560,13 +583,25 @@ const noValidInput = () => {
 };
 
 /**
- * Removes checkmarks from assigned to dropdown
+ * Shows invalid feedback
  */
-const removeCheckMarksFromAssignedTo = () => {
-	let checkMarks = document.querySelectorAll('[id*=".\\-coworker-checkbox"]');
-	checkMarks.forEach((checkMark) => {
-		checkMark.checked = false;
-	});
+const showInvalidFeedback = () => {
+	if (taskTitle == '') requiredTitle.style.opacity = 1;
+	if (taskDescription == '') requiredDescription.style.opacity = 1;
+	if (categoryTitle == '') requiredCategory.style.opacity = 1;
+	if (taskForce.length == 0) requiredAssignedTo.style.opacity = 1;
+	if (taskPriority == '') requiredPriority.style.opacity = 1;
+};
+
+/**
+ * Hides invalid feedback
+ */
+const hideInvalidFeedback = () => {
+	requiredTitle.style.opacity = 0;
+	requiredDescription.style.opacity = 0;
+	requiredCategory.style.opacity = 0;
+	requiredAssignedTo.style.opacity = 0;
+	requiredPriority.style.opacity = 0;
 };
 
 //!Add stop propagation to the dropdown menu
