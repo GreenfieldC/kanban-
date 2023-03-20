@@ -579,7 +579,7 @@ const createTask = (workflow) => {
 	setTimeout(() => {
 		clearAddTaskFormular();
 		hideInvalidFeedback();
-	}, 3000);
+	}, 2000);
 };
 
 /**
