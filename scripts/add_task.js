@@ -505,6 +505,23 @@ const deleteSubtask = (id) => {
  * Resets the add task formular to default
  */
 const clearAddTaskFormular = () => {
+	clearRequiredValues();
+	clearInputfields();
+	renderNewSubTasks();
+	renderBadgesAddTask();
+	cancelNewCategory();
+	removeCheckMarksFromAssignedTo();
+	addCheckKeyToAllUsers();
+	resetColorAllPriorityBtns();
+	resetDueDateToToday();
+	dueDate = currentDate();
+	hideInvalidFeedback();
+};
+
+/**
+ * Clears all required fields
+ */
+const clearRequiredValues = () => {
 	taskTitle = '';
 	taskDescription = '';
 	categoryTitle = '';
@@ -512,17 +529,14 @@ const clearAddTaskFormular = () => {
 	taskForce = [];
 	taskPriority = '';
 	subtasks = [];
-	renderNewSubTasks();
-	renderBadgesAddTask();
-	cancelNewCategory();
+};
+
+/**
+ * Clears input fields
+ */
+const clearInputfields = () => {
 	addTaskTitle.value = '';
 	addTaskDescription.value = '';
-	removeCheckMarksFromAssignedTo();
-	addCheckKeyToAllUsers();
-	resetColorAllPriorityBtns();
-	resetDueDateToToday();
-	dueDate = currentDate();
-	hideInvalidFeedback();
 };
 
 /**
