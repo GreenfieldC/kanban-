@@ -8,95 +8,30 @@
 		<title>Join board</title>
 
 		<!-- Favicon -->
-		<link
-			rel="apple-touch-icon"
-			sizes="57x57"
-			href="./favicon/apple-icon-57x57.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="60x60"
-			href="./favicon/apple-icon-60x60.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="72x72"
-			href="./favicon/apple-icon-72x72.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="76x76"
-			href="./favicon/apple-icon-76x76.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="114x114"
-			href="./favicon/apple-icon-114x114.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="120x120"
-			href="./favicon/apple-icon-120x120.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="144x144"
-			href="./favicon/apple-icon-144x144.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="152x152"
-			href="./favicon/apple-icon-152x152.png"
-		/>
-		<link
-			rel="apple-touch-icon"
-			sizes="180x180"
-			href="./favicon/apple-icon-180x180.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="192x192"
-			href="./favicon/android-icon-192x192.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="./favicon/favicon-32x32.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="96x96"
-			href="./favicon/favicon-96x96.png"
-		/>
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
-			href="./favicon/favicon-16x16.png"
-		/>
+		<link rel="apple-touch-icon" sizes="57x57" href="./favicon/apple-icon-57x57.png" />
+		<link rel="apple-touch-icon" sizes="60x60" href="./favicon/apple-icon-60x60.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="./favicon/apple-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="76x76" href="./favicon/apple-icon-76x76.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="./favicon/apple-icon-114x114.png" />
+		<link rel="apple-touch-icon" sizes="120x120" href="./favicon/apple-icon-120x120.png" />
+		<link rel="apple-touch-icon" sizes="144x144" href="./favicon/apple-icon-144x144.png" />
+		<link rel="apple-touch-icon" sizes="152x152" href="./favicon/apple-icon-152x152.png" />
+		<link rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-icon-180x180.png" />
+		<link rel="icon" type="image/png" sizes="192x192" href="./favicon/android-icon-192x192.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="./favicon/favicon-96x96.png" />
+		<link rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png" />
 
 		<meta name="msapplication-TileColor" content="#ffffff" />
 		<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
 		<meta name="theme-color" content="#ffffff" />
 
 		<!-- Bootstrap CSS -->
-		<link
-			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-			rel="stylesheet"
-			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-			crossorigin="anonymous"
-		/>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
 		<!-- Responsive, mobile first -->
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!-- Bootstrap JS -->
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-			crossorigin="anonymous"
-		></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="./styles/globals.css" />
@@ -116,114 +51,49 @@
 	</head>
 	<body onload="initBoard()">
 		<div id="side-menu" class="side-menu">
-			<div
-				onclick="toggleSideMenu()"
-				id="open-close-btn-side-menu"
-				class="open-close-btn-side-menu"
-			></div>
+			<div onclick="toggleSideMenu()" id="open-close-btn-side-menu" class="open-close-btn-side-menu"></div>
 			<div class="side-menu-img-container">
 				<img src="./assets/img/logo_join.png" alt="join logo" />
 			</div>
 			<div class="side-menu-btn-container d-flex">
-				<div
-					class="nav flex-column nav-pills me-3 container-fluid me-0 p-0"
-					id="v-pills-tab"
-					role="tablist"
-					aria-orientation="vertical"
-				>
-					<div
-						id="summary-btn"
-						class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center"
-						id="summary"
-						data-bs-toggle="pill"
-						data-bs-target="#v-pills-home"
-						type="button"
-						role="tab"
-						aria-controls="v-pills-home"
-						aria-selected="true"
-						title="Summary"
-					>
+				<div class="nav flex-column nav-pills me-3 container-fluid me-0 p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+					<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
 						<a href="./summary.html">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
-									<img
-										src="./assets/icons/summary_icon.png"
-										alt=""
-									/>
+									<img src="./assets/icons/summary_icon.png" alt="" />
 								</div>
 
 								<span class="name-btn-side-menu">Summary</span>
 							</div>
 						</a>
 					</div>
-					<div
-						id="board-btn"
-						class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center active"
-						id="board"
-						data-bs-toggle="pill"
-						data-bs-target="#v-pills-board"
-						type="button"
-						role="tab"
-						aria-controls="v-pills-board"
-						aria-selected="true"
-						title="Board"
-					>
+					<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
 						<a href="./board.html">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
-									<img
-										src="./assets/icons/board_icon.png"
-										alt=""
-									/>
+									<img src="./assets/icons/board_icon.png" alt="" />
 								</div>
 								<span class="name-btn-side-menu">Board</span>
 							</div>
 						</a>
 					</div>
-					<div
-						id="add-task-btn"
-						class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center"
-						id="add-task"
-						data-bs-toggle="pill"
-						data-bs-target="#v-pills-add-task"
-						type="button"
-						role="tab"
-						aria-controls="v-pills-add-task"
-						aria-selected="true"
-						title="Add Task"
-					>
+					<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
 						<a href="./add_task.html"
 							><div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
-									<img
-										src="./assets/icons/add-task_icon.png"
-										alt=""
-									/>
+									<img src="./assets/icons/add-task_icon.png" alt="" />
 								</div>
 
 								<span class="name-btn-side-menu">Add Task</span>
 							</div>
 						</a>
 					</div>
-					<div
-						id="contacts-btn"
-						class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center"
-						id="contacts"
-						data-bs-toggle="pill"
-						data-bs-target="#v-pills-contacts"
-						type="button"
-						role="tab"
-						aria-controls="v-pills-contacts"
-						aria-selected="true"
-						title="Contacts"
-					>
+					<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
 						<a href="./contacts.html">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
-									<img
-										src="./assets/icons/contacts_icon.png"
-										alt=""
-									/>
+									<img src="./assets/icons/contacts_icon.png" alt="" />
 								</div>
 
 								<span class="name-btn-side-menu">Contacts</span>
@@ -231,16 +101,9 @@
 						</a>
 					</div>
 				</div>
-				<div
-					class="legal-notice"
-					id="legal-notice"
-					title="Legal Notice"
-				>
+				<div class="legal-notice" id="legal-notice" title="Legal Notice">
 					<a href="./legal-notice.html">
-						<img
-							src="assets/icons/legal-notice_icon.png"
-							alt="legal notice icon"
-						/>
+						<img src="assets/icons/legal-notice_icon.png" alt="legal notice icon" />
 						<span class="legal-notice-text">Legal Notice</span></a
 					>
 				</div>
@@ -248,47 +111,25 @@
 		</div>
 		<div class="main-container" id="main-container">
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
-				<img
-					class="logo-header"
-					src="./assets/img/logo_join_black.png"
-					alt=""
-				/>
-				<span class="description-header"
-					>Kanban Project Management Tool</span
-				>
+				<img class="logo-header" src="./assets/img/logo_join_black.png" alt="" />
+				<span class="description-header">Kanban Project Management Tool</span>
 				<div class="btn-group">
-					<button
-						type="button"
-						class="btn btn-secondary dropdown-toggle"
-						data-bs-toggle="dropdown"
-						aria-expanded="false"
-					></button>
+					<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
 					<ul class="dropdown-menu dropdown-menu-end">
 						<a href="./help.html"
 							><li>
-								<button
-									id="help-btn"
-									class="dropdown-item"
-									type="button"
-									title="Help Section"
-								>
-									Help
-								</button>
+								<button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button>
 							</li></a
 						>
 						<a href="./legal-notice.html"
 							><li>
-								<button class="dropdown-item" type="button">
-									Legal notice
-								</button>
+								<button class="dropdown-item" type="button">Legal notice</button>
 							</li>
 						</a>
 
 						<a href="./index.html"
 							><li>
-								<button class="dropdown-item" type="button">
-									Log out
-								</button>
+								<button class="dropdown-item" type="button">Log out</button>
 							</li>
 						</a>
 					</ul>
@@ -298,36 +139,17 @@
 				<div class="main-content-inner-container">
 					<div class="heading-container">
 						<div>
-							<span class="description-heading"
-								>Kanban Project Management Tool</span
-							>
+							<span class="description-heading">Kanban Project Management Tool</span>
 							<div class="title">Board</div>
 						</div>
 						<div class="search-add-task-section">
-							<div
-								id="category-input"
-								class="form-control assign-input input-category"
-								type="text"
-							>
-								<input
-									type="search"
-									placeholder="Find task"
-									class="border-0"
-								/>
-								<img
-									src="./assets/icons/magnify-glass.png"
-									alt="magnifying glass"
-								/>
+							<div id="category-input" class="form-control assign-input input-category" type="text">
+								<input type="search" placeholder="Find task" class="border-0" />
+								<img src="./assets/icons/magnify-glass.png" alt="magnifying glass" />
 							</div>
-							<button
-								type="button"
-								class="btn btn-primary btn-ordinary new-task-board-btn"
-							>
+							<button type="button" class="btn btn-primary btn-ordinary new-task-board-btn">
 								<span class="btn-name">Add task</span>
-								<img
-									src="./assets/icons/plus_white.png"
-									alt=""
-								/>
+								<img src="./assets/icons/plus_white.png" alt="" />
 							</button>
 						</div>
 					</div>
@@ -338,67 +160,34 @@
 								<div class="heading-workflow">
 									<h3>To Do</h3>
 									<div class="add-task-canban-container">
-										<img
-											src="./assets/icons/plus_blue.png"
-											alt="add task"
-										/>
+										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
 								<div class="cards-container">
 									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
+										<div class="colored-category-container">Functions</div>
+										<div class="card-body card-body-board">
+											<h5 class="card-title">For-loops</h5>
+											<p class="card-text task-description-card">Learn all...</p>
+											<div class="progress-bar-container-card">
+												<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
+													<div class="progress-bar progress-bar-striped" style="width: 10%"></div>
+												</div>
+												<span class="text-progress">1/2 Done</span>
 											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
+											<div class="badges-priority-container-card">
+												<div class="badges-container-card in-board-badges-container">
+													<div class="initials-container initals-in-details-section" style="background-color: red">
+														<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+													</div>
+													<div class="initials-container initals-in-details-section" style="background-color: red">
+														<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+													</div>
+													<div class="initials-container initals-in-details-section" style="background-color: red">
+														<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+													</div>
+												</div>
+												<img src="./assets/icons/urgent-icon.png" alt="" />
 											</div>
 										</div>
 									</div>
@@ -410,71 +199,10 @@
 								<div class="heading-workflow">
 									<h3>In progress</h3>
 									<div class="add-task-canban-container">
-										<img
-											src="./assets/icons/plus_blue.png"
-											alt="add task"
-										/>
+										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div class="cards-container"></div>
 							</div>
 						</div>
 						<div class="workflow-container">
@@ -482,71 +210,10 @@
 								<div class="heading-workflow">
 									<h3>Awaiting feedback</h3>
 									<div class="add-task-canban-container">
-										<img
-											src="./assets/icons/plus_blue.png"
-											alt="add task"
-										/>
+										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div class="cards-container"></div>
 							</div>
 						</div>
 						<div class="workflow-container">
@@ -554,71 +221,10 @@
 								<div class="heading-workflow">
 									<h3>Done</h3>
 									<div class="add-task-canban-container">
-										<img
-											src="./assets/icons/plus_blue.png"
-											alt="add task"
-										/>
+										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-									<div class="card">
-										<img
-											src="..."
-											class="card-img-top"
-											alt="..."
-										/>
-										<div class="card-body">
-											<p class="card-text">
-												Some quick example text to build
-												on
-											</p>
-											<div class="card-body">
-												<p class="card-text">
-													Some quick example text to
-													build on
-												</p>
-											</div>
-										</div>
-									</div>
-								</div>
+								<div class="cards-container"></div>
 							</div>
 						</div>
 					</div>
@@ -628,107 +234,45 @@
 
 		<!-- Bottom Menu (for mobile devices) -->
 		<div id="bottom-menu" class="bottom-menu-btn-container">
-			<div
-				class="nav nav-pills container-fluid me-0 p-0 justify-content-evenly"
-				id="v-pills-tab"
-				role="tablist"
-				aria-orientation="vertical"
-			>
-				<div
-					id="bottom-summary-btn"
-					class="outer-btn-img-container-bottom-menu btn-bottom-menu nav-link d-flex justify-content-center"
-					id="summary"
-					data-bs-toggle="pill"
-					data-bs-target="#v-pills-home"
-					type="button"
-					role="tab"
-					aria-controls="v-pills-home"
-					aria-selected="true"
-					title="Summary"
-				>
+			<div class="nav nav-pills container-fluid me-0 p-0 justify-content-evenly" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				<div id="bottom-summary-btn" class="outer-btn-img-container-bottom-menu btn-bottom-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
 					<a href="./summary.html">
 						<div class="inner-btn-img-container-bottom-menu">
 							<div class="img-container-bottommenu">
-								<img
-									src="./assets/icons/summary_icon.png"
-									alt=""
-								/>
+								<img src="./assets/icons/summary_icon.png" alt="" />
 							</div>
 
 							<span class="name-btn-bottom-menu">Summary</span>
 						</div>
 					</a>
 				</div>
-				<div
-					id="bottom-board-btn"
-					class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center active"
-					id="board"
-					data-bs-toggle="pill"
-					data-bs-target="#v-pills-board"
-					type="button"
-					role="tab"
-					aria-controls="v-pills-board"
-					aria-selected="true"
-					title="Board"
-				>
+				<div id="bottom-board-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
 					<a href="./board.html">
 						<div class="inner-btn-img-container-bottom-menu">
 							<div class="img-container-bottommenu">
-								<img
-									src="./assets/icons/board_icon.png"
-									alt=""
-								/>
+								<img src="./assets/icons/board_icon.png" alt="" />
 							</div>
 
 							<span class="name-btn-bottom-menu">Board</span>
 						</div>
 					</a>
 				</div>
-				<div
-					id="bottom-add-task-btn"
-					class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center"
-					id="add-task"
-					data-bs-toggle="pill"
-					data-bs-target="#v-pills-add-task"
-					type="button"
-					role="tab"
-					aria-controls="v-pills-add-task"
-					aria-selected="true"
-					title="Add Task"
-				>
+				<div id="bottom-add-task-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
 					<a href="./add_task.html">
 						<div class="inner-btn-img-container-bottom-menu">
 							<div class="img-container-bottommenu">
-								<img
-									class="bottom-addTask-img"
-									src="./assets/icons/add-task_icon.png"
-									alt=""
-								/>
+								<img class="bottom-addTask-img" src="./assets/icons/add-task_icon.png" alt="" />
 							</div>
 
 							<span class="name-btn-bottom-menu">Add Task</span>
 						</div>
 					</a>
 				</div>
-				<div
-					id="bottom-contacts-btn"
-					class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center"
-					id="contacts"
-					data-bs-toggle="pill"
-					data-bs-target="#v-pills-contacts"
-					type="button"
-					role="tab"
-					aria-controls="v-pills-contacts"
-					aria-selected="true"
-					title="Contacts"
-				>
+				<div id="bottom-contacts-btn" class="outer-btn-img-container-bottom-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
 					<a href="./contacts.html">
 						<div class="inner-btn-img-container-bottom-menu">
 							<div class="img-container-bottommenu">
-								<img
-									src="./assets/icons/contacts_icon.png"
-									alt=""
-								/>
+								<img src="./assets/icons/contacts_icon.png" alt="" />
 							</div>
 
 							<span class="name-btn-bottom-menu">Contacts</span>

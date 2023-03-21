@@ -37,7 +37,6 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
 	max-width: 326px;
 }
 
@@ -85,29 +84,75 @@
 	scrollbar-width: none; /* Firefox */
 }
 
+/* Cards in board */
+
 .card {
 	min-width: 320px;
 	height: 243px;
 
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding: 18px 20px;
+	align-items: flex-start;
+	padding: 18px 18px;
 	gap: 10px;
-
-	/* white */
-
 	background: #ffffff;
-	/* shadoe backlog box */
-
 	box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 	border-radius: 30px;
+}
+
+.colored-category-container {
+	font-size: 1rem;
+	color: #ffffff;
+
+	padding: 4px 25px;
+	background: #ff7a00;
+	border-radius: 8px;
+}
+
+.card-body-board {
+	gap: 5px;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding-left: unset;
+	padding-right: unset;
+}
+
+.task-description-card {
+	color: #a8a8a8;
+}
+
+.progress-bar-container-card {
+	display: flex;
+	width: 100%;
+	gap: 10px;
+}
+
+.progress {
+	width: 100%;
+}
+
+.text-progress {
+	width: 97px;
 }
 
 h3 {
 	font-size: 1.32rem;
 	color: var(--dark-blue);
+}
+
+.badges-priority-container-card {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.in-board-badges-container {
+	display: flex;
+}
+
+.initials-container {
+	margin-left: -10px;
 }
 
 @media screen and (min-width: 480px) {
@@ -138,6 +183,7 @@ h3 {
 	.workflow-container {
 		display: flex;
 		flex-direction: column;
+		width: 250px;
 		max-width: 350px;
 		overflow-y: unset;
 	}
@@ -155,8 +201,16 @@ h3 {
 	}
 
 	.card {
-		min-width: unset;
+		min-width: 250px;
 		max-width: 250px;
 		height: 243px;
+	}
+
+	.card-body-board {
+		padding: unset;
+	}
+
+	.text-progress {
+		width: 106px;
 	}
 }
