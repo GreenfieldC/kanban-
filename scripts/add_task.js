@@ -12,9 +12,7 @@ const main = document.getElementById('main-container');
 const assignedInput = document.getElementById('assign-input');
 const categoryInput = document.getElementById('category-input');
 const categoryDropDownBtn = document.getElementById('category-drop-down');
-const categoryConfirmCancelBtn = document.getElementById(
-	'cancel-confirm-category'
-);
+const categoryConfirmCancelBtn = document.getElementById('cancel-confirm-category');
 const categoryCancelBtn = document.getElementById('cancel-category');
 const categoryConfirmBtn = document.getElementById('confirm-category');
 const colorOptions = document.getElementById('color-options');
@@ -46,18 +44,15 @@ let requiredAssignedTo = document.getElementById('required-assigned-to');
 let requiredPriority = document.getElementById('required-priority');
 
 const initAddTask = async () => {
-	setURL(
-		'https://christian-greenfield.developerakademie.net/smallest_backend_ever'
-	);
+	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
-	/* await loadAllTasks(); */
 	await loadLoginUserIndex();
 	renderWholeCatergoryList();
 	rendersAssignedToList();
 	addCheckKeyToAllUsers();
 	setsDatePicker();
 	dueDate = currentDate();
-	/* loadAllTasks(); */ //!testing
+	loadAllTasks(); //!testing
 };
 /* 
 ! TEST Validation Form Function */
@@ -153,8 +148,7 @@ const cancelNewCategory = () => {
 	categoryConfirmCancelBtn.classList.add('d-none');
 	colorOptions.classList.add('d-none');
 	newCategoryInputField.classList.add('d-none');
-	document.getElementById('selected-category').innerHTML =
-		'Select a Category';
+	document.getElementById('selected-category').innerHTML = 'Select a Category';
 	document.getElementById('selected-color').style.backgroundColor = '';
 };
 
@@ -162,11 +156,8 @@ const cancelNewCategory = () => {
  * Choose Category from Dropdown List
  */
 const chooseCategory = (id) => {
-	const categoryTitleList = document.getElementById(
-		`${id}.category`
-	).innerHTML;
-	const categoryColorList = document.getElementById(`${id}.category-color`)
-		.style.backgroundColor;
+	const categoryTitleList = document.getElementById(`${id}.category`).innerHTML;
+	const categoryColorList = document.getElementById(`${id}.category-color`).style.backgroundColor;
 	categoryTitle = categoryTitleList;
 	selectedColor = categoryColorList;
 	console.log(categoryTitle, selectedColor);
@@ -180,8 +171,7 @@ const chooseCategory = (id) => {
  */
 const transferToInput = (categoryTitle, categoryColor) => {
 	document.getElementById('selected-category').innerHTML = categoryTitle;
-	document.getElementById('selected-color').style.backgroundColor =
-		categoryColor;
+	document.getElementById('selected-color').style.backgroundColor = categoryColor;
 };
 
 /**
@@ -267,8 +257,7 @@ const confirmNewCatergory = () => {
  * Sets the color of the new category
  */
 const setCategoryColor = () => {
-	selectedColor =
-		document.getElementById('selected-color').style.backgroundColor;
+	selectedColor = document.getElementById('selected-color').style.backgroundColor;
 };
 
 /**
@@ -310,9 +299,7 @@ const addCheckKeyToAllUsers = () => {
 	});
 };
 
-const dropDownAssignedToList = document.getElementById(
-	'drop-down-list-assigned-to'
-);
+const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
 
 /**
  * ´Renders the assigned to list
@@ -320,10 +307,8 @@ const dropDownAssignedToList = document.getElementById(
 const rendersAssignedToList = () => {
 	dropDownAssignedToList.innerHTML = '';
 	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex)
-			generatesAssignedToListWithUsers(id, user.name);
-		if (id == logInUserIndex)
-			generatesAssignedToListElementForLoggedInUser(id, user.name);
+		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name);
+		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name);
 	});
 };
 
@@ -334,9 +319,7 @@ const rendersAssignedToList = () => {
 const selectToggle = (id) => {
 	let checkMark = document.getElementById(`${id}.-coworker-checkbox`);
 	checkMark.checked = !checkMark.checked;
-	allUsers[id].check == false
-		? (allUsers[id].check = true)
-		: (allUsers[id].check = false);
+	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
 
 	if (allUsers[id].check == true) {
 		taskForce.push(userObjectForTaskForce(id));
@@ -586,14 +569,7 @@ const createTask = (workflow) => {
  * @returns {boolean} true if no valid input
  */
 const noValidInput = () => {
-	return (
-		taskTitle == '' ||
-		taskDescription == '' ||
-		categoryTitle == '' ||
-		selectedColor == '' ||
-		taskForce.length == 0 ||
-		taskPriority == ''
-	);
+	return taskTitle == '' || taskDescription == '' || categoryTitle == '' || selectedColor == '' || taskForce.length == 0 || taskPriority == '';
 };
 
 /**

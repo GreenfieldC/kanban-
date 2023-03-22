@@ -115,6 +115,7 @@
 }
 
 .colored-category-container {
+	min-width: 125px;
 	font-size: 1rem;
 	color: #ffffff;
 
@@ -133,6 +134,11 @@
 
 .task-description-card {
 	color: #a8a8a8;
+	max-height: 60px;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .progress-bar-container-card {
