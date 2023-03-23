@@ -24,6 +24,7 @@ const renderToDoCards = () => {
 		if (task.workflow === 'todo') {
 			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.subtasks.length, id, task.priority);
 			renderBadgesInCard(task, id);
+			updateDoneSubtasks(id);
 		}
 	});
 };
@@ -50,7 +51,7 @@ const renderBadgesInCard = (task, id) => {
 const renderFirstThreeBadges = (badgesContainer, task, i) => {
 	if (i < 3) {
 		const assignee = task.taskForce[i];
-		badgesContainer.innerHTML += generateBadgeHtml(assignee.initials, assignee.color);
+		badgesContainer.innerHTML += generateBadgeHtml(assignee.initials, assignee.color, assignee.name);
 	}
 };
 
@@ -62,4 +63,12 @@ const renderFirstThreeBadges = (badgesContainer, task, i) => {
  */
 const checkRenderNumberBadges = (badgesContainer, i, id) => {
 	if (i === 3) badgesContainer.innerHTML += generatePlusBadgeHtml(id);
+};
+
+const updateDoneSubtasks = (id) => {
+	const doneSubtasks = allTasks[id].subtasks.filter((subtask) => subtask.check === true).length;
+	const progress = document.getElementById(`${id}.progress`);
+	progress.style.width = `${(doneSubtasks / allTasks[id].subtasks.length) * 100}%`;
+	const textProgress = document.getElementById(`${id}.text-progress`);
+	textProgress.innerHTML = `${doneSubtasks}/${allTasks[id].subtasks.length} Done`;
 };
