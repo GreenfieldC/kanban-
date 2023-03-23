@@ -11,7 +11,7 @@
  */
 const generateCardHtml = (color, category, title, description, id, priority) => {
 	return /*html*/ `
-	<div class="card">
+	<div class="card" draggable="true" ondragstart="startDragging(${id})">
 		<div class="colored-category-container" style="background-color: ${color};" title="${category}">${truncateString(category, 15)}</div>
 		<div class="card-body card-body-board">
 			<h5 class="card-title" title="${title}" >${truncateString(title, 15)}</h5>
@@ -29,6 +29,10 @@ const generateCardHtml = (color, category, title, description, id, priority) => 
 	`;
 };
 
+/**
+ * Generates the html for the progress bar
+ * @param {number} id
+ */
 const generateProgressBarHtml = (id) => {
 	return /*html*/ `
 	<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">

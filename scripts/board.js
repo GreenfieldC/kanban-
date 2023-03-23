@@ -1,5 +1,7 @@
 'use strict';
 
+let currentDraggedCard;
+
 const initBoard = async () => {
 	await loadAllTasks();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
@@ -11,6 +13,7 @@ const initBoard = async () => {
  */
 const renderCards = () => {
 	renderToDoCards();
+	renderInProgressCards();
 };
 
 /**
@@ -18,12 +21,25 @@ const renderCards = () => {
  * Renders the cards in the todo column
  */
 const renderToDoCards = () => {
-	const todoContainer = document.getElementById('todo-container');
+	const todoContainer = document.getElementById('todo');
 	todoContainer.innerHTML = '';
 
 	allTasks.forEach((task, id) => {
 		if (task.workflow === 'todo') {
 			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
+			checkRenderProgressBar(id, task.subtasks.length);
+			renderBadgesInCard(task, id);
+			updateDoneSubtasks(id, task.subtasks.length);
+		}
+	});
+};
+
+const renderInProgressCards = () => {
+	const inProgressContainer = document.getElementById('in-progress');
+	inProgressContainer.innerHTML = '';
+	allTasks.forEach((task, id) => {
+		if (task.workflow === 'in-progress') {
+			inProgressContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
 			checkRenderProgressBar(id, task.subtasks.length);
 			renderBadgesInCard(task, id);
 			updateDoneSubtasks(id, task.subtasks.length);
@@ -92,4 +108,19 @@ const updateDoneSubtasks = (id, amountSubtasks) => {
 		const textProgress = document.getElementById(`${id}.text-progress`);
 		textProgress.innerHTML = `${doneSubtasks}/${allTasks[id].subtasks.length} Done`;
 	}
+};
+
+const startDragging = (id) => {
+	currentDraggedCard = id;
+	console.log('start dragging', id);
+};
+
+const allowDrop = (ev) => {
+	ev.preventDefault();
+};
+
+const moveTo = (workflow) => {
+	console.log('move to', workflow);
+	allTasks[currentDraggedCard].workflow = workflow;
+	renderCards();
 };

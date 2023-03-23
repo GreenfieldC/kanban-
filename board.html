@@ -165,7 +165,7 @@
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div id="todo-container" class="cards-container"></div>
+								<div id="todo" class="cards-container" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
 							</div>
 						</div>
 						<!-- In progress -->
@@ -177,7 +177,7 @@
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
+								<div id="in-progress" class="cards-container" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)">
 									<div class="card">
 										<div class="colored-category-container">Functions</div>
 										<div class="card-body card-body-board">
@@ -217,7 +217,7 @@
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
+								<div id="awaiting-feedback" class="cards-container" ondrop="moveTo('awaiting-feedback')" ondragover="allowDrop(event)">
 									<div class="card">
 										<div class="colored-category-container">Functions</div>
 										<div class="card-body card-body-board">
@@ -257,7 +257,7 @@
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div class="cards-container">
+								<div id="done" class="cards-container" ondrop="moveTo('done')" ondragover="allowDrop(event)">
 									<div class="card">
 										<div class="colored-category-container">Functions</div>
 										<div class="card-body card-body-board">
