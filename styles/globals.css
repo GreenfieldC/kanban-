@@ -9,6 +9,7 @@ body {
 	font-family: 'inter';
 	line-height: normal !important;
 	scroll-behavior: smooth;
+	hyphens: auto;
 }
 
 * {

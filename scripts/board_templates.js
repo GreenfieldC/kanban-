@@ -9,12 +9,12 @@
  * @param {string} priority
  * @returns html for a card
  */
-const generateCardHtml = (color, category, title, description, amountSubtasks, id, priority) => {
+const generateCardHtml = (color, category, title, description, id, priority) => {
 	return /*html*/ `
 	<div class="card">
 		<div class="colored-category-container" style="background-color: ${color};" title="${category}">${truncateString(category, 15)}</div>
 		<div class="card-body card-body-board">
-			<h5 class="card-title">${title}</h5>
+			<h5 class="card-title" title="${title}" >${truncateString(title, 15)}</h5>
 			<p class="card-text task-description-card">${truncateString(description, 30)}</p>
 			<div id="${id}.progress-bar-container" class="progress-bar-container-card">
 				
@@ -22,7 +22,7 @@ const generateCardHtml = (color, category, title, description, amountSubtasks, i
 			<div  class="badges-priority-container-card">
 				<div id="${id}.badges-container-board" class="badges-container-card in-board-badges-container">
 				</div>
-				<img src="./assets/icons/${priority}-icon.png" alt="${priority}" />
+				<img src="./assets/icons/${priority}-icon.png" alt="${priority}" title="priority is ${priority}"/>
 			</div>
 		</div>
 	</div>

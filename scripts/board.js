@@ -14,6 +14,7 @@ const renderCards = () => {
 };
 
 /**
+ *! Change into generic function later!
  * Renders the cards in the todo column
  */
 const renderToDoCards = () => {
@@ -22,7 +23,7 @@ const renderToDoCards = () => {
 
 	allTasks.forEach((task, id) => {
 		if (task.workflow === 'todo') {
-			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.subtasks.length, id, task.priority);
+			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
 			checkRenderProgressBar(id, task.subtasks.length);
 			renderBadgesInCard(task, id);
 			updateDoneSubtasks(id, task.subtasks.length);
