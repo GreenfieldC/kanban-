@@ -23,10 +23,23 @@ const renderToDoCards = () => {
 	allTasks.forEach((task, id) => {
 		if (task.workflow === 'todo') {
 			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.subtasks.length, id, task.priority);
+			checkRenderProgressBar(id, task.subtasks.length);
 			renderBadgesInCard(task, id);
-			updateDoneSubtasks(id);
+			updateDoneSubtasks(id, task.subtasks.length);
 		}
 	});
+};
+
+/**
+ * Renders the progress bar in the card if there are subtasks
+ * @param {number} id
+ * @param {number} amountSubtasks
+ */
+const checkRenderProgressBar = (id, amountSubtasks) => {
+	if (amountSubtasks > 0) {
+		const progressBarContainer = document.getElementById(`${id}.progress-bar-container`);
+		progressBarContainer.innerHTML = generateProgressBarHtml(id);
+	}
 };
 
 /**
@@ -35,7 +48,7 @@ const renderToDoCards = () => {
  * @param {number} id
  */
 const renderBadgesInCard = (task, id) => {
-	let badgesContainer = document.getElementById(`${id}.badges-container-board`);
+	const badgesContainer = document.getElementById(`${id}.badges-container-board`);
 	for (let i = 0; i < task.taskForce.length; i++) {
 		renderFirstThreeBadges(badgesContainer, task, i);
 		checkRenderNumberBadges(badgesContainer, i, id);
@@ -65,10 +78,17 @@ const checkRenderNumberBadges = (badgesContainer, i, id) => {
 	if (i === 3) badgesContainer.innerHTML += generatePlusBadgeHtml(id);
 };
 
-const updateDoneSubtasks = (id) => {
-	const doneSubtasks = allTasks[id].subtasks.filter((subtask) => subtask.check === true).length;
-	const progress = document.getElementById(`${id}.progress`);
-	progress.style.width = `${(doneSubtasks / allTasks[id].subtasks.length) * 100}%`;
-	const textProgress = document.getElementById(`${id}.text-progress`);
-	textProgress.innerHTML = `${doneSubtasks}/${allTasks[id].subtasks.length} Done`;
+/**
+ * Updates the progress bar in the card if there are subtasks
+ * @param {number} id
+ * @param {number} amountSubtasks
+ */
+const updateDoneSubtasks = (id, amountSubtasks) => {
+	if (amountSubtasks > 0) {
+		const doneSubtasks = allTasks[id].subtasks.filter((subtask) => subtask.check === true).length;
+		const progress = document.getElementById(`${id}.progress`);
+		progress.style.width = `${(doneSubtasks / allTasks[id].subtasks.length) * 100}%`;
+		const textProgress = document.getElementById(`${id}.text-progress`);
+		textProgress.innerHTML = `${doneSubtasks}/${allTasks[id].subtasks.length} Done`;
+	}
 };
