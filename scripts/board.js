@@ -28,6 +28,9 @@ const renderCardsOf = (container, workflow) => {
 	cardsContainer.innerHTML = '';
 
 	const cards = allTasks.filter((task) => task.workflow === workflow);
+
+	sortAccordingToPriority(cards);
+
 	cards.forEach((task) => {
 		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
 		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
@@ -35,6 +38,18 @@ const renderCardsOf = (container, workflow) => {
 		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
 	});
 	saveAllTasks();
+};
+
+/**
+ * Sorts the cards according to their priority
+ * @param {object} cards
+ */
+const sortAccordingToPriority = (cards) => {
+	cards.sort((a, b) => {
+		if ((a.priority === 'urgent' && b.priority === 'low') || (a.priority === 'urgent' && b.priority === 'medium')) return -1;
+		if ((a.priority === 'low' && b.priority === 'urgent') || (a.priority === 'medium' && b.priority === 'urgent')) return 1;
+		return 0;
+	});
 };
 
 /**
@@ -139,11 +154,8 @@ const search = () => {
 		const card = cards[i];
 		const title = card.getElementsByClassName('category')[0];
 		const description = card.getElementsByClassName('task-description-card')[0];
-		if (titleFound(title, filter) || descriptionFound(description, filter)) {
-			card.style.display = '';
-		} else {
-			card.style.display = 'none';
-		}
+		if (titleFound(title, filter) || descriptionFound(description, filter)) card.style.display = '';
+		if (titleNotFound(title, filter) && descriptionNotFound(description, filter)) card.style.display = 'none';
 	}
 };
 
@@ -158,6 +170,16 @@ const titleFound = (title, filter) => {
 };
 
 /**
+ * Returns true if the title does not contain the filter
+ * @param {string} description
+ * @param {string} filter
+ * @returns
+ */
+const titleNotFound = (title, filter) => {
+	return title.innerHTML.toUpperCase().indexOf(filter) === -1;
+};
+
+/**
  * Returns true if the description contains the filter
  * @param {string} description
  * @param {string} filter
@@ -165,4 +187,14 @@ const titleFound = (title, filter) => {
  */
 const descriptionFound = (description, filter) => {
 	return description.innerHTML.toUpperCase().indexOf(filter) > -1;
+};
+
+/**
+ * Returns true if the description does not contain the filter
+ * @param {string} description
+ * @param {string} filter
+ * @returns
+ */
+const descriptionNotFound = (description, filter) => {
+	return description.innerHTML.toUpperCase().indexOf(filter) === -1;
 };
