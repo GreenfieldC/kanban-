@@ -24,14 +24,22 @@ const renderToDoCards = () => {
 	const todoContainer = document.getElementById('todo');
 	todoContainer.innerHTML = '';
 
-	allTasks.forEach((task, id) => {
+	const toDoCards = allTasks.filter((task) => task.workflow === 'todo');
+	toDoCards.forEach((task) => {
+		todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
+		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
+		renderBadgesInCard(task, task.taskIndex);
+		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
+	});
+
+	/* 	allTasks.forEach((task, id) => {
 		if (task.workflow === 'todo') {
 			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
 			checkRenderProgressBar(id, task.subtasks.length);
 			renderBadgesInCard(task, id);
 			updateDoneSubtasks(id, task.subtasks.length);
 		}
-	});
+	}); */
 };
 
 const renderInProgressCards = () => {

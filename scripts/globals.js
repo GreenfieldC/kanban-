@@ -191,6 +191,7 @@ const saveAllTasks = () => {
  * Loads all tasks from local storage
  */
 const loadAllTasks = async () => {
+	if (localStorage.getItem('allTasks') === null) return;
 	let allTasksAsString = localStorage.getItem('allTasks');
 	allTasks = JSON.parse(allTasksAsString);
 	console.log(allTasks);

@@ -537,10 +537,11 @@ const removeCheckMarksFromAssignedTo = () => {
  * @param {string} workflow is set to 'todo', 'awaiting feedback 'in progress' or 'done'
  * depending on with what btn the task was created
  */
-const createTask = (workflow) => {
+const createTask = async (workflow) => {
 	taskTitle = addTaskTitle.value;
 	taskDescription = addTaskDescription.value;
 	let task = {
+		taskIndex: !allTasks.length ? 0 : allTasks.length - 1,
 		title: taskTitle,
 		description: taskDescription,
 		category: categoryTitle,
@@ -557,12 +558,22 @@ const createTask = (workflow) => {
 		return;
 	}
 	allTasks.push(task);
+	await updateTaskIndex();
 
 	saveAllTasks();
 	setTimeout(() => {
 		clearAddTaskFormular();
 		hideInvalidFeedback();
 	}, 2000);
+};
+
+/**
+ * Updates the taskIndex of all tasks
+ */
+const updateTaskIndex = async () => {
+	allTasks.forEach((task, index) => {
+		task.taskIndex = index;
+	});
 };
 
 /**
