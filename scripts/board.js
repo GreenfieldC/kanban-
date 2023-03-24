@@ -26,17 +26,10 @@ const renderCards = () => {
 const renderCardsOf = (container, workflow) => {
 	const cardsContainer = document.getElementById(container);
 	cardsContainer.innerHTML = '';
-
 	const cards = allTasks.filter((task) => task.workflow === workflow);
 
 	sortAccordingToPriority(cards);
-
-	cards.forEach((task) => {
-		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
-		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
-		renderBadgesInCard(task, task.taskIndex);
-		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
-	});
+	renderSortedTasks(cardsContainer, cards);
 	saveAllTasks();
 };
 
@@ -49,6 +42,20 @@ const sortAccordingToPriority = (cards) => {
 		if ((a.priority === 'urgent' && b.priority === 'low') || (a.priority === 'urgent' && b.priority === 'medium')) return -1;
 		if ((a.priority === 'low' && b.priority === 'urgent') || (a.priority === 'medium' && b.priority === 'urgent')) return 1;
 		return 0;
+	});
+};
+
+/**
+ * Renders the sorted tasks
+ * @param {html} cardsContainer
+ * @param {object} cards
+ */
+const renderSortedTasks = (cardsContainer, cards) => {
+	cards.forEach((task) => {
+		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
+		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
+		renderBadgesInCard(task, task.taskIndex);
+		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
 	});
 };
 

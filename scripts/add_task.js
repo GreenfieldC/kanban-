@@ -540,6 +540,7 @@ const removeCheckMarksFromAssignedTo = () => {
 const createTask = async (workflow) => {
 	taskTitle = addTaskTitle.value;
 	taskDescription = addTaskDescription.value;
+	dueDate = document.getElementById('due-date-add-task-input').value;
 	let task = {
 		taskIndex: !allTasks.length ? 0 : allTasks.length - 1,
 		title: taskTitle,
