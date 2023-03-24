@@ -144,9 +144,9 @@
 							<div class="title">Board</div>
 						</div>
 						<div class="search-add-task-section">
-							<div id="category-input" class="form-control assign-input input-category" type="text">
-								<input type="search" placeholder="Find task" class="border-0" />
-								<img src="./assets/icons/magnify-glass.png" alt="magnifying glass" />
+							<div id="category-input" class="form-control assign-input input-category search-field" type="text">
+								<input id="search" type="search" placeholder="Find task" class="search-input" oninput="search(event)" autocomplete="off" />
+								<img class="search-icon" src="./assets/icons/magnify-glass.png" alt="magnifying glass" />
 							</div>
 							<button type="button" class="btn btn-primary btn-ordinary new-task-board-btn">
 								<span class="btn-name">Add task</span>

@@ -15,6 +15,24 @@
 	gap: 30px;
 }
 
+.search-field {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.search-input {
+	height: 100%;
+	width: 100%;
+	border: 0;
+	border-radius: 0px !important;
+	border-right: 1px solid var(--grey-line-grey);
+}
+
+.search-icon {
+	padding-left: 15px;
+}
+
 .new-task-board-btn {
 	width: 220px !important;
 }

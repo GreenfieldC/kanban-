@@ -12,47 +12,29 @@ const initBoard = async () => {
  * Renders the cards in the board
  */
 const renderCards = () => {
-	renderToDoCards();
-	renderInProgressCards();
+	renderCardsOf('todo', 'todo');
+	renderCardsOf('in-progress', 'in-progress');
+	renderCardsOf('awaiting-feedback', 'awaiting-feedback');
+	renderCardsOf('done', 'done');
 };
 
 /**
- *! Change into generic function later!
- * Renders the cards in the todo column
+ * Renders the cards of a specific workflow
+ * @param {string} container
+ * @param {string} workflow
  */
-const renderToDoCards = () => {
-	const todoContainer = document.getElementById('todo');
-	todoContainer.innerHTML = '';
+const renderCardsOf = (container, workflow) => {
+	const cardsContainer = document.getElementById(container);
+	cardsContainer.innerHTML = '';
 
-	const toDoCards = allTasks.filter((task) => task.workflow === 'todo');
-	toDoCards.forEach((task) => {
-		todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
+	const cards = allTasks.filter((task) => task.workflow === workflow);
+	cards.forEach((task) => {
+		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
 		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
 		renderBadgesInCard(task, task.taskIndex);
 		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
 	});
-
-	/* 	allTasks.forEach((task, id) => {
-		if (task.workflow === 'todo') {
-			todoContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
-			checkRenderProgressBar(id, task.subtasks.length);
-			renderBadgesInCard(task, id);
-			updateDoneSubtasks(id, task.subtasks.length);
-		}
-	}); */
-};
-
-const renderInProgressCards = () => {
-	const inProgressContainer = document.getElementById('in-progress');
-	inProgressContainer.innerHTML = '';
-	allTasks.forEach((task, id) => {
-		if (task.workflow === 'in-progress') {
-			inProgressContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, id, task.priority);
-			checkRenderProgressBar(id, task.subtasks.length);
-			renderBadgesInCard(task, id);
-			updateDoneSubtasks(id, task.subtasks.length);
-		}
-	});
+	saveAllTasks();
 };
 
 /**
@@ -118,17 +100,69 @@ const updateDoneSubtasks = (id, amountSubtasks) => {
 	}
 };
 
+/**
+ * Starts the dragging of a card
+ * @param {number} id
+ */
 const startDragging = (id) => {
 	currentDraggedCard = id;
 	console.log('start dragging', id);
 };
 
+/**
+ * Allows the card to be dropped
+ * @param {obj} ev
+ */
 const allowDrop = (ev) => {
 	ev.preventDefault();
 };
 
+/**
+ * Moves the card to the new column and updates the workflow
+ * @param {string} workflow
+ */
 const moveTo = (workflow) => {
 	console.log('move to', workflow);
 	allTasks[currentDraggedCard].workflow = workflow;
 	renderCards();
+};
+
+/**
+ * Searches for the input in the cards and shows only the cards that contain the input
+ */
+const search = () => {
+	const input = document.getElementById('search');
+	const filter = input.value.toUpperCase();
+	const cards = document.getElementsByClassName('card');
+
+	for (let i = 0; i < cards.length; i++) {
+		const card = cards[i];
+		const title = card.getElementsByClassName('category')[0];
+		const description = card.getElementsByClassName('task-description-card')[0];
+		if (titleFound(title, filter) || descriptionFound(description, filter)) {
+			card.style.display = '';
+		} else {
+			card.style.display = 'none';
+		}
+	}
+};
+
+/**
+ * Returns true if the title contains the filter
+ * @param {string} title
+ * @param {string} filter
+ * @returns
+ */
+const titleFound = (title, filter) => {
+	return title.innerHTML.toUpperCase().indexOf(filter) > -1;
+};
+
+/**
+ * Returns true if the description contains the filter
+ * @param {string} description
+ * @param {string} filter
+ * @returns
+ */
+const descriptionFound = (description, filter) => {
+	return description.innerHTML.toUpperCase().indexOf(filter) > -1;
 };
