@@ -26,7 +26,7 @@ let allUsers = [
 		email: 'aidrown@gmail.com',
 		password: 'BrownAiden123',
 		phone: '+1-555-555-5555',
-		initials: 'AB',
+		initials: 'BB',
 		color: '#A53935',
 	},
 	{
@@ -34,7 +34,7 @@ let allUsers = [
 		email: 'aiown@gmail.com',
 		password: 'BrownAiden123',
 		phone: '+1-555-555-5555',
-		initials: 'AB',
+		initials: 'CB',
 		color: '#E53935',
 	},
 	{

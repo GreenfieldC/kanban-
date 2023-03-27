@@ -52,7 +52,7 @@ const initAddTask = async () => {
 	addCheckKeyToAllUsers();
 	setsDatePicker();
 	dueDate = currentDate();
-	loadAllTasks(); //!testing
+	loadAllTasks();
 };
 /* 
 ! TEST Validation Form Function */

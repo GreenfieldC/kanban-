@@ -1,6 +1,7 @@
 'use strict';
 
 let currentDraggedCard;
+let workflow;
 
 const initBoard = async () => {
 	await loadAllTasks();
@@ -205,3 +206,20 @@ const descriptionFound = (description, filter) => {
 const descriptionNotFound = (description, filter) => {
 	return description.innerHTML.toUpperCase().indexOf(filter) === -1;
 };
+
+/* Add Task In Board */
+
+const addTask = async () => {
+	await initAddTask();
+	document.getElementById('overlay').style.display = 'flex';
+};
+
+/* !Window Management */
+
+const closeAddTaskOverlay = () => {
+	document.getElementById('overlay').style.display = 'none';
+};
+
+overlay.addEventListener('click', (e) => {
+	if (e.target.id === 'overlay') closeAddTaskOverlay();
+});
