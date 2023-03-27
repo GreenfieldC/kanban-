@@ -135,8 +135,9 @@ const newCategoryInput = () => {
 /**
  * Eventlistener for the cancel button in category input
  */
-categoryCancelBtn.addEventListener('click', () => {
+categoryCancelBtn.addEventListener('click', (event) => {
 	cancelNewCategory();
+	event.stopPropagation();
 });
 
 /**
