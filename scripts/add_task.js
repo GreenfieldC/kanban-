@@ -1,4 +1,5 @@
 'use strict';
+
 let categoryList = [
 	{ title: 'Function', color: 'red' },
 	{ title: 'Design', color: 'blue' },
@@ -563,6 +564,7 @@ const createTask = async (workflow) => {
 	await updateTaskIndex();
 
 	saveAllTasks();
+	renderCards();
 	setTimeout(() => {
 		clearAddTaskFormular();
 		hideInvalidFeedback();
