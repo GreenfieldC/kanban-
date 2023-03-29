@@ -140,6 +140,8 @@
 				</div>
 			</nav>
 			<div id="content" class="main-content-outer-container">
+				<!-- Overlays -->
+				<!-- Overlay for addTask in board -->
 				<div id="overlay" class="overlay">
 					<div class="add-task-container-board">
 						<div class="heading-container heading-board-overlay">
@@ -344,6 +346,60 @@
 						</form>
 					</div>
 				</div>
+				<!-- Overlay for details of task -->
+				<div id="details-task-overlay" class="overlay">
+					<div class="position-relative">
+						<div onclick="" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+							<img src="./assets/icons/pen_white.png" />
+						</div>
+						<div class="card card-overlay">
+							<div class="heading-card-overlay">
+								<div class="colored-category-container">Functions</div>
+								<img onclick="closeCard()" src="./assets/icons/back_logo_black.png" title="close card" alt="" />
+							</div>
+							<div class="card-body card-body-board">
+								<h5 class="card-title card-title-overlay">For-loops</h5>
+								<p class="card-text task-description-card task-description-card-overlay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, odio nihil libero ut recusandae voluptatibus tempore ex nulla corrupti repellat inventore earum tempora atque labore, doloremque animi! Enim, excepturi sint.</p>
+
+								<div class="date-priority-assigned-container-overlay">
+									<div class="due-date-container-overlay">
+										<span class="due-date-text">Due date:</span>
+										<span class="due-date-numbers">05-08-2022</span>
+									</div>
+									<div class="due-date-container-overlay">
+										<span class="due-date-text">Priority:</span>
+										<div class="priority-status-container" style="background-color: red">
+											<span class="priority-status">Urgent</span>
+											<img src="./assets/icons/urgent-icon-white.png" alt="" />
+										</div>
+									</div>
+									<div class="due-date-container-overlay">
+										<span class="due-date-text">Assigned to:</span>
+									</div>
+
+									<div id="badges-card-on-display" class="badges-priority-container-card outer-badges-container-on-display">
+										<div class="badges-container-card">
+											<div class="inner-badge-container-on-display">
+												<div class="initials-container initals-in-details-section" style="background-color: red">
+													<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+												</div>
+												<span class="full-name-card-on-display">Christian Greenfield</span>
+											</div>
+										</div>
+										<div class="badges-container-card">
+											<div class="inner-badge-container-on-display">
+												<div class="initials-container initals-in-details-section" style="background-color: red">
+													<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+												</div>
+												<span class="full-name-card-on-display">Christian Greenfield</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="main-content-inner-container">
 					<div class="heading-container">
 						<div>
@@ -362,6 +418,7 @@
 						</div>
 					</div>
 
+					<!-- Canban Board -->
 					<div class="canban-board">
 						<!-- To Do -->
 						<div class="workflow-container">

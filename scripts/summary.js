@@ -130,11 +130,17 @@ NEXT DUE DATE FUNCTIONS
  */
 const setNextDueDate = () => {
 	const futureTasks = filterFutureTasks();
-	const nextTask = futureTasks.sort((a, b) => a.dueDate - b.dueDate)[0];
+	const nextTask = futureTasks.sort((a, b) => a.dueDate - b.dueDate)[futureTasks.length - 1];
 
 	const nextDueDate = formatDate(nextTask);
+	console.log(nextDueDate);
 
 	let deadLine = document.getElementById('deadline');
+
+	if (nextDueDate === todayFormatted()) {
+		deadLine.innerHTML = 'Today';
+		return;
+	}
 	deadLine.innerHTML = nextDueDate;
 };
 
@@ -162,5 +168,15 @@ const formatDate = (nextTask) => {
 	const date = new Date(dateString);
 	const options = { month: 'long', day: 'numeric', year: 'numeric' };
 	const formattedDate = date.toLocaleDateString('en-US', options);
+	return formattedDate;
+};
+
+/**
+ *  @returns {string} today's date
+ */
+const todayFormatted = () => {
+	const today = new Date();
+	const options = { month: 'long', day: 'numeric', year: 'numeric' };
+	const formattedDate = today.toLocaleDateString('en-US', options);
 	return formattedDate;
 };

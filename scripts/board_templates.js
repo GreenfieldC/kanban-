@@ -11,7 +11,7 @@
  */
 const generateCardHtml = (color, category, title, description, id, priority) => {
 	return /*html*/ `
-	<div class="card" draggable="true" ondragstart="startDragging(${id})">
+	<div onclick="openCard(${id})" class="card" draggable="true" ondragstart="startDragging(${id})">
 		<div class="colored-category-container category" style="background-color: ${color};" title="${category}">${truncateString(category, 15)}</div>
 		<div class="card-body card-body-board">
 			<h5 class="card-title" title="${title}" >${truncateString(title, 15)}</h5>
@@ -84,4 +84,78 @@ const truncateString = (str, maxlength) => {
 		return str;
 	}
 	return str.slice(0, maxlength) + '...';
+};
+
+/**
+ * Generates the html for the card on display
+ * @param {number} id
+ * @returns {string} html
+ */
+const generateCardOnDisplayHtml = (id) => {
+	return /*html*/ `
+	<div class="position-relative">
+		<div onclick="" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+			<img src="./assets/icons/pen_white.png" />
+		</div>
+		<div class="card card-overlay">
+			<div class="heading-card-overlay">
+				<div style="background-color: ${allTasks[id].color};" class="colored-category-container">${allTasks[id].category}</div>
+				<img onclick="closeCard()" src="./assets/icons/back_logo_black.png" title="close card" alt="" />
+			</div>
+			<div class="card-body card-body-board">
+				<h5 class="card-title card-title-overlay">${allTasks[id].title}</h5>
+				<p class="card-text task-description-card task-description-card-overlay">${allTasks[id].description}</p>
+
+				<div class="date-priority-assigned-container-overlay">
+					<div class="due-date-container-overlay">
+						<span class="due-date-text">Due date:</span>
+						<span class="due-date-numbers">${allTasks[id].dueDate}</span>
+					</div>
+					<div class="due-date-container-overlay">
+						<span class="due-date-text">Priority:</span>
+						<div class="priority-status-container" style="background-color: var(--${allTasks[id].priority}">
+							<span class="priority-status">${allTasks[id].priority}</span>
+							<img src="./assets/icons/${allTasks[id].priority}-icon-white.png" alt="" />
+						</div>
+					</div>
+					<div class="due-date-container-overlay">
+						<span class="due-date-text">Assigned to:</span>
+					</div>
+
+					<div id="badges-card-on-display" class="badges-priority-container-card outer-badges-container-on-display">
+						<div class="badges-container-card">
+							<div class="inner-badge-container-on-display">
+								<div class="initials-container initals-in-details-section" style="background-color: red">
+									<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+								</div>
+								<span class="full-name-card-on-display">Christian Greenfield</span>
+							</div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	`;
+};
+
+/**
+ * Generates the badges on the card on display
+ * @param {number} id
+ * @returns {string} html
+ */
+const generateBadgesCardOnDisplayHtml = (id) => {
+	let badges = '';
+	for (let i = 0; i < allTasks[id].taskForce.length; i++) {
+		badges += /*html*/ `
+		<div class="inner-badge-container-on-display">
+			<div class="initials-container initals-in-details-section" style="background-color: ${allTasks[id].taskForce[i].color}">
+				<span id="user-initals-details" class="user-initials user-initials-details">${allTasks[id].taskForce[i].initials}</span>
+			</div>
+			<span class="full-name-card-on-display">${allTasks[id].taskForce[i].name}</span>
+		</div>
+		`;
+	}
+	return badges;
 };

@@ -223,3 +223,39 @@ const closeAddTaskOverlay = () => {
 overlay.addEventListener('click', (e) => {
 	if (e.target.id === 'overlay') closeAddTaskOverlay();
 });
+
+/* Edit Cards */
+
+const openCard = (id) => {
+	let ondisplayOverlay = document.getElementById('details-task-overlay');
+	ondisplayOverlay.style.display = 'flex';
+	renderCardOnDisplay(id);
+};
+
+let ondisplayOverlay = document.getElementById('details-task-overlay');
+const closeCard = (e) => {
+	ondisplayOverlay.style.display = 'none';
+};
+
+/**
+ * Closes the card if the user clicks outside the card
+ */
+ondisplayOverlay.addEventListener('click', (e) => {
+	if (e.target.id === 'details-task-overlay') closeCard();
+});
+
+const renderCardOnDisplay = (id) => {
+	ondisplayOverlay.innerHTML = '';
+	ondisplayOverlay.innerHTML = generateCardOnDisplayHtml(id);
+	renderBadgesCardOnDisplay(id);
+};
+
+/**
+ * Renders the badges on the card on display
+ * @param {number} id
+ */
+const renderBadgesCardOnDisplay = (id) => {
+	let badgesContainer = document.getElementById('badges-card-on-display');
+	badgesContainer.innerHTML = '';
+	badgesContainer.innerHTML = generateBadgesCardOnDisplayHtml(id);
+};
