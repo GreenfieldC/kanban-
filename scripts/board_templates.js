@@ -33,12 +33,12 @@ const generateCardHtml = (color, category, title, description, id, priority) => 
  * Generates the html for the progress bar
  * @param {number} id
  */
-const generateProgressBarHtml = (id) => {
+const generateProgressBarHtml = (id, location) => {
 	return /*html*/ `
 	<div class="progress" role="progressbar" aria-label="Default striped example" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">
-		<div id="${id}.progress" class="progress-bar progress-bar-striped" style="width: 0%"></div>
+		<div id="${id}.progress-${location}" class="progress-bar progress-bar-striped" style="width: 0%"></div>
 	</div>
-	<span id="${id}.text-progress" class="text-progress"></span>
+	<span id="${id}.text-progress-${location}" class="text-progress"></span>
 	`;
 };
 

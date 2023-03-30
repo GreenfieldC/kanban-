@@ -54,9 +54,9 @@ const sortAccordingToPriority = (cards) => {
 const renderSortedTasks = (cardsContainer, cards) => {
 	cards.forEach((task) => {
 		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
-		checkRenderProgressBar(task.taskIndex, task.subtasks.length, 'progress-bar-container');
+		checkRenderProgressBar(task.taskIndex, task.subtasks.length, 'progress-bar-container', 'card');
 		renderBadgesInCard(task, task.taskIndex);
-		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
+		updateDoneSubtasks(task.taskIndex, task.subtasks.length, 'card');
 	});
 };
 
@@ -65,10 +65,10 @@ const renderSortedTasks = (cardsContainer, cards) => {
  * @param {number} id
  * @param {number} amountSubtasks
  */
-const checkRenderProgressBar = (id, amountSubtasks, container) => {
+const checkRenderProgressBar = (id, amountSubtasks, container, location) => {
 	if (amountSubtasks > 0) {
 		const progressBarContainer = document.getElementById(`${id}.${container}`);
-		progressBarContainer.innerHTML = generateProgressBarHtml(id);
+		progressBarContainer.innerHTML = generateProgressBarHtml(id, location);
 	}
 };
 
@@ -113,12 +113,12 @@ const checkRenderNumberBadges = (badgesContainer, i, id) => {
  * @param {number} id
  * @param {number} amountSubtasks
  */
-const updateDoneSubtasks = (id, amountSubtasks) => {
+const updateDoneSubtasks = (id, amountSubtasks, location) => {
 	if (amountSubtasks > 0) {
 		const doneSubtasks = allTasks[id].subtasks.filter((subtask) => subtask.check === true).length;
-		const progress = document.getElementById(`${id}.progress`);
+		const progress = document.getElementById(`${id}.progress-${location}`);
 		progress.style.width = `${(doneSubtasks / allTasks[id].subtasks.length) * 100}%`;
-		const textProgress = document.getElementById(`${id}.text-progress`);
+		const textProgress = document.getElementById(`${id}.text-progress-${location}`);
 		textProgress.innerHTML = `${doneSubtasks}/${allTasks[id].subtasks.length} Done`;
 	}
 };
@@ -248,7 +248,8 @@ const renderCardOnDisplay = (id) => {
 	ondisplayOverlay.innerHTML = '';
 	ondisplayOverlay.innerHTML = generateCardOnDisplayHtml(id);
 	renderBadgesCardOnDisplay(id);
-	checkRenderProgressBar(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'progress-bar-overlay');
+	checkRenderProgressBar(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'progress-bar-overlay', 'card-on-display');
+	updateDoneSubtasks(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'card-on-display');
 };
 
 /**
