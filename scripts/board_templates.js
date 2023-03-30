@@ -94,10 +94,10 @@ const truncateString = (str, maxlength) => {
 const generateCardOnDisplayHtml = (id) => {
 	return /*html*/ `
 	<div class="position-relative">
-		<div onclick="" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+		<div onclick="addTask()" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
 			<img src="./assets/icons/pen_white.png" />
 		</div>
-		<div class="card card-overlay">
+		<div id="board-card-overlay" class="card card-overlay">
 			<div class="heading-card-overlay">
 				<div style="background-color: ${allTasks[id].color};" class="colored-category-container">${allTasks[id].category}</div>
 				<img onclick="closeCard()" src="./assets/icons/back_logo_black.png" title="close card" alt="" />
@@ -116,6 +116,15 @@ const generateCardOnDisplayHtml = (id) => {
 						<div class="priority-status-container" style="background-color: var(--${allTasks[id].priority}">
 							<span class="priority-status">${allTasks[id].priority}</span>
 							<img src="./assets/icons/${allTasks[id].priority}-icon-white.png" alt="" />
+						</div>
+					</div>
+
+					<div class="subtasks-container-overlay">
+						<div class="due-date-container-overlay">
+							<span class="due-date-text">Subtasks:</span>
+						</div>
+						<div id="${id}.progress-bar-overlay" class="subtasks-container progress-bar-container-card">						
+							none
 						</div>
 					</div>
 					<div class="due-date-container-overlay">

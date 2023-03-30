@@ -54,7 +54,7 @@ const sortAccordingToPriority = (cards) => {
 const renderSortedTasks = (cardsContainer, cards) => {
 	cards.forEach((task) => {
 		cardsContainer.innerHTML += generateCardHtml(task.color, task.category, task.title, task.description, task.taskIndex, task.priority);
-		checkRenderProgressBar(task.taskIndex, task.subtasks.length);
+		checkRenderProgressBar(task.taskIndex, task.subtasks.length, 'progress-bar-container');
 		renderBadgesInCard(task, task.taskIndex);
 		updateDoneSubtasks(task.taskIndex, task.subtasks.length);
 	});
@@ -65,9 +65,9 @@ const renderSortedTasks = (cardsContainer, cards) => {
  * @param {number} id
  * @param {number} amountSubtasks
  */
-const checkRenderProgressBar = (id, amountSubtasks) => {
+const checkRenderProgressBar = (id, amountSubtasks, container) => {
 	if (amountSubtasks > 0) {
-		const progressBarContainer = document.getElementById(`${id}.progress-bar-container`);
+		const progressBarContainer = document.getElementById(`${id}.${container}`);
 		progressBarContainer.innerHTML = generateProgressBarHtml(id);
 	}
 };
@@ -248,6 +248,7 @@ const renderCardOnDisplay = (id) => {
 	ondisplayOverlay.innerHTML = '';
 	ondisplayOverlay.innerHTML = generateCardOnDisplayHtml(id);
 	renderBadgesCardOnDisplay(id);
+	checkRenderProgressBar(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'progress-bar-overlay');
 };
 
 /**
