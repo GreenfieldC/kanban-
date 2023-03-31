@@ -126,6 +126,7 @@ const generateCardOnDisplayHtml = (id) => {
 						<div id="${id}.progress-bar-overlay" class="subtasks-container progress-bar-container-card">						
 							none
 						</div>
+						<div id="subtasks-container-on-display"></div>
 					</div>
 					<div class="due-date-container-overlay">
 						<span class="due-date-text">Assigned to:</span>

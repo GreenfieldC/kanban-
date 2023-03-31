@@ -2,6 +2,7 @@
 
 let currentDraggedCard;
 let workflow;
+let subTaskContainerOnDisplay;
 
 const initBoard = async () => {
 	await loadAllTasks();
@@ -244,12 +245,17 @@ ondisplayOverlay.addEventListener('click', (e) => {
 	if (e.target.id === 'details-task-overlay') closeCard();
 });
 
+/**
+ * Renders the card on display
+ * @param {number} id
+ */
 const renderCardOnDisplay = (id) => {
 	ondisplayOverlay.innerHTML = '';
 	ondisplayOverlay.innerHTML = generateCardOnDisplayHtml(id);
 	renderBadgesCardOnDisplay(id);
 	checkRenderProgressBar(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'progress-bar-overlay', 'card-on-display');
 	updateDoneSubtasks(allTasks[id].taskIndex, allTasks[id].subtasks.length, 'card-on-display');
+	renderSubtasksOnDisplay(allTasks[id].taskIndex);
 };
 
 /**
@@ -260,4 +266,18 @@ const renderBadgesCardOnDisplay = (id) => {
 	let badgesContainer = document.getElementById('badges-card-on-display');
 	badgesContainer.innerHTML = '';
 	badgesContainer.innerHTML = generateBadgesCardOnDisplayHtml(id);
+};
+
+/* 
+! Generic func render subtasks! */
+
+const renderSubtasksOnDisplay = (id) => {
+	if (allTasks[id].subtasks.length === 0) return;
+
+	subTaskContainerOnDisplay = document.getElementById('subtasks-container-on-display');
+	subTaskContainerOnDisplay.innerHTML = '';
+	allTasks[id].subtasks.forEach((subtask) => {
+		generateSubTask(subtask.title, id, subTaskContainerOnDisplay);
+		console.log('hallo');
+	});
 };

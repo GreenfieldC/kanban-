@@ -473,7 +473,7 @@ const subTaskObject = (subtask) => {
 const renderNewSubTasks = () => {
 	subTaskList.innerHTML = '';
 	subtasks.forEach((subTask, id) => {
-		generateSubTask(subTask.title, id);
+		generateSubTask(subTask.title, id, subTaskList);
 	});
 };
 
