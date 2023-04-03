@@ -247,6 +247,7 @@ const openCard = (id) => {
 let ondisplayOverlay = document.getElementById('details-task-overlay');
 const closeCard = (e) => {
 	ondisplayOverlay.style.display = 'none';
+	subtaskOnDisplay = false;
 };
 
 /**

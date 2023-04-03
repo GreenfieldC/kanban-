@@ -1,6 +1,7 @@
 'use strict';
 
 let subtaskOnDisplay = false;
+let addTaskMainSite = true;
 
 let categoryList = [
 	{ title: 'Function', color: 'red' },
@@ -491,8 +492,13 @@ const deleteSubtask = async (cardId, subtaskId) => {
 		console.log('subtaskOnDisplay', subtaskOnDisplay);
 		subtasks.splice(subtaskId, 1);
 		renderNewSubTasks();
+		/* updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card'); */
+	}
+
+	if (!subtaskOnDisplay && !addTaskMainSite) {
 		updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card');
 	}
+
 	if (subtaskOnDisplay) {
 		console.log('subtaskOnDisplay', subtaskOnDisplay);
 		allTasks[cardId].subtasks.splice(subtaskId, 1);
