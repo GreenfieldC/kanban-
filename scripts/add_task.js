@@ -590,10 +590,9 @@ const createTask = async (workflow) => {
 
 	saveAllTasks();
 	renderCards();
-	setTimeout(() => {
-		clearAddTaskFormular();
-		hideInvalidFeedback();
-	}, 2000);
+
+	clearAddTaskFormular();
+	hideInvalidFeedback();
 };
 
 /**
