@@ -1,5 +1,7 @@
 'use strict';
 
+let subtaskOnDisplay = false;
+
 let categoryList = [
 	{ title: 'Function', color: 'red' },
 	{ title: 'Design', color: 'blue' },
@@ -472,8 +474,9 @@ const subTaskObject = (subtask) => {
  */
 const renderNewSubTasks = () => {
 	subTaskList.innerHTML = '';
-	subtasks.forEach((subTask, id) => {
-		generateSubTask(subTask.title, id, subTaskList);
+	subtasks.forEach((subTask, subtaskId) => {
+		let cardId = 0;
+		generateSubTask(subTask.title, cardId, subtaskId, subTaskList);
 	});
 };
 
@@ -481,9 +484,25 @@ const renderNewSubTasks = () => {
  * Takes subtask of subtask list and generates subtask element
  * @param {number} id
  */
-const deleteSubtask = (id) => {
-	subtasks.splice(id, 1);
-	renderNewSubTasks();
+const deleteSubtask = async (cardId, subtaskId) => {
+	console.log('cardId', cardId);
+	console.log('subtaskId', subtaskId);
+	if (!subtaskOnDisplay) {
+		console.log('subtaskOnDisplay', subtaskOnDisplay);
+		subtasks.splice(subtaskId, 1);
+		renderNewSubTasks();
+		updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card');
+	}
+	if (subtaskOnDisplay) {
+		console.log('subtaskOnDisplay', subtaskOnDisplay);
+		allTasks[cardId].subtasks.splice(subtaskId, 1);
+		console.log('spli', allTasks[cardId].subtasks.splice(subtaskId, 1));
+		renderSubtasksOnDisplay(cardId);
+		updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card-on-display');
+		renderCards((subtaskOnDisplay = false));
+		subtaskOnDisplay = true;
+	}
+	saveAllTasks();
 };
 
 /**

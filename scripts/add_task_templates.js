@@ -74,12 +74,12 @@ const generateBadgesForAssignedTo = (name, color, initials) => {
 
 /*
 !===Subtasks ===*/
-const generateSubTask = (title, id, location) => {
+const generateSubTask = (title, cardId, subtaskId, location) => {
 	const html = /*html*/ `
-	<div id="${id}.subtask" class="checkbox-task-container">
+	<div id="${subtaskId}.subtask" class="checkbox-task-container">
 		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" autocomplete="off" />
 		<label class="form-check-label m-0" for="flexCheckChecked">${title}</label>
-		<img id="subtask" onclick="deleteSubtask(${id})" src="./assets/icons/delete.png" alt="delete" class="delete-icon subtask-delete-img" />
+		<img id="subtask" onclick="deleteSubtask(${cardId},${subtaskId})" src="./assets/icons/delete.png" alt="delete" class="delete-icon subtask-delete-img" />
 	</div>
 	`;
 	location.insertAdjacentHTML('beforeend', html);

@@ -2,7 +2,7 @@
 
 let currentDraggedCard;
 let workflow;
-let subTaskContainerOnDisplay;
+/* let subTaskContainerOnDisplay = false; */
 
 const initBoard = async () => {
 	await loadAllTasks();
@@ -114,7 +114,15 @@ const checkRenderNumberBadges = (badgesContainer, i, id) => {
  * @param {number} id
  * @param {number} amountSubtasks
  */
+/**
+ * !Unbedingt noch Karten in Board aktualiseren, wenn subtasks in Karten on display verändert werdne.
+ */
 const updateDoneSubtasks = (id, amountSubtasks, location) => {
+	console.log('bug', subtaskOnDisplay);
+	if (amountSubtasks == 0 && subtaskOnDisplay) {
+		let subtasksContainer = document.getElementById(`${id}.progress-bar-overlay`);
+		subtasksContainer.innerHTML = 'none';
+	}
 	if (amountSubtasks > 0) {
 		const doneSubtasks = allTasks[id].subtasks.filter((subtask) => subtask.check === true).length;
 		const progress = document.getElementById(`${id}.progress-${location}`);
@@ -213,6 +221,7 @@ const descriptionNotFound = (description, filter) => {
 const addTask = async () => {
 	await initAddTask();
 	document.getElementById('overlay').style.display = 'flex';
+	subtaskOnDisplay = false;
 };
 
 /* !Window Management */
@@ -231,6 +240,8 @@ const openCard = (id) => {
 	let ondisplayOverlay = document.getElementById('details-task-overlay');
 	ondisplayOverlay.style.display = 'flex';
 	renderCardOnDisplay(id);
+	subtaskOnDisplay = true;
+	console.log(subtaskOnDisplay);
 };
 
 let ondisplayOverlay = document.getElementById('details-task-overlay');
@@ -271,13 +282,11 @@ const renderBadgesCardOnDisplay = (id) => {
 /* 
 ! Generic func render subtasks! */
 
-const renderSubtasksOnDisplay = (id) => {
-	if (allTasks[id].subtasks.length === 0) return;
-
-	subTaskContainerOnDisplay = document.getElementById('subtasks-container-on-display');
+const renderSubtasksOnDisplay = (cardId) => {
+	let subTaskContainerOnDisplay = document.getElementById('subtasks-container-on-display');
 	subTaskContainerOnDisplay.innerHTML = '';
-	allTasks[id].subtasks.forEach((subtask) => {
-		generateSubTask(subtask.title, id, subTaskContainerOnDisplay);
-		console.log('hallo');
+	if (allTasks[cardId].subtasks.length === 0) return;
+	allTasks[cardId].subtasks.forEach((subtask, subtaskId) => {
+		generateSubTask(subtask.title, cardId, subtaskId, subTaskContainerOnDisplay);
 	});
 };
