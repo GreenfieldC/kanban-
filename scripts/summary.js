@@ -130,7 +130,8 @@ NEXT DUE DATE FUNCTIONS
  */
 const setNextDueDate = () => {
 	const futureTasks = filterFutureTasks();
-	const nextTask = futureTasks.sort((a, b) => a.dueDate - b.dueDate)[futureTasks.length - 1];
+	const openTasks = futureTasks.filter((task) => task.workflow !== 'done'); // filter out done tasks
+	const nextTask = openTasks.sort((a, b) => a.dueDate - b.dueDate)[futureTasks.length - 1];
 
 	const nextDueDate = formatDate(nextTask);
 	console.log(nextDueDate);
@@ -164,6 +165,7 @@ const filterFutureTasks = () => {
  * @returns {string} formatted date
  */
 const formatDate = (nextTask) => {
+	if (!nextTask) return 'No open urgent tasks';
 	const dateString = nextTask.dueDate;
 	const date = new Date(dateString);
 	const options = { month: 'long', day: 'numeric', year: 'numeric' };

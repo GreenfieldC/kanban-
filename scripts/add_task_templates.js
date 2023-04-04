@@ -92,9 +92,30 @@ const generateSubTask = (title, cardId, subtaskId, location) => {
 	location.insertAdjacentHTML('beforeend', html);
 
 	let checkboxSubtask = document.getElementById(`${cardId}-${subtaskId}-checkbox-subtask`);
-	if (!subtaskOnDisplay) return;
+	if (!subtaskOnDisplay) return; // if the subtask is not on display, do not enable the checkbox
+
+	enableCheckboxesInCardsOnDisplay(checkboxSubtask);
+	addCheckMark(cardId, subtaskId, checkboxSubtask);
+};
+
+/**
+ * Enables the checkboxes in the cards on display
+ * @param {string} checkboxSubtask
+ */
+const enableCheckboxesInCardsOnDisplay = (checkboxSubtask) => {
 	if (subtaskOnDisplay) {
-		console.log('hallo here I am');
 		checkboxSubtask.disabled = false;
+	}
+};
+
+/**
+ * Adds a checkmark to the subtask if it is checked
+ * @param {number} cardId
+ * @param {number} subtaskId
+ * @param {string} checkboxSubtask
+ */
+const addCheckMark = (cardId, subtaskId, checkboxSubtask) => {
+	if (allTasks[cardId].subtasks[subtaskId].check) {
+		checkboxSubtask.checked = true;
 	}
 };

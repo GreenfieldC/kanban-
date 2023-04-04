@@ -101,7 +101,7 @@ OVERVIEW
 }
 
 .deadline-value {
-	font-size: 1.25rem;
+	font-size: 1rem;
 	font-weight: bold;
 }
 
@@ -126,8 +126,8 @@ OVERVIEW
 .svg-summary-do-done {
 	padding: 10px;
 	background-color: var(--dark-blue);
-	height: 67px;
-	width: 67px;
+	height: 50px;
+	width: 50px;
 	border-radius: 50%;
 	color: white;
 }
@@ -275,5 +275,12 @@ MEDIA QUERIES
 
 	.do-done-container {
 		gap: 24px;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.svg-summary-do-done {
+		height: 67px !important;
+		width: 67px !important;
 	}
 }
