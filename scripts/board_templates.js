@@ -94,7 +94,7 @@ const truncateString = (str, maxlength) => {
 const generateCardOnDisplayHtml = (id) => {
 	return /*html*/ `
 	<div class="position-relative">
-		<div onclick="addTask()" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+		<div onclick="editTask(${id})" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
 			<img src="./assets/icons/pen_white.png" />
 		</div>
 		<div id="board-card-overlay" class="card card-overlay">

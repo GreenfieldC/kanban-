@@ -132,10 +132,7 @@ const setNextDueDate = () => {
 	const futureTasks = filterFutureTasks();
 	const openTasks = futureTasks.filter((task) => task.workflow !== 'done'); // filter out done tasks
 	const nextTask = openTasks.sort((a, b) => a.dueDate - b.dueDate)[futureTasks.length - 1];
-
 	const nextDueDate = formatDate(nextTask);
-	console.log(nextDueDate);
-
 	let deadLine = document.getElementById('deadline');
 
 	if (nextDueDate === todayFormatted()) {

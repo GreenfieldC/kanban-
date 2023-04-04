@@ -2,7 +2,6 @@
 
 let currentDraggedCard;
 let workflow;
-/* let subTaskContainerOnDisplay = false; */
 
 const initBoard = async () => {
 	await loadAllTasks();
@@ -308,4 +307,14 @@ const toggleCheckSubtask = (cardId, subtaskId) => {
 	subtaskOnDisplay = true;
 
 	console.table(allTasks[cardId].subtasks);
+};
+
+const editTask = (id) => {
+	let onDisplayOverlay = document.getElementById('board-card-overlay');
+	onDisplayOverlay.innerHTML = '';
+	onDisplayOverlay.innerHTML = generateEditTaskHtml(id);
+
+	const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
+	rendersAssignedToList(dropDownAssignedToListEditTask);
+	addCheckKeyToAllUsers();
 };

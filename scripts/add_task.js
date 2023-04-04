@@ -52,7 +52,7 @@ const initAddTask = async () => {
 	await loadAllUsers();
 	await loadLoginUserIndex();
 	renderWholeCatergoryList();
-	rendersAssignedToList();
+	rendersAssignedToList(dropDownAssignedToList);
 	addCheckKeyToAllUsers();
 	setsDatePicker();
 	dueDate = currentDate();
@@ -305,15 +305,16 @@ const addCheckKeyToAllUsers = () => {
 };
 
 const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-to');
+/* const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task'); */
 
 /**
  * ´Renders the assigned to list
  */
-const rendersAssignedToList = () => {
-	dropDownAssignedToList.innerHTML = '';
+const rendersAssignedToList = (location) => {
+	location.innerHTML = '';
 	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name);
-		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name);
+		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name, location);
+		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name, location);
 	});
 };
 
