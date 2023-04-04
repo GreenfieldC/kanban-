@@ -236,15 +236,23 @@ overlay.addEventListener('click', (e) => {
 
 /* Edit Cards */
 
+/**
+ * Opens the card on display
+ * @param {number} id
+ */
 const openCard = (id) => {
 	let ondisplayOverlay = document.getElementById('details-task-overlay');
 	ondisplayOverlay.style.display = 'flex';
-	renderCardOnDisplay(id);
 	subtaskOnDisplay = true;
+	renderCardOnDisplay(id);
 	console.log(subtaskOnDisplay);
 };
 
 let ondisplayOverlay = document.getElementById('details-task-overlay');
+/**
+ * Close the card on display
+ * @param {} e
+ */
 const closeCard = (e) => {
 	ondisplayOverlay.style.display = 'none';
 	subtaskOnDisplay = false;
@@ -290,4 +298,14 @@ const renderSubtasksOnDisplay = (cardId) => {
 	allTasks[cardId].subtasks.forEach((subtask, subtaskId) => {
 		generateSubTask(subtask.title, cardId, subtaskId, subTaskContainerOnDisplay);
 	});
+};
+
+const toggleCheckSubtask = (cardId, subtaskId) => {
+	allTasks[cardId].subtasks[subtaskId].check = !allTasks[cardId].subtasks[subtaskId].check;
+	saveAllTasks();
+	renderCardOnDisplay(cardId);
+	renderCards((subtaskOnDisplay = false));
+	subtaskOnDisplay = true;
+
+	console.table(allTasks[cardId].subtasks);
 };

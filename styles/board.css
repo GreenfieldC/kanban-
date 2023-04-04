@@ -177,7 +177,7 @@
 }
 
 .text-progress {
-	width: 97px;
+	min-width: 99px;
 }
 
 h3 {
@@ -477,7 +477,7 @@ h3 {
 	}
 
 	.text-progress {
-		width: 113px;
+		min-width: 74px;
 	}
 }
 

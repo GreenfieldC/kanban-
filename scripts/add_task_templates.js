@@ -74,13 +74,27 @@ const generateBadgesForAssignedTo = (name, color, initials) => {
 
 /*
 !===Subtasks ===*/
+/**
+ * Generates the html for the elements of subtasks list
+ * @param {string} title
+ * @param {number} cardId
+ * @param {number} subtaskId
+ * @param {string} location of the subtask (card on display, addTask)
+ */
 const generateSubTask = (title, cardId, subtaskId, location) => {
 	const html = /*html*/ `
 	<div id="${subtaskId}.subtask" class="checkbox-task-container">
-		<input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" autocomplete="off" />
-		<label class="form-check-label m-0" for="flexCheckChecked">${title}</label>
+		<input disabled="true" onclick="toggleCheckSubtask(${cardId}, ${subtaskId})" class="form-check-input" type="checkbox" value="" id="${cardId}-${subtaskId}-checkbox-subtask" autocomplete="off" />
+		<label class="form-check-label m-0" for="${cardId}-${subtaskId}-checkbox-subtask">${title}</label>
 		<img id="subtask" onclick="deleteSubtask(${cardId},${subtaskId})" src="./assets/icons/delete.png" alt="delete" class="delete-icon subtask-delete-img" />
 	</div>
 	`;
 	location.insertAdjacentHTML('beforeend', html);
+
+	let checkboxSubtask = document.getElementById(`${cardId}-${subtaskId}-checkbox-subtask`);
+	if (!subtaskOnDisplay) return;
+	if (subtaskOnDisplay) {
+		console.log('hallo here I am');
+		checkboxSubtask.disabled = false;
+	}
 };
