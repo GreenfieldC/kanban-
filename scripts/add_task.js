@@ -52,7 +52,7 @@ const initAddTask = async () => {
 	await loadAllUsers();
 	await loadLoginUserIndex();
 	renderWholeCatergoryList();
-	rendersAssignedToList(dropDownAssignedToList);
+	rendersAssignedToList(dropDownAssignedToList, 'add-task');
 	addCheckKeyToAllUsers();
 	setsDatePicker();
 	dueDate = currentDate();
@@ -285,11 +285,21 @@ const addsNewCategoryToCategoryList = () => {
 };
 
 //render badges of taskForce
-const renderBadgesAddTask = () => {
-	assignedToBadges.innerHTML = '';
-	taskForce.forEach((user) => {
-		generateBadgesForAssignedTo(user.name, user.color, user.initials);
-	});
+const renderBadgesAddTask = (taskIndex) => {
+	if (!subtaskOnDisplay) {
+		assignedToBadges.innerHTML = '';
+		taskForce.forEach((user) => {
+			generateBadgesForAssignedTo(user.name, user.color, user.initials);
+		});
+	}
+
+	if (subtaskOnDisplay) {
+		let badgesContainer = document.getElementById('taskforce-badge-container-edit-task');
+		badgesContainer.innerHTML = '';
+		allTasks[taskIndex].taskForce.forEach((user) => {
+			generateBadgesForAssignedTo(user.name, user.color, user.initials, badgesContainer);
+		});
+	}
 };
 
 /*
@@ -310,11 +320,11 @@ const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-
 /**
  * ´Renders the assigned to list
  */
-const rendersAssignedToList = (container) => {
+const rendersAssignedToList = (container, location) => {
 	container.innerHTML = '';
 	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name, container);
-		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name, container);
+		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name, container, location);
+		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name, container, location);
 	});
 };
 
@@ -323,7 +333,7 @@ const rendersAssignedToList = (container) => {
  * @param {number} id
  */
 const selectToggle = (id, location) => {
-	let checkMark = document.getElementById(`${id}.-coworker-checkbox`, `${location}`);
+	let checkMark = document.getElementById(`${id}.-coworker-checkbox-${location}`);
 	checkMark.checked = !checkMark.checked;
 	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
 
@@ -590,10 +600,11 @@ const createTask = async (workflow) => {
 	await updateTaskIndex();
 
 	saveAllTasks();
-	renderCards();
 
 	clearAddTaskFormular();
 	hideInvalidFeedback();
+	/* if (!subtaskOnDisplay || !addTaskMainSite) return; */
+	renderCards();
 };
 
 /**

@@ -221,6 +221,7 @@ const addTask = async () => {
 	await initAddTask();
 	document.getElementById('overlay').style.display = 'flex';
 	subtaskOnDisplay = false;
+	addTaskMainSite = false;
 };
 
 /* !Window Management */
@@ -309,16 +310,17 @@ const toggleCheckSubtask = (cardId, subtaskId) => {
 	console.table(allTasks[cardId].subtasks);
 };
 
-const editTask = (id) => {
+const editTask = (taskId) => {
 	let onDisplayOverlay = document.getElementById('board-card-overlay');
 	onDisplayOverlay.innerHTML = '';
-	onDisplayOverlay.innerHTML = generateEditTaskHtml(id);
+	onDisplayOverlay.innerHTML = generateEditTaskHtml(taskId);
 
 	const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
-	rendersAssignedToList(dropDownAssignedToListEditTask);
+	rendersAssignedToList(dropDownAssignedToListEditTask, 'edit-task');
 	addCheckKeyToAllUsers();
-	selectPriorityBtnEditTask(id);
-	updateCheckMarkAssignedToEditTask(id);
+	selectPriorityBtnEditTask(taskId);
+	updateCheckMarkAssignedToEditTask(taskId, 'edit-task');
+	renderBadgesAddTask(taskId);
 };
 
 /**
@@ -331,11 +333,10 @@ const selectPriorityBtnEditTask = (id) => {
 	if (allTasks[id].priority == 'low') selectPriority('edit-task', 'low', '#7ae229');
 };
 
-const updateCheckMarkAssignedToEditTask = (id) => {
-	allTasks[id].taskForce.forEach((user) => {
-		let userElement = document.getElementById(`${user.id}.-coworker-box`);
-		userElement.checked;
-		console.log(userElement);
+const updateCheckMarkAssignedToEditTask = (idTask, location) => {
+	allTasks[idTask].taskForce.forEach((user) => {
+		let userElement = document.getElementById(`${user.id}.-coworker-checkbox-${location}`);
+		userElement.checked = true;
 	});
 };
 

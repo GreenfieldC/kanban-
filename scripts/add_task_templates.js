@@ -33,11 +33,11 @@ const generatesCategoryListHtml = (id, title, color) => {
  * @param {number} id of user in allUsers json
  * @param {string} name of user
  */
-const generatesAssignedToListWithUsers = (id, name, container) => {
+const generatesAssignedToListWithUsers = (id, name, container, location) => {
 	const html = /*html*/ `
-    <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container ">
+    <div onclick="selectToggle(${id},'${location}')" id="${id}.-coworker-box" class="coworker-checkbox-container ">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check">${name}</label>
-        <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
+        <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox-${location}" />
     </div>
     `;
 	container.insertAdjacentHTML('beforeend', html);
@@ -48,11 +48,11 @@ const generatesAssignedToListWithUsers = (id, name, container) => {
  * @param {number} id of logged in user
  * @param {string} name
  */
-const generatesAssignedToListElementForLoggedInUser = (id, name, container) => {
+const generatesAssignedToListElementForLoggedInUser = (id, name, container, location) => {
 	const html = /*html*/ `
-    <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container">
+    <div onclick="selectToggle(${id},'${location}')" id="${id}.-coworker-box" class="coworker-checkbox-container">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check" title="${name}">You</label>
-        <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
+        <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox-${location}" />
     </div>
     `;
 	container.insertAdjacentHTML('afterbegin', html);
@@ -63,13 +63,14 @@ const generatesAssignedToListElementForLoggedInUser = (id, name, container) => {
  * @param {string} name
  * @param {string} color
  */
-const generateBadgesForAssignedTo = (name, color, initials) => {
+const generateBadgesForAssignedTo = (name, color, initials, location = assignedToBadges) => {
 	const html = /*html*/ `
 	<div title="${name}" class="initials-container" style="background-color: ${color}">
 		<span class="user-initials">${initials}</span>
 	</div>
 	`;
-	assignedToBadges.insertAdjacentHTML('afterbegin', html);
+	location.insertAdjacentHTML('afterbegin', html);
+	//!location missing here!!
 };
 
 /*
@@ -231,7 +232,7 @@ const generateEditTaskHtml = (cardId) => {
 							</div>
 						</div>
 						<div id="required-assigned-to" class="invalid-feedback">This is a required field</div>
-						<div id="taskforce-badge-container" class="container taskforce-badge-container"></div>
+						<div id="taskforce-badge-container-edit-task" class="container taskforce-badge-container"></div>
 					</div>
 				</div>
 			</div>
