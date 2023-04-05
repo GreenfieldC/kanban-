@@ -2,6 +2,8 @@
 
 let subtaskOnDisplay = false;
 let addTaskMainSite = true;
+let selectedTaskToEditId;
+let editTaskCard = false;
 
 let categoryList = [
 	{ title: 'Function', color: 'red' },
@@ -293,9 +295,11 @@ const renderBadgesAddTask = (taskIndex) => {
 		});
 	}
 
+	editTaskCard ? (taskIndex = selectedTaskToEditId) : null; //need to get right data
 	if (subtaskOnDisplay) {
 		let badgesContainer = document.getElementById('taskforce-badge-container-edit-task');
 		badgesContainer.innerHTML = '';
+		console.log(allTasks[taskIndex].taskForce);
 		allTasks[taskIndex].taskForce.forEach((user) => {
 			generateBadgesForAssignedTo(user.name, user.color, user.initials, badgesContainer);
 		});
@@ -337,6 +341,18 @@ const selectToggle = (id, location) => {
 	checkMark.checked = !checkMark.checked;
 	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
 
+	if (editTaskCard) {
+		if (allUsers[id].check == true) {
+			allTasks[selectedTaskToEditId].taskForce.push(userObjectForTaskForce(id));
+		}
+
+		if (allUsers[id].check == false) {
+			let index = allTasks[selectedTaskToEditId].taskForce.findIndex((user) => user.id == id);
+			if (index > -1) allTasks[selectedTaskToEditId].taskForce.splice(index, 1);
+			console.log(allTasks[selectedTaskToEditId].taskForce);
+		}
+	}
+
 	if (allUsers[id].check == true) {
 		taskForce.push(userObjectForTaskForce(id));
 	}
@@ -345,7 +361,7 @@ const selectToggle = (id, location) => {
 		let index = taskForce.findIndex((user) => user.id == id);
 		if (index > -1) taskForce.splice(index, 1);
 	}
-	console.table(taskForce);
+	console.table(subtaskOnDisplay);
 	renderBadgesAddTask();
 };
 

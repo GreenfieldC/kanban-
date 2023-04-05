@@ -11,6 +11,7 @@ const initBoard = async () => {
 
 /**
  * Renders the cards in the board
+ * Renders the cards in the board
  */
 const renderCards = () => {
 	renderCardsOf('todo', 'todo');
@@ -218,6 +219,8 @@ const descriptionNotFound = (description, filter) => {
 /* Add Task In Board */
 
 const addTask = async () => {
+	clearRequiredValues();
+	hideInvalidFeedback();
 	await initAddTask();
 	document.getElementById('overlay').style.display = 'flex';
 	subtaskOnDisplay = false;
@@ -262,7 +265,12 @@ const closeCard = (e) => {
  * Closes the card if the user clicks outside the card
  */
 ondisplayOverlay.addEventListener('click', (e) => {
-	if (e.target.id === 'details-task-overlay') closeCard();
+	if (e.target.id === 'details-task-overlay') {
+		closeCard();
+		editTaskCard = false;
+		subtaskOnDisplay = false;
+		console.log('editTaskCard', editTaskCard);
+	}
 });
 
 /**
@@ -321,6 +329,8 @@ const editTask = (taskId) => {
 	selectPriorityBtnEditTask(taskId);
 	updateCheckMarkAssignedToEditTask(taskId, 'edit-task');
 	renderBadgesAddTask(taskId);
+	selectedTaskToEditId = taskId;
+	editTaskCard = true;
 };
 
 /**
