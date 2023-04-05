@@ -123,8 +123,8 @@ const addCheckMark = (cardId, subtaskId, checkboxSubtask) => {
 const generateEditTaskHtml = (cardId) => {
 	return /*html*/ `
 	<form novalidate>
-			<div class="add-task-container">
-				<div class="add-task-top">
+			<div class="add-task-container add-task-container-edit-task">
+				<div class="add-task-top add-task-top-edit-task">
 					<!-- Enter title -->
 					<div class="form-group">
 						<label for="formGroupExampleInput">Title</label>
@@ -140,7 +140,7 @@ const generateEditTaskHtml = (cardId) => {
 					</div>
 				</div>
 
-				<div class="add-task-bottom">
+				<div class="add-task-bottom add-task-bottom-edit-task">
 					<!-- Due date -->
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Due date</label>
@@ -206,9 +206,9 @@ const generateEditTaskHtml = (cardId) => {
 						<label for="exampleFormControlSelect1">Assigned To</label>
 						<div class="input-container dropdown">
 							<div class="outer-input-btn-container">
-								<input id="assign-input" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select contacts to assign" disabled />
+								<input id="assign-input-edit-task" class="form-control assign-input dropdown-toggle" type="text" placeholder="Select contacts to assign" disabled />
 								<div class="input-btn-container">
-									<div id="assigned-drop-down" class="add-subtaks-plus">
+									<div onclick="toggleAssignedToDropDown()" class="add-subtaks-plus">
 										<img src="./assets/icons/drop-down-btn.png" alt="add a subtask" />
 									</div>
 									<div id="cancel-confirm-subtask" class="cancel-confirm-subtask">

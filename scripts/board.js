@@ -318,3 +318,13 @@ const editTask = (id) => {
 	rendersAssignedToList(dropDownAssignedToListEditTask);
 	addCheckKeyToAllUsers();
 };
+
+/**
+ * Toggle for the drop down list of the assigned to in 'Edit Task' section
+ */
+const toggleAssignedToDropDown = () => {
+	let dropDownAssignedToEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
+	let inputAssignedToEditTask = document.getElementById('assign-input-edit-task');
+	dropDownAssignedToEditTask.classList.toggle('d-block');
+	inputAssignedToEditTask.classList.toggle('input-toggle');
+};

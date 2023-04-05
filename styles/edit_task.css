@@ -22,17 +22,17 @@
 } */
 
 @media screen and (min-width: 1025px) {
-	.add-task-container {
+	.add-task-container-edit-task {
 		display: flex;
 		flex-direction: column;
 	}
 
-	.add-task-bottom {
+	.add-task-bottom-edit-task {
 		margin-left: unset;
 	}
 
-	.add-task-top,
-	.add-task-bottom {
+	.add-task-top-edit-task,
+	.add-task-bottom-edit-task {
 		gap: 14px;
 		width: 100% !important;
 	}
