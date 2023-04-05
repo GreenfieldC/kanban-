@@ -310,11 +310,11 @@ const dropDownAssignedToList = document.getElementById('drop-down-list-assigned-
 /**
  * ´Renders the assigned to list
  */
-const rendersAssignedToList = (location) => {
-	location.innerHTML = '';
+const rendersAssignedToList = (container) => {
+	container.innerHTML = '';
 	allUsers.forEach((user, id) => {
-		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name, location);
-		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name, location);
+		if (id != logInUserIndex) generatesAssignedToListWithUsers(id, user.name, container);
+		if (id == logInUserIndex) generatesAssignedToListElementForLoggedInUser(id, user.name, container);
 	});
 };
 
@@ -322,8 +322,8 @@ const rendersAssignedToList = (location) => {
  * Toggles the checkmark on and off of checkmark in assigned to list
  * @param {number} id
  */
-const selectToggle = (id) => {
-	let checkMark = document.getElementById(`${id}.-coworker-checkbox`);
+const selectToggle = (id, location) => {
+	let checkMark = document.getElementById(`${id}.-coworker-checkbox`, `${location}`);
 	checkMark.checked = !checkMark.checked;
 	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
 
@@ -391,24 +391,24 @@ const resetDueDateToToday = () => {
  * @param {string} priority
  * @param {string} color
  */
-const selectPriority = (priority, color) => {
-	resetColorAllPriorityBtns();
-	visuallySelectPriority(priority, color);
+const selectPriority = (location, priority, color) => {
+	resetColorAllPriorityBtns(location);
+	visuallySelectPriority(location, priority, color);
 	taskPriority = priority;
 };
 
 /**
  * Resets the color of all priority buttons
  */
-const resetColorAllPriorityBtns = () => {
+const resetColorAllPriorityBtns = (location) => {
 	let btns = ['urgent', 'medium', 'low'];
 	btns.forEach((btn) => {
-		const prioBtn = document.getElementById(`select-${btn}`);
+		const prioBtn = document.getElementById(`select-${btn}-${location}`);
 		prioBtn.style.backgroundColor = '';
 		prioBtn.style.boxShadow = '';
-		const text = document.getElementById(`${btn}-text`);
+		const text = document.getElementById(`${btn}-text-${location}`);
 		text.style.color = '';
-		const svg = document.getElementById(`${btn}-svg`);
+		const svg = document.getElementById(`${btn}-svg-${location}`);
 		svg.style.color = '';
 	});
 };
@@ -418,13 +418,13 @@ const resetColorAllPriorityBtns = () => {
  * @param {string} priority
  * @param {string} color
  */
-const visuallySelectPriority = (priority, color) => {
-	const btn = document.getElementById(`select-${priority}`);
+const visuallySelectPriority = (location, priority, color) => {
+	const btn = document.getElementById(`select-${priority}-${location}`);
 	btn.style.backgroundColor = color;
 	btn.style.boxShadow = '0px 4px 4px rgba(0, 0, 0, 0.25)';
-	const text = document.getElementById(`${priority}-text`);
+	const text = document.getElementById(`${priority}-text-${location}`);
 	text.style.color = '#ffffff';
-	const svg = document.getElementById(`${priority}-svg`);
+	const svg = document.getElementById(`${priority}-svg-${location}`);
 	svg.style.color = '#ffffff';
 };
 
@@ -523,7 +523,7 @@ const clearAddTaskFormular = () => {
 	cancelNewCategory();
 	removeCheckMarksFromAssignedTo();
 	addCheckKeyToAllUsers();
-	resetColorAllPriorityBtns();
+	resetColorAllPriorityBtns('add-task');
 	resetDueDateToToday();
 	dueDate = currentDate();
 	hideInvalidFeedback();

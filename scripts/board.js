@@ -317,6 +317,26 @@ const editTask = (id) => {
 	const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
 	rendersAssignedToList(dropDownAssignedToListEditTask);
 	addCheckKeyToAllUsers();
+	selectPriorityBtnEditTask(id);
+	updateCheckMarkAssignedToEditTask(id);
+};
+
+/**
+ * Selects the priority button in 'Edit Task' section visually
+ * @param {number} id of the task
+ */
+const selectPriorityBtnEditTask = (id) => {
+	if (allTasks[id].priority == 'urgent') selectPriority('edit-task', 'urgent', '#ff3d00');
+	if (allTasks[id].priority == 'medium') selectPriority('edit-task', 'medium', '#ffa800');
+	if (allTasks[id].priority == 'low') selectPriority('edit-task', 'low', '#7ae229');
+};
+
+const updateCheckMarkAssignedToEditTask = (id) => {
+	allTasks[id].taskForce.forEach((user) => {
+		let userElement = document.getElementById(`${user.id}.-coworker-box`);
+		userElement.checked;
+		console.log(userElement);
+	});
 };
 
 /**

@@ -33,14 +33,14 @@ const generatesCategoryListHtml = (id, title, color) => {
  * @param {number} id of user in allUsers json
  * @param {string} name of user
  */
-const generatesAssignedToListWithUsers = (id, name, location) => {
+const generatesAssignedToListWithUsers = (id, name, container) => {
 	const html = /*html*/ `
     <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container ">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check">${name}</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
     </div>
     `;
-	location.insertAdjacentHTML('beforeend', html);
+	container.insertAdjacentHTML('beforeend', html);
 };
 
 /**
@@ -48,14 +48,14 @@ const generatesAssignedToListWithUsers = (id, name, location) => {
  * @param {number} id of logged in user
  * @param {string} name
  */
-const generatesAssignedToListElementForLoggedInUser = (id, name, location) => {
+const generatesAssignedToListElementForLoggedInUser = (id, name, container) => {
 	const html = /*html*/ `
     <div onclick="selectToggle(${id})" id="${id}.-coworker-box" class="coworker-checkbox-container">
         <label id="coworker-name" class="form-check-label m-0" for="${id}.-coworker-check" title="${name}">You</label>
         <input class="form-check-input checkbox" type="checkbox" value="" id="${id}.-coworker-checkbox" />
     </div>
     `;
-	location.insertAdjacentHTML('afterbegin', html);
+	container.insertAdjacentHTML('afterbegin', html);
 };
 
 /**
@@ -152,10 +152,10 @@ const generateEditTaskHtml = (cardId) => {
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Prio</label>
 						<div class="container prio-btns-container p-0">
-							<button onclick="selectPriority('urgent', '#ff3d00')" id="select-urgent" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','urgent', '#ff3d00')" id="select-urgent-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
-									<span id="urgent-text" class="prio-text">Urgent</span>
-									<svg id="urgent-svg" class="urgent-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<span id="urgent-text-edit-task" class="prio-text">Urgent</span>
+									<svg id="urgent-svg-edit-task" class="urgent-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
 											d="M19.4043 14.755C19.1696 14.7554 18.9411 14.6805 18.7522 14.5414L10.5001 8.45824L2.24809 14.5414C2.13224 14.627 2.00066 14.6889 1.86086 14.7237C1.72106 14.7584 1.57577 14.7653 1.43331 14.7439C1.29084 14.7226 1.15397 14.6734 1.03053 14.5992C0.907083 14.525 0.799474 14.4272 0.713845 14.3114C0.628216 14.1957 0.566244 14.0642 0.531467 13.9245C0.49669 13.7848 0.48979 13.6396 0.51116 13.4973C0.554319 13.2097 0.71001 12.9511 0.943982 12.7783L9.84809 6.20786C10.0368 6.06826 10.2654 5.99292 10.5001 5.99292C10.7349 5.99292 10.9635 6.06826 11.1522 6.20786L20.0563 12.7783C20.2422 12.9153 20.3801 13.1074 20.4503 13.3272C20.5204 13.5471 20.5193 13.7835 20.4469 14.0027C20.3746 14.2219 20.2349 14.4126 20.0476 14.5477C19.8604 14.6828 19.6352 14.7554 19.4043 14.755Z"
 											fill="currentColor"
@@ -167,10 +167,10 @@ const generateEditTaskHtml = (cardId) => {
 									</svg>
 								</div>
 							</button>
-							<button onclick="selectPriority('medium', '#ffa800')" id="select-medium" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','medium', '#ffa800')" id="select-medium-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
-									<span id="medium-text" class="prio-text">Medium</span>
-									<svg id="medium-svg" class="medium-svg" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<span id="medium-text-edit-task" class="prio-text">Medium</span>
+									<svg id="medium-svg-edit-task" class="medium-svg" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
 											d="M18.9041 8.22552H1.09589C0.805242 8.22552 0.526498 8.10922 0.320979 7.90221C0.11546 7.6952 0 7.41443 0 7.12167C0 6.82891 0.11546 6.54814 0.320979 6.34113C0.526498 6.13412 0.805242 6.01782 1.09589 6.01782H18.9041C19.1948 6.01782 19.4735 6.13412 19.679 6.34113C19.8845 6.54814 20 6.82891 20 7.12167C20 7.41443 19.8845 7.6952 19.679 7.90221C19.4735 8.10922 19.1948 8.22552 18.9041 8.22552Z"
 											fill="currentColor"
@@ -182,10 +182,10 @@ const generateEditTaskHtml = (cardId) => {
 									</svg>
 								</div>
 							</button>
-							<button onclick="selectPriority('low','#7ae229')" id="select-low" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','low','#7ae229')" id="select-low-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
-									<span id="low-text" class="prio-text">Low</span>
-									<svg id="low-svg" class="low-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<span id="low-text-edit-task" class="prio-text">Low</span>
+									<svg id="low-svg-edit-task" class="low-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path
 											d="M10.5 9.00614C10.2654 9.00654 10.0369 8.9317 9.84802 8.79262L0.944913 2.22288C0.829075 2.13733 0.731235 2.02981 0.65698 1.90647C0.582724 1.78313 0.533508 1.64638 0.51214 1.50404C0.468986 1.21655 0.541885 0.923717 0.714802 0.689945C0.887718 0.456173 1.14649 0.300615 1.43418 0.257493C1.72188 0.21437 2.01493 0.287216 2.24888 0.460004L10.5 6.54248L18.7511 0.460004C18.867 0.374448 18.9985 0.312529 19.1383 0.277782C19.2781 0.243035 19.4234 0.236141 19.5658 0.257493C19.7083 0.278844 19.8451 0.328025 19.9685 0.402225C20.092 0.476425 20.1996 0.574193 20.2852 0.689945C20.3708 0.805697 20.4328 0.937168 20.4676 1.07685C20.5023 1.21653 20.5092 1.36169 20.4879 1.50404C20.4665 1.64638 20.4173 1.78313 20.343 1.90647C20.2688 2.02981 20.1709 2.13733 20.0551 2.22288L11.152 8.79262C10.9631 8.9317 10.7346 9.00654 10.5 9.00614Z"
 											fill="currentColor"

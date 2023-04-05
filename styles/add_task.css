@@ -186,32 +186,32 @@ label {
 	background-color: white;
 }
 
-#select-urgent svg {
+#select-urgent-add-task svg {
 	color: #ff3d00;
 }
-#select-medium svg {
+#select-medium-add-task svg {
 	color: #ffa800;
 }
-#select-low svg {
+#select-low-add-task svg {
 	color: #7ae229;
 }
 
-#select-urgent:active,
-#select-urgent:hover {
+#select-urgent-add-task:active,
+#select-urgent-add-task:hover {
 	background-color: #ff3d00 !important;
 }
-#select-medium:active,
-#select-medium:hover {
+#select-medium-add-task:active,
+#select-medium-add-task:hover {
 	background-color: #ffa800 !important;
 }
-#select-low:active,
-#select-low:hover {
+#select-low-add-task:active,
+#select-low-add-task:hover {
 	background-color: #7ae229 !important;
 }
 
-#select-urgent:hover .urgent-svg,
-#select-medium:hover .medium-svg,
-#select-low:hover .low-svg {
+#select-urgent-add-task:hover .urgent-svg,
+#select-medium-add-task:hover .medium-svg,
+#select-low-add-task:hover .low-svg {
 	color: white !important;
 }
 
