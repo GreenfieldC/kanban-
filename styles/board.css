@@ -260,16 +260,73 @@ h3 {
 
 /* Card on display in overlay */
 
-.edit-btn-on-display {
+.btn-container-card-on-display {
+	display: flex;
 	position: absolute;
 	bottom: 8px;
 	right: 8px;
+	gap: 15px;
+	z-index: 12 !important;
+}
+
+.on-display-btns {
+	display: flex;
+
+	gap: 15px;
+}
+.edit-btn-on-display {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	width: 50px;
 	height: 50px;
-	z-index: 12 !important;
+}
+
+.delete-btn-on-display {
+	position: relative;
+}
+
+.delete-window-on-display {
+	position: absolute;
+	width: 135px;
+	top: -108px;
+	right: -130px;
+	padding: 12px 0px;
+	border-radius: 10px;
+	background-color: var(--dark-blue);
+}
+
+.change-workflow-container {
+	position: absolute;
+	width: 135px;
+	top: -156px;
+	right: 0px;
+	padding: 12px 0px;
+	border-radius: 10px;
+	background-color: var(--dark-blue);
+}
+
+.workflow-change-hover:hover {
+	background-color: var(--light-blue);
+}
+
+.workflow-status-btn-active {
+	background-color: var(--light-blue);
+}
+
+.ok-btn {
+	/* display: none; */
+	gap: 10px;
+	width: 85px;
+}
+
+.delete-bin {
+	width: 40px;
+	height: 40px;
+}
+
+.question-delete-hover:hover {
+	background-color: var(--light-blue);
 }
 
 .card-overlay {
@@ -278,7 +335,7 @@ h3 {
 	border-radius: unset !important;
 	width: 100vw;
 	height: calc(100vh - 140px) !important;
-	padding-top: 60px;
+	padding-top: 20px;
 	padding-bottom: unset;
 	overflow: hidden scroll;
 }
@@ -310,10 +367,12 @@ h3 {
 .task-description-card-overlay {
 	color: black;
 }
+
 .date-priority-assigned-container-overlay {
 	display: flex;
 	flex-direction: column;
 	gap: 30px;
+	padding-bottom: 48px;
 }
 
 .due-date-container-overlay {
@@ -361,8 +420,29 @@ h3 {
 	gap: 25px;
 }
 
+.close-btn-card-on-display {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	height: 16px;
+	width: 16px;
+	z-index: 11;
+	cursor: pointer;
+}
+
 @media screen and (min-width: 400px) {
+	/* .card-overlay {
+		padding-right: 48px;
+		padding-left: 48px;
+		border-radius: 30px !important;
+		min-width: 480px !important;
+		max-width: 480px;
+	} */
+}
+
+@media screen and (min-width: 480px) {
 	.card-overlay {
+		padding-top: 48px;
 		padding-right: 48px;
 		padding-left: 48px;
 		border-radius: 30px !important;
@@ -370,15 +450,20 @@ h3 {
 		max-width: 480px;
 	}
 
-	.edit-btn-on-display {
+	.addtask-add-task-bottom__button-container {
+		top: unset;
+	}
+
+	.btn-container-card-on-display {
 		bottom: 50px;
 		right: 50px;
 	}
-}
 
-@media screen and (min-width: 480px) {
-	.addtask-add-task-bottom__button-container {
-		top: unset;
+	.close-btn-card-on-display {
+		position: absolute;
+		top: 48px;
+		right: 48px;
+		z-index: 11;
 	}
 }
 

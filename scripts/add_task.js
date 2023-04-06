@@ -417,10 +417,13 @@ const resetDueDateToToday = () => {
  * @param {string} priority
  * @param {string} color
  */
-const selectPriority = (location, priority, color) => {
+const selectPriority = (location, priority, color, cardId) => {
 	resetColorAllPriorityBtns(location);
 	visuallySelectPriority(location, priority, color);
 	taskPriority = priority;
+
+	if (cardId == undefined) return;
+	if (subtaskOnDisplay) allTasks[cardId].priority = priority;
 };
 
 /**

@@ -129,14 +129,14 @@ const generateEditTaskHtml = (cardId) => {
 					<!-- Enter title -->
 					<div class="form-group">
 						<label for="formGroupExampleInput">Title</label>
-						<input value="${allTasks[cardId].title}" type="text" class="form-control" id="add-task-title" placeholder="Enter a title" autocomplete="off" />
+						<input value="${allTasks[cardId].title}" type="text" class="form-control" id="edit-task-title" placeholder="Enter a title" autocomplete="off" />
 						<div id="required-title" class="invalid-feedback">This is a required field</div>
 					</div>
 
 					<!-- Enter a Description -->
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Description</label>
-						<textarea class="form-control" id="add-task-description" rows="3" placeholder="Enter a description">${allTasks[cardId].description}</textarea>
+						<textarea class="form-control" id="edit-task-description" rows="3" placeholder="Enter a description">${allTasks[cardId].description}</textarea>
 						<div id="required-description" class="invalid-feedback">This is a required field</div>
 					</div>
 				</div>
@@ -145,7 +145,7 @@ const generateEditTaskHtml = (cardId) => {
 					<!-- Due date -->
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Due date</label>
-						<input value="${allTasks[cardId].dueDate}" id="due-date-add-task-input-edit" min="2023-01-01" class="form-control" type="date" name="date" />
+						<input value="${allTasks[cardId].dueDate}" id="due-date-edit-task-input" min="2023-01-01" class="form-control" type="date" name="date" />
 						<div id="required-dueDate" class="invalid-feedback">This is a required field</div>
 					</div>
 
@@ -153,7 +153,7 @@ const generateEditTaskHtml = (cardId) => {
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Prio</label>
 						<div class="container prio-btns-container p-0">
-							<button onclick="selectPriority('edit-task','urgent', '#ff3d00')" id="select-urgent-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','urgent', '#ff3d00', ${cardId})" id="select-urgent-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
 									<span id="urgent-text-edit-task" class="prio-text">Urgent</span>
 									<svg id="urgent-svg-edit-task" class="urgent-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +168,7 @@ const generateEditTaskHtml = (cardId) => {
 									</svg>
 								</div>
 							</button>
-							<button onclick="selectPriority('edit-task','medium', '#ffa800')" id="select-medium-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','medium', '#ffa800', ${cardId})" id="select-medium-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
 									<span id="medium-text-edit-task" class="prio-text">Medium</span>
 									<svg id="medium-svg-edit-task" class="medium-svg" width="20" height="9" viewBox="0 0 20 9" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -183,7 +183,7 @@ const generateEditTaskHtml = (cardId) => {
 									</svg>
 								</div>
 							</button>
-							<button onclick="selectPriority('edit-task','low','#7ae229')" id="select-low-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
+							<button onclick="selectPriority('edit-task','low','#7ae229', ${cardId})" id="select-low-edit-task" type="button" class="btn btn-outline-secondary even-width prio-btn">
 								<div class="inner-btn-container">
 									<span id="low-text-edit-task" class="prio-text">Low</span>
 									<svg id="low-svg-edit-task" class="low-svg" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">

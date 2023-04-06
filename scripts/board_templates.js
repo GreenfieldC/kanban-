@@ -94,19 +94,53 @@ const truncateString = (str, maxlength) => {
 const generateCardOnDisplayHtml = (id) => {
 	return /*html*/ `
 	<div class="position-relative">
-		<div onclick="editTask(${id})" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
-			<img src="./assets/icons/pen_white.png" />
+		<img class="close-btn-card-on-display" onclick="closeCard()" src="./assets/icons/cancel.png" title="close card" alt="" />
+		
+		<div class="btn-container-card-on-display">
+		
+			<div onclick="saveEditedTask(${id})" title="save" id="ok-btn-on-display" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display ok-btn d-none">
+				<span>Save</span>
+				<img src="./assets/icons/checkmark_addTask.png" />
+			</div>
+
+			<div id="on-display-btns" class="on-display-btns">
+				<div onclick="openDeleteWindow(), closeChangeWorkflowStatus(event)" title="delete" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display delete-btn-on-display">
+					<img class="delete-bin" src="./assets/icons/delete_bin.png" />
+					<div class="delete-window-on-display d-none" id="delete-question-container">
+						<div class="delete-window-on-display-text">Delete Task?</div>
+						<div class="delete-window-on-display-btns">
+							<div onclick="deleteTask(${id})" class="delete-window-on-display-btns-delete question-delete-hover" title="delete">Delete</div>
+							<div onclick="closeDeleteWindow(event)" class="delete-window-on-display-btns-cancel question-delete-hover" title="cancel">Cancel</div>
+						</div>
+					</div>
+				</div>
+
+				<div onclick="openChangeWorkflowStatus(${id})" title="change workflow status" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+					<img src="./assets/icons/checkmark_addTask.png" />
+					<div class="change-workflow-container d-none" id="change-workflow-container">
+						<div id="todo-workflow-btn" onclick="changeWorkflowStatus(${id},'todo')" title="move to to do" class="workflow-change-hover">to do</div>
+						<div id="in-progress-workflow-btn" onclick="changeWorkflowStatus(${id},'in-progress')" title="move to in progress" class="workflow-change-hover">in progress</div>
+						<div id="awaiting-feedback-workflow-btn" onclick="changeWorkflowStatus(${id},'awaiting-feedback')" title="move to awaiting feedback" class="workflow-change-hover">awaiting feedback</div>
+						<div id="done-workflow-btn" onclick="changeWorkflowStatus(${id},'done')" title="move to done" class="workflow-change-hover">done</div>
+						
+					</div>
+				</div>
+
+				<div title="edit task" onclick="editTask(${id});showRightBtnsOnDisplay('ok-btn-on-display')" id="" type="button" class="btn btn-primary btn-ordinary edit-btn-on-display">
+					<img src="./assets/icons/pen_white.png" />
+				</div>
+			</div>
+			
 		</div>
 		<div id="board-card-overlay" class="card card-overlay">
 			<div class="heading-card-overlay">
 				<div style="background-color: ${allTasks[id].color};" class="colored-category-container">${allTasks[id].category}</div>
-				<img onclick="closeCard()" src="./assets/icons/back_logo_black.png" title="close card" alt="" />
 			</div>
 			<div class="card-body card-body-board">
 				<h5 class="card-title card-title-overlay">${allTasks[id].title}</h5>
 				<p class="card-text task-description-card task-description-card-overlay">${allTasks[id].description}</p>
 
-				<div class="date-priority-assigned-container-overlay">
+				<div onclick="closeDeleteWindow(event); closeChangeWorkflowStatus(event)" class="date-priority-assigned-container-overlay">
 					<div class="due-date-container-overlay">
 						<span class="due-date-text">Due date:</span>
 						<span class="due-date-numbers">${allTasks[id].dueDate}</span>
