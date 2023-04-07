@@ -44,7 +44,7 @@ const generateLettersStructureHTML = (letter) => {
  * @param {number} phone
  * @returns {string} HTML for contact on display (right of contact list/ on popup)
  */
-const generateContactOnDisplayHtml = (color, initials, name, email, phone) => {
+const generateContactOnDisplayHtml = (id, color, initials, name, email, phone) => {
 	return /*html*/ `
 	<div class="container-bagdge-name-add-task">
 		<div class="initials-container initals-in-details-section" style="background-color:${color};">
@@ -54,6 +54,7 @@ const generateContactOnDisplayHtml = (color, initials, name, email, phone) => {
 			<span id="details-name" class="details-name">${name}</span>
 			<div onclick="addTask('add-task-overlay',workflow='todo')" class="container-add-task-img-text">
 				<span id="add-task-btn" class="add-Task-in-contacts">&plus; Add Task</span>
+				<span onclick="deleteContact(${id},event)" id="add-task-btn" class="add-Task-in-contacts">&minus; Delete contact</span>
 			</div>
 		</div>
 	</div>

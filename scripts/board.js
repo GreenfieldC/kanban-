@@ -7,6 +7,10 @@ const initBoard = async () => {
 	await loadAllTasks();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	renderCards();
+	/* 	subtaskOnDisplay = true;
+	addTaskMainSite = true; */
+	console.log('subtaskOnDisplay', subtaskOnDisplay);
+	console.log('addTaskMainSite', addTaskMainSite);
 };
 
 /**
@@ -248,6 +252,7 @@ const openCard = (id) => {
 	let ondisplayOverlay = document.getElementById('details-task-overlay');
 	ondisplayOverlay.style.display = 'flex';
 	subtaskOnDisplay = true;
+	/* addTaskMainSite = true; */
 	renderCardOnDisplay(id);
 	console.log(subtaskOnDisplay);
 };

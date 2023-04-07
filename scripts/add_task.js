@@ -517,8 +517,6 @@ const renderNewSubTasks = () => {
  * @param {number} id
  */
 const deleteSubtask = async (cardId, subtaskId) => {
-	console.log('cardId', cardId);
-	console.log('subtaskId', subtaskId);
 	if (!subtaskOnDisplay) {
 		console.log('subtaskOnDisplay', subtaskOnDisplay);
 		subtasks.splice(subtaskId, 1);
@@ -625,6 +623,8 @@ const createTask = async (workflow) => {
 
 	clearAddTaskFormular();
 	hideInvalidFeedback();
+	console.log(subtaskOnDisplay, 'subtaskOnDisplay');
+	console.log(addTaskMainSite, 'addTaskMainSite');
 	/* if (!subtaskOnDisplay || !addTaskMainSite) return; */
 	renderCards();
 };

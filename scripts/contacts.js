@@ -88,7 +88,7 @@ const showContact = (id) => {
 	const name = allUsers[id].name;
 	const email = allUsers[id].email;
 	const phone = allUsers[id].phone;
-	renderContactOnDisplay(color, initials, name, email, phone);
+	renderContactOnDisplay(id, color, initials, name, email, phone);
 	overlayDetails.style.display = 'block';
 };
 
@@ -100,8 +100,8 @@ const showContact = (id) => {
  * @param {string} email
  * @param {number} phone
  */
-const renderContactOnDisplay = (color, initials, name, email, phone) => {
-	const contactOnDisplayHtml = generateContactOnDisplayHtml(color, initials, name, email, phone);
+const renderContactOnDisplay = (id, color, initials, name, email, phone) => {
+	const contactOnDisplayHtml = generateContactOnDisplayHtml(id, color, initials, name, email, phone);
 	document.getElementById('contact-on-display').innerHTML = contactOnDisplayHtml;
 };
 
@@ -200,4 +200,14 @@ const getInputValuesForNewContact = () => {
 		phone: phone,
 	};
 	return newContact;
+};
+
+const deleteContact = (id, event) => {
+	event.stopPropagation();
+	if (id === logInUserIndex) alert('You can not delete yourself!');
+	document.getElementById('contact-on-display').innerHTML = '';
+	allUsers.splice(id, 1);
+	clearAlphabetObj();
+	sortUsers();
+	renderContactListExistingContacts();
 };

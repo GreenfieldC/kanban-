@@ -234,6 +234,13 @@ h1 {
 	font-weight: 500px;
 }
 
+.container-add-task-img-text {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 10px;
+}
+
 .add-Task-in-contacts {
 	color: var(--font-blue);
 	cursor: pointer;
