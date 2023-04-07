@@ -206,8 +206,10 @@ const deleteContact = (id, event) => {
 	event.stopPropagation();
 	if (id === logInUserIndex) alert('You can not delete yourself!');
 	document.getElementById('contact-on-display').innerHTML = '';
+	document.getElementById('contact-list').innerHTML = '';
 	allUsers.splice(id, 1);
 	clearAlphabetObj();
 	sortUsers();
 	renderContactListExistingContacts();
+	saveAllUsers();
 };
