@@ -412,7 +412,7 @@
 								<input id="search" type="search" placeholder="Find task" class="search-input" oninput="search(event)" autocomplete="off" />
 								<img class="search-icon" src="./assets/icons/magnify-glass.png" alt="magnifying glass" />
 							</div>
-							<button title="add task in todo column" onclick="addTask(workflow='todo')" type="button" class="btn btn-primary btn-ordinary new-task-board-btn">
+							<button title="add task in todo column" onclick="addTask('overlay',workflow='todo')" type="button" class="btn btn-primary btn-ordinary new-task-board-btn">
 								<span class="btn-name btn-add-task-text">Add task</span>
 								<img src="./assets/icons/plus_white.png" alt="" />
 							</button>
@@ -426,7 +426,7 @@
 							<div class="inner-container-canban">
 								<div class="heading-workflow">
 									<h3>To Do</h3>
-									<div title="add task in todo column" onclick="addTask(workflow='todo')" class="add-task-canban-container">
+									<div title="add task in todo column" onclick="addTask('overlay',workflow='todo')" class="add-task-canban-container">
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
@@ -439,7 +439,7 @@
 								<div class="heading-workflow">
 									<h3>In progress</h3>
 									<div class="add-task-canban-container">
-										<img title="add task in in-progress column" onclick="addTask(workflow='in-progress')" src="./assets/icons/plus_blue.png" alt="add task" />
+										<img title="add task in in-progress column" onclick="addTask('overlay',workflow='in-progress')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
 								<div id="in-progress" class="cards-container" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)"></div>
@@ -451,7 +451,7 @@
 								<div class="heading-workflow">
 									<h3>Awaiting feedback</h3>
 									<div class="add-task-canban-container">
-										<img title="add task in awaiting-feedback column" onclick="addTask(workflow='awaiting-feedback')" src="./assets/icons/plus_blue.png" alt="add task" />
+										<img title="add task in awaiting-feedback column" onclick="addTask('overlay',workflow='awaiting-feedback')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
 								<div id="awaiting-feedback" class="cards-container" ondrop="moveTo('awaiting-feedback')" ondragover="allowDrop(event)"></div>
@@ -463,7 +463,7 @@
 								<div class="heading-workflow">
 									<h3>Done</h3>
 									<div class="add-task-canban-container">
-										<img title="add task in done column" onclick="addTask(workflow='done')" src="./assets/icons/plus_blue.png" alt="add task" />
+										<img title="add task in done column" onclick="addTask('overlay',workflow='done')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
 								<div id="done" class="cards-container" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>

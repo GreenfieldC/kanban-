@@ -218,14 +218,14 @@ const descriptionNotFound = (description, filter) => {
 
 /* Add Task In Board */
 
-const addTask = async () => {
+/* const addTask = async () => {
 	clearRequiredValues();
 	hideInvalidFeedback();
 	await initAddTask();
 	document.getElementById('overlay').style.display = 'flex';
 	subtaskOnDisplay = false;
 	addTaskMainSite = false;
-};
+}; */
 
 /* !Window Management */
 

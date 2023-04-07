@@ -16,6 +16,12 @@ for (let i = 65; i <= 90; i++) {
  */
 const initContacts = async () => {
 	await loadAllUsers();
+	/* renderWholeCatergoryList();
+	rendersAssignedToList(dropDownAssignedToList, 'add-task');
+	addCheckKeyToAllUsers();
+	setsDatePicker();
+	dueDate = currentDate();
+	loadAllTasks(); */
 	/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 	sortUsers();
 	renderContactListExistingContacts();
@@ -151,3 +157,13 @@ overlayDetails.addEventListener('click', () => {
 
 const contactDetailsCard = document.getElementById('contact-details-card');
 contactDetailsCard.addEventListener('click', (e) => e.stopPropagation());
+
+const closeAddTaskInContacts = () => {
+	document.getElementById('add-task-overlay').style.display = 'none';
+	clearRequiredValues();
+};
+
+let addTaskOverlay = document.getElementById('add-task-overlay');
+addTaskOverlay.addEventListener('click', (e) => {
+	if (e.target.id === 'add-task-overlay') closeAddTaskInContacts();
+});

@@ -217,3 +217,12 @@ const includeHTML = async () => {
 		}
 	}
 };
+
+const addTask = async (container) => {
+	clearRequiredValues();
+	hideInvalidFeedback();
+	await initAddTask();
+	document.getElementById(container).style.display = 'flex';
+	subtaskOnDisplay = false;
+	addTaskMainSite = false;
+};

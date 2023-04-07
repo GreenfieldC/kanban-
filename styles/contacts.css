@@ -1,3 +1,52 @@
+.add-task-overlay {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	top: 85px;
+}
+
+.add-task-container-board {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+
+	width: 100vw;
+
+	height: 100%;
+	background-color: var(--background-grey);
+
+	padding: 32px;
+	padding-bottom: 0px;
+	/* padding-top: 64px; */
+	overflow: scroll;
+}
+
+.heading-board-overlay {
+	display: flex;
+	justify-content: space-between !important;
+	flex-direction: row !important;
+	width: 100% !important;
+}
+
+.heading-container::after {
+	display: none;
+}
+
+.create-add-task-btn-contacts {
+	position: absolute;
+	top: 0;
+	right: 0;
+	top: -89;
+	top: -85px;
+}
+
+.add-task-container {
+	height: calc(100vh - 186px);
+	overflow-y: scroll;
+	padding-bottom: 24px;
+}
+
+/* Contact List */
 .card {
 	position: relative;
 	width: 100vw !important;
@@ -265,6 +314,11 @@ h1 {
 	.card-contact-list:hover .user-name {
 		border-radius: 0.75rem;
 	}
+
+	/* Add Task Section */
+	.create-add-task-btn-contacts {
+		position: unset;
+	}
 }
 
 @media screen and (min-width: 575px) {
@@ -365,6 +419,40 @@ h1 {
 		box-shadow: unset;
 		border-radius: unset;
 		z-index: unset;
+	}
+}
+@media screen and (min-width: 1025px) {
+	.add-task-overlay {
+		top: 0;
+	}
+
+	.add-task-container-board {
+		width: unset;
+		min-width: 1024px;
+		max-width: 1100px;
+		height: 760px;
+	}
+
+	.add-task-container {
+		padding-top: 24px;
+		margin-bottom: unset !important;
+		height: 100% !important;
+	}
+
+	.heading-board-overlay {
+		margin-bottom: unset !important;
+		max-width: 844px;
+	}
+
+	.add-task-container-board {
+		align-items: center;
+		justify-content: flex-start;
+		min-width: 1024px;
+		max-width: 1100px;
+		height: 760px;
+		height: calc(100vh -142px);
+		border-radius: 30px;
+		background-color: white;
 	}
 }
 
