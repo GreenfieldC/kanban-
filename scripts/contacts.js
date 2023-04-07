@@ -151,6 +151,14 @@ closeContactDetailsBtn.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });
 
+/* const closeContactDetails = () => {
+	overlayDetails.style.display = 'none';
+};
+
+const openContactDetails = () => {
+	overlayDetails.style.display = 'block';
+}; */
+
 overlayDetails.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });

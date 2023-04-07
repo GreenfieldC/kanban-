@@ -41,12 +41,13 @@
 }
 
 .add-task-container {
-	height: calc(100vh - 186px);
+	height: calc(100vh - 186px) !important;
 	overflow-y: scroll;
 	padding-bottom: 24px;
 }
 
 /* Contact List */
+
 .card {
 	position: relative;
 	width: 100vw !important;
@@ -123,7 +124,7 @@ h1 {
 	height: 150px;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	justify-content: space-between !important;
 }
 
 /* Contacts Page */
@@ -147,7 +148,7 @@ h1 {
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: rgba(0, 0, 0, 0.5);
+	/* background-color: rgba(0, 0, 0, 0.5); */
 	z-index: 100;
 }
 
@@ -200,7 +201,7 @@ h1 {
 /* Display Contact Section  */
 .display-contact-details-section {
 	position: absolute;
-	top: 0;
+	top: 85px;
 	left: 0;
 	right: 0;
 	bottom: 0;
@@ -224,8 +225,8 @@ h1 {
 }
 
 .initals-in-details-section {
-	width: 60px;
-	height: 60px;
+	width: 60px !important;
+	height: 60px !important;
 }
 
 .details-name {
@@ -287,8 +288,8 @@ h1 {
 
 @media screen and (min-width: 480px) {
 	.initals-in-details-section {
-		width: 80px;
-		height: 80px;
+		width: 80px !important;
+		height: 80px !important;
 	}
 
 	.user-initials-details {
@@ -324,10 +325,10 @@ h1 {
 @media screen and (min-width: 575px) {
 	.display-contact-details-section {
 		position: absolute;
-		top: 30px;
+		top: 85px;
 		left: 0;
 		right: 0;
-		bottom: 30px;
+		bottom: 85px;
 		width: 540px;
 		padding: 34px 34px;
 		background-color: white;
@@ -337,9 +338,17 @@ h1 {
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
 	.contact-list-inner-container {
 		height: calc(100vh - 170px);
+	}
+
+	.display-contact-details-section {
+		bottom: 0px;
+	}
+
+	.input-field-container-new-contact-card {
+		gap: 10px;
 	}
 }
 

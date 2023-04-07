@@ -245,7 +245,7 @@ h3 {
 
 .add-task-container {
 	background-color: inherit;
-	padding-top: 63px;
+	/* padding-top: 63px; */
 	padding-bottom: 63px;
 	border-radius: 30px;
 	width: 100%;
