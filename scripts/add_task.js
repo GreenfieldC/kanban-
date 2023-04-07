@@ -4,6 +4,7 @@ let subtaskOnDisplay = false;
 let addTaskMainSite = true;
 let selectedTaskToEditId;
 let editTaskCard = false;
+let inContactsAddTask = false;
 
 let categoryList = [
 	{ title: 'Function', color: 'red' },
@@ -524,6 +525,8 @@ const deleteSubtask = async (cardId, subtaskId) => {
 		renderNewSubTasks();
 		/* updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card'); */
 	}
+
+	if (inContactsAddTask) return;
 
 	if (!subtaskOnDisplay && !addTaskMainSite) {
 		updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card');

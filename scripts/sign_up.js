@@ -17,10 +17,10 @@ const checkSignUpForm = () => {
 	const { name, email, password } = getInputValues();
 	createInitials(name);
 	setColorBadge();
-	userObject(name, email, password, initials, color);
+	userObject(name, email, password, initials, color, (phone = 'N/A'));
 	noDuplicateEmail(email);
 	checkMessageEmailNotAvailable(email);
-	checkAddNewUser(name, email, password, initials, color);
+	checkAddNewUser(name, email, password, initials, color, (phone = 'N/A'));
 };
 
 /**
@@ -92,12 +92,12 @@ const getColor = (colorIndex) => {
  * @param {string} password
  * @returns {object} - returns an object with the user's name, email, password and phone number
  */
-const userObject = (name, email, password, initials, color) => {
+const userObject = (name, email, password = '', initials, color, phone = 'N/A') => {
 	return {
 		name: name,
 		email: email,
 		password: password,
-		phone: 'N/A',
+		phone: phone,
 		initials: initials,
 		color: color,
 	};
@@ -132,11 +132,11 @@ const checkMessageEmailNotAvailable = (email) => {
  * @param {string} password
  * @returns {object} - adds a new user to the database
  */
-const checkAddNewUser = (name, email, password, initials, color) => {
+const checkAddNewUser = (name, email, password, initials, color, phone = 'N/A') => {
 	if (!noDuplicateEmail(email)) return;
-	allUsers.push(userObject(name, email, password, initials, color));
+	allUsers.push(userObject(name, email, password, initials, color, phone));
 	saveAllUsers();
-	forwardToLoginIn();
+	checkLogInUser(email, password); //log in user after successful sign up
 };
 
 /**

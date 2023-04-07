@@ -3,7 +3,7 @@
 const initLogin = () => {
 	startAnimation();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
-	saveAllUsers();
+	/* saveAllUsers(); */ //! Handling no users not yet implemented
 	loadAllUsers();
 };
 
@@ -11,7 +11,6 @@ const checkLoginForm = () => {
 	const { email, password } = logInInputValues();
 	checkLogInUser(email, password);
 };
-
 /**
  * Gets the values of the input fields
  * @returns {object} - returns an object with the values of the input fields

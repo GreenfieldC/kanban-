@@ -16,12 +16,7 @@ for (let i = 65; i <= 90; i++) {
  */
 const initContacts = async () => {
 	await loadAllUsers();
-	/* renderWholeCatergoryList();
-	rendersAssignedToList(dropDownAssignedToList, 'add-task');
-	addCheckKeyToAllUsers();
-	setsDatePicker();
-	dueDate = currentDate();
-	loadAllTasks(); */
+	inContactsAddTask = true;
 	/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 	sortUsers();
 	renderContactListExistingContacts();
@@ -103,13 +98,6 @@ const renderContactOnDisplay = (color, initials, name, email, phone) => {
 /* 
 !Keine doppelten Funktionen 07.03.2023 ist schon in signup.js */
 
-/* const getInputValues = () => {
-	const name = document.getElementById('name-new-contact').value;
-	const email = document.getElementById('email-new-contact').value;
-	const phone = document.getElementById('phone-new-contact').value;
-	return { name: name, email: email, phone: phone };
-}; */
-
 /*========================= 
 Window Management Contacts 
 ==========================*/
@@ -175,3 +163,26 @@ let addTaskOverlay = document.getElementById('add-task-overlay');
 addTaskOverlay.addEventListener('click', (e) => {
 	if (e.target.id === 'add-task-overlay') closeAddTaskInContacts();
 });
+
+const checkAddNewContactForm = () => {
+	const { name, email, phone } = getInputValuesForNewContact();
+	createInitials(name);
+	setColorBadge();
+	userObject(name, email, phone);
+	noDuplicateEmail(email);
+	checkMessageEmailNotAvailable(email);
+	/* checkAddNewUser(name, email, password, initials, color); */
+};
+
+const getInputValuesForNewContact = () => {
+	const name = document.getElementById('new-contact-name').value;
+	const email = document.getElementById('new-contact-email').value;
+	const phone = document.getElementById('new-contact-phone').value;
+
+	const newContact = {
+		name: name,
+		email: email,
+		phone: phone,
+	};
+	return newContact;
+};

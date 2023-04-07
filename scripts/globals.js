@@ -218,6 +218,10 @@ const includeHTML = async () => {
 	}
 };
 
+/**
+ * Opens the add Task window
+ * @param {string} container
+ */
 const addTask = async (container) => {
 	clearRequiredValues();
 	hideInvalidFeedback();

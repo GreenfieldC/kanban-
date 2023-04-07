@@ -130,6 +130,7 @@ MAIN CONTAINER
 	justify-content: space-between;
 	align-items: center;
 	padding: 32px 36px 32px 120px;
+	z-index: 999;
 }
 
 .logo-header {
