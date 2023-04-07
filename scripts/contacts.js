@@ -16,10 +16,12 @@ for (let i = 65; i <= 90; i++) {
  */
 const initContacts = async () => {
 	await loadAllUsers();
+	await loadLoginUserIndex();
 	inContactsAddTask = true;
 	/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 	sortUsers();
 	renderContactListExistingContacts();
+	if (window.innerWidth >= 801) showContact(logInUserIndex);
 };
 
 /**
@@ -40,6 +42,7 @@ const renderContactListExistingContacts = () => {
  */
 const appendContactsToLetter = (letter) => {
 	const contacts = alphabetObj[letter];
+	document.getElementById(letter).innerHTML = '';
 	for (let i = 0; i < contacts.length; i++) {
 		const name = contacts[i].name;
 		const color = contacts[i].color;
@@ -61,8 +64,16 @@ const sortUsers = () => {
 		const firstLetter = user.initials[1].toUpperCase();
 		user.id = id;
 		alphabetObj[firstLetter].push(user);
-		console.log(user);
 	});
+};
+
+/**
+ * Clears the alphabetObj
+ */
+const clearAlphabetObj = () => {
+	for (let letter in alphabetObj) {
+		alphabetObj[letter] = [];
+	}
 };
 
 /* Show Contact on Display (left of contact list/popup) */
@@ -139,14 +150,6 @@ closeContactDetailsBtn.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });
 
-/* const closeContactDetails = () => {
-	overlayDetails.style.display = 'none';
-};
-
-const openContactDetails = () => {
-	overlayDetails.style.display = 'block';
-}; */
-
 overlayDetails.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });
@@ -164,6 +167,10 @@ addTaskOverlay.addEventListener('click', (e) => {
 	if (e.target.id === 'add-task-overlay') closeAddTaskInContacts();
 });
 
+/**
+ * Checks if the add new contact form is valid
+ * and adds the new contact to the contact list and allUser's array
+ */
 const checkAddNewContactForm = () => {
 	const { name, email, phone } = getInputValuesForNewContact();
 	createInitials(name);
@@ -171,13 +178,21 @@ const checkAddNewContactForm = () => {
 	userObject(name, email, phone);
 	noDuplicateEmail(email);
 	checkMessageEmailNotAvailable(email);
-	/* checkAddNewUser(name, email, password, initials, color); */
+	checkAddNewUser(name, email, (password = ''), initials, color, phone);
+	clearAlphabetObj();
+	sortUsers();
+	renderContactListExistingContacts();
+	hidesNewContactWindow();
 };
 
+/**
+ * Gets the input values for the new contact
+ * @returns {object} newContact
+ */
 const getInputValuesForNewContact = () => {
-	const name = document.getElementById('new-contact-name').value;
-	const email = document.getElementById('new-contact-email').value;
-	const phone = document.getElementById('new-contact-phone').value;
+	const name = document.getElementById('name-new-contact').value;
+	const email = document.getElementById('email-new-contact').value;
+	const phone = document.getElementById('phone-new-contact').value;
 
 	const newContact = {
 		name: name,
