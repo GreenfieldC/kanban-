@@ -223,10 +223,11 @@ const includeHTML = async () => {
  * @param {string} container
  */
 const addTask = async (container) => {
+	console.log('FUCK', subtaskOnDisplay);
 	clearRequiredValues();
 	hideInvalidFeedback();
 	await initAddTask();
 	document.getElementById(container).style.display = 'flex';
-	subtaskOnDisplay = false;
-	addTaskMainSite = false;
+	/* subtaskOnDisplay = false;
+	addTaskMainSite = false; */
 };

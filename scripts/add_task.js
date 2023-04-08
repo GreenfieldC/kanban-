@@ -60,6 +60,7 @@ const initAddTask = async () => {
 	setsDatePicker();
 	dueDate = currentDate();
 	loadAllTasks();
+	addTaskMainSite = true;
 };
 /* 
 ! TEST Validation Form Function */
@@ -623,9 +624,11 @@ const createTask = async (workflow) => {
 
 	clearAddTaskFormular();
 	hideInvalidFeedback();
-	console.log(subtaskOnDisplay, 'subtaskOnDisplay');
-	console.log(addTaskMainSite, 'addTaskMainSite');
+	console.log(subtaskOnDisplay, '1  subtaskOnDisplay');
+	console.log(addTaskMainSite, '2   addTaskMainSite');
 	/* if (!subtaskOnDisplay || !addTaskMainSite) return; */
+	console.log('scheieß', addTaskMainSite);
+	if (addTaskMainSite) return;
 	renderCards();
 };
 

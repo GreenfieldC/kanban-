@@ -7,13 +7,14 @@ const initBoard = async () => {
 	await loadAllTasks();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	renderCards();
-	/* 	subtaskOnDisplay = true;
-	addTaskMainSite = true; */
+	/* subtaskOnDisplay = true; */
+
 	console.log('subtaskOnDisplay', subtaskOnDisplay);
 	console.log('addTaskMainSite', addTaskMainSite);
 };
 
 /**
+ * Renders the cards in the board
  * Renders the cards in the board
  * Renders the cards in the board
  */
@@ -415,8 +416,9 @@ const saveEditedTask = (taskId) => {
  * Deletes the task and renders the cards in the board
  * @param {number} taskId
  */
-const deleteTask = (taskId) => {
+const deleteTask = async (taskId) => {
 	allTasks.splice(taskId, 1);
+	await updateTaskIndex();
 	saveAllTasks();
 	closeCard();
 	renderCards((subtaskOnDisplay = false));
