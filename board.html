@@ -62,8 +62,8 @@
 			</div>
 			<div class="side-menu-btn-container d-flex">
 				<div class="nav flex-column nav-pills me-3 container-fluid me-0 p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
-						<a href="./summary.html">
+					<a href="./summary.html">
+						<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/summary_icon.png" alt="" />
@@ -71,31 +71,31 @@
 
 								<span class="name-btn-side-menu">Summary</span>
 							</div>
-						</a>
-					</div>
-					<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
-						<a href="./board.html">
+						</div>
+					</a>
+					<a href="./board.html">
+						<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center active" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/board_icon.png" alt="" />
 								</div>
 								<span class="name-btn-side-menu">Board</span>
 							</div>
-						</a>
-					</div>
-					<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
-						<a href="./add_task.html"
-							><div class="inner-btn-img-container-side-menu">
+						</div>
+					</a>
+					<a href="./add_task.html">
+						<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
+							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/add-task_icon.png" alt="" />
 								</div>
 
 								<span class="name-btn-side-menu">Add Task</span>
 							</div>
-						</a>
-					</div>
-					<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
-						<a href="./contacts.html">
+						</div>
+					</a>
+					<a href="./contacts.html">
+						<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/contacts_icon.png" alt="" />
@@ -103,8 +103,8 @@
 
 								<span class="name-btn-side-menu">Contacts</span>
 							</div>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				<div class="legal-notice" id="legal-notice" title="Legal Notice">
 					<a href="./legal-notice.html">
@@ -118,28 +118,32 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
 				<img class="logo-header" src="./assets/img/logo_join_black.png" alt="" />
 				<span class="description-header">Kanban Project Management Tool</span>
-				<div class="btn-group">
-					<button id="badge-btn-navbar" type="button" class="btn btn-secondary dropdown-toggle badge-btn-navbar" data-bs-toggle="dropdown" aria-expanded="false">
-						<span id="badge-btn-navbar-initials" class="user-initials-navbar"></span>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<a href="./help.html"
-							><li>
-								<button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button>
-							</li></a
-						>
-						<a href="./legal-notice.html"
-							><li>
-								<button class="dropdown-item" type="button">Legal notice</button>
-							</li>
-						</a>
+				<div class="right-container-navbar">
+					<a href="./help.html">
+						<img class="help-icon" src="./assets/icons/help.png" alt="help-icon" title="get help here" />
+					</a>
 
-						<a href="./index.html"
-							><li>
-								<button class="dropdown-item" type="button">Log out</button>
-							</li>
-						</a>
-					</ul>
+					<div class="btn-group">
+						<button id="badge-btn-navbar" type="button" class="btn btn-secondary dropdown-toggle badge-btn-navbar" data-bs-toggle="dropdown" aria-expanded="false">
+							<span id="badge-btn-navbar-initials" class="user-initials-navbar"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end menu-navbar">
+							<a href="./help.html"
+								><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
+							>
+							<a href="./legal-notice.html"
+								><li>
+									<button class="dropdown-item" type="button">Legal notice</button>
+								</li>
+							</a>
+
+							<a href="./index.html"
+								><li>
+									<button class="dropdown-item" type="button">Log out</button>
+								</li>
+							</a>
+						</ul>
+					</div>
 				</div>
 			</nav>
 			<div id="content" class="main-content-outer-container">

@@ -11,10 +11,10 @@
  */
 const generateCardHtml = (color, category, title, description, id, priority) => {
 	return /*html*/ `
-	<div onclick="openCard(${id})" class="card" draggable="true" ondragstart="startDragging(${id})">
+	<div onclick="openCard(${id})" class="card task-card" draggable="true" ondragstart="startDragging(${id})">
 		<div class="colored-category-container category" style="background-color: ${color};" title="${category}">${truncateString(category, 15)}</div>
 		<div class="card-body card-body-board">
-			<h5 class="card-title" title="${title}" >${truncateString(title, 15)}</h5>
+			<h5 class="card-title task-card-title" title="${title}" >${truncateString(title, 15)}</h5>
 			<p class="card-text task-description-card">${truncateString(description, 30)}</p>
 			<div id="${id}.progress-bar-container" class="progress-bar-container-card">
 				

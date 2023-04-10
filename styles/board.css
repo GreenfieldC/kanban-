@@ -38,8 +38,11 @@
 }
 
 .new-task-board-btn {
-	width: 50px !important;
-	height: 50px !important;
+	display: flex;
+	align-items: center !important;
+	justify-content: center !important;
+	width: 40px !important;
+	height: 40px !important;
 	/* width: 220px !important; */
 }
 

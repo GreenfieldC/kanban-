@@ -235,6 +235,53 @@ MEDIA QUERIES
 	}
 }
 
+@media screen and (max-height: 900px) {
+	.overview-greeting-container {
+		max-width: 700px;
+	}
+
+	.overview-container {
+		max-width: 360px;
+		height: fit-content;
+		gap: 24px;
+	}
+
+	.top-cards-overview,
+	.urgent-container,
+	.do-done-container {
+		height: 110px;
+	}
+
+	.card-overview {
+		width: 110px;
+	}
+
+	.cardOverviewValue {
+		font-size: 2rem;
+	}
+
+	.urgent-container {
+		padding: 17px 0;
+	}
+
+	.urgent-tasks-container {
+		gap: unset;
+	}
+
+	.urgent-tasks-container::after {
+		margin: 0 25px;
+	}
+
+	.urgent-icon {
+		width: 50px;
+		height: 50px;
+	}
+
+	.do-done-container {
+		gap: 24px;
+	}
+}
+
 @media screen and (max-width: 480px) {
 	.overview-container {
 		max-width: 338px;
@@ -282,52 +329,5 @@ MEDIA QUERIES
 	.svg-summary-do-done {
 		height: 67px !important;
 		width: 67px !important;
-	}
-}
-
-@media screen and (max-height: 900px) {
-	.overview-greeting-container {
-		max-width: 700px;
-	}
-
-	.overview-container {
-		max-width: 360px;
-		height: fit-content;
-		gap: 24px;
-	}
-
-	.top-cards-overview,
-	.urgent-container,
-	.do-done-container {
-		height: 110px;
-	}
-
-	.card-overview {
-		width: 110px;
-	}
-
-	.cardOverviewValue {
-		font-size: 2rem;
-	}
-
-	.urgent-container {
-		padding: 17px 0;
-	}
-
-	.urgent-tasks-container {
-		gap: unset;
-	}
-
-	.urgent-tasks-container::after {
-		margin: 0 25px;
-	}
-
-	.urgent-icon {
-		width: 50px;
-		height: 50px;
-	}
-
-	.do-done-container {
-		gap: 24px;
 	}
 }

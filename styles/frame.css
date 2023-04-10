@@ -110,7 +110,7 @@ SIDE MENU
 }
 
 .menu-navbar {
-	top: 64px !important;
+	top: 60px !important;
 	background-color: var(--dark-blue) !important;
 	border-radius: 20px 0 20px 20px;
 }
@@ -218,6 +218,11 @@ MAIN CONTAINER
 
 .dropdown-toggle::after {
 	display: none;
+}
+
+.help-icon {
+	margin-right: 25px;
+	cursor: pointer;
 }
 
 /* 

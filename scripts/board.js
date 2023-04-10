@@ -173,15 +173,36 @@ const moveTo = (workflow) => {
 const search = () => {
 	const input = document.getElementById('search');
 	const filter = input.value.toUpperCase();
-	const cards = document.getElementsByClassName('card');
+	const cards = document.getElementsByClassName('task-card');
 
 	for (let i = 0; i < cards.length; i++) {
 		const card = cards[i];
-		const title = card.getElementsByClassName('category')[0];
+		const category = card.getElementsByClassName('category')[0];
+		let title = card.getElementsByClassName('task-card-title')[0];
 		const description = card.getElementsByClassName('task-description-card')[0];
-		if (titleFound(title, filter) || descriptionFound(description, filter)) card.style.display = '';
-		if (titleNotFound(title, filter) && descriptionNotFound(description, filter)) card.style.display = 'none';
+		if (categoryFound(category, filter) || descriptionFound(description, filter) || titleFound(title, filter)) card.style.display = '';
+		if (categoryNotFound(category, filter) && descriptionNotFound(description, filter) && titleNotFound(title, filter)) card.style.display = 'none';
 	}
+};
+
+/**
+ * Returns true if the title contains the filter
+ * @param {string} title
+ * @param {string} filter
+ * @returns
+ */
+const categoryFound = (category, filter) => {
+	return category.innerHTML.toUpperCase().indexOf(filter) > -1;
+};
+
+/**
+ * Returns true if the title does not contain the filter
+ * @param {string} description
+ * @param {string} filter
+ * @returns
+ */
+const categoryNotFound = (category, filter) => {
+	return category.innerHTML.toUpperCase().indexOf(filter) === -1;
 };
 
 /**
@@ -196,9 +217,9 @@ const titleFound = (title, filter) => {
 
 /**
  * Returns true if the title does not contain the filter
- * @param {string} description
+ * @param {string} title
  * @param {string} filter
- * @returns
+ * @returns {boolean}
  */
 const titleNotFound = (title, filter) => {
 	return title.innerHTML.toUpperCase().indexOf(filter) === -1;

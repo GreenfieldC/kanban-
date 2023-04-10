@@ -26,7 +26,6 @@ const initSummary = async () => {
 	getCurrentNumbers();
 	setCurrentNumbers();
 	setNextDueDate();
-	console.log(logInUserIndex);
 };
 
 /*================ 
@@ -132,7 +131,11 @@ NEXT DUE DATE FUNCTIONS
 const setNextDueDate = () => {
 	const futureTasks = filterFutureTasks();
 	const openTasks = futureTasks.filter((task) => task.workflow !== 'done'); // filter out done tasks
-	const nextTask = openTasks.sort((a, b) => a.dueDate - b.dueDate)[futureTasks.length - 1];
+	const dueDateToNumbers = openTasks.map((task) => {
+		task.dueDate = new Date(task.dueDate);
+		return task;
+	}); // convert due date to numbers
+	const nextTask = dueDateToNumbers.sort((a, b) => a.dueDate - b.dueDate)[0];
 	const nextDueDate = formatDate(nextTask);
 	let deadLine = document.getElementById('deadline');
 
@@ -179,4 +182,8 @@ const todayFormatted = () => {
 	const options = { month: 'long', day: 'numeric', year: 'numeric' };
 	const formattedDate = today.toLocaleDateString('en-US', options);
 	return formattedDate;
+};
+
+const redirectToBoard = () => {
+	window.location.href = 'board.html';
 };

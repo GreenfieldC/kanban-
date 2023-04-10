@@ -59,8 +59,8 @@
 			</div>
 			<div class="side-menu-btn-container d-flex">
 				<div class="nav flex-column nav-pills me-3 container-fluid me-0 p-0" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-					<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center active" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
-						<a href="./summary.html">
+					<a href="./summary.html">
+						<div id="summary-btn" class="outer-btn-img-container-side-menu btn-side-menu nav-link d-flex justify-content-center active" id="summary" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true" title="Summary">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/summary_icon.png" alt="" />
@@ -68,31 +68,31 @@
 
 								<span class="name-btn-side-menu">Summary</span>
 							</div>
-						</a>
-					</div>
-					<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
-						<a href="./board.html">
+						</div>
+					</a>
+					<a href="./board.html">
+						<div id="board-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="board" data-bs-toggle="pill" data-bs-target="#v-pills-board" type="button" role="tab" aria-controls="v-pills-board" aria-selected="true" title="Board">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/board_icon.png" alt="" />
 								</div>
 								<span class="name-btn-side-menu">Board</span>
 							</div>
-						</a>
-					</div>
-					<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
-						<a href="./add_task.html"
-							><div class="inner-btn-img-container-side-menu">
+						</div>
+					</a>
+					<a href="./add_task.html">
+						<div id="add-task-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="add-task" data-bs-toggle="pill" data-bs-target="#v-pills-add-task" type="button" role="tab" aria-controls="v-pills-add-task" aria-selected="true" title="Add Task">
+							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/add-task_icon.png" alt="" />
 								</div>
 
 								<span class="name-btn-side-menu">Add Task</span>
 							</div>
-						</a>
-					</div>
-					<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
-						<a href="./contacts.html">
+						</div>
+					</a>
+					<a href="./contacts.html">
+						<div id="contacts-btn" class="outer-btn-img-container-side-menu nav-link d-flex justify-content-center" id="contacts" data-bs-toggle="pill" data-bs-target="#v-pills-contacts" type="button" role="tab" aria-controls="v-pills-contacts" aria-selected="true" title="Contacts">
 							<div class="inner-btn-img-container-side-menu">
 								<div class="img-container-sidemenu">
 									<img src="./assets/icons/contacts_icon.png" alt="" />
@@ -100,8 +100,8 @@
 
 								<span class="name-btn-side-menu">Contacts</span>
 							</div>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				<div class="legal-notice" id="legal-notice" title="Legal Notice">
 					<a href="./legal-notice.html">
@@ -115,26 +115,33 @@
 			<nav class="navbar navbar-expand-lg bg-body-tertiary">
 				<img class="logo-header" src="./assets/img/logo_join_black.png" alt="" />
 				<span class="description-header">Kanban Project Management Tool</span>
-				<div class="btn-group">
-					<button id="badge-btn-navbar" type="button" class="btn btn-secondary dropdown-toggle badge-btn-navbar" data-bs-toggle="dropdown" aria-expanded="false">
-						<span id="badge-btn-navbar-initials" class="user-initials-navbar"></span>
-					</button>
-					<ul class="dropdown-menu dropdown-menu-end">
-						<a href="./help.html"
-							><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
-						>
-						<a href="./legal-notice.html"
-							><li>
-								<button class="dropdown-item" type="button">Legal notice</button>
-							</li>
-						</a>
 
-						<a href="./index.html"
-							><li>
-								<button class="dropdown-item" type="button">Log out</button>
-							</li>
-						</a>
-					</ul>
+				<div class="right-container-navbar">
+					<a href="./help.html">
+						<img class="help-icon" src="./assets/icons/help.png" alt="help-icon" title="get help here" />
+					</a>
+
+					<div class="btn-group">
+						<button id="badge-btn-navbar" type="button" class="btn btn-secondary dropdown-toggle badge-btn-navbar" data-bs-toggle="dropdown" aria-expanded="false">
+							<span id="badge-btn-navbar-initials" class="user-initials-navbar"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end menu-navbar menu-navbar">
+							<a href="./help.html"
+								><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
+							>
+							<a href="./legal-notice.html"
+								><li>
+									<button class="dropdown-item" type="button">Legal notice</button>
+								</li>
+							</a>
+
+							<a href="./index.html"
+								><li>
+									<button class="dropdown-item" type="button">Log out</button>
+								</li>
+							</a>
+						</ul>
+					</div>
 				</div>
 			</nav>
 			<div id="content" class="main-content-outer-container">
@@ -171,7 +178,7 @@
 								</a>
 							</div>
 							<!-- 	<a href="./board.html"> -->
-							<div class="urgent-container" role="button">
+							<div onclick="redirectToBoard()" class="urgent-container" role="button">
 								<div id="urgent-tasks" class="urgent-tasks">
 									<div class="urgent-tasks-container">
 										<div class="icon">
@@ -209,7 +216,7 @@
 
 							<div class="do-done-container" role="button">
 								<!-- 	<a href="./board.html"> -->
-								<div class="do-container card-overview fb-100 flex-row do-done-box">
+								<div onclick="redirectToBoard()" class="do-container card-overview fb-100 flex-row do-done-box">
 									<svg class="svg-summary-do-done" width="24" height="34" viewBox="0 0 24 34" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 										<path d="M8.61559 29.262L3.05082 25.8847L17.211 2.55302C17.7841 1.60874 19.0141 1.30784 19.9584 1.88092L22.1037 3.1829C23.0479 3.75598 23.3488 4.98604 22.7758 5.93031L8.61559 29.262Z" fill="currentColor" />
 										<path d="M7.94001 30.3749L2.37524 26.9976L3.23136 30.4972C3.36259 31.0337 3.90387 31.3622 4.44034 31.231L7.94001 30.3749Z" fill="currentColor" />
@@ -221,7 +228,7 @@
 								</div>
 								<!-- </a> -->
 								<!-- <a href="./board.html"> -->
-								<div class="done-container card-overview fb-100 flex-row do-done-box" role="button">
+								<div onclick="redirectToBoard()" class="done-container card-overview fb-100 flex-row do-done-box" role="button">
 									<svg class="svg-summary-do-done" width="38" height="30" viewBox="0 0 38 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M4.27832 15.0001L15.5071 26.0662L34.2217 3.93408" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
 									</svg>

@@ -301,6 +301,7 @@ label {
 	gap: 25px;
 	top: 15px;
 	right: 15px;
+	z-index: 9999999;
 }
 
 .clear-button {
