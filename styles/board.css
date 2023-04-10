@@ -57,7 +57,7 @@
 	justify-content: space-between;
 	height: calc(100vh - 246px);
 	overflow-y: scroll;
-	padding-bottom: 50px;
+	padding-bottom: 90px;
 	gap: 20px;
 }
 
