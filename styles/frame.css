@@ -31,7 +31,7 @@ SIDE MENU
 	height: inherit;
 	background: var(--dark-blue);
 	padding-bottom: 120px;
-	z-index: 1;
+	z-index: 9999999;
 	transition: all 125ms ease-in-out;
 }
 
@@ -133,6 +133,13 @@ MAIN CONTAINER
 	z-index: 999;
 }
 
+.badge-btn-navbar {
+	height: 50px;
+	width: 50px;
+	border-radius: 50% !important;
+	border: 3px solid var(--dark-blue) !important;
+}
+
 .logo-header {
 	display: none;
 }
@@ -192,6 +199,10 @@ MAIN CONTAINER
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.dropdown-toggle::after {
+	display: none;
 }
 
 /* 

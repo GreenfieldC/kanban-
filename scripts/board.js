@@ -5,6 +5,9 @@ let workflow;
 
 const initBoard = async () => {
 	await loadAllTasks();
+	await loadAllUsers();
+	await loadLoginUserIndex();
+	setMenuBadgeOfLoggedInUser();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	renderCards();
 	/* subtaskOnDisplay = true; */

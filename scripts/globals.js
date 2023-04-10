@@ -231,3 +231,11 @@ const addTask = async (container) => {
 	/* subtaskOnDisplay = false;
 	addTaskMainSite = false; */
 };
+
+const setMenuBadgeOfLoggedInUser = () => {
+	let btn = document.getElementById('badge-btn-navbar');
+	let initialsDiv = document.getElementById('badge-btn-navbar-initials');
+	let color = allUsers[logInUserIndex].color;
+	btn.style.backgroundColor = color;
+	initialsDiv.innerHTML = allUsers[logInUserIndex].initials;
+};

@@ -21,6 +21,7 @@ const initSummary = async () => {
 	await loadAllTasks();
 	await loadLoginUserIndex();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+	setMenuBadgeOfLoggedInUser();
 	renderGreeting();
 	getCurrentNumbers();
 	setCurrentNumbers();

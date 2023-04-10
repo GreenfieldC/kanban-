@@ -54,6 +54,7 @@ const initAddTask = async () => {
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
 	await loadLoginUserIndex();
+	setMenuBadgeOfLoggedInUser();
 	renderWholeCatergoryList();
 	rendersAssignedToList(dropDownAssignedToList, 'add-task');
 	addCheckKeyToAllUsers();
@@ -345,6 +346,7 @@ const selectToggle = (id, location) => {
 
 	if (editTaskCard) {
 		if (allUsers[id].check == true) {
+			/* !hier muss ich etwas ergänzen */
 			allTasks[selectedTaskToEditId].taskForce.push(userObjectForTaskForce(id));
 		}
 
