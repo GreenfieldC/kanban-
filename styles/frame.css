@@ -256,6 +256,12 @@ BOTTOM MENU
 MEDIA QUERIES
 =============*/
 
+@media screen and (min-width: 1024px) {
+	.menu-navbar {
+		top: 68px !important;
+	}
+}
+
 @media screen and (min-width: 1440px) {
 	.main-content-inner-container {
 		padding: 80px 120px;
