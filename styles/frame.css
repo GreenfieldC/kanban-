@@ -109,6 +109,21 @@ SIDE MENU
 	color: var(--font-grey);
 }
 
+.menu-navbar {
+	top: 64px !important;
+	background-color: var(--dark-blue) !important;
+	border-radius: 20px 0 20px 20px;
+}
+
+.dropdown-item {
+	color: white;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+	color: #1e2125;
+	background-color: var(--light-blue);
+}
 /* =================
 MAIN CONTAINER
 ====================*/

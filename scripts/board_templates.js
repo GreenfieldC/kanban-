@@ -170,7 +170,7 @@ const generateCardOnDisplayHtml = (id) => {
 						<div class="badges-container-card">
 							<div class="inner-badge-container-on-display">
 								<div class="initials-container initals-in-details-section" style="background-color: red">
-									<span id="user-initals-details" class="user-initials user-initials-details">CG</span>
+									<span id="user-initals-details" class="user-initials user-initials-details"></span>
 								</div>
 								<span class="full-name-card-on-display">Christian Greenfield</span>
 							</div>
