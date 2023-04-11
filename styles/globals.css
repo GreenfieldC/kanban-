@@ -87,6 +87,16 @@ a:hover {
 	cursor: pointer;
 }
 
+.back-to-login {
+	position: absolute;
+	top: 16px;
+	left: 16px;
+}
+
+.message {
+	padding-top: 24px;
+}
+
 input,
 textarea,
 .form-control,

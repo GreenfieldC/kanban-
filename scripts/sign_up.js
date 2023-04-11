@@ -140,12 +140,3 @@ const checkAddNewUser = (name, email, password, initials, color, phone = 'N/A') 
 	if (password !== '' || inContactsAddTask == true) return;
 	checkLogInUser(email, password); //log in user after successful sign up
 };
-
-/**
- * Redirects to the login page
- */
-const forwardToLoginIn = () => {
-	setTimeout(() => {
-		window.location.href = 'index.html';
-	}, 2000);
-};

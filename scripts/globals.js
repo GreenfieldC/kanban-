@@ -1,6 +1,6 @@
 'use strict';
 let logInUserIndex;
-
+let userIdResetPassword;
 let allTasks = [];
 /*
 ! empty when server installed */
@@ -238,4 +238,15 @@ const setMenuBadgeOfLoggedInUser = () => {
 	let color = allUsers[logInUserIndex].color;
 	btn.style.backgroundColor = color;
 	initialsDiv.innerHTML = allUsers[logInUserIndex].initials;
+};
+
+/* Redirect functions */
+
+/**
+ * Redirects to the login page
+ */
+const forwardToLoginIn = () => {
+	setTimeout(() => {
+		window.location.href = 'index.html';
+	}, 2000);
 };
