@@ -17,7 +17,7 @@ const checkForgotPasswordForm = async () => {
 		saveUserIdResetPassword();
 		setTimeout(() => {
 			redirectToResetPassword();
-		}, 5000);
+		}, 2000);
 		return;
 	}
 	alert('No user with this email found');

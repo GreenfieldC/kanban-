@@ -21,9 +21,15 @@ const checkResetPasswordForm = async () => {
 	allUsers[userIdResetPassword].password = newPassword;
 	await saveAllUsers();
 	alert('Password changed');
+	showPasswordResetMessage();
 	setTimeout(() => {
 		forwardToLoginIn();
-	}, 2000);
+	}, 1000);
+};
+
+const showPasswordResetMessage = () => {
+	let message = document.getElementById('feedback-message');
+	message.classList.add('show-message');
 };
 
 /**
