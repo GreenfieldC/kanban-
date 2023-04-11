@@ -33,6 +33,14 @@ const checkLogInUser = async (email, password) => {
 	}
 };
 
+const guestLogin = () => {
+	logInUserIndex = 0;
+	saveLoginUserIndex();
+	setTimeout(() => {
+		window.location.href = 'summary.html';
+	}, 125);
+};
+
 /**
  * Show start animation
  */

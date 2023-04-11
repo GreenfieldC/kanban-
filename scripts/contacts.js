@@ -205,7 +205,11 @@ const getInputValuesForNewContact = () => {
 
 const deleteContact = (id, event) => {
 	event.stopPropagation();
-	if (id === logInUserIndex) alert('You can not delete yourself!');
+	if (id === 0) {
+		alert('You can not delete the guest!');
+		return;
+	}
+	if (id === logInUserIndex) window.location.href = 'index.html';
 	document.getElementById('contact-on-display').innerHTML = '';
 	document.getElementById('contact-list').innerHTML = '';
 	allUsers.splice(id, 1);
