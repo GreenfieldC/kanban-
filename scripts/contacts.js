@@ -131,7 +131,9 @@ openNewContactBtn.addEventListener('click', showsNewContactWindow);
  * Hides the new contact window
  */
 const hidesNewContactWindow = () => {
-	overlay.style.display = 'none';
+	setTimeout(() => {
+		overlay.style.display = 'none';
+	}, 2000);
 };
 
 /**
@@ -183,6 +185,7 @@ const checkAddNewContactForm = () => {
 	clearAlphabetObj();
 	sortUsers();
 	renderContactListExistingContacts();
+	showContactCreatedMessage();
 	hidesNewContactWindow();
 };
 
@@ -203,6 +206,23 @@ const getInputValuesForNewContact = () => {
 	return newContact;
 };
 
+/**
+ * Shows and hides the message that the contact was created
+ */
+const showContactCreatedMessage = () => {
+	let message = document.getElementById('contact-created-message');
+	message.classList.add('show-contact-created-message');
+	setTimeout(() => {
+		message.classList.remove('show-contact-created-message');
+	}, 2000);
+};
+
+/**
+ *
+ * @param {number} id
+ * @param {object} event
+ *
+ */
 const deleteContact = (id, event) => {
 	event.stopPropagation();
 	if (id === 0) {
@@ -217,4 +237,56 @@ const deleteContact = (id, event) => {
 	sortUsers();
 	renderContactListExistingContacts();
 	saveAllUsers();
+};
+
+/* Edit Contact */
+
+let editContactOverlay = document.getElementById('edit-contact-overlay');
+editContactOverlay.addEventListener('click', (e) => {
+	if (e.target.id === 'edit-contact-overlay') closeEditContact();
+});
+
+const closeEditContact = () => {
+	document.getElementById('edit-contact-overlay').style.display = 'none';
+};
+
+const openEditContact = (userId) => {
+	document.getElementById('edit-contact-overlay').style.display = 'block';
+	let name = document.getElementById('name-edit-contact');
+	let email = document.getElementById('email-edit-contact');
+	let phone = document.getElementById('phone-edit-contact');
+	name.value = allUsers[userId].name;
+	email.value = allUsers[userId].email;
+	phone.value = allUsers[userId].phone;
+};
+
+/**
+ * Saves the edited contact if the form is valid
+ * @param {number} userId
+ *! HIER WEITER MACHEN*/
+const checkEditContactForm = (userId) => {
+	const { name, email, phone } = getInputValuesForEditContact();
+	let initials = createInitials(name);
+	setColorBadge();
+	noDuplicateEmail(email);
+	userObject(name, email, phone);
+	checkMessageEmailNotAvailable(email);
+	checkEditUser(userId, name, email, initials, color, phone);
+	clearAlphabetObj();
+	sortUsers();
+	renderContactListExistingContacts();
+	closeEditContact();
+};
+
+const getInputValuesForEditContact = () => {
+	const name = document.getElementById('name-edit-contact').value;
+	const email = document.getElementById('email-edit-contact').value;
+	const phone = document.getElementById('phone-edit-contact').value;
+
+	const newContact = {
+		name: name,
+		email: email,
+		phone: phone,
+	};
+	return newContact;
 };

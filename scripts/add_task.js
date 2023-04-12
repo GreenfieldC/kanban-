@@ -626,10 +626,7 @@ const createTask = async (workflow) => {
 
 	clearAddTaskFormular();
 	hideInvalidFeedback();
-	console.log(subtaskOnDisplay, '1  subtaskOnDisplay');
-	console.log(addTaskMainSite, '2   addTaskMainSite');
-	/* if (!subtaskOnDisplay || !addTaskMainSite) return; */
-	console.log('scheieß', addTaskMainSite);
+	showTaskAddedFeedback();
 	if (addTaskMainSite) return;
 	renderCards();
 };
@@ -672,7 +669,13 @@ const hideInvalidFeedback = () => {
 	requiredPriority.style.opacity = 0;
 };
 
-//!Add stop propagation to the dropdown menu
+const showTaskAddedFeedback = () => {
+	let message = document.getElementById('task-added-feedback');
+	message.classList.add('show-feedback-add-task');
+	setTimeout(() => {
+		message.classList.remove('show-feedback-add-task');
+	}, 2000);
+};
 
 dropDownCategoryList.addEventListener('click', (event) => {
 	event.stopPropagation();

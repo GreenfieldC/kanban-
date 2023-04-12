@@ -14,7 +14,7 @@ const generateContactInListHtml = (i, id, color, initials, userName, email) => {
 			</div>
 			<div class="card-body flex-column right-body-contact-card">
 				<span class="user-name" id="user-name">${userName}</span>
-				<span id="email" class="email">${email}</span>
+				<span class="email">${email}</span>
 			</div>
 		</div>
 	</div>
@@ -62,7 +62,7 @@ const generateContactOnDisplayHtml = (id, color, initials, name, email, phone) =
 		<!-- Upper Part Display Contact Information -->
 		<div class="wrapper-upper-part-contact-information">
 			<h3 class="contact-information-text">Contact Information</h3>
-			<div class="edit-text-img">
+			<div onclick="openEditContact(${id})" class="edit-text-img">
 				<img src="./assets/icons/pen_black.png" alt="edit contact" />
 				<span>Edit contact</span>
 			</div>

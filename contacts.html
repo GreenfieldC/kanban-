@@ -257,6 +257,7 @@
 									<img src="./assets/icons/checkmark_addTask.png" />
 								</button>
 							</div>
+							<img id="task-added-feedback" class="feedback-add-task" src="./assets/img/feedback_task-added-to-board.png" title="You task has been added to the board" alt="" />
 						</div>
 					</div>
 				</form>
@@ -293,8 +294,42 @@
 						</div>
 					</form>
 				</div>
+				<img class="contact-created-message" id="contact-created-message" src="./assets/img/feedback_contact-created.png" title="Your new contact has been created" alt="Your new contact has been created" />
 			</div>
 		</div>
+
+		<!-- Edit Contact Overlay -->
+		<div id="edit-contact-overlay" class="overlay">
+			<div id="new-contacts-card" class="card contacts-overlay-card p-0 overflow-hidden border-0" style="width: 18rem">
+				<button onclick="closeEditContact()" id="close-new-contact-btn" type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+				<div class="card-body dark-blue">
+					<div class="outer-heading-container">
+						<div class="heading-container-cards">
+							<h1>Edit Contact</h1>
+						</div>
+					</div>
+				</div>
+				<div class="card-body card-body-bottom">
+					<form onsubmit="checkEditContactForm(); return false">
+						<div class="form-group-btn-container">
+							<div class="input-field-container-new-contact-card">
+								<div class="form-group">
+									<input placeholder="Name" type="text" class="form-control" id="name-edit-contact" />
+								</div>
+								<div class="form-group">
+									<input placeholder="Email" type="email" class="form-control" id="email-edit-contact" placeholder="email@example.com" minlength="5" maxlength="64" autocomplete="on" required />
+								</div>
+								<div class="form-group">
+									<input placeholder="Phone" type="tel" class="form-control" id="phone-edit-contact" />
+								</div>
+							</div>
+							<button type="submit" class="btn btn-ordinary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+
 		<div id="side-menu" class="side-menu">
 			<div onclick="toggleSideMenu()" id="open-close-btn-side-menu" class="open-close-btn-side-menu"></div>
 			<div class="side-menu-img-container">
