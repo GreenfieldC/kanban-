@@ -17,6 +17,10 @@ SIDE MENU
 	cursor: pointer;
 }
 
+.open-close-btn-side-menu:hover {
+	background-color: var(--light-blue);
+}
+
 .side-menu-slider {
 	transition: all 125ms ease-in-out;
 	transform: translateX(0px) !important;
@@ -204,6 +208,7 @@ MAIN CONTAINER
 	width: 90px;
 	height: 3px;
 	background-color: var(--light-blue);
+	margin-top: 16px;
 }
 
 .description-heading {
@@ -380,7 +385,7 @@ MEDIA QUERIES
 		display: none;
 	}
 
-	.heading-container::after {
+	/* .heading-container::after {
 		margin-top: 16px;
-	}
+	} */
 }

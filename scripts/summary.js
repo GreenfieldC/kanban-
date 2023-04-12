@@ -1,5 +1,7 @@
 'use strict';
 
+let greetingOnce = false;
+
 let inBoard = document.getElementById('tasks-in-board');
 let toDo = document.getElementById('to-do');
 let inProgress = document.getElementById('tasks-in-progress');
@@ -77,12 +79,17 @@ const afternoon = (hours) => {
 const renderGreeting = () => {
 	renderSalutation();
 	renderGreetingName();
+	greetingAnimationSmallerScreens();
 };
 
 /**
  * Renders salutation
  */
 const renderSalutation = () => {
+	if (window.innerWidth <= 1024) {
+		document.getElementById('greetingMobile').innerHTML = setSalutation();
+		return;
+	}
 	document.getElementById('greeting-title').innerHTML = setSalutation();
 };
 
@@ -90,8 +97,27 @@ const renderSalutation = () => {
  * Renders name to be greeted
  */
 const renderGreetingName = () => {
+	if (window.innerWidth <= 1024) {
+		document.getElementById('nameToBeingGreeted').innerHTML = allUsers[logInUserIndex].name;
+		return;
+	}
 	document.getElementById('greeting-name').innerHTML = allUsers[logInUserIndex].name;
 };
+
+/**
+ * Makes sure that the greeting animation is only shown once
+ * on mobile devices.
+ */
+function greetingAnimationSmallerScreens() {
+	if (window.innerWidth <= 1024 && !greetingOnce) {
+		document.getElementById('greetMobileOverlay').classList.remove('d-none');
+
+		setTimeout(() => {
+			document.getElementById('greetMobileOverlay').classList.add('d-none');
+		}, 2000);
+		greetingOnce = true;
+	}
+}
 
 /*================ 
 NUMBERS FUNCTIONS
