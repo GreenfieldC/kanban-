@@ -131,9 +131,7 @@ openNewContactBtn.addEventListener('click', showsNewContactWindow);
  * Hides the new contact window
  */
 const hidesNewContactWindow = () => {
-	setTimeout(() => {
-		overlay.style.display = 'none';
-	}, 2000);
+	overlay.style.display = 'none';
 };
 
 /**
@@ -183,10 +181,13 @@ const checkAddNewContactForm = () => {
 	checkMessageEmailNotAvailable(email);
 	checkAddNewUser(name, email, (password = ''), initials, color, phone);
 	clearAlphabetObj();
+	clearContactList();
 	sortUsers();
 	renderContactListExistingContacts();
 	showContactCreatedMessage();
-	hidesNewContactWindow();
+	setTimeout(() => {
+		hidesNewContactWindow();
+	}, 2000);
 };
 
 /**
@@ -230,13 +231,17 @@ const deleteContact = (id, event) => {
 		return;
 	}
 	if (id === logInUserIndex) window.location.href = 'index.html';
-	document.getElementById('contact-on-display').innerHTML = '';
-	document.getElementById('contact-list').innerHTML = '';
+	clearContactList();
 	allUsers.splice(id, 1);
 	clearAlphabetObj();
 	sortUsers();
 	renderContactListExistingContacts();
 	saveAllUsers();
+};
+
+const clearContactList = () => {
+	document.getElementById('contact-on-display').innerHTML = '';
+	document.getElementById('contact-list').innerHTML = '';
 };
 
 /* Edit Contact */
@@ -273,6 +278,7 @@ const checkEditContactForm = (userId) => {
 	checkMessageEmailNotAvailable(email);
 	checkEditUser(userId, name, email, initials, color, phone);
 	clearAlphabetObj();
+	clearContactList();
 	sortUsers();
 	renderContactListExistingContacts();
 	closeEditContact();
