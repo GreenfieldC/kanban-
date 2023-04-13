@@ -88,7 +88,6 @@ const renderGreeting = () => {
 const renderSalutation = () => {
 	if (window.innerWidth <= 1024) {
 		document.getElementById('greetingMobile').innerHTML = setSalutation();
-		return;
 	}
 	document.getElementById('greeting-title').innerHTML = setSalutation();
 };
@@ -99,7 +98,6 @@ const renderSalutation = () => {
 const renderGreetingName = () => {
 	if (window.innerWidth <= 1024) {
 		document.getElementById('nameToBeingGreeted').innerHTML = allUsers[logInUserIndex].name;
-		return;
 	}
 	document.getElementById('greeting-name').innerHTML = allUsers[logInUserIndex].name;
 };
