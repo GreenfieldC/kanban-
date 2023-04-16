@@ -1,21 +1,30 @@
 <img class="logo-header" src="./assets/img/logo_join_black.png" alt="" />
 <span class="description-header">Kanban Project Management Tool</span>
-<div class="btn-group">
-	<button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"></button>
-	<ul class="dropdown-menu dropdown-menu-end menu-navbar">
-		<a href="./help.html"
-			><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
-		>
-		<a href="./legal-notice.html"
-			><li>
-				<button class="dropdown-item" type="button">Legal notice</button>
-			</li>
-		</a>
 
-		<a href="./index.html"
-			><li>
-				<button class="dropdown-item" type="button">Log out</button>
-			</li>
-		</a>
-	</ul>
+<div class="right-container-navbar">
+	<a href="./help.html">
+		<img class="help-icon" src="./assets/icons/help.png" alt="help-icon" title="get help here" />
+	</a>
+
+	<div class="btn-group">
+		<button id="badge-btn-navbar" type="button" class="btn btn-secondary dropdown-toggle badge-btn-navbar" data-bs-toggle="dropdown" aria-expanded="false">
+			<span id="badge-btn-navbar-initials" class="user-initials-navbar"></span>
+		</button>
+		<ul class="dropdown-menu dropdown-menu-end menu-navbar menu-navbar">
+			<a href="./help.html"
+				><li><button id="help-btn" class="dropdown-item" type="button" title="Help Section">Help</button></li></a
+			>
+			<a href="./legal-notice.html"
+				><li>
+					<button class="dropdown-item" type="button">Legal notice</button>
+				</li>
+			</a>
+
+			<a href="./index.html"
+				><li>
+					<button class="dropdown-item" type="button">Log out</button>
+				</li>
+			</a>
+		</ul>
+	</div>
 </div>

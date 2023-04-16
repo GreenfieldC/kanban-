@@ -1,7 +1,5 @@
 'use strict';
 
-let greetingOnce = false;
-
 let inBoard = document.getElementById('tasks-in-board');
 let toDo = document.getElementById('to-do');
 let inProgress = document.getElementById('tasks-in-progress');
@@ -19,11 +17,14 @@ const numbers = {
 };
 
 const initSummary = async () => {
+	await includeHTML();
+	highlightSideMenuButton('summary');
 	await loadAllUsers();
 	await loadAllTasks();
 	await loadLoginUserIndex();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	setMenuBadgeOfLoggedInUser();
+	loadGreetingOnce();
 	renderGreeting();
 	getCurrentNumbers();
 	setCurrentNumbers();
@@ -107,13 +108,14 @@ const renderGreetingName = () => {
  * on mobile devices.
  */
 function greetingAnimationSmallerScreens() {
-	if (window.innerWidth <= 1024 && !greetingOnce) {
+	if (window.innerWidth <= 1024 && greetingOnce === 'false') {
 		document.getElementById('greetMobileOverlay').classList.remove('d-none');
 
 		setTimeout(() => {
 			document.getElementById('greetMobileOverlay').classList.add('d-none');
 		}, 2000);
 		greetingOnce = true;
+		saveGreetingOnce();
 	}
 }
 

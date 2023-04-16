@@ -15,6 +15,8 @@ for (let i = 65; i <= 90; i++) {
  * Generates the HTML and for the contacts page
  */
 const initContacts = async () => {
+	await includeHTML();
+	highlightSideMenuButton('contacts');
 	await loadAllUsers();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();

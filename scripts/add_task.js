@@ -51,6 +51,8 @@ let requiredAssignedTo = document.getElementById('required-assigned-to');
 let requiredPriority = document.getElementById('required-priority');
 
 const initAddTask = async () => {
+	await includeHTML();
+	highlightSideMenuButton('add_task');
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await loadAllUsers();
 	await loadLoginUserIndex();

@@ -1,6 +1,8 @@
 'use strict';
 
-const initLogin = () => {
+const initLogin = async () => {
+	greetingOnce = false;
+	saveGreetingOnce();
 	startAnimation();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	/* saveAllUsers(); */ //! Handling no users not yet implemented

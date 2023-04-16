@@ -1,5 +1,6 @@
 'use strict';
 let logInUserIndex;
+let greetingOnce = false;
 let userIdResetPassword;
 let allTasks = [];
 /*
@@ -197,6 +198,16 @@ const loadAllTasks = async () => {
 	console.log(allTasks);
 };
 
+const saveGreetingOnce = () => {
+	localStorage.setItem('greetingOnce', greetingOnce);
+};
+
+const loadGreetingOnce = () => {
+	if (localStorage.getItem('greetingOnce') === null) return;
+	greetingOnce = localStorage.getItem('greetingOnce');
+	console.log('gruß', greetingOnce);
+};
+
 const overlay = document.getElementById('overlay');
 
 const loadSideMenuHeader = async () => {
@@ -223,13 +234,10 @@ const includeHTML = async () => {
  * @param {string} container
  */
 const addTask = async (container) => {
-	console.log('FUCK', subtaskOnDisplay);
 	clearRequiredValues();
 	hideInvalidFeedback();
 	await initAddTask();
 	document.getElementById(container).style.display = 'flex';
-	/* subtaskOnDisplay = false;
-	addTaskMainSite = false; */
 };
 
 const setMenuBadgeOfLoggedInUser = () => {
@@ -249,4 +257,14 @@ const forwardToLoginIn = () => {
 	setTimeout(() => {
 		window.location.href = 'index.html';
 	}, 2000);
+};
+
+const highlightSideMenuButton = (location) => {
+	if (document.URL.includes(`${location}`)) {
+		let btnDesktop = document.getElementById(`${location}-btn`);
+		let btnMobile = document.getElementById(`${location}`);
+
+		btnDesktop.classList.add('active');
+		btnMobile.classList.add('active');
+	}
 };

@@ -4,6 +4,8 @@ let currentDraggedCard;
 let workflow;
 
 const initBoard = async () => {
+	await includeHTML();
+	highlightSideMenuButton('board');
 	await loadAllTasks();
 	await loadAllUsers();
 	await loadLoginUserIndex();
