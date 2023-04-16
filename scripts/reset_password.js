@@ -6,11 +6,9 @@
 const initResetPassword = async () => {
 	await loadAllUsers();
 	await loadUserIdResetPassword();
-	console.log(allUsers);
-	console.log(userIdResetPassword);
 };
 
-const checkResetPasswordForm = async () => {
+const checkResetPasswordForm = () => {
 	const newPassword = document.getElementById('new-password').value;
 	const newPasswordRepeat = document.getElementById('new-password-repeat').value;
 	if (newPassword !== newPasswordRepeat) {
@@ -18,8 +16,8 @@ const checkResetPasswordForm = async () => {
 		return;
 	}
 
-	allUsers[userIdResetPassword].password = newPassword;
-	await saveAllUsers();
+	allUsers[userIdResetPassword].password = newPassword; // hier muss noch die richtige ID rein
+	saveAllUsers();
 	alert('Password changed');
 	showPasswordResetMessage();
 	setTimeout(() => {
@@ -38,5 +36,6 @@ const showPasswordResetMessage = () => {
 const loadUserIdResetPassword = async () => {
 	if (localStorage.getItem('userIdResetPassword') === null) return;
 	let userIdResetPasswordAsString = localStorage.getItem('userIdResetPassword');
-	userIdResetPassword = JSON.parse(userIdResetPasswordAsString);
+	userIdResetPassword = +JSON.parse(userIdResetPasswordAsString);
+	console.log(userIdResetPassword);
 };

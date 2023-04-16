@@ -149,7 +149,7 @@ const checkMessageEmailNotAvailable = (email) => {
  */
 const checkAddNewUser = (name, email, password, initials, color, phone = 'N/A') => {
 	if (!noDuplicateEmail(email)) return;
-	allUsers.unshift(userObject(name, email, password, initials, color, phone));
+	allUsers.push(userObject(name, email, password, initials, color, phone));
 	saveAllUsers();
 	if (password !== '' || inContactsAddTask == true) return;
 	checkLogInUser(email, password); //log in user after successful sign up

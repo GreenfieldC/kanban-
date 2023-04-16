@@ -1,4 +1,4 @@
-setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 
 const initForgotPassword = async () => {
 	await loadAllUsers();
@@ -21,6 +21,7 @@ const checkForgotPasswordForm = async () => {
 	if (user) {
 		userIdResetPassword = user.id;
 		saveUserIdResetPassword();
+		loadUserIdResetPassword();
 		setTimeout(() => {
 			redirectToResetPassword();
 		}, 2000);
