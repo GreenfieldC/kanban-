@@ -29,6 +29,11 @@ textarea:focus {
 	border-color: var(--grey-line-grey) !important;
 }
 
+.invalid-feedback {
+	display: block;
+	opacity: 0;
+}
+
 /* ===== Scrollbar CSS ===== */
 /* Firefox */
 * {

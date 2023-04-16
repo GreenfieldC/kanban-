@@ -25,7 +25,27 @@ const logInInputValues = () => {
 
 const checkLogInUser = async (email, password) => {
 	const user = allUsers.findIndex((user) => user.email === email && user.password === password);
+	const rightPassword = allUsers.findIndex((user) => user.email === email && user.password !== password);
+	const rightEmail = allUsers.findIndex((user) => user.email === email);
+
+	if (rightEmail === -1) {
+		document.getElementById('login-email-feedback').style.opacity = 1;
+		setTimeout(() => {
+			document.getElementById('login-email-feedback').style.opacity = 0;
+		}, 2000);
+		return;
+	}
+
+	if (rightPassword !== -1) {
+		document.getElementById('login-password-feedback').style.opacity = 1;
+		setTimeout(() => {
+			document.getElementById('login-password-feedback').style.opacity = 0;
+		}, 2000);
+		return;
+	}
+
 	if (user === -1) return;
+
 	if (user) {
 		logInUserIndex = user;
 		await saveLoginUserIndex();
