@@ -13,14 +13,28 @@ const initSignUp = () => {
 };
 
 const checkSignUpForm = () => {
-	getInputValues();
 	const { name, email, password } = getInputValues();
 	createInitials(name);
 	setColorBadge();
 	userObject(name, email, password, initials, color, (phone = 'N/A'));
-	noDuplicateEmail(email);
-	checkMessageEmailNotAvailable(email);
+
+	if (!noDuplicateEmail(email)) {
+		showFeedbackMessage('signIn-email-feedback');
+		return;
+	}
+
 	checkAddNewUser(name, email, password, initials, color, (phone = 'N/A'));
+
+	logInUser(email, password);
+};
+
+const logInUser = async (email, password) => {
+	const user = allUsers.findIndex((user) => user.email === email && user.password === password);
+	logInUserIndex = user;
+	await saveLoginUserIndex();
+	setTimeout(() => {
+		window.location.href = 'summary.html';
+	}, 125);
 };
 
 /**
@@ -135,7 +149,7 @@ const checkMessageEmailNotAvailable = (email) => {
  */
 const checkAddNewUser = (name, email, password, initials, color, phone = 'N/A') => {
 	if (!noDuplicateEmail(email)) return;
-	allUsers.push(userObject(name, email, password, initials, color, phone));
+	allUsers.unshift(userObject(name, email, password, initials, color, phone));
 	saveAllUsers();
 	if (password !== '' || inContactsAddTask == true) return;
 	checkLogInUser(email, password); //log in user after successful sign up

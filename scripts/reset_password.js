@@ -14,7 +14,7 @@ const checkResetPasswordForm = async () => {
 	const newPassword = document.getElementById('new-password').value;
 	const newPasswordRepeat = document.getElementById('new-password-repeat').value;
 	if (newPassword !== newPasswordRepeat) {
-		alert('Passwords do not match');
+		showFeedbackMessage('reset-password-feedback');
 		return;
 	}
 

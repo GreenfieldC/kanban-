@@ -12,6 +12,12 @@ const initForgotPassword = async () => {
 const checkForgotPasswordForm = async () => {
 	const email = document.getElementById('email').value;
 	const user = await getUserByEmail(email);
+
+	if (!user) {
+		showFeedbackMessage('forgot-password-email-feedback');
+		return;
+	}
+
 	if (user) {
 		userIdResetPassword = user.id;
 		saveUserIdResetPassword();

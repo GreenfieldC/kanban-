@@ -25,6 +25,7 @@ const initContacts = async () => {
 	sortUsers();
 	renderContactListExistingContacts();
 	if (window.innerWidth >= 801) showContact(logInUserIndex);
+	console.log(allUsers.length);
 };
 
 /**
@@ -234,11 +235,23 @@ const deleteContact = (id, event) => {
 	}
 	if (id === logInUserIndex) window.location.href = 'index.html';
 	clearContactList();
-	allUsers.splice(id, 1);
+	deletion(id);
 	clearAlphabetObj();
-	sortUsers();
+	sortUsers(id);
 	renderContactListExistingContacts();
 	saveAllUsers();
+};
+
+/**
+ * Deletes the contact from allusers jsona and sets logInUserIndex to the new index
+ */
+const deletion = (id) => {
+	email = allUsers[logInUserIndex].email;
+	console.log(email);
+	allUsers.splice(id, 1);
+	logInUserIndex = allUsers.findIndex((user) => user.email === email);
+	saveLoginUserIndex();
+	console.log('nach löschen', email);
 };
 
 const clearContactList = () => {

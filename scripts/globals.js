@@ -234,8 +234,9 @@ const includeHTML = async () => {
  * @param {string} container
  */
 const addTask = async (container) => {
-	clearRequiredValues();
-	hideInvalidFeedback();
+	clearAddTaskFormular();
+	/* clearRequiredValues();
+	hideInvalidFeedback(); */
 	await initAddTask();
 	document.getElementById(container).style.display = 'flex';
 };
@@ -274,4 +275,19 @@ const highlightSideMenuButton = (location) => {
 	if (location === 'legal-notice') {
 		btnDesktop.classList.add('active');
 	}
+};
+
+/* Login - SignIn - RestPassword */
+const showFeedbackMessage = (elementId) => {
+	const element = document.getElementById(elementId);
+	element.style.opacity = 1;
+
+	let opacity = 1;
+	let interval = setInterval(() => {
+		opacity -= 0.05;
+		element.style.opacity = opacity;
+		if (opacity <= 0) {
+			clearInterval(interval);
+		}
+	}, 200);
 };

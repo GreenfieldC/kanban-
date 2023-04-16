@@ -266,7 +266,9 @@ const closeAddTaskOverlay = () => {
 };
 
 overlay.addEventListener('click', (e) => {
-	if (e.target.id === 'overlay') closeAddTaskOverlay();
+	if (e.target.id === 'overlay') {
+		closeAddTaskOverlay();
+	}
 });
 
 /* Edit Cards */

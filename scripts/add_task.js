@@ -350,17 +350,19 @@ const selectToggle = (id, location) => {
 		if (allUsers[id].check == true) {
 			/* !hier muss ich etwas ergänzen */
 			allTasks[selectedTaskToEditId].taskForce.push(userObjectForTaskForce(id));
+			console.log(1);
 		}
 
 		if (allUsers[id].check == false) {
 			let index = allTasks[selectedTaskToEditId].taskForce.findIndex((user) => user.id == id);
 			if (index > -1) allTasks[selectedTaskToEditId].taskForce.splice(index, 1);
-			console.log(allTasks[selectedTaskToEditId].taskForce);
+			console.log(2);
 		}
 	}
 
 	if (allUsers[id].check == true) {
 		taskForce.push(userObjectForTaskForce(id));
+		console.log(3);
 	}
 
 	if (allUsers[id].check == false) {

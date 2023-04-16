@@ -74,7 +74,7 @@
 				<div class="login-title-container">
 					<h2 class="container login-title">Log in</h2>
 				</div>
-				<div class="mb-3 login-email-container">
+				<div class="login-email-container">
 					<label for="email" class="form-label">Email address</label>
 					<input type="email" class="form-control" id="email" placeholder="email@example.com" minlength="5" maxlength="64" autocomplete="on" required />
 					<div id="login-email-feedback" class="invalid-feedback">Wrong email! Please sign up first.</div>
@@ -92,11 +92,11 @@
 					</div>
 				</div>
 				<div class="login-btns-container container">
-					<button id="login-btn" type="submit" class="btn btn-primary btn-ordinary btns-index">Log in</button>
+					<button id="login-btn" type="submit" class="btn btn-primary btn-ordinary btns-index" title="log in">Log in</button>
 				</div>
 			</form>
 			<div class="login-btns-container container">
-				<button onclick="guestLogin()" id="guest-login-btn" type="submit" class="btn btn-primary btn-ordinary btns-index">Guest Log in</button>
+				<button onclick="guestLogin()" id="guest-login-btn" type="submit" class="btn btn-primary btn-ordinary btns-index" title="guests can login here">Guest Log in</button>
 			</div>
 			<div class="dropdown-divider"></div>
 			<a class="dropdown-item color-black" href="./sign_up.html">New around here? Sign up</a>

@@ -29,18 +29,12 @@ const checkLogInUser = async (email, password) => {
 	const rightEmail = allUsers.findIndex((user) => user.email === email);
 
 	if (rightEmail === -1) {
-		document.getElementById('login-email-feedback').style.opacity = 1;
-		setTimeout(() => {
-			document.getElementById('login-email-feedback').style.opacity = 0;
-		}, 2000);
+		showFeedbackMessage('login-email-feedback');
 		return;
 	}
 
 	if (rightPassword !== -1) {
-		document.getElementById('login-password-feedback').style.opacity = 1;
-		setTimeout(() => {
-			document.getElementById('login-password-feedback').style.opacity = 0;
-		}, 2000);
+		showFeedbackMessage('login-password-feedback');
 		return;
 	}
 
