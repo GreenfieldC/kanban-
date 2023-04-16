@@ -259,12 +259,19 @@ const forwardToLoginIn = () => {
 	}, 2000);
 };
 
+/**
+ * Adds active class to the side menu button
+ * @param {string} location
+ */
 const highlightSideMenuButton = (location) => {
-	if (document.URL.includes(`${location}`)) {
-		let btnDesktop = document.getElementById(`${location}-btn`);
-		let btnMobile = document.getElementById(`${location}`);
-
+	let btnDesktop = document.getElementById(`${location}-btn`);
+	let btnMobile = document.getElementById(`${location}`);
+	if (document.URL.includes(`${location}`) && location !== 'legal-notice') {
 		btnDesktop.classList.add('active');
 		btnMobile.classList.add('active');
+	}
+
+	if (location === 'legal-notice') {
+		btnDesktop.classList.add('active');
 	}
 };
