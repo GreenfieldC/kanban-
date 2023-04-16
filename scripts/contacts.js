@@ -1,6 +1,6 @@
 let elements = [document.getElementById('close-new-contact-btn'), overlay];
 const overlayDetails = document.getElementById('overlay-details');
-
+let editContactId = null;
 const alphabetObj = {};
 
 /**
@@ -154,6 +154,10 @@ closeContactDetailsBtn.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });
 
+const closeContactDetailsOverlay = () => {
+	overlayDetails.style.display = 'none';
+};
+
 overlayDetails.addEventListener('click', () => {
 	overlayDetails.style.display = 'none';
 });
@@ -174,14 +178,21 @@ addTaskOverlay.addEventListener('click', (e) => {
 /**
  * Checks if the add new contact form is valid
  * and adds the new contact to the contact list and allUser's array
- */
+ 
+!UNBEDINGT ÜBERARBEITEN SCHAUE BEI SIGN IN!!*/
 const checkAddNewContactForm = () => {
 	const { name, email, phone } = getInputValuesForNewContact();
 	createInitials(name);
 	setColorBadge();
 	userObject(name, email, phone);
-	noDuplicateEmail(email);
-	checkMessageEmailNotAvailable(email);
+	/* noDuplicateEmail(email);
+	checkMessageEmailNotAvailable(email); */
+
+	if (!noDuplicateEmail(email)) {
+		showFeedbackMessage('new-contact-email');
+		return;
+	}
+
 	checkAddNewUser(name, email, (password = ''), initials, color, phone);
 	clearAlphabetObj();
 	clearContactList();
@@ -240,6 +251,7 @@ const deleteContact = (id, event) => {
 	sortUsers(id);
 	renderContactListExistingContacts();
 	saveAllUsers();
+	if (window.innerWidth < 801) overlayDetails.style.display = 'none';
 };
 
 /**
@@ -278,25 +290,34 @@ const openEditContact = (userId) => {
 	name.value = allUsers[userId].name;
 	email.value = allUsers[userId].email;
 	phone.value = allUsers[userId].phone;
+	editContactId = userId;
 };
 
 /**
  * Saves the edited contact if the form is valid
  * @param {number} userId
  *! HIER WEITER MACHEN*/
-const checkEditContactForm = (userId) => {
+const checkEditContactForm = (editContactId) => {
 	const { name, email, phone } = getInputValuesForEditContact();
 	let initials = createInitials(name);
+	createInitials(name);
 	setColorBadge();
-	noDuplicateEmail(email);
-	userObject(name, email, phone);
-	checkMessageEmailNotAvailable(email);
-	checkEditUser(userId, name, email, initials, color, phone);
+
+	editContact(editContactId, name, email, phone, initials);
+	saveAllUsers();
+
 	clearAlphabetObj();
 	clearContactList();
 	sortUsers();
 	renderContactListExistingContacts();
 	closeEditContact();
+};
+
+const editContact = (userId, name, email, phone, initials) => {
+	allUsers[userId].name = name;
+	allUsers[userId].email = email;
+	allUsers[userId].phone = phone;
+	allUsers[userId].initials = initials;
 };
 
 const getInputValuesForEditContact = () => {

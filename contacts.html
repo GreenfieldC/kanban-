@@ -282,12 +282,15 @@
 							<div class="input-field-container-new-contact-card">
 								<div class="form-group">
 									<input placeholder="Name" type="text" class="form-control" id="name-new-contact" />
+									<div id="new-contact-name" class="invalid-feedback">NA</div>
 								</div>
 								<div class="form-group">
 									<input placeholder="Email" type="email" class="form-control" id="email-new-contact" />
+									<div id="new-contact-email" class="invalid-feedback">Email not available</div>
 								</div>
 								<div class="form-group">
 									<input placeholder="Phone" type="tel" class="form-control" id="phone-new-contact" />
+									<div id="new-contact-phone" class="invalid-feedback">NA</div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-ordinary">Submit</button>
@@ -310,17 +313,20 @@
 					</div>
 				</div>
 				<div class="card-body card-body-bottom">
-					<form onsubmit="checkEditContactForm(); return false">
+					<form onsubmit="checkEditContactForm(editContactId); return false">
 						<div class="form-group-btn-container">
 							<div class="input-field-container-new-contact-card">
 								<div class="form-group">
 									<input placeholder="Name" type="text" class="form-control" id="name-edit-contact" />
+									<div id="edit-name" class="invalid-feedback">NA</div>
 								</div>
 								<div class="form-group">
 									<input placeholder="Email" type="email" class="form-control" id="email-edit-contact" placeholder="email@example.com" minlength="5" maxlength="64" autocomplete="on" required />
+									<div id="edit-email" class="invalid-feedback">Passwords do not match.</div>
 								</div>
 								<div class="form-group">
 									<input placeholder="Phone" type="tel" class="form-control" id="phone-edit-contact" />
+									<div id="edit-name" class="invalid-feedback">NA</div>
 								</div>
 							</div>
 							<button type="submit" class="btn btn-ordinary">Submit</button>
