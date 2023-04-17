@@ -157,6 +157,13 @@ const startDragging = (id) => {
  */
 const allowDrop = (ev) => {
 	ev.preventDefault();
+	const column = ev.target;
+	column.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
+};
+
+const backgroundReset = (asd) => {
+	let column = document.getElementById(asd);
+	column.style.backgroundColor = 'var(--background-grey)';
 };
 
 /**
@@ -304,7 +311,7 @@ ondisplayOverlay.addEventListener('click', (e) => {
 		closeCard();
 		editTaskCard = false;
 		subtaskOnDisplay = false;
-		console.log('editTaskCard', editTaskCard);
+		clearAddTaskFormular();
 	}
 });
 
@@ -361,11 +368,33 @@ const editTask = (taskId) => {
 	const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
 	rendersAssignedToList(dropDownAssignedToListEditTask, 'edit-task');
 	addCheckKeyToAllUsers();
+
+	checkTrueForTaskForceMembera(taskId);
+	//hier muss was rein: die die checked sind sollen auch checked sein
+
 	selectPriorityBtnEditTask(taskId);
 	updateCheckMarkAssignedToEditTask(taskId, 'edit-task');
 	renderBadgesAddTask(taskId);
 	selectedTaskToEditId = taskId;
 	editTaskCard = true;
+	taskForceToEdit(selectedTaskToEditId);
+	console.log(taskForce);
+};
+
+/**
+ * Sets the check property of all users to true if they are assigned to the task
+ * @param {number} taskId
+ */
+const checkTrueForTaskForceMembera = (taskId) => {
+	allTasks[taskId].taskForce.forEach((user) => {
+		allUsers[user.id].check = true;
+		console.log(allUsers[user.id].check);
+	});
+};
+
+const taskForceToEdit = () => {
+	taskForce.push(allTasks[selectedTaskToEditId].taskForce);
+	console.log(taskForce);
 };
 
 /**
@@ -435,9 +464,30 @@ const saveEditedTask = (taskId) => {
 	allTasks[taskId].title = title;
 	allTasks[taskId].description = description;
 	allTasks[taskId].dueDate = dueDate;
+
+	//BUG,Hier fehlen das Feedback!
+
+	if (noInput(title, description, taskId)) {
+		showFeedbackNoInput(title, description, taskId);
+		return;
+	}
+
 	saveAllTasks();
 	renderCards((subtaskOnDisplay = false));
 	openCard(taskId);
+};
+
+const noInput = (title, description, taskIndex) => {
+	return title == '' || description == '' || !allTasks[taskIndex].taskForce.length;
+};
+
+const showFeedbackNoInput = (title, description, taskIndex) => {
+	let titleFeedbackEditTask = document.getElementById('required-edit-title');
+	let descriptionFeedbackEditTask = document.getElementById('required-edit-description');
+	let assignedToFeedbackEditTask = document.getElementById('required-edit-assigned-to');
+	if (title == '') titleFeedbackEditTask.style.opacity = 1;
+	if (description == '') descriptionFeedbackEditTask.style.opacity = 1;
+	if (!allTasks[taskIndex].taskForce.length) assignedToFeedbackEditTask.style.opacity = 1;
 };
 
 /**

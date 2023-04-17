@@ -125,7 +125,7 @@
 	align-items: flex-start;
 	padding: 18px 18px;
 	gap: 10px;
-	background: #ffffff;
+	background-color: #ffffff !important;
 	box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
 	border-radius: 30px;
 	cursor: pointer;
@@ -159,10 +159,12 @@
 	flex-direction: column;
 	width: 100%;
 	padding: unset;
+	background-color: white !important;
 }
 
 .task-description-card {
 	color: #a8a8a8;
+	background-color: white !important;
 	max-height: 60px;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 5;
@@ -335,7 +337,7 @@ h3 {
 
 .card-overlay {
 	display: block;
-	background-color: var(--background-grey) !important;
+	background-color: var(--background-grey);
 	border-radius: unset !important;
 	width: 100vw;
 	height: calc(100vh - 140px) !important;

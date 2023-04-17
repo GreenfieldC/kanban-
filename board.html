@@ -350,7 +350,7 @@
 										<img src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div id="todo" class="cards-container" ondrop="moveTo('todo')" ondragover="allowDrop(event)"></div>
+								<div id="todo" class="cards-container" ondrop="moveTo('todo'); backgroundReset('todo')" ondragover="allowDrop(event)" ondragleave="backgroundReset('todo')"></div>
 							</div>
 						</div>
 						<!-- In progress -->
@@ -362,7 +362,7 @@
 										<img title="add task in in-progress column" onclick="addTask('overlay',workflow='in-progress')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div id="in-progress" class="cards-container" ondrop="moveTo('in-progress')" ondragover="allowDrop(event)"></div>
+								<div id="in-progress" class="cards-container" ondrop="moveTo('in-progress') ; backgroundReset('in-progress')" ondragover="allowDrop(event)" ondragleave="backgroundReset('in-progress')"></div>
 							</div>
 						</div>
 						<!-- Awaiting Feedback -->
@@ -374,7 +374,7 @@
 										<img title="add task in awaiting-feedback column" onclick="addTask('overlay',workflow='awaiting-feedback')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div id="awaiting-feedback" class="cards-container" ondrop="moveTo('awaiting-feedback')" ondragover="allowDrop(event)"></div>
+								<div id="awaiting-feedback" class="cards-container" ondrop="moveTo('awaiting-feedback'); backgroundReset('awaiting-feedback')" ondragover="allowDrop(event)" ondragleave="backgroundReset('awaiting-feedback')"></div>
 							</div>
 						</div>
 						<!-- Done -->
@@ -386,7 +386,7 @@
 										<img title="add task in done column" onclick="addTask('overlay',workflow='done')" src="./assets/icons/plus_blue.png" alt="add task" />
 									</div>
 								</div>
-								<div id="done" class="cards-container" ondrop="moveTo('done')" ondragover="allowDrop(event)"></div>
+								<div id="done" class="cards-container" ondrop="moveTo('done'); backgroundReset('done')" ondragover="allowDrop(event)" ondragleave="backgroundReset('done')"></div>
 							</div>
 						</div>
 					</div>

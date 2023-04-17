@@ -304,7 +304,7 @@ const renderBadgesAddTask = (taskIndex) => {
 	if (subtaskOnDisplay) {
 		let badgesContainer = document.getElementById('taskforce-badge-container-edit-task');
 		badgesContainer.innerHTML = '';
-		console.log(allTasks[taskIndex].taskForce);
+		console.log(allTasks[taskIndex].taskForce, 'TASKFORCE GERENDERT');
 		allTasks[taskIndex].taskForce.forEach((user) => {
 			generateBadgesForAssignedTo(user.name, user.color, user.initials, badgesContainer);
 		});
@@ -342,27 +342,27 @@ const rendersAssignedToList = (container, location) => {
  * @param {number} id
  */
 const selectToggle = (id, location) => {
+	console.log(taskForce, 'taskForce');
 	let checkMark = document.getElementById(`${id}.-coworker-checkbox-${location}`);
 	checkMark.checked = !checkMark.checked;
-	allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false);
+	/* allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false); */
+	console.log(allUsers[id].check, 'allUsers[id].check');
+	allUsers[id].check = !allUsers[id].check;
 
+	console.log(editTaskCard, 'editTaskCard');
 	if (editTaskCard) {
 		if (allUsers[id].check == true) {
-			/* !hier muss ich etwas ergänzen */
 			allTasks[selectedTaskToEditId].taskForce.push(userObjectForTaskForce(id));
-			console.log(1);
 		}
 
 		if (allUsers[id].check == false) {
 			let index = allTasks[selectedTaskToEditId].taskForce.findIndex((user) => user.id == id);
 			if (index > -1) allTasks[selectedTaskToEditId].taskForce.splice(index, 1);
-			console.log(2);
 		}
 	}
 
 	if (allUsers[id].check == true) {
 		taskForce.push(userObjectForTaskForce(id));
-		console.log(3);
 	}
 
 	if (allUsers[id].check == false) {
@@ -371,6 +371,12 @@ const selectToggle = (id, location) => {
 	}
 	console.table(subtaskOnDisplay);
 	renderBadgesAddTask();
+};
+
+const checkDoppleEntryInTaskForce = (id) => {
+	let index = allTasks[selectedTaskToEditId].taskForce.findIndex((user) => user.id == id);
+	if (index > -1) return true;
+	return false;
 };
 
 /**

@@ -130,14 +130,14 @@ const generateEditTaskHtml = (cardId) => {
 					<div class="form-group">
 						<label for="formGroupExampleInput">Title</label>
 						<input value="${allTasks[cardId].title}" type="text" class="form-control" id="edit-task-title" placeholder="Enter a title" autocomplete="off" />
-						<div id="required-title" class="invalid-feedback">This is a required field</div>
+						<div id="required-edit-title" class="invalid-feedback">This is a required field</div>
 					</div>
 
 					<!-- Enter a Description -->
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">Description</label>
 						<textarea class="form-control" id="edit-task-description" rows="3" placeholder="Enter a description">${allTasks[cardId].description}</textarea>
-						<div id="required-description" class="invalid-feedback">This is a required field</div>
+						<div id="required-edit-description" class="invalid-feedback">This is a required field</div>
 					</div>
 				</div>
 
@@ -231,7 +231,7 @@ const generateEditTaskHtml = (cardId) => {
 								</div>
 							</div>
 						</div>
-						<div id="required-assigned-to" class="invalid-feedback">This is a required field</div>
+						<div id="required-edit-assigned-to" class="invalid-feedback">This is a required field</div>
 						<div id="taskforce-badge-container-edit-task" class="container taskforce-badge-container"></div>
 					</div>
 				</div>
