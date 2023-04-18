@@ -2,7 +2,7 @@
 
 const initHelp = async () => {
 	await includeHTML();
-	await loadAllUsers();
+	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
 };

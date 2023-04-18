@@ -1,7 +1,7 @@
 /* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
 
 const initForgotPassword = async () => {
-	await loadAllUsers();
+	await load();
 };
 
 /**

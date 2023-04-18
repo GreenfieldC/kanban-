@@ -19,8 +19,8 @@ const numbers = {
 const initSummary = async () => {
 	await includeHTML();
 	highlightSideMenuButton('summary');
-	await loadAllUsers();
-	await loadAllTasks();
+	await load();
+	/* await loadAllTasks(); */
 	await loadLoginUserIndex();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	setMenuBadgeOfLoggedInUser();

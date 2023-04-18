@@ -17,7 +17,7 @@ for (let i = 65; i <= 90; i++) {
 const initContacts = async () => {
 	await includeHTML();
 	highlightSideMenuButton('contacts');
-	await loadAllUsers();
+	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
 	inContactsAddTask = true;
@@ -238,7 +238,7 @@ const showContactCreatedMessage = () => {
  * @param {object} event
  *
  */
-const deleteContact = (id, event) => {
+const deleteContact = async (id, event) => {
 	event.stopPropagation();
 	if (id === 0) {
 		alert('You can not delete the guest!');
@@ -250,7 +250,7 @@ const deleteContact = (id, event) => {
 	clearAlphabetObj();
 	sortUsers(id);
 	renderContactListExistingContacts();
-	saveAllUsers();
+	await save();
 	if (window.innerWidth < 801) overlayDetails.style.display = 'none';
 };
 
@@ -297,14 +297,14 @@ const openEditContact = (userId) => {
  * Saves the edited contact if the form is valid
  * @param {number} userId
  *! HIER WEITER MACHEN*/
-const checkEditContactForm = (editContactId) => {
+const checkEditContactForm = async (editContactId) => {
 	const { name, email, phone } = getInputValuesForEditContact();
 	let initials = createInitials(name);
 	createInitials(name);
 	setColorBadge();
 
 	editContact(editContactId, name, email, phone, initials);
-	saveAllUsers();
+	await save();
 
 	clearAlphabetObj();
 	clearContactList();

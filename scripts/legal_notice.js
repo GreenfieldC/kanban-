@@ -1,7 +1,7 @@
 async function initLegalNotice() {
 	await includeHTML();
 	highlightSideMenuButton('legal-notice');
-	await loadAllUsers();
+	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
 }

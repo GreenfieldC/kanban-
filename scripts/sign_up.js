@@ -7,9 +7,9 @@ let colorForBadges = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#A
 let initials;
 let color;
 
-const initSignUp = () => {
+const initSignUp = async () => {
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
-	loadAllUsers();
+	await load();
 };
 
 const checkSignUpForm = () => {
@@ -147,10 +147,10 @@ const checkMessageEmailNotAvailable = (email) => {
  * @param {string} password
  * @returns {object} - adds a new user to the database
  */
-const checkAddNewUser = (name, email, password, initials, color, phone = 'N/A') => {
+const checkAddNewUser = async (name, email, password, initials, color, phone = 'N/A') => {
 	if (!noDuplicateEmail(email)) return;
 	allUsers.push(userObject(name, email, password, initials, color, phone));
-	saveAllUsers();
+	await save();
 	if (password !== '' || inContactsAddTask == true) return;
 	checkLogInUser(email, password); //log in user after successful sign up
 };

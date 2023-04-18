@@ -4,7 +4,7 @@
  * Loads all users from local storage
  */
 const initResetPassword = async () => {
-	await loadAllUsers();
+	await load();
 	await loadUserIdResetPassword();
 };
 
@@ -17,7 +17,7 @@ const checkResetPasswordForm = () => {
 	}
 
 	allUsers[userIdResetPassword].password = newPassword; // hier muss noch die richtige ID rein
-	saveAllUsers();
+	await save();
 	alert('Password changed');
 	showPasswordResetMessage();
 	setTimeout(() => {

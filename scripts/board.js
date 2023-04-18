@@ -6,8 +6,8 @@ let workflow;
 const initBoard = async () => {
 	await includeHTML();
 	highlightSideMenuButton('board');
-	await loadAllTasks();
-	await loadAllUsers();
+	/* await loadAllTasks(); */
+	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
@@ -32,14 +32,14 @@ const renderCards = () => {
  * @param {string} container
  * @param {string} workflow
  */
-const renderCardsOf = (container, workflow) => {
+const renderCardsOf = async (container, workflow) => {
 	const cardsContainer = document.getElementById(container);
 	cardsContainer.innerHTML = '';
 	const cards = allTasks.filter((task) => task.workflow === workflow);
 
 	sortAccordingToPriority(cards);
 	renderSortedTasks(cardsContainer, cards);
-	saveAllTasks();
+	await save();
 };
 
 /**
@@ -347,9 +347,9 @@ const renderSubtasksOnDisplay = (cardId) => {
 	});
 };
 
-const toggleCheckSubtask = (cardId, subtaskId) => {
+const toggleCheckSubtask = async (cardId, subtaskId) => {
 	allTasks[cardId].subtasks[subtaskId].check = !allTasks[cardId].subtasks[subtaskId].check;
-	saveAllTasks();
+	await await await save();
 	renderCardOnDisplay(cardId);
 	renderCards((subtaskOnDisplay = false));
 	subtaskOnDisplay = true;
@@ -453,7 +453,7 @@ const hideBtnContainerOnDisplay = () => {
  * Saves the edited task and renders the cards in the board
  * @param {number} taskId
  */
-const saveEditedTask = (taskId) => {
+const saveEditedTask = async (taskId) => {
 	let title = document.getElementById('edit-task-title').value;
 	let description = document.getElementById('edit-task-description').value;
 	let dueDate = document.getElementById('due-date-edit-task-input').value;
@@ -469,7 +469,7 @@ const saveEditedTask = (taskId) => {
 		return;
 	}
 
-	saveAllTasks();
+	await await save();
 	renderCards((subtaskOnDisplay = false));
 	openCard(taskId);
 };
@@ -494,7 +494,7 @@ const showFeedbackNoInput = (title, description, taskIndex) => {
 const deleteTask = async (taskId) => {
 	allTasks.splice(taskId, 1);
 	await updateTaskIndex();
-	saveAllTasks();
+	await save();
 	closeCard();
 	renderCards((subtaskOnDisplay = false));
 };
@@ -522,14 +522,14 @@ const closeDeleteWindow = (event) => {
  * @param {number} taskId
  * @param {string} status
  */
-const changeWorkflowStatus = (taskId, status) => {
+const changeWorkflowStatus = async (taskId, status) => {
 	allTasks[taskId].workflow = status;
 	renderCards((subtaskOnDisplay = false));
 	subtaskOnDisplay = true;
 	deleteAllHighlightCurrentWorkflowStatus();
 	highlightCurrentWorkflowStatus(taskId);
 	closeChangeWorkflowStatus(event);
-	saveAllTasks();
+	await save();
 };
 
 /**

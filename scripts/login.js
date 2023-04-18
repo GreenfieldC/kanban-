@@ -6,8 +6,8 @@ const initLogin = async () => {
 	startAnimation();
 	setURL('https://join.christian-greenfield.de/smallest_backend_ever');
 	/* saveAllUsers(); */ //! Handling no users not yet implemented
-	loadAllUsers();
 	/* load(); */
+	await load();
 };
 
 const checkLoginForm = () => {

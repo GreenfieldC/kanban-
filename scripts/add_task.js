@@ -32,6 +32,8 @@ let subTaskList = document.getElementById('subtask-container');
 
 let addTaskTitle = document.getElementById('add-task-title');
 let addTaskDescription = document.getElementById('add-task-description');
+let subTaskInput = document.getElementById('subtasks-input');
+
 let addTaskSelectedColor = document.getElementById('selected-color');
 
 let taskTitle = '';
@@ -54,7 +56,7 @@ const initAddTask = async () => {
 	if (addTaskMainSite) await includeHTML();
 	highlightSideMenuButton('add_task');
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
-	await loadAllUsers();
+	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
 	renderWholeCatergoryList();
@@ -62,7 +64,7 @@ const initAddTask = async () => {
 	addCheckKeyToAllUsers();
 	setsDatePicker();
 	dueDate = currentDate();
-	loadAllTasks();
+	/* loadAllTasks(); */
 	addTaskMainSite = true;
 };
 /* 
@@ -552,7 +554,7 @@ const deleteSubtask = async (cardId, subtaskId) => {
 		renderCards((subtaskOnDisplay = false));
 		subtaskOnDisplay = true;
 	}
-	saveAllTasks();
+	await save();
 };
 
 /**
@@ -591,6 +593,7 @@ const clearRequiredValues = () => {
 const clearInputfields = () => {
 	addTaskTitle.value = '';
 	addTaskDescription.value = '';
+	subTaskInput.value = '';
 };
 
 /**
@@ -632,7 +635,7 @@ const createTask = async (workflow) => {
 	allTasks.push(task);
 	await updateTaskIndex();
 
-	saveAllTasks();
+	await save();
 
 	clearAddTaskFormular();
 	hideInvalidFeedback();
