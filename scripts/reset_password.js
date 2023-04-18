@@ -8,7 +8,7 @@ const initResetPassword = async () => {
 	await loadUserIdResetPassword();
 };
 
-const checkResetPasswordForm = () => {
+const checkResetPasswordForm = async () => {
 	const newPassword = document.getElementById('new-password').value;
 	const newPasswordRepeat = document.getElementById('new-password-repeat').value;
 	if (newPassword !== newPasswordRepeat) {
