@@ -12,10 +12,7 @@ const initBoard = async () => {
 	setMenuBadgeOfLoggedInUser();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	renderCards();
-	/* subtaskOnDisplay = true; */
-
-	console.log('subtaskOnDisplay', subtaskOnDisplay);
-	console.log('addTaskMainSite', addTaskMainSite);
+	addTaskMainSite = false;
 };
 
 /**

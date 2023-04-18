@@ -25,7 +25,7 @@ const initContacts = async () => {
 	sortUsers();
 	renderContactListExistingContacts();
 	if (window.innerWidth >= 801) showContact(logInUserIndex);
-	console.log(allUsers.length);
+	addTaskMainSite = false;
 };
 
 /**

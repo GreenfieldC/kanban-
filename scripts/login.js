@@ -4,9 +4,10 @@ const initLogin = async () => {
 	greetingOnce = false;
 	saveGreetingOnce();
 	startAnimation();
-	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+	setURL('https://join.christian-greenfield.de/smallest_backend_ever');
 	/* saveAllUsers(); */ //! Handling no users not yet implemented
 	loadAllUsers();
+	/* load(); */
 };
 
 const checkLoginForm = () => {

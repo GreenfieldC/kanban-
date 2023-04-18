@@ -1,4 +1,3 @@
-let guestLoggedIn = false;
 let jsonFromServer = {};
 let BASE_SERVER_URL;
 
@@ -24,6 +23,7 @@ window.onload = async function () {
 
 async function downloadFromServer() {
 	let result = await loadJSONFromServer();
+	console.log(result, 'result');
 	jsonFromServer = JSON.parse(result);
 }
 
@@ -93,16 +93,16 @@ function determineProxySettings() {
 	return '';
 }
 
-setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
+setURL('https://join.christian-greenfield.de/smallest_backend_ever');
 
 // save and load function for Join Arrays add by Stefan Boskamp at 10.01.2023
 
-let database = [];
+let dataBase = [];
 
 async function fillDatabaseData() {
-	database = [
+	dataBase = [
 		{
-			joinTaskArray: joinTaskArray,
+			allTasks: allTasks,
 			allUsers: allUsers,
 		},
 	];
@@ -112,20 +112,16 @@ function testSetUser() {
 	allUsers = [{ name: 'Rosa Lilie', email: 'rosalie@testSetUser.de', password: 'rosi', colorIndex: '9', firstSecondLetter: 'RL' }];
 }
 
-async function saveTask() {
-	if (!guestLoggedIn) {
-		await fillDatabaseData();
-		setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
-		backend.setItem('database', JSON.stringify(database));
-	}
+async function save() {
+	await fillDatabaseData();
+	setURL('https://join.christian-greenfield.de/smallest_backend_ever');
+	backend.setItem('dataBase', JSON.stringify(dataBase));
 }
 
-async function loadTask() {
-	if (!guestLoggedIn) {
-		setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
-		await downloadFromServer();
-		database = JSON.parse(backend.getItem('database')) || [];
-		joinTaskArray = database[0]['joinTaskArray'];
-		allUsers = database[0]['allUsers'];
-	}
+async function load() {
+	setURL('https://join.christian-greenfield.de/smallest_backend_ever');
+	await downloadFromServer();
+	dataBase = JSON.parse(backend.getItem('dataBase')) || [];
+	allTasks = dataBase[0]['allTasks'];
+	allUsers = dataBase[0]['allUsers'];
 }

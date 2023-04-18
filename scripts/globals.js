@@ -3,9 +3,11 @@ let logInUserIndex;
 let greetingOnce = false;
 let userIdResetPassword;
 let allTasks = [];
+let allUsers = [];
 /*
 ! empty when server installed */
-let allUsers = [
+
+/* let allUsers = [
 	{
 		name: 'Guest',
 		email: 'guest@web.de',
@@ -126,7 +128,7 @@ let allUsers = [
 		initials: 'NN',
 		color: '#FFD600',
 	},
-];
+]; */
 
 /*
 ! SERVER */
@@ -235,12 +237,14 @@ const includeHTML = async () => {
  */
 const addTask = async (container) => {
 	clearAddTaskFormular();
-	/* clearRequiredValues();
-	hideInvalidFeedback(); */
+	addTaskMainSite = false;
 	await initAddTask();
 	document.getElementById(container).style.display = 'flex';
 };
 
+/**
+ * Sets badges in header of logged in user
+ */
 const setMenuBadgeOfLoggedInUser = () => {
 	let btn = document.getElementById('badge-btn-navbar');
 	let initialsDiv = document.getElementById('badge-btn-navbar-initials');
