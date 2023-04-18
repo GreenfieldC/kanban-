@@ -259,11 +259,9 @@ const deleteContact = async (id, event) => {
  */
 const deletion = (id) => {
 	email = allUsers[logInUserIndex].email;
-	console.log(email);
 	allUsers.splice(id, 1);
 	logInUserIndex = allUsers.findIndex((user) => user.email === email);
 	saveLoginUserIndex();
-	console.log('nach löschen', email);
 };
 
 const clearContactList = () => {

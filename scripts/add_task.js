@@ -174,7 +174,6 @@ const chooseCategory = (id) => {
 	const categoryColorList = document.getElementById(`${id}.category-color`).style.backgroundColor;
 	categoryTitle = categoryTitleList;
 	selectedColor = categoryColorList;
-	console.log(categoryTitle, selectedColor);
 	transferToInput(categoryTitleList, categoryColorList);
 };
 
@@ -306,7 +305,6 @@ const renderBadgesAddTask = (taskIndex) => {
 	if (subtaskOnDisplay) {
 		let badgesContainer = document.getElementById('taskforce-badge-container-edit-task');
 		badgesContainer.innerHTML = '';
-		console.log(allTasks[taskIndex].taskForce, 'TASKFORCE GERENDERT');
 		allTasks[taskIndex].taskForce.forEach((user) => {
 			generateBadgesForAssignedTo(user.name, user.color, user.initials, badgesContainer);
 		});
@@ -344,14 +342,10 @@ const rendersAssignedToList = (container, location) => {
  * @param {number} id
  */
 const selectToggle = (id, location) => {
-	console.log(taskForce, 'taskForce');
 	let checkMark = document.getElementById(`${id}.-coworker-checkbox-${location}`);
 	checkMark.checked = !checkMark.checked;
-	/* allUsers[id].check == false ? (allUsers[id].check = true) : (allUsers[id].check = false); */
-	console.log(allUsers[id].check, 'allUsers[id].check');
 	allUsers[id].check = !allUsers[id].check;
 
-	console.log(editTaskCard, 'editTaskCard');
 	if (editTaskCard) {
 		if (allUsers[id].check == true) {
 			allTasks[selectedTaskToEditId].taskForce.push(userObjectForTaskForce(id));
@@ -533,7 +527,6 @@ const renderNewSubTasks = () => {
  */
 const deleteSubtask = async (cardId, subtaskId) => {
 	if (!subtaskOnDisplay) {
-		console.log('subtaskOnDisplay', subtaskOnDisplay);
 		subtasks.splice(subtaskId, 1);
 		renderNewSubTasks();
 		/* updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card'); */
@@ -546,9 +539,7 @@ const deleteSubtask = async (cardId, subtaskId) => {
 	}
 
 	if (subtaskOnDisplay) {
-		console.log('subtaskOnDisplay', subtaskOnDisplay);
 		allTasks[cardId].subtasks.splice(subtaskId, 1);
-		console.log('spli', allTasks[cardId].subtasks.splice(subtaskId, 1));
 		renderSubtasksOnDisplay(cardId);
 		updateDoneSubtasks(allTasks[cardId].taskIndex, allTasks[cardId].subtasks.length, 'card-on-display');
 		renderCards((subtaskOnDisplay = false));

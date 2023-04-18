@@ -197,7 +197,6 @@ const loadAllTasks = async () => {
 	if (localStorage.getItem('allTasks') === null) return;
 	let allTasksAsString = localStorage.getItem('allTasks');
 	allTasks = JSON.parse(allTasksAsString);
-	console.log(allTasks);
 };
 
 const saveGreetingOnce = () => {
@@ -207,7 +206,6 @@ const saveGreetingOnce = () => {
 const loadGreetingOnce = () => {
 	if (localStorage.getItem('greetingOnce') === null) return;
 	greetingOnce = localStorage.getItem('greetingOnce');
-	console.log('gruß', greetingOnce);
 };
 
 const overlay = document.getElementById('overlay');

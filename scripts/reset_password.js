@@ -37,5 +37,4 @@ const loadUserIdResetPassword = async () => {
 	if (localStorage.getItem('userIdResetPassword') === null) return;
 	let userIdResetPasswordAsString = localStorage.getItem('userIdResetPassword');
 	userIdResetPassword = +JSON.parse(userIdResetPasswordAsString);
-	console.log(userIdResetPassword);
 };

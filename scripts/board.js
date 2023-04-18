@@ -125,7 +125,6 @@ const checkRenderNumberBadges = (badgesContainer, i, id) => {
  * !Unbedingt noch Karten in Board aktualiseren, wenn subtasks in Karten on display verändert werdne.
  */
 const updateDoneSubtasks = (id, amountSubtasks, location) => {
-	console.log('bug', subtaskOnDisplay);
 	if (amountSubtasks == 0 && subtaskOnDisplay) {
 		let subtasksContainer = document.getElementById(`${id}.progress-bar-overlay`);
 		subtasksContainer.innerHTML = 'none';
@@ -145,7 +144,6 @@ const updateDoneSubtasks = (id, amountSubtasks, location) => {
  */
 const startDragging = (id) => {
 	currentDraggedCard = id;
-	console.log('start dragging', id);
 };
 
 /**
@@ -168,7 +166,6 @@ const backgroundReset = (asd) => {
  * @param {string} workflow
  */
 const moveTo = (workflow) => {
-	console.log('move to', workflow);
 	allTasks[currentDraggedCard].workflow = workflow;
 	renderCards();
 };
@@ -287,7 +284,6 @@ const openCard = (id) => {
 	subtaskOnDisplay = true;
 	/* addTaskMainSite = true; */
 	renderCardOnDisplay(id);
-	console.log(subtaskOnDisplay);
 };
 
 let ondisplayOverlay = document.getElementById('details-task-overlay');
@@ -375,7 +371,6 @@ const editTask = (taskId) => {
 	selectedTaskToEditId = taskId;
 	editTaskCard = true;
 	taskForceToEdit(selectedTaskToEditId);
-	console.log(taskForce);
 };
 
 /**
@@ -385,13 +380,11 @@ const editTask = (taskId) => {
 const checkTrueForTaskForceMembera = (taskId) => {
 	allTasks[taskId].taskForce.forEach((user) => {
 		allUsers[user.id].check = true;
-		console.log(allUsers[user.id].check);
 	});
 };
 
 const taskForceToEdit = () => {
 	taskForce.push(allTasks[selectedTaskToEditId].taskForce);
-	console.log(taskForce);
 };
 
 /**
@@ -567,7 +560,6 @@ const highlightCurrentWorkflowStatus = (taskId) => {
  */
 const deleteAllHighlightCurrentWorkflowStatus = () => {
 	let workflowStatusBtn = document.querySelectorAll('div[id*="-workflow-btn"]');
-	console.log(workflowStatusBtn);
 	workflowStatusBtn.forEach((btn) => {
 		btn.classList.remove('workflow-status-btn-active');
 	});
