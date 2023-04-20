@@ -1,5 +1,3 @@
-/* setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever'); */
-
 /**
  * Loads all users from local storage
  */
@@ -8,6 +6,10 @@ const initResetPassword = async () => {
 	await loadUserIdResetPassword();
 };
 
+/**
+ * Checks the reset password form
+ * @returns
+ */
 const checkResetPasswordForm = async () => {
 	const newPassword = document.getElementById('new-password').value;
 	const newPasswordRepeat = document.getElementById('new-password-repeat').value;
@@ -25,6 +27,9 @@ const checkResetPasswordForm = async () => {
 	}, 1000);
 };
 
+/**
+ * Shows the feedback message
+ */
 const showPasswordResetMessage = () => {
 	let message = document.getElementById('feedback-message');
 	message.classList.add('show-message');

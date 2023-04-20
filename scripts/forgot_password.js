@@ -39,10 +39,16 @@ const getUserByEmail = async (email) => {
 	return allUsers.find((user) => user.email === email);
 };
 
+/**
+ * Redirects to the reset password page
+ */
 const redirectToResetPassword = async () => {
 	window.location.href = 'reset_password.html';
 };
 
+/**
+ * Saves the user id to local storage
+ */
 const saveUserIdResetPassword = async () => {
 	let userIdResetPasswordAsString = JSON.stringify(userIdResetPassword);
 	localStorage.setItem('userIdResetPassword', userIdResetPasswordAsString);

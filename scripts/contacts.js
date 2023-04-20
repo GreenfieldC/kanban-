@@ -264,6 +264,9 @@ const deletion = (id) => {
 	saveLoginUserIndex();
 };
 
+/**
+ * Clears the contact list
+ */
 const clearContactList = () => {
 	document.getElementById('contact-on-display').innerHTML = '';
 	document.getElementById('contact-list').innerHTML = '';
@@ -272,14 +275,26 @@ const clearContactList = () => {
 /* Edit Contact */
 
 let editContactOverlay = document.getElementById('edit-contact-overlay');
+
+/**
+ * Closes the edit contact window when clicking outside the card
+ */
 editContactOverlay.addEventListener('click', (e) => {
 	if (e.target.id === 'edit-contact-overlay') closeEditContact();
 });
 
+/**
+ * Closes the edit contact window
+ */
 const closeEditContact = () => {
 	document.getElementById('edit-contact-overlay').style.display = 'none';
 };
 
+/**
+ * Sets the values of the contact to the input fields
+ * and opens the edit contact window
+ * @param {number} userId
+ */
 const openEditContact = (userId) => {
 	document.getElementById('edit-contact-overlay').style.display = 'block';
 	let name = document.getElementById('name-edit-contact');
@@ -294,7 +309,7 @@ const openEditContact = (userId) => {
 /**
  * Saves the edited contact if the form is valid
  * @param {number} userId
- *! HIER WEITER MACHEN*/
+ */
 const checkEditContactForm = async (editContactId) => {
 	const { name, email, phone } = getInputValuesForEditContact();
 	let initials = createInitials(name);
@@ -311,6 +326,14 @@ const checkEditContactForm = async (editContactId) => {
 	closeEditContact();
 };
 
+/**
+ * Contacts gets edited with new values
+ * @param {number} userId
+ * @param {string} name
+ * @param {string} email
+ * @param {string} phone
+ * @param {string} initials
+ */
 const editContact = (userId, name, email, phone, initials) => {
 	allUsers[userId].name = name;
 	allUsers[userId].email = email;
@@ -318,6 +341,10 @@ const editContact = (userId, name, email, phone, initials) => {
 	allUsers[userId].initials = initials;
 };
 
+/**
+ * Gets the input values for the new contact and returns them
+ * @returns {object} newContact
+ */
 const getInputValuesForEditContact = () => {
 	const name = document.getElementById('name-edit-contact').value;
 	const email = document.getElementById('email-edit-contact').value;

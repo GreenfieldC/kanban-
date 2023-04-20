@@ -467,9 +467,6 @@ const visuallySelectPriority = (location, priority, color) => {
 	svg.style.color = '#ffffff';
 };
 
-/*
-!Subtasks */
-
 /**
  * Adds new subtask to subtask list
  * @returns {boolean} true if subtask input is empty

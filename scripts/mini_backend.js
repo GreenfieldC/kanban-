@@ -23,7 +23,6 @@ window.onload = async function () {
 
 async function downloadFromServer() {
 	let result = await loadJSONFromServer();
-	console.log(result, 'result');
 	jsonFromServer = JSON.parse(result);
 }
 

@@ -6,7 +6,6 @@ let workflow;
 const initBoard = async () => {
 	await includeHTML();
 	highlightSideMenuButton('board');
-	/* await loadAllTasks(); */
 	await load();
 	await loadLoginUserIndex();
 	setMenuBadgeOfLoggedInUser();
@@ -16,8 +15,6 @@ const initBoard = async () => {
 };
 
 /**
- * Renders the cards in the board
- * Renders the cards in the board
  * Renders the cards in the board
  */
 const renderCards = () => {
@@ -121,9 +118,6 @@ const checkRenderNumberBadges = (badgesContainer, i, id) => {
  * @param {number} id
  * @param {number} amountSubtasks
  */
-/**
- * !Unbedingt noch Karten in Board aktualiseren, wenn subtasks in Karten on display verändert werdne.
- */
 const updateDoneSubtasks = (id, amountSubtasks, location) => {
 	if (amountSubtasks == 0 && subtaskOnDisplay) {
 		let subtasksContainer = document.getElementById(`${id}.progress-bar-overlay`);
@@ -156,8 +150,12 @@ const allowDrop = (ev) => {
 	column.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';
 };
 
-const backgroundReset = (asd) => {
-	let column = document.getElementById(asd);
+/**
+ * Sets the background of the column to the default color
+ * @param {string} columnBoard
+ */
+const backgroundReset = (columnBoard) => {
+	let column = document.getElementById(columnBoard);
 	column.style.backgroundColor = 'var(--background-grey)';
 };
 
@@ -248,24 +246,17 @@ const descriptionNotFound = (description, filter) => {
 	return description.innerHTML.toUpperCase().indexOf(filter) === -1;
 };
 
-/* Add Task In Board */
-
-/* const addTask = async () => {
-	clearRequiredValues();
-	hideInvalidFeedback();
-	await initAddTask();
-	document.getElementById('overlay').style.display = 'flex';
-	subtaskOnDisplay = false;
-	addTaskMainSite = false;
-}; */
-
-/* !Window Management */
-
+/**
+ *Closes the overlay and clears the required values of the form
+ */
 const closeAddTaskOverlay = () => {
 	document.getElementById('overlay').style.display = 'none';
 	clearRequiredValues();
 };
 
+/**
+ * Closes the overlay if the user clicks outside of it
+ */
 overlay.addEventListener('click', (e) => {
 	if (e.target.id === 'overlay') {
 		closeAddTaskOverlay();
@@ -287,6 +278,7 @@ const openCard = (id) => {
 };
 
 let ondisplayOverlay = document.getElementById('details-task-overlay');
+
 /**
  * Close the card on display
  * @param {} e
@@ -331,9 +323,11 @@ const renderBadgesCardOnDisplay = (id) => {
 	badgesContainer.innerHTML = generateBadgesCardOnDisplayHtml(id);
 };
 
-/* 
-! Generic func render subtasks! */
-
+/**
+ * Renders the subtasks on the card on display
+ * @param {number} cardId
+ * @returns
+ */
 const renderSubtasksOnDisplay = (cardId) => {
 	let subTaskContainerOnDisplay = document.getElementById('subtasks-container-on-display');
 	subTaskContainerOnDisplay.innerHTML = '';
@@ -343,28 +337,31 @@ const renderSubtasksOnDisplay = (cardId) => {
 	});
 };
 
+/**
+ *
+ * @param {*} cardId
+ * @param {*} subtaskId
+ */
 const toggleCheckSubtask = async (cardId, subtaskId) => {
 	allTasks[cardId].subtasks[subtaskId].check = !allTasks[cardId].subtasks[subtaskId].check;
-	await await await save();
+	await save();
 	renderCardOnDisplay(cardId);
 	renderCards((subtaskOnDisplay = false));
 	subtaskOnDisplay = true;
-
-	console.table(allTasks[cardId].subtasks);
 };
 
+/**
+ * Sets the card to edit
+ * @param {number} taskId
+ */
 const editTask = (taskId) => {
 	let onDisplayOverlay = document.getElementById('board-card-overlay');
 	onDisplayOverlay.innerHTML = '';
 	onDisplayOverlay.innerHTML = generateEditTaskHtml(taskId);
-
 	const dropDownAssignedToListEditTask = document.getElementById('drop-down-list-assigned-to-edit-task');
 	rendersAssignedToList(dropDownAssignedToListEditTask, 'edit-task');
 	addCheckKeyToAllUsers();
-
 	checkTrueForTaskForceMembera(taskId);
-	//hier muss was rein: die die checked sind sollen auch checked sein
-
 	selectPriorityBtnEditTask(taskId);
 	updateCheckMarkAssignedToEditTask(taskId, 'edit-task');
 	renderBadgesAddTask(taskId);

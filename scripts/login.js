@@ -1,19 +1,28 @@
 'use strict';
 
-const initLogin = async () => {
+let rememberUser = false;
+let rememberEmail;
+let rememberPassword;
+
+const initLogin = () => {
+	loadRememberMe();
+	if (rememberUser) getRememberMe();
 	greetingOnce = false;
 	saveGreetingOnce();
 	startAnimation();
 	setURL('https://join.christian-greenfield.de/smallest_backend_ever');
-	/* saveAllUsers(); */ //! Handling no users not yet implemented
-	/* load(); */
-	await load();
+	load();
 };
 
+/**
+ * Checks login form
+ */
 const checkLoginForm = () => {
 	const { email, password } = logInInputValues();
+	if (rememberUser) setRememberMe(email, password);
 	checkLogInUser(email, password);
 };
+
 /**
  * Gets the values of the input fields
  * @returns {object} - returns an object with the values of the input fields
@@ -24,6 +33,12 @@ const logInInputValues = () => {
 	return { email: email, password: password };
 };
 
+/**
+ * Check in user
+ * @param {string} email
+ * @param {string} password
+ * @returns
+ */
 const checkLogInUser = async (email, password) => {
 	const user = allUsers.findIndex((user) => user.email === email && user.password === password);
 	const rightPassword = allUsers.findIndex((user) => user.email === email && user.password !== password);
@@ -41,6 +56,14 @@ const checkLogInUser = async (email, password) => {
 
 	if (user === -1) return;
 
+	logIn(user);
+};
+
+/**
+ * Logs in the user
+ * @param {*} user
+ */
+const logIn = async (user) => {
 	if (user) {
 		logInUserIndex = user;
 		await saveLoginUserIndex();
@@ -50,6 +73,9 @@ const checkLogInUser = async (email, password) => {
 	}
 };
 
+/**
+ * Logs in the user as a guest
+ */
 const guestLogin = () => {
 	logInUserIndex = 0;
 	saveLoginUserIndex();
@@ -69,4 +95,65 @@ const startAnimation = () => {
 	setTimeout(() => {
 		document.getElementById('login-animation').style.zIndex = -1;
 	}, 500);
+};
+
+/**
+ * Sets rememberUser to true or false
+ */
+const rememberMe = () => {
+	rememberUser = !rememberUser;
+};
+
+/**
+ * Saves or removes the rememberMe data
+ * @param {string} email
+ * @param {string} password
+ */
+const setRememberMe = (email, password) => {
+	if (rememberUser) {
+		rememberEmail = email;
+		rememberPassword = password;
+		saveRememberMe();
+	} else {
+		removeRememberMe();
+	}
+};
+
+/**
+ * Gets the rememberMe data and sets the input fields
+ */
+const getRememberMe = () => {
+	let email = document.getElementById('email');
+	let password = document.getElementById('password');
+	email.value = rememberEmail;
+	password.value = rememberPassword;
+};
+
+/**
+ * Saves the rememberMe data in the local storage
+ */
+const saveRememberMe = () => {
+	localStorage.setItem('rememberMe', true);
+	localStorage.setItem('rememberEmail', rememberEmail);
+	localStorage.setItem('rememberPassword', rememberPassword);
+};
+
+/**
+ * Loads the rememberMe data from the local storage
+ * @returns
+ */
+const loadRememberMe = () => {
+	if (localStorage.getItem('rememberMe') === null) return;
+	rememberUser = localStorage.getItem('rememberMe');
+	rememberEmail = localStorage.getItem('rememberEmail');
+	rememberPassword = localStorage.getItem('rememberPassword');
+};
+
+/**
+ * Removes the rememberMe data from the local storage
+ */
+const removeRememberMe = () => {
+	localStorage.removeItem('rememberMe');
+	localStorage.removeItem('rememberEmail');
+	localStorage.removeItem('rememberPassword');
 };

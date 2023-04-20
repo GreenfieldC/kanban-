@@ -20,7 +20,6 @@ const initSummary = async () => {
 	await includeHTML();
 	highlightSideMenuButton('summary');
 	await load();
-	/* await loadAllTasks(); */
 	await loadLoginUserIndex();
 	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	setMenuBadgeOfLoggedInUser();
@@ -210,6 +209,9 @@ const todayFormatted = () => {
 	return formattedDate;
 };
 
+/**
+ * Redirects to board
+ */
 const redirectToBoard = () => {
 	window.location.href = 'board.html';
 };

@@ -1,9 +1,6 @@
 'use-strict';
-/*
-! surname key, too?  */
 
 let colorForBadges = ['#02CF2F', '#EE00D6', '#0190E0', '#FF7200', '#FF2500', '#AF1616', '#FFC700', '#3E0099', '#462F8A', '#FF7A00', '#000000'];
-
 let initials;
 let color;
 
@@ -12,6 +9,10 @@ const initSignUp = async () => {
 	await load();
 };
 
+/**
+ * Checks sign up form
+ * @returns
+ */
 const checkSignUpForm = () => {
 	const { name, email, password } = getInputValues();
 	createInitials(name);
@@ -28,6 +29,11 @@ const checkSignUpForm = () => {
 	logInUser(email, password);
 };
 
+/**
+ * Logs in user (after sign up)
+ * @param {string} email
+ * @param {string} password
+ */
 const logInUser = async (email, password) => {
 	const user = allUsers.findIndex((user) => user.email === email && user.password === password);
 	logInUserIndex = user;
