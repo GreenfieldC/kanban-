@@ -137,9 +137,6 @@ const hidesNewContactWindow = () => {
 	overlay.style.display = 'none';
 };
 
-/**
- *!Sollte ich mit oben den Elementen zusammenfassen?
- */
 const closeNewContactBtn = document.getElementById('close-new-contact-btn');
 elements.forEach((e) => e.addEventListener('click', hidesNewContactWindow));
 
@@ -165,12 +162,19 @@ overlayDetails.addEventListener('click', () => {
 const contactDetailsCard = document.getElementById('contact-details-card');
 contactDetailsCard.addEventListener('click', (e) => e.stopPropagation());
 
+/**
+ * Closes the add task overlay and clears the required values
+ */
 const closeAddTaskInContacts = () => {
 	document.getElementById('add-task-overlay').style.display = 'none';
 	clearRequiredValues();
 };
 
 let addTaskOverlay = document.getElementById('add-task-overlay');
+
+/**
+ * Closes the add task overlay when clicking outside the card
+ */
 addTaskOverlay.addEventListener('click', (e) => {
 	if (e.target.id === 'add-task-overlay') closeAddTaskInContacts();
 });
