@@ -1,9 +1,10 @@
 /**
- * Loads all users from local storage
+ * Loads all users from server
  */
 const initResetPassword = async () => {
 	await load();
 	await loadUserIdResetPassword();
+	console.log('initResetPassword');
 };
 
 /**
@@ -42,4 +43,5 @@ const loadUserIdResetPassword = async () => {
 	if (localStorage.getItem('userIdResetPassword') === null) return;
 	let userIdResetPasswordAsString = localStorage.getItem('userIdResetPassword');
 	userIdResetPassword = +JSON.parse(userIdResetPasswordAsString);
+	console.log(userIdResetPassword, 'userIdResetPassword');
 };

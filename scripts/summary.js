@@ -17,11 +17,11 @@ const numbers = {
 };
 
 const initSummary = async () => {
+	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	await includeHTML();
 	highlightSideMenuButton('summary');
 	await load();
 	await loadLoginUserIndex();
-	setURL('https://christian-greenfield.developerakademie.net/smallest_backend_ever');
 	setMenuBadgeOfLoggedInUser();
 	loadGreetingOnce();
 	renderGreeting();
