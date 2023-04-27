@@ -53,8 +53,8 @@ const generateContactOnDisplayHtml = (id, color, initials, name, email, phone) =
 		<div class="container-name-add-task">
 			<span id="details-name" class="details-name">${name}</span>
 			<div  class="container-add-task-img-text">
-				<span onclick="addTask('add-task-overlay',workflow='todo')" id="add-task-btn" class="add-Task-in-contacts">&plus; Add Task</span>
-			
+				<span onclick="addTask('add-task-overlay', contactId=${id},workflow='todo')" id="add-task-btn" class="add-Task-in-contacts">&plus; Add Task</span>
+	
 			</div>
 		</div>
 	</div>

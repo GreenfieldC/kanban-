@@ -26,6 +26,7 @@ const initContacts = async () => {
 	renderContactListExistingContacts();
 	if (window.innerWidth >= 801) showContact(logInUserIndex);
 	addTaskMainSite = false;
+	inContacts = true;
 };
 
 /**

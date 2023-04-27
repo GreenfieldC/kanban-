@@ -4,6 +4,7 @@ let greetingOnce = false;
 let userIdResetPassword;
 let allTasks = [];
 let allUsers = [];
+let inContacts = false;
 const overlay = document.getElementById('overlay');
 
 /*================
@@ -93,11 +94,14 @@ const includeHTML = async () => {
  * Opens the add Task window
  * @param {string} container
  */
-const addTask = async (container) => {
+const addTask = async (container, contactId) => {
 	clearAddTaskFormular();
 	addTaskMainSite = false;
 	await initAddTask();
 	document.getElementById(container).style.display = 'flex';
+	if (inContacts) {
+		selectToggle(contactId, 'add-task');
+	}
 };
 
 /**
