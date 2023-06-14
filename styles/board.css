@@ -14,6 +14,7 @@
 	align-items: center;
 	width: fit-content;
 	gap: 30px;
+	margin-top: 80px;
 }
 
 .search-field {
@@ -501,6 +502,10 @@ h3 {
 @media screen and (min-width: 1025px) {
 	.overlay {
 		top: 0;
+	}
+
+	.search-add-task-section {
+		margin-top: unset;
 	}
 
 	.heading-board-overlay {
