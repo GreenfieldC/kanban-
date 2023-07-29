@@ -14,7 +14,7 @@
 	align-items: center;
 	width: fit-content;
 	gap: 30px;
-	margin-top: 80px;
+	margin-top: 12px;
 }
 
 .search-field {
@@ -57,7 +57,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	height: calc(100vh - 246px);
+	height: calc(100vh - 250px);
 	overflow-y: scroll;
 	padding-bottom: 90px;
 	gap: 20px;
@@ -435,16 +435,6 @@ h3 {
 	width: 16px;
 	z-index: 11;
 	cursor: pointer;
-}
-
-@media screen and (min-width: 400px) {
-	/* .card-overlay {
-		padding-right: 48px;
-		padding-left: 48px;
-		border-radius: 30px !important;
-		min-width: 480px !important;
-		max-width: 480px;
-	} */
 }
 
 @media screen and (min-width: 480px) {
